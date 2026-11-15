@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://olmun8emjho"]
+
+[ext_resource type="PackedScene" uid="uid://bxiejuvupdj01" path="res://scenes/core/level.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/levels/sandbox.gd" id="script"]
+
+[node name="Sandbox" unique_id=1835085550 instance=ExtResource("base")]
+script = ExtResource("script")
+level_id = "sandbox"
+
+[node name="NPCSpawner" parent="." index="0" unique_id=946226487]
+_spawnable_scenes = PackedStringArray("uid://bdvk4vs15fb0q")
+
+[node name="BottomLeft" parent="LevelBounds" parent_id_path=PackedInt32Array(53559245) index="0" unique_id=326883410]
+position = Vector2(0, 180)
+
+[node name="TopRight" parent="LevelBounds" parent_id_path=PackedInt32Array(53559245) index="1" unique_id=1707001651]
+position = Vector2(320, 0)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." index="2" unique_id=1843654530]
+position = Vector2(160, 90)

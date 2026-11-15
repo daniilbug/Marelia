@@ -1,0 +1,146 @@
+[gd_scene format=4 uid="uid://bdvk4vs15fb0q"]
+
+
+[ext_resource type="Script" uid="uid://bxauom013q3vc" path="res://scripts/core/npc/npc.gd" id="1_q88xf"]
+[ext_resource type="Texture2D" uid="uid://km6dikhk85ac" path="res://assets/sprites/characters/player.png" id="2_665sb"]
+[ext_resource type="Script" path="res://scripts/core/character_sprite.gd" id="2_character_sprite"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/hair_0.png" id="2_hair"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/top_0.png" id="2_top"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/pants_0.png" id="2_pants"]
+[ext_resource type="Shader" path="res://assets/shaders/hair_color.gdshader" id="hair_color_shader"]
+[ext_resource type="Shader" path="res://assets/shaders/clothing_color.gdshader" id="clothing_color_shader"]
+
+[ext_resource type="PackedScene" path="res://scenes/core/npc/conversation.tscn" id="conversation"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hair"]
+shader = ExtResource("hair_color_shader")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_top"]
+shader = ExtResource("clothing_color_shader")
+shader_parameter/clothing_color = Color(0.27451, 0.42353, 0.60392, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pants"]
+shader = ExtResource("clothing_color_shader")
+shader_parameter/clothing_color = Color(0.2, 0.26275, 0.37255, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(10, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5x06y"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite:frame")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:is_sitting")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath(".:direction")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
+properties/4/path = NodePath("Conversation:peer_id")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_appearance"]
+properties/0/path = NodePath(".:hair_id")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:top_id")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:pants_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath(".:hair_color_id")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath(".:top_color_id")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath(".:pants_color_id")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:level_id")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+
+[node name="NPC" type="CharacterBody2D" unique_id=1474730025]
+collision_layer = 16
+script = ExtResource("1_q88xf")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=634790149]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2145306783]
+light_mask = 3
+texture_filter = 1
+texture = ExtResource("2_665sb")
+centered = false
+offset = Vector2(-6, -20)
+hframes = 4
+vframes = 10
+script = ExtResource("2_character_sprite")
+
+[node name="Pants" type="Sprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_pants")
+light_mask = 3
+texture_filter = 1
+texture = ExtResource("2_pants")
+centered = false
+offset = Vector2(-6, -20)
+hframes = 4
+vframes = 10
+
+[node name="Top" type="Sprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_top")
+light_mask = 3
+texture_filter = 1
+texture = ExtResource("2_top")
+centered = false
+offset = Vector2(-6, -20)
+hframes = 4
+vframes = 10
+
+[node name="Hair" type="Sprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_hair")
+light_mask = 3
+texture_filter = 1
+texture = ExtResource("2_hair")
+centered = false
+offset = Vector2(-6, -20)
+hframes = 4
+vframes = 10
+
+[node name="Hands" type="Node2D" parent="." unique_id=1124817726]
+position = Vector2(0.03440857, -7.993946)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=276543840]
+
+[node name="Shape" type="CollisionShape2D" parent="InteractionArea" unique_id=259532830]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_interact")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1999999999]
+path_desired_distance = 3.0
+target_desired_distance = 4.0
+path_max_distance = 16.0
+avoidance_enabled = true
+radius = 6.0
+neighbor_distance = 48.0
+time_horizon_agents = 0.25
+max_speed = 150.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=245744329]
+replication_config = SubResource("SceneReplicationConfig_5x06y")
+
+[node name="AppearanceSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_appearance")
+
+[node name="Conversation" parent="." instance=ExtResource("conversation")]

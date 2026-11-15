@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/core/door.gd" id="script"]
+
+[sub_resource type="CircleShape2D" id="area"]
+radius = 12.0
+
+[sub_resource type="SceneReplicationConfig" id="state"]
+properties/0/path = NodePath(".:is_open")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Door" type="Node2D"]
+script = ExtResource("script")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+shape = SubResource("area")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("state")

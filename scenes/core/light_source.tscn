@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/core/light_source.gd" id="script"]
+[ext_resource type="SceneReplicationConfig" path="res://scenes/core/light_source_replication.tres" id="replication"]
+
+[node name="LightSource" type="Node2D"]
+script = ExtResource("script")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = ExtResource("replication")

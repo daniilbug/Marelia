@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://fow4hkarxeti"]
+
+[ext_resource type="Script" path="res://scripts/core/switch.gd" id="script"]
+
+[sub_resource type="CircleShape2D" id="area_shape"]
+radius = 4.0
+
+[node name="Switch" type="Node2D"]
+script = ExtResource("script")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+shape = SubResource("area_shape")

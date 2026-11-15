@@ -1,0 +1,311 @@
+class_name Player
+extends CharacterBody2D
+
+static var local_setup: Dictionary = {"name": "Player"}
+
+const SPEED := 350.0
+const FPS_WALK := 8.0
+const SAVE_SCHEMA := {
+	"player_name": "", "level_id": "", "position": Vector2.ZERO,
+	"direction": Vector2.ZERO,
+	"appearance": {"hair_id": 0, "hair_color_id": 0, "top_id": 0, "top_color_id": 0, "pants_id": 0, "pants_color_id": 0},
+}
+const SAVE_APPEARANCE: Array[String] = ["hair_id", "hair_color_id", "top_id", "top_color_id", "pants_id", "pants_color_id"]
+
+const ROW_WALK_S  := 0
+const ROW_WALK_N  := 1
+const ROW_WALK_W  := 2
+const ROW_WALK_E  := 3
+const ROW_IDLE    := 4
+const ROW_SIT     := 5
+
+@export var is_sitting := false
+var seated_seat: Seat = null
+
+@export var level_id := "sandbox"
+
+# A garment is its existing atlas style ID and fixed fabric color ID.
+# These inventories, like appearance, are owned by the server.
+@export var owned_tops: Array[Vector2i] = []
+@export var owned_bottoms: Array[Vector2i] = []
+
+@export var hair_id: int = 0:
+	set(value):
+		hair_id = value
+		_refresh_appearance()
+
+@export var hair_color_id: int = 2:
+	set(value):
+		hair_color_id = value
+		_refresh_appearance()
+
+@export var top_id: int = 0:
+	set(value):
+		top_id = value
+		_refresh_appearance()
+
+@export var top_color_id: int = 4:
+	set(value):
+		top_color_id = value
+		_refresh_appearance()
+
+@export var pants_id: int = 0:
+	set(value):
+		pants_id = value
+		_refresh_appearance()
+
+@export var pants_color_id: int = 3:
+	set(value):
+		pants_color_id = value
+		_refresh_appearance()
+
+var player_name: String = ""
+
+
+@export var direction := Vector2.DOWN
+
+@onready var sprite: CharacterSprite = $Sprite
+@onready var hands: Node2D = $Hands
+@onready var interaction_area: Area2D = $InteractionArea
+@onready var camera: Camera2D = get_node_or_null("Camera")
+
+var _hands_item: Draggable = null
+var _is_modal_input_blocked := false
+var is_world_input_blocked: bool:
+	get:
+		return _is_modal_input_blocked
+	set(value):
+		_is_modal_input_blocked = value
+
+var _anim_t := 0.0
+var _anim_row := ROW_IDLE
+var _is_walking := false
+var _idle_tween: Tween
+
+signal appearance_changed
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(int(name), true)
+	$AppearanceSynchronizer.set_multiplayer_authority(1)
+
+func _ready() -> void:
+	_refresh_appearance()
+	_start_idle_bob()
+	call_deferred("_setup_authority")
+
+func randomize_appearance() -> void:
+	hair_id = randi_range(0, CharacterSprite.HAIR_TEXTURES.size() - 1)
+	hair_color_id = randi_range(0, CharacterSprite.HAIR_COLORS.size() - 1)
+	top_id = randi_range(0, CharacterSprite.TOP_TEXTURES.size() - 1)
+	pants_id = randi_range(0, CharacterSprite.PANTS_TEXTURES.size() - 1)
+	top_color_id = randi_range(0, CharacterSprite.CLOTHING_COLORS.size() - 1)
+	pants_color_id = randi_range(0, CharacterSprite.CLOTHING_COLORS.size() - 1)
+
+func _refresh_appearance() -> void:
+	if is_node_ready():
+		sprite.set_appearance(hair_id, top_id, pants_id, hair_color_id, top_color_id, pants_color_id)
+		appearance_changed.emit()
+
+func initialize_wardrobe() -> void:
+	for is_top in [true, false]:
+		var items := owned_tops if is_top else owned_bottoms
+		if not items.is_empty():
+			continue
+		var current := Vector2i(top_id, top_color_id) if is_top else Vector2i(pants_id, pants_color_id)
+		items.append(current)
+
+static func is_valid_wardrobe(data: Variant) -> bool:
+	if not SaveGraph.matches(data, {"tops": [], "bottoms": []}):
+		return false
+	for slot in ["tops", "bottoms"]:
+		var count := CharacterSprite.TOP_TEXTURES.size() if slot == "tops" else CharacterSprite.PANTS_TEXTURES.size()
+		var items: Array = data[slot]
+		if items.is_empty() or items.size() > count * CharacterSprite.CLOTHING_COLORS.size():
+			return false
+		var seen := {}
+		for item in items:
+			if item is not Vector2i or item.x < 0 or item.x >= count \
+				or item.y < 0 or item.y >= CharacterSprite.CLOTHING_COLORS.size() or seen.has(item):
+				return false
+			seen[item] = true
+	return true
+
+func _setup_authority() -> void:
+	if is_multiplayer_authority():
+		camera.make_current()
+
+func get_save_data() -> Dictionary:
+	var world := get_parent() as Main
+	var level := world.get_player_level(int(name)) if world != null else Level.find_level_node(self)
+	return {
+		"player_name": player_name, "level_id": level_id,
+		"position": level.to_local(global_position), "direction": direction,
+		"appearance": SaveGraph.get_fields(self, SAVE_APPEARANCE),
+		"wardrobe": {"tops": owned_tops.duplicate(), "bottoms": owned_bottoms.duplicate()},
+	}
+
+func apply_save_data(data: Dictionary) -> void:
+	player_name = data.player_name
+	level_id = data.level_id
+	direction = data.get("direction", Vector2.DOWN)
+	SaveGraph.apply_fields(self, SAVE_APPEARANCE, data.get("appearance", {}))
+	if data.has("wardrobe"):
+		owned_tops.assign(data.wardrobe.tops)
+		owned_bottoms.assign(data.wardrobe.bottoms)
+
+func _start_idle_bob() -> void:
+	if _idle_tween != null:
+		_idle_tween.kill()
+	_anim_row = _dir_to_idle_row(direction)
+	sprite.frame = _anim_row * 4
+	_idle_tween = create_tween().set_loops()
+	_idle_tween.tween_property(sprite, "scale:y", 0.95, 0.45).set_trans(Tween.TRANS_SINE)
+	_idle_tween.tween_property(sprite, "scale:y", 1.0, 0.45).set_trans(Tween.TRANS_SINE)
+
+func _physics_process(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
+	var dir := Input.get_vector("left", "right", "up", "down")
+	if is_world_input_blocked:
+		velocity = Vector2.ZERO
+		_animate_movement(delta, Vector2.ZERO)
+		return
+	if is_sitting:
+		if dir != Vector2.ZERO:
+			_stand_up()
+		else:
+			velocity = Vector2.ZERO
+		return
+
+	velocity = dir * SPEED
+	_animate_movement(delta, dir)
+	move_and_slide()
+
+func _animate_movement(delta: float, dir: Vector2) -> void:
+	var walking := dir != Vector2.ZERO
+	if walking != _is_walking:
+		_is_walking = walking
+		if walking:
+			_idle_tween.pause()
+			sprite.scale.y = 1.0
+			_anim_t = 0.0
+		else:
+			sprite.position.y = 0.0
+			_idle_tween.play()
+			_anim_row = _dir_to_idle_row(direction)
+			sprite.frame = _anim_row * 4
+	if walking:
+		direction = dir
+		_anim_t += delta
+		if not is_zero_approx(dir.x):
+			_anim_row = ROW_WALK_E if dir.x > 0 else ROW_WALK_W
+		elif not is_zero_approx(dir.y):
+			_anim_row = ROW_WALK_S if dir.y > 0 else ROW_WALK_N
+		sprite.frame = _anim_row * 4 + (int(_anim_t * FPS_WALK) % 4)
+
+func _dir_to_idle_row(d: Vector2) -> int:
+	if absf(d.x) >= absf(d.y):
+		return ROW_WALK_E if d.x > 0 else ROW_WALK_W
+	return ROW_WALK_S if d.y > 0 else ROW_WALK_N
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	if is_world_input_blocked:
+		if event.is_action_pressed("ui_cancel"):
+			var world := get_parent() as Main
+			var level := world.get_player_level(int(name)) if world != null else Level.find_level_node(self)
+			for child in level.get_children():
+				if child is NPC and child.conversation.peer_id == int(name):
+					child.conversation.close()
+					get_viewport().set_input_as_handled()
+					break
+		return
+	if event.is_action_pressed("interact"):
+		_try_interact()
+	elif event.is_action_pressed("take"):
+		_try_take_drop()
+
+func _try_interact() -> void:
+	if is_sitting and seated_seat != null and seated_seat.stand_on_interact:
+		_stand_up()
+		return
+	var areas := interaction_area.get_overlapping_areas()
+	var nearest_seat: Seat = null
+	var nearest_distance := INF
+	if not is_sitting:
+		for area in areas:
+			var candidate := area.get_parent() as Seat
+			if candidate != null and not candidate.is_occupied and candidate.is_player_in_reach(self):
+				var distance := global_position.distance_squared_to(candidate.global_position)
+				if distance < nearest_distance:
+					nearest_seat = candidate
+					nearest_distance = distance
+	if nearest_seat != null:
+		_sit_in(nearest_seat)
+		return
+	var conversation := NPCConversation.nearest(self, areas)
+	if conversation != null:
+		conversation.interact(self)
+		return
+	var nearest: Node2D
+	for area in areas:
+		var candidate := area.get_parent() as Node2D
+		if candidate is not Interactable:
+			continue
+		if nearest == null or global_position.distance_squared_to(candidate.global_position) < global_position.distance_squared_to(nearest.global_position):
+			nearest = candidate
+	if nearest is Interactable:
+		nearest.interact(self)
+
+func _try_take_drop() -> void:
+	var areas := interaction_area.get_overlapping_areas()
+	var nearest: Node2D
+	for area in areas:
+		var candidate := area.get_parent() as Node2D
+		if _hands_item != null:
+			if candidate is not DropPlace or not candidate.can_accept(_hands_item):
+				continue
+		elif candidate is not Draggable or not candidate.can_pickup(self):
+			continue
+		if nearest == null or global_position.distance_squared_to(area.global_position) < global_position.distance_squared_to(nearest.global_position):
+			nearest = candidate
+	if _hands_item != null and nearest is DropPlace:
+		_hands_item.drop(self, nearest)
+	elif nearest is Draggable:
+		nearest.pickup(self)
+
+func take_spawned_item(item: Draggable) -> void:
+	if _hands_item != null:
+		return
+	_hands_item = item
+	item.tree_exiting.connect(func():
+		if _hands_item == item:
+			_hands_item = null
+	, CONNECT_ONE_SHOT)
+
+func _sit_in(seat: Seat) -> void:
+	if is_sitting or not seat.occupy(self):
+		return
+	seated_seat = seat
+	is_sitting = true
+	global_position = seat.get_seat_position()
+	_idle_tween.pause()
+	sprite.frame = (ROW_WALK_N if seat.facing_north else ROW_SIT) * 4
+
+func _stand_up() -> void:
+	if seated_seat:
+		seated_seat.vacate(self)
+		if seated_seat.stand_position_offset != Vector2.ZERO:
+			global_position = seated_seat.to_global(seated_seat.stand_position_offset)
+		seated_seat = null
+	is_sitting = false
+	_start_idle_bob()
+
+@rpc("any_peer", "call_local", "reliable")
+func rpc_apply_player_setup(setup: Dictionary) -> void:
+	var sender := multiplayer.get_remote_sender_id()
+	if sender != 0 and sender != 1:
+		return
+	if setup.has("name"):
+		player_name = setup["name"]
