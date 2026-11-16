@@ -2,30 +2,28 @@
 class_name Room
 extends Node2D
 
+signal layout_changed
+
 @export var room_size: Vector2 = Vector2(80, 60):
 	set(v):
+		v = v.max(_minimum_room_size())
+		if room_size == v:
+			return
 		room_size = v
 		queue_redraw()
 		if is_node_ready():
-			_update_layout()
-			_update_navigation_region()
+			refresh_layout()
 
 @export var wall_thickness: float = 4.0:
 	set(v):
+		v = maxf(v, 0.5)
+		if is_equal_approx(wall_thickness, v):
+			return
 		wall_thickness = v
+		room_size = room_size.max(_minimum_room_size())
 		queue_redraw()
 		if is_node_ready():
-			_update_layout()
-
-@export_range(0.0, 1.0) var wall_hidden_alpha: float = 0.12
-@export_range(0.0, 1.0) var door_hidden_alpha: float = 0.1
-@export var wall_sort_with_player := false
-## Wall and door roots to fade together; their children inherit the transparency.
-@export var wall_transparency_targets: Array[CanvasItem] = []
-## Connected alcoves can keep the room visible while the player is inside them.
-@export var additional_transparency_zones: Array[Area2D] = []
-
-var _wall_transparency_tween: Tween
+			refresh_layout()
 
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion
 @onready var y_sort: Node2D = $NavigationRegion/YSort
@@ -34,18 +32,23 @@ var _wall_transparency_tween: Tween
 @onready var _wall_bottom: StaticBody2D = $Walls/Bottom
 @onready var _wall_left: StaticBody2D = $Walls/Left
 @onready var _wall_right: StaticBody2D = $Walls/Right
-@onready var _transparency_zone: Area2D = $TransparencyZone
 
 func _ready() -> void:
-	_update_navigation_region()
-	_update_layout()
-	if Engine.is_editor_hint():
+	refresh_layout()
+
+func refresh_layout() -> void:
+	if not is_node_ready():
 		return
-	_transparency_zone.body_entered.connect(_on_body_entered)
-	_transparency_zone.body_exited.connect(_on_body_exited)
-	for zone in additional_transparency_zones:
-		zone.body_entered.connect(_on_body_entered)
-		zone.body_exited.connect(_on_body_exited)
+	var minimum := _minimum_room_size()
+	if room_size.x < minimum.x or room_size.y < minimum.y:
+		room_size = room_size.max(minimum)
+		return
+	_update_layout()
+	_update_navigation_region()
+	layout_changed.emit()
+
+func _minimum_room_size() -> Vector2:
+	return Vector2.ONE * (wall_thickness * 2.0 + 1.0)
 
 func get_walls() -> Array[StaticBody2D]:
 	var children = $Walls.get_children()
@@ -71,10 +74,6 @@ func _update_layout() -> void:
 	_place_wall(_wall_bottom, Vector2(w * 0.5, h), Vector2(w, t))
 	_place_wall(_wall_left, Vector2(0.0, h * 0.5), Vector2(t, h))
 	_place_wall(_wall_right, Vector2(w, h * 0.5), Vector2(t, h))
-	_transparency_zone.position = Vector2(w * 0.5, h * 0.5)
-	var zone_shape := RectangleShape2D.new()
-	zone_shape.size = Vector2(w - t * 2.0, h - t * 2.0)
-	(_transparency_zone.get_node("Shape") as CollisionShape2D).shape = zone_shape
 	
 func _update_navigation_region() -> void:
 	var bounding_outline := PackedVector2Array([
@@ -113,34 +112,3 @@ func _place_wall(body: StaticBody2D, pos: Vector2, size: Vector2) -> void:
 	shape.size = size
 	var collisionShape := body.find_child("*Shape") as CollisionShape2D
 	collisionShape.shape = shape
-
-func _on_body_entered(body: Node2D) -> void:
-	if _is_local_player(body):
-		_wall_bottom.z_index = 0 if wall_sort_with_player else 1
-		_tween_wall_alpha(wall_hidden_alpha, door_hidden_alpha)
-
-func _on_body_exited(body: Node2D) -> void:
-	if _is_local_player(body):
-		if _transparency_zone.overlaps_body(body):
-			return
-		for zone in additional_transparency_zones:
-			if zone.overlaps_body(body):
-				return
-		reset_wall_visibility()
-
-func reset_wall_visibility() -> void:
-	_wall_bottom.z_index = 0
-	_tween_wall_alpha(1.0, 1.0)
-
-func _is_local_player(body: Node2D) -> bool:
-	var level := Level.find_level_node(self)
-	return level != null and body == level.local_player
-
-func _tween_wall_alpha(wall_alpha: float, door_alpha: float) -> void:
-	if _wall_transparency_tween != null:
-		_wall_transparency_tween.kill()
-	_wall_transparency_tween = create_tween().set_parallel()
-	for target in wall_transparency_targets:
-		if is_instance_valid(target):
-			var alpha := door_alpha if target is Door else wall_alpha
-			_wall_transparency_tween.tween_property(target, "modulate:a", alpha, 0.2)

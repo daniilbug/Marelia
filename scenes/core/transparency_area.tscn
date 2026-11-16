@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c273qkhmv702j"]
+
+[ext_resource type="Script" path="res://scripts/core/transparency_area.gd" id="script"]
+
+[sub_resource type="RectangleShape2D" id="zone"]
+resource_local_to_scene = true
+size = Vector2(32, 24)
+
+[node name="TransparencyArea" type="Area2D" unique_id=389870390]
+collision_layer = 0
+monitorable = false
+script = ExtResource("script")
+shape = SubResource("zone")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=1171874856]
+shape = SubResource("zone")

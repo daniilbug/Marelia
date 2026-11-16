@@ -45,6 +45,7 @@ func _register_levels() -> void:
 			push_error("Levels need unique, nonempty IDs: %s" % child.name)
 			continue
 		_levels[level.level_id] = level
+		level.visible = level == spawn_level
 
 func get_level(level_id: String) -> Level:
 	return _levels.get(level_id) as Level
@@ -83,8 +84,11 @@ func _spawn_player(peer_id: int, saved: Dictionary = {}) -> void:
 		spawn_position = level.player_spawn.global_position
 	player.position = to_local(spawn_position)
 	add_child(player)
+	_watch_player_level(player)
 
 func _on_player_spawned(node: Node) -> void:
+	if node is Player:
+		_watch_player_level(node)
 	# A late join can receive held items before their player has spawned.
 	for level in get_levels():
 		for item in level.get_children():
@@ -101,6 +105,66 @@ func _init_local_player(player: Player) -> void:
 		return
 	local_player = player
 	_activate_local_level(player.level_id)
+
+func _watch_player_level(player: Player) -> void:
+	player.level_changed.connect(_on_player_level_changed.bind(player))
+	_refresh_player_visibility()
+
+func _on_player_level_changed(player: Player) -> void:
+	if player == local_player:
+		_activate_local_level(player.level_id)
+	_refresh_player_visibility()
+
+func _refresh_player_visibility() -> void:
+	if local_player == null:
+		return
+	for player in get_players():
+		player.visible = player.level_id == local_player.level_id
+
+## Called by an entrance after the server validates the source level and reach.
+func transfer_player(player: Player, destination: Level, spawn: Marker2D, facing: Vector2) -> void:
+	if not multiplayer.is_server() or player == null or destination == null or spawn == null:
+		return
+	if get_level(destination.level_id) != destination or Level.find_level_node(spawn) != destination:
+		return
+	if not destination.get_world_bounds().has_point(spawn.global_position):
+		return
+	var arrival := _find_transfer_position(player, destination, spawn)
+	if not arrival.is_finite():
+		return
+	_apply_level_transfer.rpc(int(str(player.name)), destination.level_id, to_local(arrival), facing)
+
+func _find_transfer_position(player: Player, destination: Level, spawn: Marker2D) -> Vector2:
+	var shape := player.get_node("Shape") as CollisionShape2D
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape.shape
+	query.collision_mask = player.collision_mask
+	query.exclude = [player.get_rid()]
+	query.transform = shape.global_transform
+	var shape_offset := shape.global_position - player.global_position
+	var origin := destination.to_local(spawn.global_position)
+	for offset in [Vector2.ZERO, Vector2(-16, 0), Vector2(16, 0), Vector2(-32, 0), Vector2(32, 0), Vector2(0, -16), Vector2(0, 16)]:
+		var arrival := destination.to_global(origin + offset)
+		if not destination.get_world_bounds().has_point(arrival):
+			continue
+		query.transform.origin = arrival + shape_offset
+		if get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty():
+			return arrival
+	return Vector2.INF
+
+@rpc("authority", "call_local", "reliable")
+func _apply_level_transfer(peer_id: int, destination_id: String, spawn_position: Vector2, facing: Vector2) -> void:
+	var player := get_player(peer_id)
+	if player == null or not _levels.has(destination_id):
+		return
+	player.position = spawn_position
+	player.velocity = Vector2.ZERO
+	player.direction = facing
+	player.level_id = destination_id
+	if player == local_player:
+		# Also reset after the RPC if level_id replication arrived before it.
+		_activate_local_level(destination_id)
+	_refresh_player_visibility()
 
 func _register_player_setup(peer_id: int, setup: Dictionary) -> void:
 	var desired: Variant = setup.get("name", "Player")
@@ -127,9 +191,11 @@ func _activate_local_level(level_id: String) -> void:
 		return
 	var current := _levels[level_id] as Level
 	for level: Level in _levels.values():
+		level.visible = level == current
 		if level != current:
 			level.deactivate_local_player()
 	current.activate_local_player(local_player)
+	_refresh_player_visibility()
 
 func _on_peer_disconnected(peer_id: int) -> void:
 	if multiplayer.is_server():

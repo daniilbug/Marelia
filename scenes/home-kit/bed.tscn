@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://celjox6wgevcl"]
+
+[ext_resource type="Shader" uid="uid://bt6168q5xf24d" path="res://assets/home-kit/shaders/furniture_palette.gdshader" id="7_8ecq1"]
+[ext_resource type="Texture2D" uid="uid://dyrljugfqe1s0" path="res://assets/home-kit/sprites/bed_rustic_materials.png" id="8_kjvbh"]
+[ext_resource type="Texture2D" uid="uid://x3qqrg0s8qqu" path="res://assets/home-kit/sprites/bed_rustic.png" id="9_oilkd"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/occluding_piece.tscn" id="base"]
+[ext_resource type="Resource" uid="uid://cfysq8shklx0w" path="res://assets/home-kit/designs/bed_rustic.tres" id="design_0"]
+[ext_resource type="Resource" uid="uid://bd5kb71hv4sre" path="res://assets/home-kit/designs/bed_shaped_headboard.tres" id="design_1"]
+[ext_resource type="Resource" uid="uid://bs45jc56xshwy" path="res://assets/home-kit/designs/bed_metal.tres" id="design_2"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/home-kit/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" uid="uid://u8y3rvkljrsn" path="res://scripts/home-kit/bed.gd" id="script"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4jyd"]
+shader = ExtResource("7_8ecq1")
+shader_parameter/material_mask = ExtResource("8_kjvbh")
+shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/paint_color = Color(0.3372549, 0.38039216, 0.36862746, 1)
+shader_parameter/fabric_color = Color(0.6313726, 0.41568628, 0.45490196, 1)
+shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
+shader_parameter/stone_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_162n4"]
+size = Vector2(22, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me216"]
+size = Vector2(22, 11)
+
+[node name="Bed" unique_id=1774191178 instance=ExtResource("base")]
+script = ExtResource("script")
+style = 0
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+paintable_materials = 14
+paint_color = Color(0.3372549, 0.38039216, 0.36862746, 1)
+roof_color = null
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_m4jyd")
+position = Vector2(-15, -35)
+texture = ExtResource("9_oilkd")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_162n4")
+
+[node name="TransparencyArea" parent="." index="2"]
+shape = SubResource("RectangleShape2D_me216")

@@ -1,0 +1,397 @@
+[gd_scene format=3 uid="uid://b6pvggbwbeah1"]
+
+[ext_resource type="PackedScene" path="res://scenes/home-kit/armchair.tscn" id="armchair"]
+[ext_resource type="PackedScene" uid="uid://celjox6wgevcl" path="res://scenes/home-kit/bed.tscn" id="bed"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/bedside_table.tscn" id="bedside_table"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/bookcase.tscn" id="bookcase"]
+[ext_resource type="PackedScene" uid="uid://cakjcaemq3583" path="res://scenes/home-kit/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/chimney.tscn" id="chimney"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/coat_rack.tscn" id="coat_rack"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/coffee_table.tscn" id="coffee_table"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/cooker.tscn" id="cooker"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/cooker_hood.tscn" id="cooker_hood"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/desk.tscn" id="desk"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/dining_table.tscn" id="dining_table"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/dresser.tscn" id="dresser"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/entrance_step.tscn" id="entrance_step"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/exterior_lantern.tscn" id="exterior_lantern"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/fireplace.tscn" id="fireplace"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/flower_vase.tscn" id="flower_vase"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/fridge.tscn" id="fridge"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/kitchen_base.tscn" id="kitchen_base"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/kitchen_cart.tscn" id="kitchen_cart"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/kitchen_sink.tscn" id="kitchen_sink"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/laundry_basket.tscn" id="laundry_basket"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/mailbox.tscn" id="mailbox"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/potted_plant.tscn" id="potted_plant"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/rug.tscn" id="rug"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/shoe_bench.tscn" id="shoe_bench"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/sideboard.tscn" id="sideboard"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/sofa.tscn" id="sofa"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/storage_chest.tscn" id="storage_chest"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/table_lamp.tscn" id="table_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_cabinet.tscn" id="wall_cabinet"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_clock.tscn" id="wall_clock"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_mirror.tscn" id="wall_mirror"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_painting.tscn" id="wall_painting"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_sconce.tscn" id="wall_sconce"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wall_shelf.tscn" id="wall_shelf"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/wardrobe.tscn" id="wardrobe"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/washstand.tscn" id="washstand"]
+[ext_resource type="PackedScene" path="res://scenes/home-kit/window_flower_box.tscn" id="window_flower_box"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_162n4"]
+resource_local_to_scene = true
+size = Vector2(22, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me216"]
+resource_local_to_scene = true
+size = Vector2(22, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byby2"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[node name="FurnitureCatalog" type="Node2D" unique_id=1663124668]
+
+[node name="Background" type="ColorRect" parent="." unique_id=877209338]
+z_index = -10
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 600.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.21, 0.24, 0.23, 1)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1507770702]
+position = Vector2(250, 175)
+zoom = Vector2(2, 2)
+
+[node name="Items" type="Node2D" parent="." unique_id=1148324872]
+y_sort_enabled = true
+
+[node name="Bed1" parent="Items" unique_id=1899130468 instance=ExtResource("bed")]
+position = Vector2(25, 45)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_162n4")
+footprint_offset = Vector2(0, -12)
+transparency_shape = SubResource("RectangleShape2D_me216")
+
+[node name="Bed2" parent="Items" unique_id=1165625240 instance=ExtResource("bed")]
+position = Vector2(75, 45)
+style = 1
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_162n4")
+footprint_offset = Vector2(0, -12)
+transparency_shape = SubResource("RectangleShape2D_me216")
+
+[node name="Bed3" parent="Items" unique_id=1339104869 instance=ExtResource("bed")]
+position = Vector2(125, 45)
+style = 2
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_162n4")
+footprint_offset = Vector2(0, -12)
+transparency_shape = SubResource("RectangleShape2D_me216")
+
+[node name="BedsideTable1" parent="Items" unique_id=1471979565 instance=ExtResource("bedside_table")]
+position = Vector2(175, 45)
+style = 0
+
+[node name="BedsideTable2" parent="Items" unique_id=505333933 instance=ExtResource("bedside_table")]
+position = Vector2(225, 45)
+style = 1
+
+[node name="BedsideTable3" parent="Items" unique_id=210140792 instance=ExtResource("bedside_table")]
+position = Vector2(275, 45)
+style = 2
+
+[node name="Wardrobe1" parent="Items" unique_id=214359096 instance=ExtResource("wardrobe")]
+position = Vector2(325, 45)
+style = 0
+
+[node name="Wardrobe2" parent="Items" unique_id=712992099 instance=ExtResource("wardrobe")]
+position = Vector2(375, 45)
+style = 1
+
+[node name="Wardrobe3" parent="Items" unique_id=841201470 instance=ExtResource("wardrobe")]
+position = Vector2(425, 45)
+style = 2
+
+[node name="Dresser1" parent="Items" unique_id=572970567 instance=ExtResource("dresser")]
+position = Vector2(475, 45)
+style = 0
+
+[node name="Dresser2" parent="Items" unique_id=1659779332 instance=ExtResource("dresser")]
+position = Vector2(25, 89)
+style = 1
+
+[node name="Dresser3" parent="Items" unique_id=1944124106 instance=ExtResource("dresser")]
+position = Vector2(75, 89)
+style = 2
+
+[node name="Sofa1" parent="Items" unique_id=682242803 instance=ExtResource("sofa")]
+position = Vector2(125, 89)
+style = 0
+direction = 0
+
+[node name="Sofa2" parent="Items" unique_id=1977179175 instance=ExtResource("sofa")]
+position = Vector2(175, 89)
+style = 1
+direction = 0
+
+[node name="Sofa3" parent="Items" unique_id=691552549 instance=ExtResource("sofa")]
+position = Vector2(225, 89)
+style = 2
+direction = 0
+
+[node name="Armchair1" parent="Items" unique_id=1278923801 instance=ExtResource("armchair")]
+position = Vector2(275, 89)
+style = 0
+direction = 0
+
+[node name="Armchair2" parent="Items" unique_id=503388789 instance=ExtResource("armchair")]
+position = Vector2(325, 89)
+style = 1
+direction = 0
+
+[node name="Armchair3" parent="Items" unique_id=124046813 instance=ExtResource("armchair")]
+position = Vector2(375, 89)
+style = 2
+direction = 0
+
+[node name="CoffeeTable1" parent="Items" unique_id=1368306808 instance=ExtResource("coffee_table")]
+position = Vector2(425, 89)
+style = 0
+
+[node name="CoffeeTable2" parent="Items" unique_id=536113680 instance=ExtResource("coffee_table")]
+position = Vector2(475, 89)
+style = 1
+
+[node name="CoffeeTable3" parent="Items" unique_id=1665574807 instance=ExtResource("coffee_table")]
+position = Vector2(25, 133)
+style = 2
+
+[node name="DiningTable1" parent="Items" unique_id=28807682 instance=ExtResource("dining_table")]
+position = Vector2(75, 133)
+style = 0
+
+[node name="DiningTable2" parent="Items" unique_id=1681701326 instance=ExtResource("dining_table")]
+position = Vector2(125, 133)
+style = 1
+
+[node name="DiningTable3" parent="Items" unique_id=670142106 instance=ExtResource("dining_table")]
+position = Vector2(175, 133)
+style = 2
+
+[node name="Chair1" parent="Items" unique_id=377462411 instance=ExtResource("chair")]
+position = Vector2(225, 133)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="Chair2" parent="Items" unique_id=937448226 instance=ExtResource("chair")]
+position = Vector2(275, 133)
+style = 1
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="Chair3" parent="Items" unique_id=1630347505 instance=ExtResource("chair")]
+position = Vector2(325, 133)
+style = 2
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="KitchenBase1" parent="Items" unique_id=1851086804 instance=ExtResource("kitchen_base")]
+position = Vector2(375, 133)
+style = 0
+
+[node name="KitchenBase2" parent="Items" unique_id=2013224149 instance=ExtResource("kitchen_base")]
+position = Vector2(425, 133)
+style = 1
+
+[node name="KitchenSink1" parent="Items" unique_id=641613765 instance=ExtResource("kitchen_sink")]
+position = Vector2(475, 133)
+
+[node name="Cooker1" parent="Items" unique_id=1742758885 instance=ExtResource("cooker")]
+position = Vector2(25, 177)
+
+[node name="Fridge1" parent="Items" unique_id=735526957 instance=ExtResource("fridge")]
+position = Vector2(75, 177)
+
+[node name="WallCabinet1" parent="Items" unique_id=1111663108 instance=ExtResource("wall_cabinet")]
+position = Vector2(125, 177)
+style = 0
+
+[node name="WallCabinet2" parent="Items" unique_id=1449871180 instance=ExtResource("wall_cabinet")]
+position = Vector2(175, 177)
+style = 1
+
+[node name="WallCabinet3" parent="Items" unique_id=267863030 instance=ExtResource("wall_cabinet")]
+position = Vector2(225, 177)
+style = 2
+
+[node name="WallShelf1" parent="Items" unique_id=283654703 instance=ExtResource("wall_shelf")]
+position = Vector2(275, 177)
+style = 0
+
+[node name="WallShelf2" parent="Items" unique_id=1726271443 instance=ExtResource("wall_shelf")]
+position = Vector2(325, 177)
+
+[node name="CookerHood1" parent="Items" unique_id=1777772839 instance=ExtResource("cooker_hood")]
+position = Vector2(375, 177)
+
+[node name="Desk1" parent="Items" unique_id=231491630 instance=ExtResource("desk")]
+position = Vector2(425, 177)
+
+[node name="Bookcase1" parent="Items" unique_id=1570976567 instance=ExtResource("bookcase")]
+position = Vector2(475, 177)
+style = 0
+
+[node name="Bookcase2" parent="Items" unique_id=948633304 instance=ExtResource("bookcase")]
+position = Vector2(25, 221)
+
+[node name="TableLamp1" parent="Items" unique_id=347846025 instance=ExtResource("table_lamp")]
+position = Vector2(75, 221)
+
+[node name="WallSconce1" parent="Items" unique_id=516338021 instance=ExtResource("wall_sconce")]
+position = Vector2(125, 221)
+
+[node name="WallMirror1" parent="Items" unique_id=1485133833 instance=ExtResource("wall_mirror")]
+position = Vector2(175, 221)
+
+[node name="WallClock1" parent="Items" unique_id=110465339 instance=ExtResource("wall_clock")]
+position = Vector2(225, 221)
+
+[node name="Rug1" parent="Items" unique_id=1535809460 instance=ExtResource("rug")]
+position = Vector2(275, 221)
+
+[node name="PottedPlant1" parent="Items" unique_id=619890190 instance=ExtResource("potted_plant")]
+position = Vector2(325, 221)
+
+[node name="FlowerVase1" parent="Items" unique_id=954683057 instance=ExtResource("flower_vase")]
+position = Vector2(375, 221)
+
+[node name="WallPainting1" parent="Items" unique_id=299438599 instance=ExtResource("wall_painting")]
+position = Vector2(425, 221)
+
+[node name="LaundryBasket1" parent="Items" unique_id=1770606729 instance=ExtResource("laundry_basket")]
+position = Vector2(475, 221)
+
+[node name="CoatRack1" parent="Items" unique_id=1226424979 instance=ExtResource("coat_rack")]
+position = Vector2(25, 265)
+
+[node name="ShoeBench1" parent="Items" unique_id=1058466152 instance=ExtResource("shoe_bench")]
+position = Vector2(75, 265)
+
+[node name="StorageChest1" parent="Items" unique_id=1041388486 instance=ExtResource("storage_chest")]
+position = Vector2(125, 265)
+
+[node name="KitchenCart1" parent="Items" unique_id=206573665 instance=ExtResource("kitchen_cart")]
+position = Vector2(175, 265)
+
+[node name="Sideboard1" parent="Items" unique_id=1098443244 instance=ExtResource("sideboard")]
+position = Vector2(225, 265)
+
+[node name="Fireplace1" parent="Items" unique_id=80263242 instance=ExtResource("fireplace")]
+position = Vector2(275, 265)
+burning = true
+animation_speed = 1.0
+
+[node name="Washstand1" parent="Items" unique_id=114320074 instance=ExtResource("washstand")]
+position = Vector2(325, 265)
+
+[node name="ExteriorLantern1" parent="Items" unique_id=675626083 instance=ExtResource("exterior_lantern")]
+position = Vector2(375, 265)
+
+[node name="Mailbox1" parent="Items" unique_id=1427957947 instance=ExtResource("mailbox")]
+position = Vector2(425, 265)
+
+[node name="WindowFlowerBox1" parent="Items" unique_id=589057968 instance=ExtResource("window_flower_box")]
+position = Vector2(475, 265)
+
+[node name="EntranceStep1" parent="Items" unique_id=441873746 instance=ExtResource("entrance_step")]
+position = Vector2(25, 309)
+
+[node name="Chimney1" parent="Items" unique_id=1803961520 instance=ExtResource("chimney")]
+position = Vector2(75, 309)
+
+[node name="chairFacing1" parent="Items" unique_id=1290076523 instance=ExtResource("chair")]
+position = Vector2(125, 309)
+direction = 1
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="chairFacing2" parent="Items" unique_id=983981021 instance=ExtResource("chair")]
+position = Vector2(175, 309)
+direction = 2
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="chairFacing3" parent="Items" unique_id=1457141668 instance=ExtResource("chair")]
+position = Vector2(225, 309)
+direction = 3
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="sofaFacing1" parent="Items" unique_id=733130868 instance=ExtResource("sofa")]
+position = Vector2(275, 309)
+style = 0
+direction = 1
+
+[node name="sofaFacing2" parent="Items" unique_id=535740546 instance=ExtResource("sofa")]
+position = Vector2(325, 309)
+style = 0
+direction = 2
+
+[node name="sofaFacing3" parent="Items" unique_id=1592300699 instance=ExtResource("sofa")]
+position = Vector2(375, 309)
+style = 0
+direction = 3
+
+[node name="armchairFacing1" parent="Items" unique_id=1096306572 instance=ExtResource("armchair")]
+position = Vector2(425, 309)
+style = 0
+direction = 1
+
+[node name="armchairFacing2" parent="Items" unique_id=1977726463 instance=ExtResource("armchair")]
+position = Vector2(475, 309)
+style = 0
+direction = 2
+
+[node name="armchairFacing3" parent="Items" unique_id=1327431016 instance=ExtResource("armchair")]
+position = Vector2(25, 353)
+style = 0
+direction = 3
+
+[node name="bedCustomColors" parent="Items" unique_id=1594540955 instance=ExtResource("bed")]
+position = Vector2(75, 353)
+fabric_color = Color(0.25, 0.46, 0.6, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_162n4")
+footprint_offset = Vector2(0, -12)
+transparency_shape = SubResource("RectangleShape2D_me216")
+
+[node name="chairCustomColors" parent="Items" unique_id=584196162 instance=ExtResource("chair")]
+position = Vector2(125, 353)
+style = 1
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.72, 0.59, 0.29, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_byby2")
+footprint_offset = Vector2(0, -4)
+
+[node name="sofaCustomColors" parent="Items" unique_id=1911218289 instance=ExtResource("sofa")]
+position = Vector2(175, 353)
+style = 0
+direction = 0
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.38, 0.54, 0.35, 1)
+
+[node name="cookerCustomColors" parent="Items" unique_id=876176969 instance=ExtResource("cooker")]
+position = Vector2(225, 353)
+paint_color = Color(0.39, 0.53, 0.58, 1)

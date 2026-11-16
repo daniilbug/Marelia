@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/home-kit/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/home-kit/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/home-kit/designs/rug_geometric_terracotta.tres" id="design_0"]
+
+[node name="Rug" instance=ExtResource("base")]
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 8
+fabric_color = Color(0.701960784, 0.466666667, 0.349019608, 1)
+blocks_movement = false
+z_index = -1

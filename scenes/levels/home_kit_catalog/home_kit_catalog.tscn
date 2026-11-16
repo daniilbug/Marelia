@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
+[ext_resource type="PackedScene" path="res://scenes/levels/home_kit_catalog/exhibits.tscn" id="exhibits"]
+[ext_resource type="Texture2D" path="res://assets/home-kit/sprites/surfaces/floor_wood.png" id="floor"]
+
+[node name="HomeKitCatalog" instance=ExtResource("level")]
+scale = Vector2(4, 4)
+level_id = "home_kit_catalog"
+
+[node name="BottomLeft" parent="LevelBounds" index="0"]
+position = Vector2(0, 752)
+
+[node name="TopRight" parent="LevelBounds" index="1"]
+position = Vector2(864, 0)
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(32, 48)
+
+[node name="Floor" type="Sprite2D" parent="."]
+z_index = -10
+modulate = Color(0.55, 0.55, 0.55, 1)
+texture_repeat = 2
+texture = ExtResource("floor")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 864, 752)
+
+[node name="Exhibits" parent="." instance=ExtResource("exhibits")]

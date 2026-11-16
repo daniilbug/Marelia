@@ -20,6 +20,8 @@ static func find_level_node(node: Node2D) -> Level:
 	return null
 
 @export var player_spawn: Node2D
+## Camera placement in the player's local pixels, reset on each level change.
+@export var camera_position_offset := Vector2.ZERO
 
 @onready var _bounds_body: StaticBody2D = $LevelBounds
 @onready var _bottom_left_bound: Marker2D = $LevelBounds/BottomLeft
@@ -110,6 +112,7 @@ func activate_local_player(player: Player) -> void:
 			else:
 				player.add_collision_exception_with(level._bounds_body)
 	var bounds := get_world_bounds()
+	player.camera.position = camera_position_offset
 	player.camera.limit_left = floori(bounds.position.x)
 	player.camera.limit_top = floori(bounds.position.y)
 	player.camera.limit_right = ceili(bounds.end.x)
@@ -119,9 +122,6 @@ func activate_local_player(player: Player) -> void:
 func deactivate_local_player() -> void:
 	if local_player == null:
 		return
-	for child in get_children():
-		if child is Room:
-			child.reset_wall_visibility()
 	local_player = null
 
 func get_world_bounds() -> Rect2:
@@ -150,11 +150,13 @@ func _create_bounds_walls() -> void:
 func _create_bounds_wall(wall_name: String, wall_position: Vector2, size: Vector2) -> void:
 	var rectangle := RectangleShape2D.new()
 	rectangle.size = size
-	var wall := CollisionShape2D.new()
-	wall.name = wall_name
+	var wall := _bounds_body.get_node_or_null(NodePath(wall_name)) as CollisionShape2D
+	if wall == null:
+		wall = CollisionShape2D.new()
+		wall.name = wall_name
+		_bounds_body.add_child(wall)
 	wall.position = wall_position
 	wall.shape = rectangle
-	_bounds_body.add_child(wall)
 
 ## Each level selects an independent route before the server spawns its NPC.
 func create_npc_route() -> NPCRoute:

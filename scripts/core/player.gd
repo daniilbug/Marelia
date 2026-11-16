@@ -22,7 +22,15 @@ const ROW_SIT     := 5
 @export var is_sitting := false
 var seated_seat: Seat = null
 
-@export var level_id := "sandbox"
+signal level_changed
+
+@export var level_id := "sandbox":
+	set(value):
+		if level_id == value:
+			return
+		level_id = value
+		if is_node_ready():
+			level_changed.emit()
 
 # A garment is its existing atlas style ID and fixed fabric color ID.
 # These inventories, like appearance, are owned by the server.

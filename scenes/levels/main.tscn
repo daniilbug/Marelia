@@ -1,18 +1,24 @@
-[gd_scene format=3]
-[ext_resource type="Script" path="res://scripts/main.gd" id="main"]
+[gd_scene format=3 uid="uid://dhukesqlpko61"]
+
 [ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
-[ext_resource type="PackedScene" path="res://scenes/core/world_time.tscn" id="time"]
+[ext_resource type="Script" uid="uid://ds610chiwthb5" path="res://scripts/main.gd" id="main"]
 [ext_resource type="PackedScene" path="res://scenes/core/save/world_save.tscn" id="save"]
-[node name="Main" type="Node2D" node_paths=PackedStringArray("spawn_level")]
-scale = Vector2(4, 4)
+[ext_resource type="PackedScene" path="res://scenes/core/world_time.tscn" id="time"]
+
+[node name="Main" type="Node2D" unique_id=316418719 node_paths=PackedStringArray("spawn_level")]
 y_sort_enabled = true
+scale = Vector2(4, 4)
 script = ExtResource("main")
 spawn_level = NodePath("Level")
-[node name="WorldTime" parent="." instance=ExtResource("time")]
+
+[node name="WorldTime" parent="." unique_id=946430736 instance=ExtResource("time")]
 initial_hour = 12.0
-[node name="WorldSave" parent="." instance=ExtResource("save")]
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/core/player.tscn")
+
+[node name="WorldSave" parent="." unique_id=775732203 instance=ExtResource("save")]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1918846751]
+_spawnable_scenes = PackedStringArray("uid://bplker7qp53qd")
 spawn_path = NodePath("..")
-[node name="Level" parent="." instance=ExtResource("level")]
+
+[node name="Level" parent="." unique_id=1244975468 instance=ExtResource("level")]
 level_id = "sandbox"
