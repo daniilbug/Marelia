@@ -3,6 +3,7 @@ class_name FurniturePiece
 extends StaticBody2D
 
 const PALETTE_SHADER = preload("res://assets/house-kit/furniture/shaders/furniture_palette.gdshader")
+const MATERIAL_COLORS := {"wood_color": 1, "paint_color": 2, "fabric_color": 3, "plaster_color": 4, "stone_color": 5, "roof_color": 6}
 
 @export_storage var designs: Array[FurnitureDesign] = []
 @export_storage var paintable_materials := 0
@@ -101,8 +102,7 @@ func _ready() -> void:
 	notify_property_list_changed()
 
 func _validate_property(property: Dictionary) -> void:
-	var colors := {"wood_color": 1, "paint_color": 2, "fabric_color": 3, "plaster_color": 4, "stone_color": 5, "roof_color": 6}
-	if property.name in colors and not (paintable_materials & (1 << colors[property.name])):
+	if property.name in MATERIAL_COLORS and not (paintable_materials & (1 << MATERIAL_COLORS[property.name])):
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["transparency_enabled", "transparency_shape", "transparency_offset", "inside_alpha", "fade_duration"] and not supports_transparency:
 		property.usage = PROPERTY_USAGE_NO_EDITOR

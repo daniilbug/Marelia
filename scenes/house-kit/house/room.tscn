@@ -1,9 +1,11 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/house-kit/house/room.gd" id="script"]
 [node name="Room" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("script")
 [node name="Floor" type="Polygon2D" parent="."]
 z_index = -10
 texture_repeat = 2
 polygon = PackedVector2Array(0, 0, 288, 0, 288, 128, 0, 128)
 [node name="Placements" type="Node2D" parent="."]
+y_sort_enabled = true

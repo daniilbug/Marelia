@@ -12,11 +12,13 @@ extends Level
 				configuration.changed.connect(_schedule_rebuild)
 		_schedule_rebuild()
 @export_tool_button("Randomize interior") var randomize_action: Callable = randomize
+@export_tool_button("Randomize furniture") var randomize_furniture_action: Callable = randomize_furniture
 @export_storage var floor_index := 0
 @export_storage var selected_placements: Dictionary = {}
 
 var _pending := false
 var _layout_signature := ""
+var _applied_placements: Dictionary = {}
 var _layout: HouseLayout
 var initial_door_states: Dictionary = {}
 
@@ -29,8 +31,15 @@ func _ready() -> void:
 		super._ready()
 
 func randomize() -> void:
-	selected_placements.clear()
+	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
+		return
 	configuration.randomize()
+	randomize_furniture()
+
+func randomize_furniture() -> void:
+	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
+		return
+	selected_placements.clear()
 	_schedule_rebuild()
 
 func _schedule_rebuild() -> void:
@@ -68,10 +77,11 @@ func rebuild() -> void:
 		previous_target.pair_with(get_entry_portal())
 	var signature := "%s:%s" % [path, configuration.interior_size]
 	if not Engine.is_editor_hint() and is_instance_valid(local_player):
-		if signature != _layout_signature:
+		if signature != _layout_signature or selected_placements != _applied_placements:
 			local_player.global_position = player_spawn.global_position
 		activate_local_player(local_player)
 	_layout_signature = signature
+	_applied_placements = selected_placements.duplicate(true)
 
 func _create_bounds_walls() -> void:
 	# The selected layout already owns its complete set of bounds colliders.

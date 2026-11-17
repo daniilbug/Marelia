@@ -1,0 +1,48 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bed.tscn" id="bed"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bedside_table.tscn" id="bedside_table"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/rug.tscn" id="rug"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/storage_chest.tscn" id="storage_chest"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="table_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_painting.tscn" id="wall_painting"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wardrobe.tscn" id="wardrobe"]
+
+[node name="SleepingArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+style = ExtResource("style")
+
+[node name="Bed" parent="." instance=ExtResource("bed")]
+position = Vector2(0, 0)
+
+[node name="Rug" parent="." instance=ExtResource("rug")]
+position = Vector2(0, 12)
+
+[node name="LeftBedside" parent="." instance=ExtResource("bedside_table")]
+position = Vector2(-20, -16)
+
+[node name="Lamp" parent="LeftBedside" instance=ExtResource("table_lamp")]
+position = Vector2(0, -14)
+blocks_movement = false
+
+[node name="RightBedside" parent="." instance=ExtResource("bedside_table")]
+position = Vector2(20, -16)
+
+[node name="Lamp" parent="RightBedside" instance=ExtResource("table_lamp")]
+position = Vector2(0, -14)
+blocks_movement = false
+
+[node name="Wardrobe" parent="." instance=ExtResource("wardrobe")]
+position = Vector2(52, -20)
+
+[node name="Landscape" parent="." instance=ExtResource("wall_painting")]
+position = Vector2(0, -40)
+z_index = 1
+
+[node name="StorageChest" parent="." instance=ExtResource("storage_chest")]
+position = Vector2(52, -16)
+visible = false
+process_mode = 4

@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/dining_table.tscn" id="dining_table"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/flower_vase.tscn" id="flower_vase"]
+
+[node name="DiningArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+style = ExtResource("style")
+
+[node name="DiningTable" parent="." instance=ExtResource("dining_table")]
+position = Vector2(0, 0)
+
+[node name="Flowers" parent="DiningTable" instance=ExtResource("flower_vase")]
+position = Vector2(0, -21)
+blocks_movement = false
+
+[node name="LeftChair" parent="." instance=ExtResource("chair")]
+position = Vector2(-26, -4)
+direction = 3
+
+[node name="RightChair" parent="." instance=ExtResource("chair")]
+position = Vector2(26, -4)
+direction = 2
+
+[node name="BackChair" parent="." instance=ExtResource("chair")]
+position = Vector2(0, -28)
+direction = 0
+
+[node name="FrontChair" parent="." instance=ExtResource("chair")]
+position = Vector2(0, 18)
+direction = 1

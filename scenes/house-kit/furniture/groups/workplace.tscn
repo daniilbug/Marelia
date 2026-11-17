@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/desk.tscn" id="desk"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="table_lamp"]
+
+[node name="Workplace" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+style = ExtResource("style")
+
+[node name="Desk" parent="." instance=ExtResource("desk")]
+position = Vector2(0, 0)
+
+[node name="Lamp" parent="Desk" instance=ExtResource("table_lamp")]
+position = Vector2(9, -21)
+blocks_movement = false
+
+[node name="DeskChair" parent="." instance=ExtResource("chair")]
+position = Vector2(0, 20)
+direction = 1

@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/armchair.tscn" id="armchair"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/coffee_table.tscn" id="coffee_table"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/potted_plant.tscn" id="potted_plant"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/rug.tscn" id="rug"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sofa.tscn" id="sofa"]
+
+[node name="SittingArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+style = ExtResource("style")
+
+[node name="Sofa" parent="." instance=ExtResource("sofa")]
+position = Vector2(0, 0)
+direction = 0
+
+[node name="CoffeeTable" parent="." instance=ExtResource("coffee_table")]
+position = Vector2(0, 26)
+
+[node name="Armchair" parent="." instance=ExtResource("armchair")]
+position = Vector2(36, 18)
+direction = 2
+
+[node name="Rug" parent="." instance=ExtResource("rug")]
+position = Vector2(8, 22)
+
+[node name="Plant" parent="." instance=ExtResource("potted_plant")]
+position = Vector2(-28, 26)

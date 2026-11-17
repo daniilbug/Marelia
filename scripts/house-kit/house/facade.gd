@@ -121,6 +121,13 @@ func _sync_interior_configuration() -> void:
 		return
 	_apply_interior_configuration.rpc(interior_settings.to_data(), _interior.selected_placements)
 
+func randomize_furniture() -> void:
+	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
+		return
+	if is_instance_valid(_interior):
+		_interior.randomize_furniture()
+		_sync_interior_configuration.call_deferred()
+
 func get_appearance() -> Dictionary:
 	return SaveGraph.get_fields(self, _appearance_fields)
 

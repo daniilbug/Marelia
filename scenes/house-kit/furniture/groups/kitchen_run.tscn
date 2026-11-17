@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker.tscn" id="cooker"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker_hood.tscn" id="cooker_hood"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/fridge.tscn" id="fridge"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_base.tscn" id="kitchen_base"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_sink.tscn" id="kitchen_sink"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_cabinet.tscn" id="wall_cabinet"]
+
+[node name="KitchenRun" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+preserve_spacing = true
+style = ExtResource("style")
+
+[node name="Counter" parent="." instance=ExtResource("kitchen_base")]
+position = Vector2(-28, 0)
+
+[node name="CounterCabinet" parent="." instance=ExtResource("wall_cabinet")]
+position = Vector2(-28, -24)
+z_index = 1
+
+[node name="Sink" parent="." instance=ExtResource("kitchen_sink")]
+position = Vector2(-8, 0)
+
+[node name="SinkCabinet" parent="." instance=ExtResource("wall_cabinet")]
+position = Vector2(-8, -24)
+z_index = 1
+
+[node name="Cooker" parent="." instance=ExtResource("cooker")]
+position = Vector2(12, 0)
+
+[node name="Hood" parent="." instance=ExtResource("cooker_hood")]
+position = Vector2(12, -24)
+z_index = 1
+
+[node name="Fridge" parent="." instance=ExtResource("fridge")]
+position = Vector2(30, 0)

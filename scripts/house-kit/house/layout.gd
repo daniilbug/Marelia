@@ -57,6 +57,12 @@ func select_placements(choices: Dictionary) -> void:
 			else:
 				group.choose_variant()
 				choices[key] = str(group.selected_variant)
+			var style_key := key + "/Style"
+			if choices.has(style_key):
+				group.apply_style_data(choices[style_key])
+			else:
+				group.choose_style()
+				choices[style_key] = group.get_style_data()
 
 func get_door_states() -> Dictionary:
 	var states := {}
@@ -80,6 +86,11 @@ func _capture_geometry() -> void:
 		for group in room.get_placement_groups():
 			for point in group.get_points():
 				_reference[point] = {"position": point.position}
+				for piece in point.find_children("*", "StaticBody2D", true, false):
+					if piece is FurniturePiece and piece.get_parent() is not FurniturePiece:
+						var parent := piece.get_parent()
+						var target: Node2D = parent if parent is HouseFurnitureGroup and parent.preserve_spacing else piece
+						_reference[target] = {"position": to_local(target.global_position)}
 	for wall: HouseWall in $Walls.get_children():
 		_reference[wall] = {"position": wall.position, "length": wall.length, "openings": wall.openings.duplicate()}
 	for door in get_doors():
@@ -111,7 +122,11 @@ func resize_to(size: Vector2) -> void:
 			floor_node.polygon = polygon
 		for group in room.get_placement_groups():
 			for point in group.get_points():
-				point.position = (_reference[point].position * ratio).round()
+				var origin: Vector2 = saved.position + _reference[point].position
+				point.position = (origin * ratio).round() - room.position
+	for node in _reference:
+		if is_instance_valid(node) and (node is FurniturePiece or node is HouseFurnitureGroup):
+			node.global_position = to_global((_reference[node].position * ratio).round())
 	for wall: HouseWall in $Walls.get_children():
 		var saved: Dictionary = _reference[wall]
 		wall.position = (saved.position * ratio).round()
