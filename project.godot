@@ -29,10 +29,6 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="stretch"
 
-[gui]
-
-theme/custom="res://assets/ui/theme.tres"
-
 [input]
 
 interact={

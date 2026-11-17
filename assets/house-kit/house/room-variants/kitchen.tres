@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="HouseRoomVariants" format=3 uid="uid://yqpwtgv1xdcr"]
+
+[ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/house-kit/house/room_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://cxjej6vln1dmh" path="res://scripts/house-kit/house/room_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="style_1"]
+resource_local_to_scene = true
+resource_name = "TerracottaBotanical"
+script = ExtResource("style")
+floor_material = 1
+floor_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+wall_style = 2
+wall_color = Color(0.75686276, 0.8039216, 0.73333335, 1)
+
+[sub_resource type="Resource" id="style_2"]
+resource_local_to_scene = true
+resource_name = "LightOrnament"
+script = ExtResource("style")
+floor_material = 2
+floor_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+wall_style = 0
+accent_color = Color(0.39215687, 0.49803922, 0.3764706, 1)
+
+[sub_resource type="Resource" id="style_3"]
+resource_local_to_scene = true
+resource_name = "BlueStripes"
+script = ExtResource("style")
+floor_material = 1
+floor_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+wall_color = Color(0.7764706, 0.81960785, 0.8039216, 1)
+accent_color = Color(0.45490196, 0.5568628, 0.5686275, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3")])

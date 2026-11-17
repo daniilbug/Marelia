@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/exterior_mailbox.tres" id="design_0"]
+
+[node name="Mailbox" instance=ExtResource("base")]
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 4
+paint_color = Color(0.392156863, 0.498039216, 0.376470588, 1)
+blocks_movement = false

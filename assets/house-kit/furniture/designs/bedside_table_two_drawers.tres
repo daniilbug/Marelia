@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://fdb3ogvlb218"]
+
+[ext_resource type="Texture2D" uid="uid://bm0vu44cmmdw6" path="res://assets/house-kit/furniture/sprites/bedside_table_two_drawers.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://jbwr01b8qd7q" path="res://assets/house-kit/furniture/sprites/bedside_table_two_drawers_approved.png" id="approved_0"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://etfbggmno0xk" path="res://assets/house-kit/furniture/sprites/bedside_table_two_drawers_materials.png" id="mask_0"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-6, -14)
+footprint = Vector2(8, 6)
+
+[resource]
+script = ExtResource("design_script")
+title = "Bedside Table Two Drawers"
+views = Array[ExtResource("view_script")]([SubResource("view_0")])

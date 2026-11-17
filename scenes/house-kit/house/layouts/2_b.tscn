@@ -1,0 +1,398 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/room.tscn" id="room"]
+[ext_resource type="Script" path="res://scripts/house-kit/house/placement_group.gd" id="group"]
+[ext_resource type="Script" path="res://scripts/house-kit/house/placement_point.gd" id="point"]
+[ext_resource type="Script" path="res://scripts/house-kit/house/layout.gd" id="layout"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/wall.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/room_door.tscn" id="door"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/portal.tscn" id="portal"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/room-variants/bedroom.tres" id="variants_bedroom"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/room-variants/living.tres" id="variants_living"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/door-variants/interior.tres" id="door_variants"]
+
+[ext_resource type="Script" path="res://scripts/house-kit/house/floor_zone.gd" id="floor_zone"]
+[ext_resource type="Script" path="res://scripts/house-kit/house/room_style.gd" id="zone_style"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/room-variants/kitchen.tres" id="variants_kitchen"]
+
+[sub_resource type="RectangleShape2D" id="BedroomBackWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(128, 4)
+
+[sub_resource type="RectangleShape2D" id="BedroomBackWall_zone"]
+resource_local_to_scene = true
+size = Vector2(128, 28)
+
+[sub_resource type="RectangleShape2D" id="LivingRoomBackWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(160, 4)
+
+[sub_resource type="RectangleShape2D" id="LivingRoomBackWall_zone"]
+resource_local_to_scene = true
+size = Vector2(160, 28)
+
+[sub_resource type="RectangleShape2D" id="BedroomPartition_collision_1"]
+resource_local_to_scene = true
+size = Vector2(52, 4)
+
+[sub_resource type="RectangleShape2D" id="BedroomPartition_collision_2"]
+resource_local_to_scene = true
+size = Vector2(52, 4)
+
+[sub_resource type="RectangleShape2D" id="BedroomPartition_zone"]
+resource_local_to_scene = true
+size = Vector2(128, 28)
+
+[sub_resource type="RectangleShape2D" id="FrontWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(196, 4)
+
+[sub_resource type="RectangleShape2D" id="FrontWall_collision_2"]
+resource_local_to_scene = true
+size = Vector2(68, 4)
+
+[sub_resource type="RectangleShape2D" id="FrontWall_zone"]
+resource_local_to_scene = true
+size = Vector2(288, 28)
+
+[sub_resource type="RectangleShape2D" id="LeftBedroomWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(4, 160)
+
+[sub_resource type="RectangleShape2D" id="LeftBedroomWall_zone"]
+resource_local_to_scene = true
+size = Vector2(4, 160)
+
+[sub_resource type="RectangleShape2D" id="LeftLivingRoomWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(4, 96)
+
+[sub_resource type="RectangleShape2D" id="LeftLivingRoomWall_zone"]
+resource_local_to_scene = true
+size = Vector2(4, 96)
+
+[sub_resource type="RectangleShape2D" id="BedroomLivingRoomWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(4, 160)
+
+[sub_resource type="RectangleShape2D" id="BedroomLivingRoomWall_zone"]
+resource_local_to_scene = true
+size = Vector2(4, 160)
+
+[sub_resource type="RectangleShape2D" id="RightLivingRoomWall_collision_1"]
+resource_local_to_scene = true
+size = Vector2(4, 256)
+
+[sub_resource type="RectangleShape2D" id="RightLivingRoomWall_zone"]
+resource_local_to_scene = true
+size = Vector2(4, 256)
+
+[sub_resource type="RectangleShape2D" id="bounds_Top"]
+resource_local_to_scene = true
+size = Vector2(368, 16)
+
+[sub_resource type="RectangleShape2D" id="bounds_Bottom"]
+resource_local_to_scene = true
+size = Vector2(368, 16)
+
+[sub_resource type="RectangleShape2D" id="bounds_Left"]
+resource_local_to_scene = true
+size = Vector2(16, 336)
+
+[sub_resource type="RectangleShape2D" id="bounds_Right"]
+resource_local_to_scene = true
+size = Vector2(16, 336)
+
+[sub_resource type="Resource" id="kitchen_style"]
+resource_local_to_scene = true
+script = ExtResource("zone_style")
+floor_material = 1
+floor_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+
+[node name="Layout2_B" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("layout")
+reference_size = Vector2(288, 256)
+door_variants = ExtResource("door_variants")
+
+[node name="Rooms" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bedroom" parent="Rooms" instance=ExtResource("room")]
+position = Vector2(0, 0)
+room_id = &"Bedroom"
+style_variants = ExtResource("variants_bedroom")
+
+[node name="Floor" parent="Rooms/Bedroom" index="0"]
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 160, 0, 160)
+
+[node name="SleepingArea" type="Node2D" parent="Rooms/Bedroom/Placements"]
+script = ExtResource("group")
+
+[node name="LeftWall" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea"]
+position = Vector2(16, 96)
+script = ExtResource("point")
+facing = 3
+
+[node name="RightWall" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea"]
+position = Vector2(112, 96)
+script = ExtResource("point")
+facing = 2
+
+[node name="LivingRoom" parent="Rooms" instance=ExtResource("room")]
+position = Vector2(0, 0)
+room_id = &"LivingRoom"
+style_variants = ExtResource("variants_living")
+
+[node name="Floor" parent="Rooms/LivingRoom" index="0"]
+polygon = PackedVector2Array(128, 0, 288, 0, 288, 256, 0, 256, 0, 160, 128, 160)
+
+[node name="KitchenFloor" type="Polygon2D" parent="Rooms/LivingRoom"]
+z_index = -9
+texture_repeat = 2
+polygon = PackedVector2Array(160, 0, 288, 0, 288, 96, 160, 96)
+script = ExtResource("floor_zone")
+room_id = &"Kitchen"
+style_variants = ExtResource("variants_kitchen")
+style = SubResource("kitchen_style")
+
+[node name="Workplace" type="Node2D" parent="Rooms/LivingRoom/Placements"]
+script = ExtResource("group")
+
+[node name="LeftWall" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace"]
+position = Vector2(144, 152)
+script = ExtResource("point")
+facing = 3
+
+[node name="RightWall" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace"]
+position = Vector2(272, 152)
+script = ExtResource("point")
+facing = 2
+
+[node name="Walls" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BedroomBackWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(0, 0)
+room_id = &"Bedroom"
+length = 128
+
+[node name="Sprite" parent="Walls/BedroomBackWall" index="0"]
+position = Vector2(0, -32)
+region_rect = Rect2(0, 0, 128, 32)
+
+[node name="Collision" parent="Walls/BedroomBackWall/Collisions" index="0"]
+position = Vector2(64, 0)
+shape = SubResource("BedroomBackWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/BedroomBackWall" index="2"]
+position = Vector2(64, -18)
+shape = SubResource("BedroomBackWall_zone")
+
+[node name="LivingRoomBackWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(128, 0)
+room_id = &"LivingRoom"
+length = 160
+
+[node name="Sprite" parent="Walls/LivingRoomBackWall" index="0"]
+position = Vector2(0, -32)
+region_rect = Rect2(0, 0, 160, 32)
+
+[node name="Collision" parent="Walls/LivingRoomBackWall/Collisions" index="0"]
+position = Vector2(80, 0)
+shape = SubResource("LivingRoomBackWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/LivingRoomBackWall" index="2"]
+position = Vector2(80, -18)
+shape = SubResource("LivingRoomBackWall_zone")
+
+[node name="BedroomPartition" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(0, 160)
+room_id = &"LivingRoom"
+length = 128
+openings = Array[float]([64.0])
+
+[node name="Sprite" parent="Walls/BedroomPartition" index="0"]
+position = Vector2(0, -32)
+region_rect = Rect2(0, 0, 128, 32)
+
+[node name="Collision" parent="Walls/BedroomPartition/Collisions" index="0"]
+position = Vector2(26, 0)
+shape = SubResource("BedroomPartition_collision_1")
+
+[node name="Segment2" type="CollisionShape2D" parent="Walls/BedroomPartition/Collisions"]
+position = Vector2(102, 0)
+shape = SubResource("BedroomPartition_collision_2")
+
+[node name="TransparencyArea" parent="Walls/BedroomPartition" index="2"]
+position = Vector2(64, -18)
+shape = SubResource("BedroomPartition_zone")
+
+[node name="FrontWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(0, 256)
+room_id = &"LivingRoom"
+length = 288
+openings = Array[float]([208.0])
+static_alpha = 0.1
+modulate = Color(1, 1, 1, 0.1)
+
+[node name="Sprite" parent="Walls/FrontWall" index="0"]
+position = Vector2(0, -32)
+region_rect = Rect2(0, 0, 288, 32)
+
+[node name="Collision" parent="Walls/FrontWall/Collisions" index="0"]
+position = Vector2(98, 0)
+shape = SubResource("FrontWall_collision_1")
+
+[node name="Segment2" type="CollisionShape2D" parent="Walls/FrontWall/Collisions"]
+position = Vector2(254, 0)
+shape = SubResource("FrontWall_collision_2")
+
+[node name="TransparencyArea" parent="Walls/FrontWall" index="2"]
+position = Vector2(144, -18)
+shape = SubResource("FrontWall_zone")
+enabled = false
+
+[node name="LeftBedroomWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(0, 0)
+room_id = &"Bedroom"
+length = 160
+vertical = true
+
+[node name="Sprite" parent="Walls/LeftBedroomWall" index="0"]
+position = Vector2(-2, -32)
+region_rect = Rect2(0, 0, 4, 192)
+
+[node name="Collision" parent="Walls/LeftBedroomWall/Collisions" index="0"]
+position = Vector2(0, 80)
+shape = SubResource("LeftBedroomWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/LeftBedroomWall" index="2"]
+position = Vector2(0, 80)
+shape = SubResource("LeftBedroomWall_zone")
+
+[node name="LeftLivingRoomWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(0, 160)
+room_id = &"LivingRoom"
+length = 96
+vertical = true
+
+[node name="Sprite" parent="Walls/LeftLivingRoomWall" index="0"]
+position = Vector2(-2, -32)
+region_rect = Rect2(0, 0, 4, 128)
+
+[node name="Collision" parent="Walls/LeftLivingRoomWall/Collisions" index="0"]
+position = Vector2(0, 48)
+shape = SubResource("LeftLivingRoomWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/LeftLivingRoomWall" index="2"]
+position = Vector2(0, 48)
+shape = SubResource("LeftLivingRoomWall_zone")
+
+[node name="BedroomLivingRoomWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(128, 0)
+room_id = &"LivingRoom"
+length = 160
+vertical = true
+
+[node name="Sprite" parent="Walls/BedroomLivingRoomWall" index="0"]
+position = Vector2(-2, -32)
+region_rect = Rect2(0, 0, 4, 192)
+
+[node name="Collision" parent="Walls/BedroomLivingRoomWall/Collisions" index="0"]
+position = Vector2(0, 80)
+shape = SubResource("BedroomLivingRoomWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/BedroomLivingRoomWall" index="2"]
+position = Vector2(0, 80)
+shape = SubResource("BedroomLivingRoomWall_zone")
+
+[node name="RightLivingRoomWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(288, 0)
+room_id = &"LivingRoom"
+length = 256
+vertical = true
+
+[node name="Sprite" parent="Walls/RightLivingRoomWall" index="0"]
+position = Vector2(-2, -32)
+region_rect = Rect2(0, 0, 4, 288)
+
+[node name="Collision" parent="Walls/RightLivingRoomWall/Collisions" index="0"]
+position = Vector2(0, 128)
+shape = SubResource("RightLivingRoomWall_collision_1")
+
+[node name="TransparencyArea" parent="Walls/RightLivingRoomWall" index="2"]
+position = Vector2(0, 128)
+shape = SubResource("RightLivingRoomWall_zone")
+
+[node name="Doors" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BedroomDoor" parent="Doors" instance=ExtResource("door")]
+position = Vector2(64, 160)
+
+[node name="Exit" parent="." instance=ExtResource("portal")]
+position = Vector2(208, 256)
+metadata/resize_anchor = Vector2(0.722222, 1)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(208, 228)
+metadata/resize_anchor = Vector2(0.722222, 1)
+
+[node name="LevelBounds" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="BottomLeft" type="Marker2D" parent="LevelBounds"]
+position = Vector2(-24, 280)
+metadata/resize_anchor = Vector2(0, 1)
+
+[node name="TopRight" type="Marker2D" parent="LevelBounds"]
+position = Vector2(312, -56)
+metadata/resize_anchor = Vector2(1, 0)
+
+[node name="Top" type="CollisionShape2D" parent="LevelBounds"]
+position = Vector2(144, -64)
+shape = SubResource("bounds_Top")
+metadata/resize_anchor = Vector2(0.5, 0)
+metadata/resize_axis = Vector2(1, 0)
+
+[node name="Bottom" type="CollisionShape2D" parent="LevelBounds"]
+position = Vector2(144, 288)
+shape = SubResource("bounds_Bottom")
+metadata/resize_anchor = Vector2(0.5, 1)
+metadata/resize_axis = Vector2(1, 0)
+
+[node name="Left" type="CollisionShape2D" parent="LevelBounds"]
+position = Vector2(-32, 112)
+shape = SubResource("bounds_Left")
+metadata/resize_anchor = Vector2(0, 0.5)
+metadata/resize_axis = Vector2(0, 1)
+
+[node name="Right" type="CollisionShape2D" parent="LevelBounds"]
+position = Vector2(320, 112)
+shape = SubResource("bounds_Right")
+metadata/resize_anchor = Vector2(1, 0.5)
+metadata/resize_axis = Vector2(0, 1)
+
+[editable path="Rooms/Bedroom"]
+
+[editable path="Rooms/LivingRoom"]
+
+[editable path="Walls/BedroomBackWall"]
+
+[editable path="Walls/LivingRoomBackWall"]
+
+[editable path="Walls/BedroomPartition"]
+
+[editable path="Walls/FrontWall"]
+
+[editable path="Walls/LeftBedroomWall"]
+
+[editable path="Walls/LeftLivingRoomWall"]
+
+[editable path="Walls/BedroomLivingRoomWall"]
+
+[editable path="Walls/RightLivingRoomWall"]
+
+[editable path="Exit"]

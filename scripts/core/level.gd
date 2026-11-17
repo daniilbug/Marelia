@@ -8,6 +8,8 @@ const WORLD_TIME_SCENE := preload("res://scenes/core/world_time.tscn")
 const BOUNDS_WALL_THICKNESS := 16.0
 
 @export var level_id := ""
+## A lazily loaded level receives the existing player from its entrance.
+@export var auto_spawn_standalone_player := true
 
 static func find_level_node(node: Node2D) -> Level:
 	var current: Node = node
@@ -20,26 +22,29 @@ static func find_level_node(node: Node2D) -> Level:
 	return null
 
 @export var player_spawn: Node2D
+## Allows a complete reusable layout scene to own the level's bounds.
+@export var bounds_path := NodePath("LevelBounds")
 ## Camera placement in the player's local pixels, reset on each level change.
 @export var camera_position_offset := Vector2.ZERO
 
-@onready var _bounds_body: StaticBody2D = $LevelBounds
-@onready var _bottom_left_bound: Marker2D = $LevelBounds/BottomLeft
-@onready var _top_right_bound: Marker2D = $LevelBounds/TopRight
+@onready var _bounds_body: StaticBody2D = get_node(bounds_path)
+@onready var _bottom_left_bound: Marker2D = _bounds_body.get_node("BottomLeft")
+@onready var _top_right_bound: Marker2D = _bounds_body.get_node("TopRight")
 
 var local_player: Player = null
 var world_time: WorldTime
 var _has_players := false
 
 func _ready() -> void:
-	if get_parent() is Main:
-		world_time = get_parent().get_node("WorldTime") as WorldTime
-	else:
-		world_time = WORLD_TIME_SCENE.instantiate() as WorldTime
-		add_child(world_time)
+	if world_time == null:
+		if get_parent() is Main:
+			world_time = get_parent().get_node("WorldTime") as WorldTime
+		else:
+			world_time = WORLD_TIME_SCENE.instantiate() as WorldTime
+			add_child(world_time)
 	world_time_ready.emit(world_time)
 	_create_bounds_walls()
-	if get_parent() is not Main and multiplayer.is_server():
+	if get_parent() is not Main and multiplayer.is_server() and auto_spawn_standalone_player:
 		_spawn_standalone_player()
 	for child in get_children():
 		if child is Room:

@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://b38304ejtm120"]
+
+[ext_resource type="Texture2D" uid="uid://cgajli6dd12yv" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_down.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://b0r0kmmtqcupp" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_up.png" id="albedo_1"]
+[ext_resource type="Texture2D" uid="uid://drqtqjtanl1mi" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_left.png" id="albedo_2"]
+[ext_resource type="Texture2D" uid="uid://cmt0d8d8814lh" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_right.png" id="albedo_3"]
+[ext_resource type="Texture2D" uid="uid://bohn2migibo2u" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_down_approved.png" id="approved_0"]
+[ext_resource type="Texture2D" uid="uid://dlg1vko5d85w7" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_up_approved.png" id="approved_1"]
+[ext_resource type="Texture2D" uid="uid://yvlxhpxu43cf" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_left_approved.png" id="approved_2"]
+[ext_resource type="Texture2D" uid="uid://btrlab8suhaws" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_right_approved.png" id="approved_3"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://lgyebt1iavii" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_down_materials.png" id="mask_0"]
+[ext_resource type="Texture2D" uid="uid://b24y2i5wmr8uk" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_up_materials.png" id="mask_1"]
+[ext_resource type="Texture2D" uid="uid://b7svbq35kjj0t" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_left_materials.png" id="mask_2"]
+[ext_resource type="Texture2D" uid="uid://cmsjs5fie0m1d" path="res://assets/house-kit/furniture/sprites/armchair_upholstered_arms_right_materials.png" id="mask_3"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-13, -21)
+footprint = Vector2(20, 12)
+
+[sub_resource type="Resource" id="view_1"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_1")
+material_mask = ExtResource("mask_1")
+approved_preview = ExtResource("approved_1")
+origin = Vector2(-13, -21)
+footprint = Vector2(20, 12)
+
+[sub_resource type="Resource" id="view_2"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_2")
+material_mask = ExtResource("mask_2")
+approved_preview = ExtResource("approved_2")
+origin = Vector2(-13, -21)
+footprint = Vector2(20, 10)
+
+[sub_resource type="Resource" id="view_3"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_3")
+material_mask = ExtResource("mask_3")
+approved_preview = ExtResource("approved_3")
+origin = Vector2(-13, -21)
+footprint = Vector2(20, 10)
+
+[resource]
+script = ExtResource("design_script")
+title = "Armchair Upholstered Arms"
+views = Array[ExtResource("view_script")]([SubResource("view_0"), SubResource("view_1"), SubResource("view_2"), SubResource("view_3")])

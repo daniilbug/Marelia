@@ -26,6 +26,9 @@ func _ready() -> void:
 		multiplayer.peer_connected.connect(_on_peer_connected)
 		var saved := SaveManager.take_pending_snapshot()
 		if not saved.is_empty():
+			for factory in get_tree().get_nodes_in_group("level_factories"):
+				if is_ancestor_of(factory):
+					factory.prepare_levels_for_restore(saved.levels)
 			if not world_save.can_restore(saved):
 				load_failed.emit("Сохранение не соответствует текущему игровому миру.")
 				return
@@ -35,17 +38,32 @@ func _ready() -> void:
 		_register_player_setup(multiplayer.get_unique_id(), setup)
 		if not saved.is_empty():
 			world_save.restore_world(saved)
+	elif not multiplayer.is_server():
+		# Request factories only after this peer has instantiated the outside scene.
+		_request_dynamic_levels.rpc_id(1)
 
 func _register_levels() -> void:
 	for child in get_children():
 		if child is not Level:
 			continue
 		var level := child as Level
-		if level.level_id.is_empty() or _levels.has(level.level_id):
-			push_error("Levels need unique, nonempty IDs: %s" % child.name)
-			continue
-		_levels[level.level_id] = level
-		level.visible = level == spawn_level
+		register_level(level)
+
+## Supports private levels created on first use, without changing the startup scene.
+func register_level(level: Level) -> bool:
+	if level.get_parent() != null and level.get_parent() != self:
+		push_error("Register a direct child level or an unattached level")
+		return false
+	if level.level_id.is_empty() or (_levels.has(level.level_id) and _levels[level.level_id] != level):
+		push_error("Levels need unique, nonempty IDs: %s" % level.name)
+		return false
+	_levels[level.level_id] = level
+	if level.get_parent() == null:
+		add_child(level)
+	level.visible = level == spawn_level if local_player == null else level.level_id == local_player.level_id
+	if local_player != null:
+		get_player_level(int(local_player.name)).activate_local_player(local_player)
+	return true
 
 func get_level(level_id: String) -> Level:
 	return _levels.get(level_id) as Level
@@ -67,6 +85,15 @@ func get_players() -> Array[Player]:
 
 func _on_peer_connected(peer_id: int) -> void:
 	_spawn_player(peer_id)
+
+@rpc("any_peer", "reliable")
+func _request_dynamic_levels() -> void:
+	if not multiplayer.is_server():
+		return
+	var peer_id := multiplayer.get_remote_sender_id()
+	for factory in get_tree().get_nodes_in_group("level_factories"):
+		if is_ancestor_of(factory):
+			factory.sync_to_peer(peer_id)
 
 func _spawn_player(peer_id: int, saved: Dictionary = {}) -> void:
 	var player := PLAYER_SCENE.instantiate() as Player

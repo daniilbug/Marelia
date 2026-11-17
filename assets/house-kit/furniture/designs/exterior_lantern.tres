@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://bh07mbqj1cnxj"]
+
+[ext_resource type="Texture2D" uid="uid://csgrd1ukulxfp" path="res://assets/house-kit/furniture/sprites/exterior_lantern.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://ce84l1xak4bty" path="res://assets/house-kit/furniture/sprites/exterior_lantern_approved.png" id="approved_0"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://caasv2hyhu5xt" path="res://assets/house-kit/furniture/sprites/exterior_lantern_materials.png" id="mask_0"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-4, -10)
+
+[resource]
+script = ExtResource("design_script")
+title = "Exterior Lantern"
+views = Array[ExtResource("view_script")]([SubResource("view_0")])

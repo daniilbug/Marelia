@@ -1,0 +1,36 @@
+@tool
+class_name HouseArt
+extends RefCounted
+
+const SHADER = preload("res://assets/house-kit/house/shaders/house_palette.gdshader")
+const ROOT := "res://assets/house-kit/house/sprites/"
+const DOORS := ["door_plank", "door_panel", "door_glazed"]
+const FLOORS := ["floor_wood", "floor_terracotta", "floor_ornament"]
+const WALLS := ["facade_plaster", "wallpaper_striped", "wallpaper_botanical"]
+
+static func apply(target: CanvasItem, stem: String, colors: Dictionary = {}, tiled := false) -> ShaderMaterial:
+	var texture := load(ROOT + stem + "_albedo.png") as Texture2D
+	if target is Sprite2D:
+		target.texture = texture
+		target.centered = false
+	elif target is Polygon2D:
+		target.texture = texture
+	target.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	target.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED if tiled else CanvasItem.TEXTURE_REPEAT_DISABLED
+	var material := target.material as ShaderMaterial
+	if material == null or material.shader != SHADER:
+		material = ShaderMaterial.new()
+		material.shader = SHADER
+		material.resource_local_to_scene = true
+		target.material = material
+	set_parameter(material, &"material_mask", load(ROOT + stem + "_materials.png"))
+	for key in colors:
+		set_parameter(material, key, colors[key])
+	return material
+
+static func set_parameter(material: ShaderMaterial, name: StringName, value: Variant) -> void:
+	if material.get_shader_parameter(name) != value:
+		material.set_shader_parameter(name, value)
+
+static func floor_colors(style: HouseRoomStyle) -> Dictionary:
+	return {"wood_color": style.floor_color, "stone_color": style.floor_color, "roof_color": style.floor_color if style.floor_material == HouseRoomStyle.Floor.TERRACOTTA else Color("b8764e"), "paint_color": style.accent_color}

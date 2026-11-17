@@ -1,0 +1,26 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/house-kit/house/wall.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
+[sub_resource type="RectangleShape2D" id="collision"]
+resource_local_to_scene = true
+size = Vector2(288, 4)
+[sub_resource type="RectangleShape2D" id="zone"]
+resource_local_to_scene = true
+size = Vector2(288, 28)
+[node name="Wall" type="Node2D"]
+script = ExtResource("script")
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+centered = false
+texture_repeat = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 32)
+[node name="Collisions" type="StaticBody2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(144, 0)
+shape = SubResource("collision")
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+targets = Array[NodePath]([NodePath("../Sprite")])
+inside_alpha = 0.3
+position = Vector2(144, -18)
+shape = SubResource("zone")

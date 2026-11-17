@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/potted_plant_rounded.tres" id="design_0"]
+
+[node name="PottedPlant" instance=ExtResource("base")]
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 6
+paint_color = Color(0.721568627, 0.462745098, 0.333333333, 1)

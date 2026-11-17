@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="HouseDoorVariants" format=3 uid="uid://cktkcpwisi74p"]
+
+[ext_resource type="Script" path="res://scripts/house-kit/house/door_style.gd" id="style"]
+[ext_resource type="Script" path="res://scripts/house-kit/house/door_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="style_1"]
+resource_name = "PlankOak"
+script = ExtResource("style")
+color = Color(0.5803922, 0.41960785, 0.25882354, 1)
+
+[sub_resource type="Resource" id="style_2"]
+resource_name = "PlankDark"
+script = ExtResource("style")
+color = Color(0.45882353, 0.33333334, 0.24313726, 1)
+
+[sub_resource type="Resource" id="style_3"]
+resource_name = "PanelOak"
+script = ExtResource("style")
+style = 1
+color = Color(0.50196075, 0.33333334, 0.23921569, 1)
+
+[sub_resource type="Resource" id="style_4"]
+resource_name = "PanelOlive"
+script = ExtResource("style")
+style = 1
+color = Color(0.39215687, 0.49803922, 0.3764706, 1)
+
+[sub_resource type="Resource" id="style_5"]
+resource_name = "GlazedOak"
+script = ExtResource("style")
+style = 2
+color = Color(0.58431375, 0.5254902, 0.4117647, 1)
+
+[sub_resource type="Resource" id="style_6"]
+resource_name = "GlazedTeal"
+script = ExtResource("style")
+style = 2
+color = Color(0.32941177, 0.49019608, 0.45490196, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6")])

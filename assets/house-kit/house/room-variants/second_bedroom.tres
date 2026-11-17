@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="HouseRoomVariants" format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/house/room_variants.gd" id="variants"]
+
+[ext_resource type="Script" path="res://scripts/house-kit/house/room_style.gd" id="style"]
+
+[sub_resource type="Resource" id="style_1"]
+resource_name = "SageWood"
+resource_local_to_scene = true
+script = ExtResource("style")
+floor_material = 0
+floor_color = Color(0.74117647, 0.58431373, 0.41176471, 1)
+wall_style = 2
+wall_color = Color(0.75686275, 0.80392157, 0.73333333, 1)
+accent_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="Resource" id="style_2"]
+resource_name = "RoseStripes"
+resource_local_to_scene = true
+script = ExtResource("style")
+floor_material = 0
+floor_color = Color(0.68235294, 0.49019608, 0.2745098, 1)
+wall_style = 1
+wall_color = Color(0.84705882, 0.75294118, 0.69019608, 1)
+accent_color = Color(0.63137255, 0.41568627, 0.45490196, 1)
+
+[sub_resource type="Resource" id="style_3"]
+resource_name = "LightWood"
+resource_local_to_scene = true
+script = ExtResource("style")
+floor_material = 0
+floor_color = Color(0.74117647, 0.58431373, 0.41176471, 1)
+wall_style = 0
+wall_color = Color(0.83921569, 0.82745098, 0.70980392, 1)
+accent_color = Color(0.39215686, 0.49803922, 0.37647059, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3")])

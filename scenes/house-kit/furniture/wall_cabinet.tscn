@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/wall_cabinet.gd" id="script"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/kitchen_wall_cabinet_panel_doors.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/kitchen_wall_cabinet_glazed_empty.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/kitchen_wall_cabinet_glazed.tres" id="design_2"]
+
+[node name="WallCabinet" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+paintable_materials = 2
+blocks_movement = false

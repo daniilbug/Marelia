@@ -1,0 +1,24 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/house-kit/house/facade.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/interior.tscn" id="interior"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/portal.tscn" id="portal"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/facade-variants/default.tres" id="facade_variants"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/door-variants/exterior.tres" id="door_variants"]
+[node name="HouseFacade" type="StaticBody2D"]
+script = ExtResource("script")
+style_variants = ExtResource("facade_variants")
+door_variants = ExtResource("door_variants")
+interior_scene = ExtResource("interior")
+[node name="Visuals" type="Node2D" parent="."]
+[node name="Roof" type="Sprite2D" parent="Visuals"]
+[node name="Wall" type="Sprite2D" parent="Visuals"]
+[node name="Plinth" type="Sprite2D" parent="Visuals"]
+[node name="LeftWindow" type="Sprite2D" parent="Visuals"]
+[node name="RightWindow" type="Sprite2D" parent="Visuals"]
+[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+targets = Array[NodePath]([NodePath("../Visuals")])
+[node name="Entrance" parent="." instance=ExtResource("portal")]
+[node name="Arrival" parent="Entrance" index="2"]
+position = Vector2(0, 24)
