@@ -24,9 +24,11 @@ const FIELDS := ["room_count", "layout", "interior_size", "door_style", "door_co
 		layout = value
 		emit_changed()
 @export var layout_variants: Array[Layout] = [Layout.A, Layout.B, Layout.C]
-@export var interior_size := Vector2(288, 256):
+## Zero uses the selected layout's Default Size.
+@export var interior_size := Vector2.ZERO:
 	set(value):
-		value = value.clamp(Vector2(240, 224), Vector2(1024, 1024)).snapped(Vector2(8, 8))
+		if value != Vector2.ZERO:
+			value = value.clamp(Vector2(208, 184), Vector2(1024, 1024)).snapped(Vector2(8, 8))
 		if interior_size == value:
 			return
 		interior_size = value

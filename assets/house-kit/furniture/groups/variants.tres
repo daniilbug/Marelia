@@ -9,3 +9,5 @@
 [resource]
 script = ExtResource("variants")
 variants = Array[ExtResource("style")]([ExtResource("rustic"), ExtResource("classic"), ExtResource("decorative")])
+rug_variants = Array[int]([0, 1, 2, 3])
+painting_variants = Array[int]([0, 1, 2, 3])

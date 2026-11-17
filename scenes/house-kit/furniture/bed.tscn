@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bt6168q5xf24d" path="res://assets/house-kit/furniture/shaders/furniture_palette.gdshader" id="7_8ecq1"]
 [ext_resource type="Texture2D" uid="uid://dyrljugfqe1s0" path="res://assets/house-kit/furniture/sprites/bed_rustic_materials.png" id="8_kjvbh"]
 [ext_resource type="Texture2D" uid="uid://x3qqrg0s8qqu" path="res://assets/house-kit/furniture/sprites/bed_rustic.png" id="9_oilkd"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/occluding_piece.tscn" id="base"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/furniture_piece.tscn" id="base"]
 [ext_resource type="Resource" uid="uid://cfysq8shklx0w" path="res://assets/house-kit/furniture/designs/bed_rustic.tres" id="design_0"]
 [ext_resource type="Resource" uid="uid://bd5kb71hv4sre" path="res://assets/house-kit/furniture/designs/bed_shaped_headboard.tres" id="design_1"]
 [ext_resource type="Resource" uid="uid://bs45jc56xshwy" path="res://assets/house-kit/furniture/designs/bed_metal.tres" id="design_2"]
@@ -23,9 +23,6 @@ shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_162n4"]
 size = Vector2(22, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_me216"]
-size = Vector2(22, 11)
-
 [node name="Bed" unique_id=1774191178 instance=ExtResource("base")]
 script = ExtResource("script")
 style = 0
@@ -42,6 +39,3 @@ texture = ExtResource("9_oilkd")
 [node name="Collision" parent="." index="1"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_162n4")
-
-[node name="TransparencyArea" parent="." index="2"]
-shape = SubResource("RectangleShape2D_me216")

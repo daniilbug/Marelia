@@ -30,6 +30,36 @@ floor_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
 wall_color = Color(0.7764706, 0.81960785, 0.8039216, 1)
 accent_color = Color(0.45490196, 0.5568628, 0.5686275, 1)
 
+[sub_resource type="Resource" id="style_4"]
+resource_local_to_scene = true
+resource_name = "CheckerTiles"
+script = ExtResource("style")
+floor_material = 6
+floor_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+wall_style = 0
+wall_color = Color(0.86666667, 0.81960784, 0.71372549, 1)
+accent_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
+
+[sub_resource type="Resource" id="style_5"]
+resource_local_to_scene = true
+resource_name = "OctagonTiles"
+script = ExtResource("style")
+floor_material = 7
+floor_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+wall_style = 1
+wall_color = Color(0.83529412, 0.77254902, 0.69019608, 1)
+accent_color = Color(0.66666667, 0.45882353, 0.36862745, 1)
+
+[sub_resource type="Resource" id="style_6"]
+resource_local_to_scene = true
+resource_name = "MaiolicaTiles"
+script = ExtResource("style")
+floor_material = 8
+floor_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+wall_style = 0
+wall_color = Color(0.86666667, 0.81176471, 0.70196078, 1)
+accent_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
+
 [resource]
 script = ExtResource("variants")
-variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3")])
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6")])

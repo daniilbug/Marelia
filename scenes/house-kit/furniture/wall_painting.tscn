@@ -2,9 +2,14 @@
 
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/furniture_piece.tscn" id="base"]
 [ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/wall_painting.gd" id="script"]
 [ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/wall_painting_countryside.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/wall_painting_harbor.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/wall_painting_vineyard.tres" id="design_2"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/designs/wall_painting_lemons.tres" id="design_3"]
 
 [node name="WallPainting" instance=ExtResource("base")]
-designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2"), ExtResource("design_3")])
 paintable_materials = 2
 blocks_movement = false

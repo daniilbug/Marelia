@@ -1,917 +1,1613 @@
 [gd_scene format=3 uid="uid://b6pvggbwbeah1"]
 
-[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/floor_wood.png" id="floor"]
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="asset_1"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/floor_wood.png" id="asset_2"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="asset_3"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bed.tscn" id="asset_4"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bedside_table.tscn" id="asset_5"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wardrobe.tscn" id="asset_6"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/dresser.tscn" id="asset_7"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/storage_chest.tscn" id="asset_8"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/laundry_basket.tscn" id="asset_9"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sofa.tscn" id="asset_10"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/armchair.tscn" id="asset_11"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/reading_chair.tscn" id="asset_12"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/coffee_table.tscn" id="asset_13"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/fireplace.tscn" id="asset_14"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/rug.tscn" id="asset_15"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/dining_table.tscn" id="asset_16"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sideboard.tscn" id="asset_17"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_cart.tscn" id="asset_18"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chair.tscn" id="asset_19"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_base.tscn" id="asset_20"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_sink.tscn" id="asset_21"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker.tscn" id="asset_22"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/fridge.tscn" id="asset_23"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="asset_24"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_cabinet.tscn" id="asset_25"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_shelf.tscn" id="asset_26"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker_hood.tscn" id="asset_27"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/desk.tscn" id="asset_28"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bookcase.tscn" id="asset_29"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="asset_30"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/potted_plant.tscn" id="asset_31"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/flower_vase.tscn" id="asset_32"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_sconce.tscn" id="asset_33"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_mirror.tscn" id="asset_34"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_clock.tscn" id="asset_35"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_painting.tscn" id="asset_36"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/coat_rack.tscn" id="asset_37"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/shoe_bench.tscn" id="asset_38"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/washstand.tscn" id="asset_39"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/entrance_step.tscn" id="asset_40"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/roof_tile.png" id="asset_41"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chimney.tscn" id="asset_42"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/exterior_lantern.tscn" id="asset_43"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/mailbox.tscn" id="asset_44"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/window_flower_box.tscn" id="asset_45"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/dining_area.tscn" id="asset_46"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/sitting_area.tscn" id="asset_47"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/sleeping_area.tscn" id="asset_48"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/workplace.tscn" id="asset_49"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/kitchen_run.tscn" id="asset_50"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/reading_wingback.tres" id="asset_51"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/reading_corner.tscn" id="asset_52"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/reading_rocking.tres" id="asset_53"]
+[ext_resource type="Shader" path="res://assets/house-kit/house/shaders/house_palette.gdshader" id="asset_54"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_albedo.png" id="asset_55"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_materials.png" id="asset_56"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_narrow_albedo.png" id="asset_57"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_narrow_materials.png" id="asset_58"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_chevron_albedo.png" id="asset_59"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_chevron_materials.png" id="asset_60"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_basket_albedo.png" id="asset_61"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_wood_basket_materials.png" id="asset_62"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_terracotta_albedo.png" id="asset_63"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_terracotta_materials.png" id="asset_64"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_ornament_albedo.png" id="asset_65"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_ornament_materials.png" id="asset_66"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_checker_albedo.png" id="asset_67"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_checker_materials.png" id="asset_68"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_octagon_albedo.png" id="asset_69"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_octagon_materials.png" id="asset_70"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_maiolica_albedo.png" id="asset_71"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/house/sprites/floor_tile_maiolica_materials.png" id="asset_72"]
 
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bed.tscn" id="bed"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bedside_table.tscn" id="bedside_table"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wardrobe.tscn" id="wardrobe"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/dresser.tscn" id="dresser"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sofa.tscn" id="sofa"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/armchair.tscn" id="armchair"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/coffee_table.tscn" id="coffee_table"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/dining_table.tscn" id="dining_table"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chair.tscn" id="chair"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_base.tscn" id="kitchen_base"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_sink.tscn" id="kitchen_sink"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker.tscn" id="cooker"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/fridge.tscn" id="fridge"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_cabinet.tscn" id="wall_cabinet"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_shelf.tscn" id="wall_shelf"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/cooker_hood.tscn" id="cooker_hood"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/desk.tscn" id="desk"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bookcase.tscn" id="bookcase"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="table_lamp"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_sconce.tscn" id="wall_sconce"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_mirror.tscn" id="wall_mirror"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_clock.tscn" id="wall_clock"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/rug.tscn" id="rug"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/potted_plant.tscn" id="potted_plant"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/flower_vase.tscn" id="flower_vase"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_painting.tscn" id="wall_painting"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/laundry_basket.tscn" id="laundry_basket"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/coat_rack.tscn" id="coat_rack"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/shoe_bench.tscn" id="shoe_bench"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/storage_chest.tscn" id="storage_chest"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_cart.tscn" id="kitchen_cart"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sideboard.tscn" id="sideboard"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/fireplace.tscn" id="fireplace"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/washstand.tscn" id="washstand"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/exterior_lantern.tscn" id="exterior_lantern"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/mailbox.tscn" id="mailbox"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/window_flower_box.tscn" id="window_flower_box"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/entrance_step.tscn" id="entrance_step"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chimney.tscn" id="chimney"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/roof_tile.png" id="roof"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallCabinet1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallCabinet1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallCabinet2Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallCabinet2Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallCabinet3Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallCabinet3Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallShelf1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallShelf1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallShelf2Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallShelf2Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_CookerHood1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_CookerHood1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallSconce1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallSconce1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallMirror1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallMirror1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallClock1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallClock1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WallPainting1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WallPainting1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_CoatRack1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_CoatRack1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_ExteriorLantern1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_ExteriorLantern1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_Mailbox1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_Mailbox1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_WindowFlowerBox1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_WindowFlowerBox1Stand_transparency"]
-
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/surfaces/wall.png" id="stand_Chimney1Stand_wall"]
-[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="stand_Chimney1Stand_transparency"]
-
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet1Stand_base"]
-resource_local_to_scene = true
+[sub_resource type="RectangleShape2D" id="stand_base"]
 size = Vector2(56, 4)
 
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet2Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet2Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet3Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallCabinet3Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallShelf1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallShelf1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallShelf2Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallShelf2Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_CookerHood1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_CookerHood1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallSconce1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallSconce1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallMirror1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallMirror1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 24)
 
-[sub_resource type="RectangleShape2D" id="stand_WallClock1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallClock1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallPainting1Stand_base"]
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(56, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_WallPainting1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="Backdrop_base"]
+size = Vector2(112, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(112, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_CoatRack1Stand_base"]
+[sub_resource type="RectangleShape2D" id="Backdrop_base"]
+size = Vector2(144, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(144, 40)
 
-[sub_resource type="RectangleShape2D" id="stand_CoatRack1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="Backdrop_base"]
+size = Vector2(112, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(112, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_ExteriorLantern1Stand_base"]
+[sub_resource type="RectangleShape2D" id="Backdrop_base"]
+size = Vector2(112, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+size = Vector2(112, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_ExteriorLantern1Stand_zone"]
+[sub_resource type="RectangleShape2D" id="Backdrop_base"]
+size = Vector2(112, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+size = Vector2(112, 32)
 
-[sub_resource type="RectangleShape2D" id="stand_Mailbox1Stand_base"]
+[sub_resource type="ShaderMaterial" id="palette_31"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_56")
+shader_parameter/wood_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/stone_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/roof_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
 
-[sub_resource type="RectangleShape2D" id="stand_Mailbox1Stand_zone"]
+[sub_resource type="ShaderMaterial" id="palette_32"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_58")
+shader_parameter/wood_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/stone_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/roof_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
 
-[sub_resource type="RectangleShape2D" id="stand_WindowFlowerBox1Stand_base"]
+[sub_resource type="ShaderMaterial" id="palette_33"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_60")
+shader_parameter/wood_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/stone_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/roof_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
 
-[sub_resource type="RectangleShape2D" id="stand_WindowFlowerBox1Stand_zone"]
+[sub_resource type="ShaderMaterial" id="palette_34"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_62")
+shader_parameter/wood_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/stone_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/roof_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
 
-[sub_resource type="RectangleShape2D" id="stand_Chimney1Stand_base"]
+[sub_resource type="ShaderMaterial" id="palette_35"]
 resource_local_to_scene = true
-size = Vector2(56, 4)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_64")
+shader_parameter/wood_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/stone_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/roof_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
 
-[sub_resource type="RectangleShape2D" id="stand_Chimney1Stand_zone"]
+[sub_resource type="ShaderMaterial" id="palette_36"]
 resource_local_to_scene = true
-size = Vector2(56, 28)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_66")
+shader_parameter/wood_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/stone_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/roof_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/paint_color = Color(0.39215686, 0.49803922, 0.37647059, 1)
 
-[sub_resource type="RectangleShape2D" id="sheet_RectangleShape2D_162n4"]
+[sub_resource type="ShaderMaterial" id="palette_37"]
 resource_local_to_scene = true
-size = Vector2(22, 24)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_68")
+shader_parameter/wood_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/stone_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/roof_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/paint_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
 
-[sub_resource type="RectangleShape2D" id="sheet_RectangleShape2D_me216"]
+[sub_resource type="ShaderMaterial" id="palette_38"]
 resource_local_to_scene = true
-size = Vector2(22, 11)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_70")
+shader_parameter/wood_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/stone_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/roof_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/paint_color = Color(0.66666667, 0.45882353, 0.36862745, 1)
 
-[sub_resource type="RectangleShape2D" id="sheet_RectangleShape2D_byby2"]
+[sub_resource type="ShaderMaterial" id="palette_39"]
 resource_local_to_scene = true
-size = Vector2(10, 8)
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_72")
+shader_parameter/wood_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/stone_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/roof_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/paint_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
 
-[node name="HouseFurniture" instance=ExtResource("level")]
+[node name="HouseFurniture" instance=ExtResource("asset_1")]
 scale = Vector2(4, 4)
 level_id = "house_kit_furniture"
 
 [node name="BottomLeft" parent="LevelBounds" index="0"]
-position = Vector2(0, 752)
+position = Vector2(0, 1664)
 
 [node name="TopRight" parent="LevelBounds" index="1"]
-position = Vector2(864, 0)
+position = Vector2(1104, 0)
 
 [node name="PlayerSpawn" parent="." index="2"]
 position = Vector2(32, 48)
 
-[node name="Floor" type="Sprite2D" parent="."]
+[node name="Floor" parent="." type="Sprite2D"]
 z_index = -10
 modulate = Color(0.55, 0.55, 0.55, 1)
 texture_repeat = 2
-texture = ExtResource("floor")
+texture = ExtResource("asset_2")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 864, 752)
+region_rect = Rect2(0, 0, 1104, 1664)
 
-[node name="Exhibits" type="Node2D" parent="."]
+[node name="Exhibits" parent="." type="Node2D"]
 y_sort_enabled = true
 
-[node name="Items" type="Node2D" parent="Exhibits"]
+[node name="Furniture" parent="Exhibits" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Bed1" parent="Exhibits/Items" instance=ExtResource("bed")]
-position = Vector2(72, 112)
-style = 0
-footprint_shape = SubResource("sheet_RectangleShape2D_162n4")
-footprint_offset = Vector2(0, -12)
-transparency_shape = SubResource("sheet_RectangleShape2D_me216")
+[node name="Bedroom" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 112)
+y_sort_enabled = true
 
-[node name="Bed2" parent="Exhibits/Items" instance=ExtResource("bed")]
-position = Vector2(152, 112)
-style = 1
-footprint_shape = SubResource("sheet_RectangleShape2D_162n4")
-footprint_offset = Vector2(0, -12)
-transparency_shape = SubResource("sheet_RectangleShape2D_me216")
+[node name="Bed" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Bed3" parent="Exhibits/Items" instance=ExtResource("bed")]
-position = Vector2(232, 112)
-style = 2
-footprint_shape = SubResource("sheet_RectangleShape2D_162n4")
-footprint_offset = Vector2(0, -12)
-transparency_shape = SubResource("sheet_RectangleShape2D_me216")
-
-[node name="BedsideTable1" parent="Exhibits/Items" instance=ExtResource("bedside_table")]
-position = Vector2(312, 112)
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(72, 0)
 style = 0
 
-[node name="BedsideTable2" parent="Exhibits/Items" instance=ExtResource("bedside_table")]
-position = Vector2(392, 112)
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(152, 0)
 style = 1
 
-[node name="BedsideTable3" parent="Exhibits/Items" instance=ExtResource("bedside_table")]
-position = Vector2(472, 112)
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(232, 0)
 style = 2
 
-[node name="Wardrobe1" parent="Exhibits/Items" instance=ExtResource("wardrobe")]
-position = Vector2(552, 112)
+[node name="CustomColors" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(312, 0)
+fabric_color = Color(0.25, 0.46, 0.60, 1)
 style = 0
 
-[node name="Wardrobe2" parent="Exhibits/Items" instance=ExtResource("wardrobe")]
-position = Vector2(632, 112)
+[node name="BedsideTable" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(392, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(472, 0)
 style = 1
 
-[node name="Wardrobe3" parent="Exhibits/Items" instance=ExtResource("wardrobe")]
-position = Vector2(712, 112)
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(552, 0)
 style = 2
 
-[node name="Dresser1" parent="Exhibits/Items" instance=ExtResource("dresser")]
-position = Vector2(792, 112)
+[node name="Wardrobe" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(632, 0)
 style = 0
 
-[node name="Dresser2" parent="Exhibits/Items" instance=ExtResource("dresser")]
-position = Vector2(72, 192)
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(712, 0)
 style = 1
 
-[node name="Dresser3" parent="Exhibits/Items" instance=ExtResource("dresser")]
-position = Vector2(152, 192)
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(792, 0)
 style = 2
 
-[node name="Sofa1" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(232, 192)
+[node name="Dresser" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(872, 0)
 style = 0
 
-[node name="Sofa2" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(312, 192)
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(952, 0)
 style = 1
 
-[node name="Sofa3" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(392, 192)
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(1032, 0)
 style = 2
 
-[node name="Armchair1" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(472, 192)
+[node name="Storage" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 192)
+y_sort_enabled = true
+
+[node name="StorageChest" parent="Exhibits/Furniture/Storage" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Storage/StorageChest" instance=ExtResource("asset_8")]
+position = Vector2(72, 0)
+
+[node name="LaundryBasket" parent="Exhibits/Furniture/Storage" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Storage/LaundryBasket" instance=ExtResource("asset_9")]
+position = Vector2(152, 0)
+
+[node name="Sofas" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 304)
+y_sort_enabled = true
+
+[node name="Sofa" parent="Exhibits/Furniture/Sofas" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(712, 0)
+style = 2
+direction = 0
+
+[node name="Style3Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="CustomColors" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(1032, 0)
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.38, 0.54, 0.35, 1)
+style = 0
+direction = 0
+
+[node name="Armchairs" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 384)
+y_sort_enabled = true
+
+[node name="Armchair" parent="Exhibits/Furniture/Armchairs" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(712, 0)
+style = 2
+direction = 0
+
+[node name="Style3Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="LivingRoom" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 464)
+y_sort_enabled = true
+
+[node name="ReadingChair" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/ReadingChair" instance=ExtResource("asset_12")]
+position = Vector2(72, 0)
 style = 0
 
-[node name="Armchair2" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(552, 192)
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/ReadingChair" instance=ExtResource("asset_12")]
+position = Vector2(152, 0)
 style = 1
 
-[node name="Armchair3" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(632, 192)
+[node name="CoffeeTable" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(232, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(312, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(392, 0)
 style = 2
 
-[node name="CoffeeTable1" parent="Exhibits/Items" instance=ExtResource("coffee_table")]
-position = Vector2(712, 192)
+[node name="Fireplace" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/Fireplace" instance=ExtResource("asset_14")]
+position = Vector2(472, 0)
+burning = false
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/Fireplace" instance=ExtResource("asset_14")]
+position = Vector2(552, 0)
+burning = true
+
+[node name="Rug" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(632, 0)
 style = 0
 
-[node name="CoffeeTable2" parent="Exhibits/Items" instance=ExtResource("coffee_table")]
-position = Vector2(792, 192)
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(712, 0)
 style = 1
 
-[node name="CoffeeTable3" parent="Exhibits/Items" instance=ExtResource("coffee_table")]
-position = Vector2(72, 272)
+[node name="Style3" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(792, 0)
 style = 2
 
-[node name="DiningTable1" parent="Exhibits/Items" instance=ExtResource("dining_table")]
-position = Vector2(152, 272)
+[node name="Style4" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(872, 0)
+style = 3
+
+[node name="DiningTables" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 576)
+y_sort_enabled = true
+
+[node name="DiningTable" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(72, 0)
 style = 0
 
-[node name="DiningTable2" parent="Exhibits/Items" instance=ExtResource("dining_table")]
-position = Vector2(232, 272)
+[node name="Style2" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(152, 0)
 style = 1
 
-[node name="DiningTable3" parent="Exhibits/Items" instance=ExtResource("dining_table")]
-position = Vector2(312, 272)
+[node name="Style3" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(232, 0)
 style = 2
 
-[node name="Chair1" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(392, 272)
+[node name="Sideboard" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/Sideboard" instance=ExtResource("asset_17")]
+position = Vector2(312, 0)
+
+[node name="KitchenCart" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/KitchenCart" instance=ExtResource("asset_18")]
+position = Vector2(392, 0)
+
+[node name="Chairs" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 656)
+y_sort_enabled = true
+
+[node name="Chair" parent="Exhibits/Furniture/Chairs" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(72, 0)
 style = 0
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+direction = 0
 
-[node name="Chair2" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(472, 272)
+[node name="Style1Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(392, 0)
 style = 1
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+direction = 0
 
-[node name="Chair3" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(552, 272)
+[node name="Style2Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(712, 0)
 style = 2
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+direction = 0
 
-[node name="KitchenBase1" parent="Exhibits/Items" instance=ExtResource("kitchen_base")]
-position = Vector2(632, 272)
+[node name="Style3Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="CustomColors" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(1032, 0)
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.72, 0.59, 0.29, 1)
+style = 1
+direction = 0
+
+[node name="Kitchen" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 768)
+y_sort_enabled = true
+
+[node name="KitchenBase" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/KitchenBase" instance=ExtResource("asset_20")]
+position = Vector2(72, 0)
 style = 0
 
-[node name="KitchenBase2" parent="Exhibits/Items" instance=ExtResource("kitchen_base")]
-position = Vector2(712, 272)
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/KitchenBase" instance=ExtResource("asset_20")]
+position = Vector2(152, 0)
 style = 1
 
-[node name="KitchenSink1" parent="Exhibits/Items" instance=ExtResource("kitchen_sink")]
-position = Vector2(792, 272)
+[node name="KitchenSink" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Cooker1" parent="Exhibits/Items" instance=ExtResource("cooker")]
-position = Vector2(72, 352)
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/KitchenSink" instance=ExtResource("asset_21")]
+position = Vector2(232, 0)
 
-[node name="Fridge1" parent="Exhibits/Items" instance=ExtResource("fridge")]
-position = Vector2(152, 352)
+[node name="Cooker" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
 
-[node name="WallCabinet1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/Cooker" instance=ExtResource("asset_22")]
+position = Vector2(312, 0)
 
-position = Vector2(232, 352)
+[node name="CustomColors" parent="Exhibits/Furniture/Kitchen/Cooker" instance=ExtResource("asset_22")]
+position = Vector2(392, 0)
+paint_color = Color(0.39, 0.53, 0.58, 1)
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallCabinet1Stand"]
+[node name="Fridge" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallCabinet1Stand/Visuals"]
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/Fridge" instance=ExtResource("asset_23")]
+position = Vector2(472, 0)
+
+[node name="WallCabinet" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(552, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallCabinet1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallCabinet1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallCabinet1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallCabinet1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallCabinet1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallCabinet1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallCabinet1" parent="Exhibits/Items/WallCabinet1Stand/Visuals" instance=ExtResource("wall_cabinet")]
-position = Vector2(0, -4)
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
 style = 0
 
-[node name="WallCabinet2Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style2Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(632, 0)
 
-position = Vector2(312, 352)
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallCabinet2Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallCabinet2Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallCabinet2Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallCabinet2Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallCabinet2Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallCabinet2Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallCabinet2Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallCabinet2Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallCabinet2" parent="Exhibits/Items/WallCabinet2Stand/Visuals" instance=ExtResource("wall_cabinet")]
-position = Vector2(0, -4)
+
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
 style = 1
 
-[node name="WallCabinet3Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style3Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(712, 0)
 
-position = Vector2(392, 352)
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallCabinet3Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallCabinet3Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallCabinet3Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallCabinet3Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallCabinet3Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallCabinet3Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallCabinet3Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallCabinet3Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallCabinet3" parent="Exhibits/Items/WallCabinet3Stand/Visuals" instance=ExtResource("wall_cabinet")]
-position = Vector2(0, -4)
+
+[node name="Style3" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
 style = 2
 
-[node name="WallShelf1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="WallShelf" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
 
-position = Vector2(472, 352)
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/WallShelf" type="StaticBody2D"]
+position = Vector2(792, 0)
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallShelf1Stand"]
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallShelf1Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallShelf1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallShelf1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallShelf1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallShelf1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallShelf1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallShelf1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallShelf1" parent="Exhibits/Items/WallShelf1Stand/Visuals" instance=ExtResource("wall_shelf")]
-position = Vector2(0, -4)
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand/Visuals" instance=ExtResource("asset_26")]
+position = Vector2(0, -10)
 style = 0
 
-[node name="WallShelf2Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style2Stand" parent="Exhibits/Furniture/Kitchen/WallShelf" type="StaticBody2D"]
+position = Vector2(872, 0)
 
-position = Vector2(552, 352)
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallShelf2Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallShelf2Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallShelf2Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallShelf2Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallShelf2Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallShelf2Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallShelf2Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallShelf2Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallShelf2" parent="Exhibits/Items/WallShelf2Stand/Visuals" instance=ExtResource("wall_shelf")]
-position = Vector2(0, -4)
+
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand/Visuals" instance=ExtResource("asset_26")]
+position = Vector2(0, -10)
 style = 1
 
-[node name="CookerHood1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="CookerHood" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
 
-position = Vector2(632, 352)
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/CookerHood" type="StaticBody2D"]
+position = Vector2(952, 0)
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/CookerHood1Stand"]
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/CookerHood1Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_CookerHood1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/CookerHood1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_CookerHood1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/CookerHood1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_CookerHood1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_CookerHood1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="CookerHood1" parent="Exhibits/Items/CookerHood1Stand/Visuals" instance=ExtResource("cooker_hood")]
-position = Vector2(0, -4)
 
-[node name="Desk1" parent="Exhibits/Items" instance=ExtResource("desk")]
-position = Vector2(712, 352)
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand/Visuals" instance=ExtResource("asset_27")]
+position = Vector2(0, -8)
 
-[node name="Bookcase1" parent="Exhibits/Items" instance=ExtResource("bookcase")]
-position = Vector2(792, 352)
+[node name="Study" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 880)
+y_sort_enabled = true
+
+[node name="Desk" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Study/Desk" instance=ExtResource("asset_28")]
+position = Vector2(72, 0)
+
+[node name="Bookcase" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Study/Bookcase" instance=ExtResource("asset_29")]
+position = Vector2(152, 0)
 style = 0
 
-[node name="Bookcase2" parent="Exhibits/Items" instance=ExtResource("bookcase")]
-position = Vector2(72, 432)
+[node name="Style2" parent="Exhibits/Furniture/Study/Bookcase" instance=ExtResource("asset_29")]
+position = Vector2(232, 0)
 style = 1
 
-[node name="TableLamp1Display" type="Node2D" parent="Exhibits/Items"]
-position = Vector2(152, 432)
+[node name="TableLamp" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Support" parent="Exhibits/Items/TableLamp1Display" instance=ExtResource("bedside_table")]
+[node name="Style1Display" parent="Exhibits/Furniture/Study/TableLamp" type="Node2D"]
+position = Vector2(312, 0)
+y_sort_enabled = true
 
-[node name="TableLamp1" parent="Exhibits/Items/TableLamp1Display" instance=ExtResource("table_lamp")]
+[node name="Support" parent="Exhibits/Furniture/Study/TableLamp/Style1Display" instance=ExtResource("asset_5")]
+style = 0
+
+[node name="Style1" parent="Exhibits/Furniture/Study/TableLamp/Style1Display" instance=ExtResource("asset_30")]
 position = Vector2(0, -14)
 blocks_movement = false
 
-[node name="WallSconce1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="PottedPlant" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
 
-position = Vector2(232, 432)
+[node name="Style1Display" parent="Exhibits/Furniture/Study/PottedPlant" type="Node2D"]
+position = Vector2(392, 0)
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallSconce1Stand"]
+[node name="Support" parent="Exhibits/Furniture/Study/PottedPlant/Style1Display" instance=ExtResource("asset_5")]
+style = 0
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallSconce1Stand/Visuals"]
-position = Vector2(-28, -32)
-texture_repeat = 2
-texture = ExtResource("stand_WallSconce1Stand_wall")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 56, 32)
-
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallSconce1Stand"]
-position = Vector2(0, -2)
-shape = SubResource("stand_WallSconce1Stand_base")
-
-[node name="TransparencyArea" parent="Exhibits/Items/WallSconce1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallSconce1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallSconce1Stand_zone")
-targets = Array[NodePath]([NodePath("../Visuals")])
-inside_alpha = 0.3
-[node name="WallSconce1" parent="Exhibits/Items/WallSconce1Stand/Visuals" instance=ExtResource("wall_sconce")]
-position = Vector2(0, -4)
-
-[node name="WallMirror1Stand" type="StaticBody2D" parent="Exhibits/Items"]
-
-position = Vector2(312, 432)
-
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallMirror1Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallMirror1Stand/Visuals"]
-position = Vector2(-28, -32)
-texture_repeat = 2
-texture = ExtResource("stand_WallMirror1Stand_wall")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 56, 32)
-
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallMirror1Stand"]
-position = Vector2(0, -2)
-shape = SubResource("stand_WallMirror1Stand_base")
-
-[node name="TransparencyArea" parent="Exhibits/Items/WallMirror1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallMirror1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallMirror1Stand_zone")
-targets = Array[NodePath]([NodePath("../Visuals")])
-inside_alpha = 0.3
-[node name="WallMirror1" parent="Exhibits/Items/WallMirror1Stand/Visuals" instance=ExtResource("wall_mirror")]
-position = Vector2(0, -4)
-
-[node name="WallClock1Stand" type="StaticBody2D" parent="Exhibits/Items"]
-
-position = Vector2(392, 432)
-
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallClock1Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallClock1Stand/Visuals"]
-position = Vector2(-28, -32)
-texture_repeat = 2
-texture = ExtResource("stand_WallClock1Stand_wall")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 56, 32)
-
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallClock1Stand"]
-position = Vector2(0, -2)
-shape = SubResource("stand_WallClock1Stand_base")
-
-[node name="TransparencyArea" parent="Exhibits/Items/WallClock1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallClock1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallClock1Stand_zone")
-targets = Array[NodePath]([NodePath("../Visuals")])
-inside_alpha = 0.3
-[node name="WallClock1" parent="Exhibits/Items/WallClock1Stand/Visuals" instance=ExtResource("wall_clock")]
-position = Vector2(0, -4)
-
-[node name="Rug1" parent="Exhibits/Items" instance=ExtResource("rug")]
-position = Vector2(472, 432)
-
-[node name="PottedPlant1Display" type="Node2D" parent="Exhibits/Items"]
-position = Vector2(552, 432)
-
-[node name="Support" parent="Exhibits/Items/PottedPlant1Display" instance=ExtResource("bedside_table")]
-
-[node name="PottedPlant1" parent="Exhibits/Items/PottedPlant1Display" instance=ExtResource("potted_plant")]
+[node name="Style1" parent="Exhibits/Furniture/Study/PottedPlant/Style1Display" instance=ExtResource("asset_31")]
 position = Vector2(0, -14)
 blocks_movement = false
 
-[node name="FlowerVase1Display" type="Node2D" parent="Exhibits/Items"]
-position = Vector2(632, 432)
+[node name="FlowerVase" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Support" parent="Exhibits/Items/FlowerVase1Display" instance=ExtResource("bedside_table")]
+[node name="Style1Display" parent="Exhibits/Furniture/Study/FlowerVase" type="Node2D"]
+position = Vector2(472, 0)
+y_sort_enabled = true
 
-[node name="FlowerVase1" parent="Exhibits/Items/FlowerVase1Display" instance=ExtResource("flower_vase")]
+[node name="Support" parent="Exhibits/Furniture/Study/FlowerVase/Style1Display" instance=ExtResource("asset_5")]
+style = 0
+
+[node name="Style1" parent="Exhibits/Furniture/Study/FlowerVase/Style1Display" instance=ExtResource("asset_32")]
 position = Vector2(0, -14)
 blocks_movement = false
 
-[node name="WallPainting1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="WallDecor" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 992)
+y_sort_enabled = true
 
-position = Vector2(712, 432)
+[node name="WallSconce" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WallPainting1Stand"]
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallSconce" type="StaticBody2D"]
+position = Vector2(72, 0)
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WallPainting1Stand/Visuals"]
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WallPainting1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WallPainting1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WallPainting1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WallPainting1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WallPainting1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WallPainting1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WallPainting1" parent="Exhibits/Items/WallPainting1Stand/Visuals" instance=ExtResource("wall_painting")]
-position = Vector2(0, -4)
 
-[node name="LaundryBasket1" parent="Exhibits/Items" instance=ExtResource("laundry_basket")]
-position = Vector2(792, 432)
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand/Visuals" instance=ExtResource("asset_33")]
+position = Vector2(0, -14)
 
-[node name="CoatRack1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="WallMirror" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
 
-position = Vector2(72, 512)
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallMirror" type="StaticBody2D"]
+position = Vector2(152, 0)
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/CoatRack1Stand"]
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/CoatRack1Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_CoatRack1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/CoatRack1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_CoatRack1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/CoatRack1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_CoatRack1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_CoatRack1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="CoatRack1" parent="Exhibits/Items/CoatRack1Stand/Visuals" instance=ExtResource("coat_rack")]
-position = Vector2(0, -4)
 
-[node name="ShoeBench1" parent="Exhibits/Items" instance=ExtResource("shoe_bench")]
-position = Vector2(152, 512)
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand/Visuals" instance=ExtResource("asset_34")]
+position = Vector2(0, -9)
 
-[node name="StorageChest1" parent="Exhibits/Items" instance=ExtResource("storage_chest")]
-position = Vector2(232, 512)
+[node name="WallClock" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
 
-[node name="KitchenCart1" parent="Exhibits/Items" instance=ExtResource("kitchen_cart")]
-position = Vector2(312, 512)
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallClock" type="StaticBody2D"]
+position = Vector2(232, 0)
 
-[node name="Sideboard1" parent="Exhibits/Items" instance=ExtResource("sideboard")]
-position = Vector2(392, 512)
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Fireplace1" parent="Exhibits/Items" instance=ExtResource("fireplace")]
-position = Vector2(472, 512)
-
-[node name="Washstand1" parent="Exhibits/Items" instance=ExtResource("washstand")]
-position = Vector2(552, 512)
-
-[node name="ExteriorLantern1Stand" type="StaticBody2D" parent="Exhibits/Items"]
-
-position = Vector2(632, 512)
-
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/ExteriorLantern1Stand"]
-
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/ExteriorLantern1Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_ExteriorLantern1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/ExteriorLantern1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_ExteriorLantern1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/ExteriorLantern1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_ExteriorLantern1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_ExteriorLantern1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="ExteriorLantern1" parent="Exhibits/Items/ExteriorLantern1Stand/Visuals" instance=ExtResource("exterior_lantern")]
-position = Vector2(0, -4)
 
-[node name="Mailbox1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand/Visuals" instance=ExtResource("asset_35")]
+position = Vector2(0, -11.5)
 
-position = Vector2(712, 512)
+[node name="WallPainting" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/Mailbox1Stand"]
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(312, 0)
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/Mailbox1Stand/Visuals"]
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_Mailbox1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/Mailbox1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_Mailbox1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/Mailbox1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_Mailbox1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_Mailbox1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="Mailbox1" parent="Exhibits/Items/Mailbox1Stand/Visuals" instance=ExtResource("mailbox")]
-position = Vector2(0, -4)
 
-[node name="WindowFlowerBox1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 0
 
-position = Vector2(792, 512)
+[node name="Style2Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(392, 0)
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/WindowFlowerBox1Stand"]
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/WindowFlowerBox1Stand/Visuals"]
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -32)
 texture_repeat = 2
-texture = ExtResource("stand_WindowFlowerBox1Stand_wall")
+texture = ExtResource("asset_3")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/WindowFlowerBox1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_WindowFlowerBox1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/WindowFlowerBox1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_WindowFlowerBox1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_WindowFlowerBox1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="WindowFlowerBox1" parent="Exhibits/Items/WindowFlowerBox1Stand/Visuals" instance=ExtResource("window_flower_box")]
-position = Vector2(0, -4)
 
-[node name="EntranceStep1" parent="Exhibits/Items" instance=ExtResource("entrance_step")]
-position = Vector2(72, 592)
+[node name="Style2" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 1
 
-[node name="Chimney1Stand" type="StaticBody2D" parent="Exhibits/Items"]
+[node name="Style3Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(472, 0)
 
-position = Vector2(152, 592)
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Visuals" type="Node2D" parent="Exhibits/Items/Chimney1Stand"]
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
 
-[node name="Wall" type="Sprite2D" parent="Exhibits/Items/Chimney1Stand/Visuals"]
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style3" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 2
+
+[node name="Style4Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(552, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style4" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 3
+
+[node name="Entrance" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 1104)
+y_sort_enabled = true
+
+[node name="CoatRack" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/CoatRack" type="StaticBody2D"]
+position = Vector2(72, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand/Visuals" instance=ExtResource("asset_37")]
+position = Vector2(0, -14)
+
+[node name="ShoeBench" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/ShoeBench" instance=ExtResource("asset_38")]
+position = Vector2(152, 0)
+
+[node name="Washstand" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Washstand" instance=ExtResource("asset_39")]
+position = Vector2(232, 0)
+
+[node name="EntranceStep" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/EntranceStep" instance=ExtResource("asset_40")]
+position = Vector2(312, 0)
+
+[node name="Chimney" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/Chimney" type="StaticBody2D"]
+position = Vector2(392, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand/Visuals" type="Sprite2D"]
 position = Vector2(-28, -24)
 texture_repeat = 2
-texture = ExtResource("roof")
+texture = ExtResource("asset_41")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 56, 24)
 
-[node name="Collision" type="CollisionShape2D" parent="Exhibits/Items/Chimney1Stand"]
+[node name="Collision" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" type="CollisionShape2D"]
 position = Vector2(0, -2)
-shape = SubResource("stand_Chimney1Stand_base")
+shape = SubResource("stand_base")
 
-[node name="TransparencyArea" parent="Exhibits/Items/Chimney1Stand" node_paths=PackedStringArray("targets") instance=ExtResource("stand_Chimney1Stand_transparency")]
-position = Vector2(0, -18)
-shape = SubResource("stand_Chimney1Stand_zone")
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -12)
+shape = SubResource("TransparencyArea_shape")
 targets = Array[NodePath]([NodePath("../Visuals")])
 inside_alpha = 0.3
-[node name="Chimney1" parent="Exhibits/Items/Chimney1Stand/Visuals" instance=ExtResource("chimney")]
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand/Visuals" instance=ExtResource("asset_42")]
 position = Vector2(0, -12)
 
-[node name="chairFacing1" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(232, 592)
-direction = 1
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+[node name="ExteriorLantern" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
 
-[node name="chairFacing2" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(312, 592)
-direction = 2
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/ExteriorLantern" type="StaticBody2D"]
+position = Vector2(472, 0)
 
-[node name="chairFacing3" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(392, 592)
-direction = 3
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="sofaFacing1" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(472, 592)
-direction = 1
+[node name="Wall" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
 
-[node name="sofaFacing2" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(552, 592)
-direction = 2
+[node name="Collision" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
 
-[node name="sofaFacing3" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(632, 592)
-direction = 3
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
 
-[node name="armchairFacing1" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(712, 592)
-direction = 1
+[node name="Style1" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand/Visuals" instance=ExtResource("asset_43")]
+position = Vector2(0, -12)
 
-[node name="armchairFacing2" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(792, 592)
-direction = 2
+[node name="Mailbox" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
 
-[node name="armchairFacing3" parent="Exhibits/Items" instance=ExtResource("armchair")]
-position = Vector2(72, 672)
-direction = 3
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/Mailbox" type="StaticBody2D"]
+position = Vector2(552, 0)
 
-[node name="bedCustomColors" parent="Exhibits/Items" instance=ExtResource("bed")]
-position = Vector2(152, 672)
-fabric_color = Color(0.25, 0.46, 0.60, 1)
-footprint_shape = SubResource("sheet_RectangleShape2D_162n4")
-footprint_offset = Vector2(0, -12)
-transparency_shape = SubResource("sheet_RectangleShape2D_me216")
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" type="Node2D"]
+y_sort_enabled = true
 
-[node name="chairCustomColors" parent="Exhibits/Items" instance=ExtResource("chair")]
-position = Vector2(232, 672)
-style = 1
-wood_color = Color(0.38, 0.29, 0.22, 1)
-fabric_color = Color(0.72, 0.59, 0.29, 1)
-footprint_shape = SubResource("sheet_RectangleShape2D_byby2")
-footprint_offset = Vector2(0, -4)
+[node name="Wall" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
 
-[node name="sofaCustomColors" parent="Exhibits/Items" instance=ExtResource("sofa")]
-position = Vector2(312, 672)
-wood_color = Color(0.38, 0.29, 0.22, 1)
-fabric_color = Color(0.38, 0.54, 0.35, 1)
+[node name="Collision" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
 
-[node name="cookerCustomColors" parent="Exhibits/Items" instance=ExtResource("cooker")]
-position = Vector2(392, 672)
-paint_color = Color(0.39, 0.53, 0.58, 1)
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
 
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand/Visuals" instance=ExtResource("asset_44")]
+position = Vector2(0, -13)
+
+[node name="WindowFlowerBox" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/WindowFlowerBox" type="StaticBody2D"]
+position = Vector2(632, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand/Visuals" instance=ExtResource("asset_45")]
+position = Vector2(0, -12)
+
+[node name="Compositions" parent="Exhibits" type="Node2D"]
+y_sort_enabled = true
+
+[node name="DiningAreaDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(152, 1264)
+y_sort_enabled = true
+
+[node name="DiningArea" parent="Exhibits/Compositions/DiningAreaDisplay" instance=ExtResource("asset_46")]
+
+[node name="SittingAreaDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(424, 1264)
+y_sort_enabled = true
+
+[node name="Backdrop" parent="Exhibits/Compositions/SittingAreaDisplay" type="StaticBody2D"]
+position = Vector2(0, -16)
+
+[node name="Visuals" parent="Exhibits/Compositions/SittingAreaDisplay/Backdrop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Compositions/SittingAreaDisplay/Backdrop/Visuals" type="Sprite2D"]
+position = Vector2(-56, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 112, 32)
+
+[node name="Collision" parent="Exhibits/Compositions/SittingAreaDisplay/Backdrop" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("Backdrop_base")
+
+[node name="TransparencyArea" parent="Exhibits/Compositions/SittingAreaDisplay/Backdrop" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="SittingArea" parent="Exhibits/Compositions/SittingAreaDisplay" instance=ExtResource("asset_47")]
+
+[node name="SleepingAreaDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(696, 1264)
+y_sort_enabled = true
+
+[node name="Backdrop" parent="Exhibits/Compositions/SleepingAreaDisplay" type="StaticBody2D"]
+position = Vector2(0, -40)
+
+[node name="Visuals" parent="Exhibits/Compositions/SleepingAreaDisplay/Backdrop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Compositions/SleepingAreaDisplay/Backdrop/Visuals" type="Sprite2D"]
+position = Vector2(-72, -40)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 144, 40)
+
+[node name="Collision" parent="Exhibits/Compositions/SleepingAreaDisplay/Backdrop" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("Backdrop_base")
+
+[node name="TransparencyArea" parent="Exhibits/Compositions/SleepingAreaDisplay/Backdrop" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -20)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="SleepingArea" parent="Exhibits/Compositions/SleepingAreaDisplay" instance=ExtResource("asset_48")]
+
+[node name="WorkplaceDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(968, 1264)
+y_sort_enabled = true
+
+[node name="Workplace" parent="Exhibits/Compositions/WorkplaceDisplay" instance=ExtResource("asset_49")]
+
+[node name="KitchenRunDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(152, 1424)
+y_sort_enabled = true
+
+[node name="Backdrop" parent="Exhibits/Compositions/KitchenRunDisplay" type="StaticBody2D"]
+position = Vector2(0, -20)
+
+[node name="Visuals" parent="Exhibits/Compositions/KitchenRunDisplay/Backdrop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Compositions/KitchenRunDisplay/Backdrop/Visuals" type="Sprite2D"]
+position = Vector2(-56, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 112, 32)
+
+[node name="Collision" parent="Exhibits/Compositions/KitchenRunDisplay/Backdrop" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("Backdrop_base")
+
+[node name="TransparencyArea" parent="Exhibits/Compositions/KitchenRunDisplay/Backdrop" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="KitchenRun" parent="Exhibits/Compositions/KitchenRunDisplay" instance=ExtResource("asset_50")]
+
+[node name="ReadingCornerWingbackDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(424, 1424)
+y_sort_enabled = true
+
+[node name="Backdrop" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay" type="StaticBody2D"]
+position = Vector2(0, -36)
+
+[node name="Visuals" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay/Backdrop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay/Backdrop/Visuals" type="Sprite2D"]
+position = Vector2(-56, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 112, 32)
+
+[node name="Collision" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay/Backdrop" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("Backdrop_base")
+
+[node name="TransparencyArea" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay/Backdrop" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="ReadingCornerWingback" parent="Exhibits/Compositions/ReadingCornerWingbackDisplay" instance=ExtResource("asset_52")]
+style = ExtResource("asset_51")
+
+[node name="ReadingCornerRockingDisplay" parent="Exhibits/Compositions" type="Node2D"]
+position = Vector2(696, 1424)
+y_sort_enabled = true
+
+[node name="Backdrop" parent="Exhibits/Compositions/ReadingCornerRockingDisplay" type="StaticBody2D"]
+position = Vector2(0, -36)
+
+[node name="Visuals" parent="Exhibits/Compositions/ReadingCornerRockingDisplay/Backdrop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Compositions/ReadingCornerRockingDisplay/Backdrop/Visuals" type="Sprite2D"]
+position = Vector2(-56, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 112, 32)
+
+[node name="Collision" parent="Exhibits/Compositions/ReadingCornerRockingDisplay/Backdrop" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("Backdrop_base")
+
+[node name="TransparencyArea" parent="Exhibits/Compositions/ReadingCornerRockingDisplay/Backdrop" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="ReadingCornerRocking" parent="Exhibits/Compositions/ReadingCornerRockingDisplay" instance=ExtResource("asset_52")]
+style = ExtResource("asset_53")
+
+[node name="Materials" parent="Exhibits" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Floors" parent="Exhibits/Materials" type="Node2D"]
+y_sort_enabled = true
+
+[node name="FloorWood" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(24, 1536)
+z_index = -9
+material = SubResource("palette_31")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_55")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodNarrow" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(136, 1536)
+z_index = -9
+material = SubResource("palette_32")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_57")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodChevron" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(248, 1536)
+z_index = -9
+material = SubResource("palette_33")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_59")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodBasket" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(360, 1536)
+z_index = -9
+material = SubResource("palette_34")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_61")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTerracotta" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(472, 1536)
+z_index = -9
+material = SubResource("palette_35")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_63")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorOrnament" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(584, 1536)
+z_index = -9
+material = SubResource("palette_36")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_65")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileChecker" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(696, 1536)
+z_index = -9
+material = SubResource("palette_37")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_67")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileOctagon" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(808, 1536)
+z_index = -9
+material = SubResource("palette_38")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_69")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileMaiolica" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(920, 1536)
+z_index = -9
+material = SubResource("palette_39")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_71")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)

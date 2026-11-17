@@ -27,6 +27,36 @@ wall_style = 0
 wall_color = Color(0.7764706, 0.81960785, 0.8039216, 1)
 accent_color = Color(0.45490196, 0.5568628, 0.5686275, 1)
 
+[sub_resource type="Resource" id="style_4"]
+resource_local_to_scene = true
+resource_name = "NarrowBoards"
+script = ExtResource("style")
+floor_material = 3
+floor_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+wall_style = 0
+wall_color = Color(0.86666667, 0.81960784, 0.71372549, 1)
+accent_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="Resource" id="style_5"]
+resource_local_to_scene = true
+resource_name = "ChevronParquet"
+script = ExtResource("style")
+floor_material = 4
+floor_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+wall_style = 1
+wall_color = Color(0.78431373, 0.81568627, 0.77254902, 1)
+accent_color = Color(0.45490196, 0.55686275, 0.56862745, 1)
+
+[sub_resource type="Resource" id="style_6"]
+resource_local_to_scene = true
+resource_name = "BasketParquet"
+script = ExtResource("style")
+floor_material = 5
+floor_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+wall_style = 2
+wall_color = Color(0.84705882, 0.75294118, 0.69019608, 1)
+accent_color = Color(0.63137255, 0.41568627, 0.45490196, 1)
+
 [resource]
 script = ExtResource("variants")
-variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3")])
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6")])

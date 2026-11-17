@@ -3,7 +3,16 @@ class_name HouseFurnitureVariants
 extends Resource
 
 @export var variants: Array[HouseFurnitureStyle] = []
+@export var rug_variants: Array[HouseFurnitureStyle.RugDesign] = []
+@export var painting_variants: Array[HouseFurnitureStyle.PaintingDesign] = []
 
 func choose_style() -> HouseFurnitureStyle:
 	var choices := variants.filter(func(style): return style != null)
-	return choices.pick_random().duplicate(true) as HouseFurnitureStyle if not choices.is_empty() else null
+	if choices.is_empty():
+		return null
+	var style := choices.pick_random().duplicate(true) as HouseFurnitureStyle
+	if not rug_variants.is_empty():
+		style.rug_style = rug_variants.pick_random()
+	if not painting_variants.is_empty():
+		style.painting_style = painting_variants.pick_random()
+	return style

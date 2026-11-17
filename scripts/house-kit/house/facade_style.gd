@@ -2,8 +2,8 @@
 class_name HouseFacadeStyle
 extends Resource
 
-enum Facade { PLASTER, FIELDSTONE }
-enum Roof { TILES, COPPI }
+enum Facade { PLASTER, FIELDSTONE, LIMESTONE }
+enum Roof { TILES, COPPI, COPPI_AGED }
 enum WindowStyle { LOUVERED, PANELLED, ARCHED }
 
 const FIELDS := ["facade_style", "roof_style", "window_style", "shutters_closed", "facade_color", "roof_color", "shutter_color", "frame_color", "plinth_color"]

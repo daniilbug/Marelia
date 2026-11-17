@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/sitting_area.tscn" id="set_sitting_area"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/sleeping_area.tscn" id="set_sleeping_area"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/workplace.tscn" id="set_workplace"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/groups/reading_corner.tscn" id="set_reading_corner"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/reading_variants.tres" id="reading_styles"]
 
 [sub_resource type="RectangleShape2D" id="KitchenBackWall_collision_1"]
 resource_local_to_scene = true
@@ -176,6 +178,7 @@ size = Vector2(16, 336)
 y_sort_enabled = true
 script = ExtResource("layout")
 reference_size = Vector2(288, 256)
+default_size = Vector2(248, 224)
 door_variants = ExtResource("door_variants")
 
 [node name="Rooms" type="Node2D" parent="."]
@@ -267,7 +270,7 @@ script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 
 [node name="LeftWall" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea"]
-position = Vector2(44, 52)
+position = Vector2(52, 52)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -278,14 +281,14 @@ facing = 1
 position = Vector2(0, -8)
 
 [node name="Wardrobe" parent="Rooms/SecondBedroom/Placements/SleepingArea/LeftWall/Furniture" index="4"]
-position = Vector2(58, -20)
+position = Vector2(50, -20)
 
 [node name="Landscape" parent="Rooms/SecondBedroom/Placements/SleepingArea/LeftWall/Furniture" index="5"]
 visible = false
 process_mode = 4
 
 [node name="RightWall" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea"]
-position = Vector2(76, 52)
+position = Vector2(68, 52)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -296,7 +299,7 @@ facing = 1
 position = Vector2(0, -8)
 
 [node name="Wardrobe" parent="Rooms/SecondBedroom/Placements/SleepingArea/RightWall/Furniture" index="4"]
-position = Vector2(-58, -20)
+position = Vector2(-50, -20)
 
 [node name="Landscape" parent="Rooms/SecondBedroom/Placements/SleepingArea/RightWall/Furniture" index="5"]
 visible = false
@@ -308,7 +311,7 @@ script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 
 [node name="LeftWall" type="Node2D" parent="Rooms/Kitchen/Placements/KitchenRun"]
-position = Vector2(48, 16)
+position = Vector2(48, 20)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -339,7 +342,7 @@ position = Vector2(2, -24)
 position = Vector2(20, 0)
 
 [node name="RightWall" type="Node2D" parent="Rooms/Kitchen/Placements/KitchenRun"]
-position = Vector2(48, 16)
+position = Vector2(48, 20)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -484,6 +487,43 @@ position = Vector2(8, -22)
 
 [node name="Plant" parent="Rooms/LivingRoom/Placements/SittingArea/RightWall/Furniture" index="4"]
 position = Vector2(-28, -26)
+
+[node name="ReadingCorner" type="Node2D" parent="Rooms/LivingRoom/Placements"]
+y_sort_enabled = true
+script = ExtResource("group")
+style_variants = ExtResource("reading_styles")
+selected_variant = &"KitchenWallLeft"
+
+[node name="KitchenWallLeft" type="Node2D" parent="Rooms/LivingRoom/Placements/ReadingCorner"]
+position = Vector2(32, 36)
+y_sort_enabled = true
+script = ExtResource("point")
+facing = 1
+
+[node name="Furniture" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallLeft" instance=ExtResource("set_reading_corner")]
+
+[node name="Rug" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallLeft/Furniture" index="3"]
+position = Vector2(6, -4)
+
+[node name="KitchenWallRight" type="Node2D" parent="Rooms/LivingRoom/Placements/ReadingCorner"]
+position = Vector2(64, 36)
+y_sort_enabled = true
+script = ExtResource("point")
+facing = 1
+
+[node name="Furniture" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight" instance=ExtResource("set_reading_corner")]
+
+[node name="Bookcase" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight/Furniture" index="0"]
+position = Vector2(14, -18)
+
+[node name="Armchair" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight/Furniture" index="1"]
+position = Vector2(14, 12)
+
+[node name="SideTable" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight/Furniture" index="2"]
+position = Vector2(-12, 4)
+
+[node name="Rug" parent="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight/Furniture" index="3"]
+position = Vector2(-4, -4)
 
 [node name="Walls" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -900,3 +940,7 @@ metadata/resize_axis = Vector2(0, 1)
 [editable path="Rooms/LivingRoom/Placements/SittingArea/LeftWall/Furniture"]
 
 [editable path="Rooms/LivingRoom/Placements/SittingArea/RightWall/Furniture"]
+
+[editable path="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallRight/Furniture"]
+
+[editable path="Rooms/LivingRoom/Placements/ReadingCorner/KitchenWallLeft/Furniture"]

@@ -151,14 +151,15 @@ func _refresh() -> void:
 	_pending = false
 	if not is_node_ready():
 		return
+	var entrance_y: float = $Entrance.position.y
 	var wall := $Visuals/Wall as Sprite2D
-	var material := HouseArt.apply(wall, ["facade_plaster", "facade_fieldstone"][facade_style], {"plaster_color": facade_color, "stone_color": facade_color}, true)
+	var material := HouseArt.apply(wall, ["facade_plaster", "facade_fieldstone", "facade_limestone"][facade_style], {"plaster_color": facade_color, "stone_color": facade_color}, true)
 	wall.position = Vector2(-house_width / 2.0, -wall_height)
 	wall.region_enabled = true
 	wall.region_rect = Rect2(0, 0, house_width, wall_height)
-	HouseArt.set_parameter(material, &"opening_a", Vector4(house_width / 2.0 - 12, wall_height - 28, 24, 28))
+	HouseArt.set_parameter(material, &"opening_a", Vector4(house_width / 2.0 - 12, wall_height + entrance_y - 28, 24, 28))
 	var roof := $Visuals/Roof as Sprite2D
-	HouseArt.apply(roof, ["roof_tiles", "roof_coppi"][roof_style], {"roof_color": roof_color}, true)
+	HouseArt.apply(roof, ["roof_tiles", "roof_coppi", "roof_coppi_aged"][roof_style], {"roof_color": roof_color}, true)
 	roof.position = Vector2(-house_width / 2.0 - 6, -wall_height - house_depth)
 	roof.region_enabled = true
 	roof.region_rect = Rect2(0, 0, house_width + 12, house_depth)
@@ -167,13 +168,14 @@ func _refresh() -> void:
 	plinth.position = Vector2(-house_width / 2.0, -8)
 	plinth.region_enabled = true
 	plinth.region_rect = Rect2(0, 0, house_width, 8)
-	HouseArt.set_parameter(material, &"opening_a", Vector4(house_width / 2.0 - 12, 0, 24, 8))
+	HouseArt.set_parameter(material, &"opening_a", Vector4(house_width / 2.0 - 12, 0, 24, 8 + entrance_y))
 	for index in 2:
 		var window := get_node("Visuals/" + ["LeftWindow", "RightWindow"][index]) as Sprite2D
 		HouseArt.apply(window, ["window_louvered", "window_panelled", "window_arched"][window_style] + ("_closed" if shutters_closed else "_open"), {"wood_color": frame_color, "paint_color": shutter_color})
 		window.position = Vector2(house_width * [-0.28, 0.28][index] - window.texture.get_width() / 2.0, -wall_height + 5)
 	$Entrance.style = door_style
 	$Entrance.color = door_color
+	$Entrance/Step.stone_color = plinth_color
 	var dimensions := Vector3(house_width, house_depth, wall_height)
 	if dimensions != _geometry:
 		var shape := RectangleShape2D.new()

@@ -120,6 +120,7 @@ floor_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
 y_sort_enabled = true
 script = ExtResource("layout")
 reference_size = Vector2(288, 256)
+default_size = Vector2(224, 200)
 door_variants = ExtResource("door_variants")
 
 [node name="Rooms" type="Node2D" parent="."]
@@ -197,7 +198,7 @@ script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 
 [node name="LeftWall" type="Node2D" parent="Rooms/LivingRoom/Placements/KitchenRun"]
-position = Vector2(64, 16)
+position = Vector2(64, 20)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -205,7 +206,7 @@ facing = 1
 [node name="Furniture" parent="Rooms/LivingRoom/Placements/KitchenRun/LeftWall" instance=ExtResource("set_kitchen_run")]
 
 [node name="RightWall" type="Node2D" parent="Rooms/LivingRoom/Placements/KitchenRun"]
-position = Vector2(64, 16)
+position = Vector2(64, 20)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -239,7 +240,7 @@ script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 
 [node name="LeftWall" type="Node2D" parent="Rooms/LivingRoom/Placements/DiningArea"]
-position = Vector2(152, 120)
+position = Vector2(176, 88)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -247,7 +248,7 @@ facing = 1
 [node name="Furniture" parent="Rooms/LivingRoom/Placements/DiningArea/LeftWall" instance=ExtResource("set_dining_area")]
 
 [node name="RightWall" type="Node2D" parent="Rooms/LivingRoom/Placements/DiningArea"]
-position = Vector2(152, 112)
+position = Vector2(184, 88)
 y_sort_enabled = true
 script = ExtResource("point")
 facing = 1
@@ -302,7 +303,7 @@ direction = 0
 position = Vector2(-20, -8)
 
 [node name="Plant" parent="Rooms/LivingRoom/Placements/SittingArea/LeftWall/Furniture" index="4"]
-position = Vector2(-48, 6)
+position = Vector2(-32, 6)
 
 [node name="RightWall" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea"]
 position = Vector2(168, 24)

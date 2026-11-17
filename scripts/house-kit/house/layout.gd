@@ -3,6 +3,7 @@ class_name HouseLayout
 extends Node2D
 
 @export var reference_size := Vector2(288, 256)
+@export var default_size := Vector2(240, 224)
 @export var door_variants: HouseDoorVariants
 
 var _size := Vector2.ZERO
@@ -103,6 +104,8 @@ func _capture_geometry() -> void:
 
 ## Adapts authored geometry without stretching door art or creating geometry.
 func resize_to(size: Vector2) -> void:
+	if size == Vector2.ZERO:
+		size = default_size
 	if size == _size:
 		return
 	if _reference.is_empty():

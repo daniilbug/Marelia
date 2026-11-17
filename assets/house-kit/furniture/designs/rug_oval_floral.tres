@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_oval_floral.png" id="albedo"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_oval_floral_approved.png" id="approved"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_oval_floral_materials.png" id="mask"]
+
+[sub_resource type="Resource" id="front"]
+script = ExtResource("view")
+albedo = ExtResource("albedo")
+material_mask = ExtResource("mask")
+approved_preview = ExtResource("approved")
+origin = Vector2(-28, -18)
+footprint = Vector2(52, 32)
+
+[resource]
+script = ExtResource("design")
+title = "Овальный цветочный"
+views = Array[ExtResource("view")]([SubResource("front")])

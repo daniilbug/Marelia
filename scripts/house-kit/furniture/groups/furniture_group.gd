@@ -35,10 +35,4 @@ func refresh() -> void:
 	if not is_node_ready() or style == null:
 		return
 	for piece in get_pieces():
-		if piece.designs.size() > 1 and piece.get("style") is int:
-			var design := mini(style.design, piece.designs.size() - 1)
-			if piece.get("style") != design:
-				piece.set("style", design)
-		for field in FurniturePiece.MATERIAL_COLORS:
-			if (piece.paintable_materials & (1 << FurniturePiece.MATERIAL_COLORS[field])) != 0 and piece.get(field) != style.get(field):
-				piece.set(field, style.get(field))
+		piece.apply_group_style(style)

@@ -22,14 +22,14 @@ position = Vector2(0, 0)
 position = Vector2(0, 12)
 
 [node name="LeftBedside" parent="." instance=ExtResource("bedside_table")]
-position = Vector2(-20, -16)
+position = Vector2(-30, -16)
 
 [node name="Lamp" parent="LeftBedside" instance=ExtResource("table_lamp")]
 position = Vector2(0, -14)
 blocks_movement = false
 
 [node name="RightBedside" parent="." instance=ExtResource("bedside_table")]
-position = Vector2(20, -16)
+position = Vector2(30, -16)
 
 [node name="Lamp" parent="RightBedside" instance=ExtResource("table_lamp")]
 position = Vector2(0, -14)
@@ -39,7 +39,7 @@ blocks_movement = false
 position = Vector2(52, -20)
 
 [node name="Landscape" parent="." instance=ExtResource("wall_painting")]
-position = Vector2(0, -40)
+position = Vector2(0, -50)
 z_index = 1
 
 [node name="StorageChest" parent="." instance=ExtResource("storage_chest")]

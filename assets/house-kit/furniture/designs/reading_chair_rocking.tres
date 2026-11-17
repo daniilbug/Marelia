@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking.png" id="albedo"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_approved.png" id="approved"]
+[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_materials.png" id="mask"]
+
+[sub_resource type="Resource" id="front"]
+script = ExtResource("view")
+albedo = ExtResource("albedo")
+material_mask = ExtResource("mask")
+approved_preview = ExtResource("approved")
+origin = Vector2(-10, -22)
+footprint = Vector2(14, 10)
+
+[resource]
+script = ExtResource("design")
+title = "Rocking reading chair"
+views = Array[ExtResource("view")]([SubResource("front")])

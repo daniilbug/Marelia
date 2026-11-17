@@ -3,8 +3,10 @@ class_name HouseFurnitureStyle
 extends Resource
 
 enum Design { RUSTIC, CLASSIC, DECORATIVE }
+enum RugDesign { GEOMETRIC, MEDALLION, WOVEN_STRIPES, OVAL_FLORAL }
+enum PaintingDesign { COUNTRYSIDE, HARBOR, VINEYARD, LEMONS }
 
-const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster_color", "stone_color", "roof_color"]
+const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster_color", "stone_color", "roof_color", "rug_style", "painting_style", "pattern_color"]
 
 @export var design: Design = Design.RUSTIC:
 	set(value):
@@ -47,6 +49,26 @@ const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster
 		if roof_color == value:
 			return
 		roof_color = value
+		emit_changed()
+
+@export_group("Decoration")
+@export var rug_style: RugDesign = RugDesign.GEOMETRIC:
+	set(value):
+		if rug_style == value:
+			return
+		rug_style = value
+		emit_changed()
+@export var painting_style: PaintingDesign = PaintingDesign.COUNTRYSIDE:
+	set(value):
+		if painting_style == value:
+			return
+		painting_style = value
+		emit_changed()
+@export_color_no_alpha var pattern_color := Color("d2bd97"):
+	set(value):
+		if pattern_color == value:
+			return
+		pattern_color = value
 		emit_changed()
 
 func _init() -> void:
