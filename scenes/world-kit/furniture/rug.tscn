@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/rug.gd" id="script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/rug_geometric_terracotta.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/rug_medallion.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/rug_woven_stripes.tres" id="design_2"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/rug_oval_floral.tres" id="design_3"]
+
+[node name="Rug" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2"), ExtResource("design_3")])
+paintable_materials = 12
+paint_color = Color(0.8235294, 0.7411765, 0.5921569, 1)
+fabric_color = Color(0.701960784, 0.466666667, 0.349019608, 1)
+blocks_movement = false
+z_index = -1

@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/dresser.gd" id="script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dresser_three_drawers.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dresser_split_top_drawers.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dresser_two_deep_drawers.tres" id="design_2"]
+
+[node name="Dresser" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+paintable_materials = 2

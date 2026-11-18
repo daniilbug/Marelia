@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/utility_cover.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/storm_drain.tres" id="design_0"]
+
+[node name="UtilityCover" instance=ExtResource("base")]
+z_index = -19
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 2
+body_color = Color(0.407843137, 0.443137255, 0.364705882, 1)

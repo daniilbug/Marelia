@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic.png" id="sprite"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic_materials.png" id="mask"]
+
+[sub_resource type="CapsuleShape2D" id="footprint"]
+radius = 1.5
+height = 6.0
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+material_mask = ExtResource("mask")
+source_body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+origin = Vector2(-4, -11)
+footprint = Vector2(6, 3)
+footprint_shape = SubResource("footprint")
+footprint_rotation = 1.570796327

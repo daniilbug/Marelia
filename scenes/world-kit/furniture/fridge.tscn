@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/occluding_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/kitchen_fridge_enamel.tres" id="design_0"]
+
+[node name="Fridge" instance=ExtResource("base")]
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 4
+paint_color = Color(0.847058824, 0.819607843, 0.694117647, 1)

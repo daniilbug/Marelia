@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HouseFurnitureStyle" format=3 uid="uid://scrf54ltn0or"]
+
+[ext_resource type="Script" uid="uid://w1yrdb2l0v7x" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Rustic"
+script = ExtResource("style")
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+rug_style = 1
+painting_style = null
+pattern_color = null

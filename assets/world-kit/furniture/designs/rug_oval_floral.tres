@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://d2qsn3frxh0dp"]
+
+[ext_resource type="Texture2D" uid="uid://dsviw6gnofg41" path="res://assets/world-kit/furniture/sprites/rug_oval_floral.png" id="albedo"]
+[ext_resource type="Texture2D" uid="uid://d1ii6oeq7iwfa" path="res://assets/world-kit/furniture/sprites/rug_oval_floral_approved.png" id="approved"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Texture2D" uid="uid://chp1m1qkr22wy" path="res://assets/world-kit/furniture/sprites/rug_oval_floral_materials.png" id="mask"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+
+[sub_resource type="Resource" id="front"]
+script = ExtResource("view")
+albedo = ExtResource("albedo")
+material_mask = ExtResource("mask")
+approved_preview = ExtResource("approved")
+origin = Vector2(-28, -18)
+footprint = Vector2(52, 32)
+
+[resource]
+script = ExtResource("design")
+title = "Овальный цветочный"
+views = Array[ExtResource("view")]([SubResource("front")])

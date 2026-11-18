@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/fire_hydrant.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/fire_hydrant_classic.tres" id="design_0"]
+
+[node name="FireHydrant" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color = Color(0.713725490, 0.364705882, 0.294117647, 1)
+caps_color = Color(0.658823529, 0.647058824, 0.549019608, 1)
+footprint_offset = Vector2(-0.5, 0)

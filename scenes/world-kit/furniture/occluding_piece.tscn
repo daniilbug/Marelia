@@ -1,0 +1,8 @@
+[gd_scene format=3]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
+[node name="OccludingPiece" instance=ExtResource("base")]
+supports_transparency = true
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+shape = null
+targets = Array[NodePath]([NodePath("../Sprite")])

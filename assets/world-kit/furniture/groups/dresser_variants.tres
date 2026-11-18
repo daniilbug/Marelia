@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HouseFurnitureVariants" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_variants.gd" id="variants"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="rustic"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/classic.tres" id="classic"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/decorative.tres" id="decorative"]
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([ExtResource("rustic"), ExtResource("classic"), ExtResource("decorative")])
+painting_variants = Array[int]([0, 1, 2, 3])
+wall_decoration_variants = Array[int]([0, 1])

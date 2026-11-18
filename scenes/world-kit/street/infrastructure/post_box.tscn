@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/post_box.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/post_box_rectangular.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/post_box_arched.tres" id="design_1"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="transparency"]
+
+[node name="PostBox" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1")])
+supports_transparency = true
+body_color = Color(0.725490196, 0.431372549, 0.360784314, 1)
+
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("transparency")]
+targets = Array[NodePath]([NodePath("../Sprite")])

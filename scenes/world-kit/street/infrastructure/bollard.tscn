@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/bollard.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/bollard_classic.tres" id="design_0"]
+
+[node name="Bollard" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 2
+body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+footprint_offset = Vector2(-0.5, 0)

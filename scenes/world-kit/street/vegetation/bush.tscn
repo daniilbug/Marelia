@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/vegetation/bush.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/oleander_bush.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/lavender_bush.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/rosemary_bush.tres" id="design_2"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/hydrangea_bush.tres" id="design_3"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="transparency"]
+
+[node name="Bush" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2"), ExtResource("design_3")])
+paintable_materials = 0
+supports_transparency = true
+footprint_offset = Vector2(-0.5, 0)
+
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("transparency")]
+targets = Array[NodePath]([NodePath("../Sprite")])

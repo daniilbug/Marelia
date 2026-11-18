@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bl83237xwwyh8"]
+
+[ext_resource type="PackedScene" uid="uid://cakjcaemq3583" path="res://scenes/world-kit/furniture/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dining_table.tscn" id="dining_table"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/flower_vase.tscn" id="flower_vase"]
+[ext_resource type="Script" uid="uid://d5xd3qj51nsx" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" uid="uid://scrf54ltn0or" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="style"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kltv"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvqx"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4drx3"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iuyn"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[node name="DiningArea" type="Node2D" unique_id=1317672112]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("LeftChair"): true,
+NodePath("FrontChair"): true
+})
+style = ExtResource("style")
+
+[node name="DiningTable" parent="." unique_id=1627651748 instance=ExtResource("dining_table")]
+style = 0
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+
+[node name="Flowers" parent="DiningTable" unique_id=2112181512 instance=ExtResource("flower_vase")]
+position = Vector2(0, -21)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+blocks_movement = false
+
+[node name="LeftChair" parent="." unique_id=515408493 instance=ExtResource("chair")]
+position = Vector2(-24, -4)
+direction = 3
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_8kltv")
+footprint_offset = Vector2(0, -4)
+
+[node name="RightChair" parent="." unique_id=111092619 instance=ExtResource("chair")]
+position = Vector2(24, -4)
+direction = 2
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_fkvqx")
+footprint_offset = Vector2(0, -4)
+
+[node name="BackChair" parent="." unique_id=2120837518 instance=ExtResource("chair")]
+position = Vector2(0, -20)
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_4drx3")
+footprint_offset = Vector2(0, -4)
+
+[node name="FrontChair" parent="." unique_id=1363696149 instance=ExtResource("chair")]
+position = Vector2(0, 11)
+direction = 1
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_6iuyn")
+footprint_offset = Vector2(0, -4)

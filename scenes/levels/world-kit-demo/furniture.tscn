@@ -1,0 +1,1403 @@
+[gd_scene format=3 uid="uid://b6pvggbwbeah1"]
+
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="asset_1"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/furniture/sprites/surfaces/floor_wood.png" id="asset_2"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/furniture/sprites/surfaces/wall.png" id="asset_3"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bed.tscn" id="asset_4"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bedside_table.tscn" id="asset_5"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wardrobe.tscn" id="asset_6"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dresser.tscn" id="asset_7"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/storage_chest.tscn" id="asset_8"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/laundry_basket.tscn" id="asset_9"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/sofa.tscn" id="asset_10"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/armchair.tscn" id="asset_11"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/reading_chair.tscn" id="asset_12"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/coffee_table.tscn" id="asset_13"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/fireplace.tscn" id="asset_14"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/rug.tscn" id="asset_15"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dining_table.tscn" id="asset_16"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/sideboard.tscn" id="asset_17"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_cart.tscn" id="asset_18"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/chair.tscn" id="asset_19"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_base.tscn" id="asset_20"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_sink.tscn" id="asset_21"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/cooker.tscn" id="asset_22"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/fridge.tscn" id="asset_23"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="asset_24"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_cabinet.tscn" id="asset_25"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_shelf.tscn" id="asset_26"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/cooker_hood.tscn" id="asset_27"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/desk.tscn" id="asset_28"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bookcase.tscn" id="asset_29"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/table_lamp.tscn" id="asset_30"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/potted_plant.tscn" id="asset_31"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/flower_vase.tscn" id="asset_32"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_sconce.tscn" id="asset_33"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_mirror.tscn" id="asset_34"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_clock.tscn" id="asset_35"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_painting.tscn" id="asset_36"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/coat_rack.tscn" id="asset_37"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/shoe_bench.tscn" id="asset_38"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/washstand.tscn" id="asset_39"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/entrance_step.tscn" id="asset_40"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/furniture/sprites/surfaces/roof_tile.png" id="asset_41"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/chimney.tscn" id="asset_42"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/exterior_lantern.tscn" id="asset_43"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/mailbox.tscn" id="asset_44"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/window_flower_box.tscn" id="asset_45"]
+[ext_resource type="Shader" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="asset_54"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="asset_55"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="asset_56"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_narrow_albedo.png" id="asset_57"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_narrow_materials.png" id="asset_58"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_chevron_albedo.png" id="asset_59"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_chevron_materials.png" id="asset_60"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_basket_albedo.png" id="asset_61"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_basket_materials.png" id="asset_62"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_terracotta_albedo.png" id="asset_63"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_terracotta_materials.png" id="asset_64"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_ornament_albedo.png" id="asset_65"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_ornament_materials.png" id="asset_66"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_checker_albedo.png" id="asset_67"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_checker_materials.png" id="asset_68"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_octagon_albedo.png" id="asset_69"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_octagon_materials.png" id="asset_70"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_maiolica_albedo.png" id="asset_71"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_maiolica_materials.png" id="asset_72"]
+
+[sub_resource type="RectangleShape2D" id="stand_base"]
+size = Vector2(56, 4)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 24)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="TransparencyArea_shape"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
+[sub_resource type="ShaderMaterial" id="palette_31"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_56")
+shader_parameter/wood_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/stone_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/roof_color = Color(0.68235294, 0.49019608, 0.27450980, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_32"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_58")
+shader_parameter/wood_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/stone_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/roof_color = Color(0.68627451, 0.52549020, 0.34117647, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_33"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_60")
+shader_parameter/wood_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/stone_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/roof_color = Color(0.55294118, 0.47450980, 0.38039216, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_34"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_62")
+shader_parameter/wood_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/stone_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/roof_color = Color(0.72549020, 0.56862745, 0.39607843, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_35"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_64")
+shader_parameter/wood_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/stone_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/roof_color = Color(0.72156863, 0.46274510, 0.30588235, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.58823529, 0.40392157, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_36"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_66")
+shader_parameter/wood_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/stone_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/roof_color = Color(0.70588235, 0.66666667, 0.54117647, 1)
+shader_parameter/paint_color = Color(0.39215686, 0.49803922, 0.37647059, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_37"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_68")
+shader_parameter/wood_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/stone_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/roof_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/paint_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_38"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_70")
+shader_parameter/wood_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/stone_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/roof_color = Color(0.71764706, 0.77254902, 0.66666667, 1)
+shader_parameter/paint_color = Color(0.66666667, 0.45882353, 0.36862745, 1)
+
+[sub_resource type="ShaderMaterial" id="palette_39"]
+resource_local_to_scene = true
+shader = ExtResource("asset_54")
+shader_parameter/material_mask = ExtResource("asset_72")
+shader_parameter/wood_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/stone_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/roof_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
+shader_parameter/paint_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
+
+[node name="HouseFurniture" instance=ExtResource("asset_1")]
+scale = Vector2(4, 4)
+level_id = "world_kit_furniture"
+
+[node name="BottomLeft" parent="LevelBounds" index="0"]
+position = Vector2(0, 1344)
+
+[node name="TopRight" parent="LevelBounds" index="1"]
+position = Vector2(1104, 0)
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(32, 48)
+
+[node name="Floor" parent="." type="Sprite2D"]
+z_index = -10
+modulate = Color(0.55, 0.55, 0.55, 1)
+texture_repeat = 2
+texture = ExtResource("asset_2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1104, 1344)
+
+[node name="Exhibits" parent="." type="Node2D"]
+y_sort_enabled = true
+
+[node name="Furniture" parent="Exhibits" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Bedroom" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 112)
+y_sort_enabled = true
+
+[node name="Bed" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(72, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(152, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(232, 0)
+style = 2
+
+[node name="CustomColors" parent="Exhibits/Furniture/Bedroom/Bed" instance=ExtResource("asset_4")]
+position = Vector2(312, 0)
+fabric_color = Color(0.25, 0.46, 0.60, 1)
+style = 0
+
+[node name="BedsideTable" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(392, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(472, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/BedsideTable" instance=ExtResource("asset_5")]
+position = Vector2(552, 0)
+style = 2
+
+[node name="Wardrobe" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(632, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(712, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Wardrobe" instance=ExtResource("asset_6")]
+position = Vector2(792, 0)
+style = 2
+
+[node name="Dresser" parent="Exhibits/Furniture/Bedroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(872, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(952, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/Bedroom/Dresser" instance=ExtResource("asset_7")]
+position = Vector2(1032, 0)
+style = 2
+
+[node name="Storage" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 192)
+y_sort_enabled = true
+
+[node name="StorageChest" parent="Exhibits/Furniture/Storage" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Storage/StorageChest" instance=ExtResource("asset_8")]
+position = Vector2(72, 0)
+
+[node name="LaundryBasket" parent="Exhibits/Furniture/Storage" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Storage/LaundryBasket" instance=ExtResource("asset_9")]
+position = Vector2(152, 0)
+
+[node name="Sofas" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 304)
+y_sort_enabled = true
+
+[node name="Sofa" parent="Exhibits/Furniture/Sofas" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(712, 0)
+style = 2
+direction = 0
+
+[node name="Style3Up" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="CustomColors" parent="Exhibits/Furniture/Sofas/Sofa" instance=ExtResource("asset_10")]
+position = Vector2(1032, 0)
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.38, 0.54, 0.35, 1)
+style = 0
+direction = 0
+
+[node name="Armchairs" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 384)
+y_sort_enabled = true
+
+[node name="Armchair" parent="Exhibits/Furniture/Armchairs" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(712, 0)
+style = 2
+direction = 0
+
+[node name="Style3Up" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Armchairs/Armchair" instance=ExtResource("asset_11")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="LivingRoom" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 464)
+y_sort_enabled = true
+
+[node name="ReadingChair" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/ReadingChair" instance=ExtResource("asset_12")]
+position = Vector2(72, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/ReadingChair" instance=ExtResource("asset_12")]
+position = Vector2(152, 0)
+style = 1
+
+[node name="CoffeeTable" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(232, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(312, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/LivingRoom/CoffeeTable" instance=ExtResource("asset_13")]
+position = Vector2(392, 0)
+style = 2
+
+[node name="Fireplace" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/Fireplace" instance=ExtResource("asset_14")]
+position = Vector2(472, 0)
+burning = false
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/Fireplace" instance=ExtResource("asset_14")]
+position = Vector2(552, 0)
+burning = true
+
+[node name="Rug" parent="Exhibits/Furniture/LivingRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(632, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(712, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(792, 0)
+style = 2
+
+[node name="Style4" parent="Exhibits/Furniture/LivingRoom/Rug" instance=ExtResource("asset_15")]
+position = Vector2(872, 0)
+style = 3
+
+[node name="DiningTables" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 576)
+y_sort_enabled = true
+
+[node name="DiningTable" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(72, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(152, 0)
+style = 1
+
+[node name="Style3" parent="Exhibits/Furniture/DiningTables/DiningTable" instance=ExtResource("asset_16")]
+position = Vector2(232, 0)
+style = 2
+
+[node name="Sideboard" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/Sideboard" instance=ExtResource("asset_17")]
+position = Vector2(312, 0)
+
+[node name="KitchenCart" parent="Exhibits/Furniture/DiningTables" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/DiningTables/KitchenCart" instance=ExtResource("asset_18")]
+position = Vector2(392, 0)
+
+[node name="Chairs" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 656)
+y_sort_enabled = true
+
+[node name="Chair" parent="Exhibits/Furniture/Chairs" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Style3Down" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(712, 0)
+style = 2
+direction = 0
+
+[node name="Style3Up" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(792, 0)
+style = 2
+direction = 1
+
+[node name="Style3Left" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(872, 0)
+style = 2
+direction = 2
+
+[node name="Style3Right" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(952, 0)
+style = 2
+direction = 3
+
+[node name="CustomColors" parent="Exhibits/Furniture/Chairs/Chair" instance=ExtResource("asset_19")]
+position = Vector2(1032, 0)
+wood_color = Color(0.38, 0.29, 0.22, 1)
+fabric_color = Color(0.72, 0.59, 0.29, 1)
+style = 1
+direction = 0
+
+[node name="Kitchen" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 768)
+y_sort_enabled = true
+
+[node name="KitchenBase" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/KitchenBase" instance=ExtResource("asset_20")]
+position = Vector2(72, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/KitchenBase" instance=ExtResource("asset_20")]
+position = Vector2(152, 0)
+style = 1
+
+[node name="KitchenSink" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/KitchenSink" instance=ExtResource("asset_21")]
+position = Vector2(232, 0)
+
+[node name="Cooker" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/Cooker" instance=ExtResource("asset_22")]
+position = Vector2(312, 0)
+
+[node name="CustomColors" parent="Exhibits/Furniture/Kitchen/Cooker" instance=ExtResource("asset_22")]
+position = Vector2(392, 0)
+paint_color = Color(0.39, 0.53, 0.58, 1)
+
+[node name="Fridge" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/Fridge" instance=ExtResource("asset_23")]
+position = Vector2(472, 0)
+
+[node name="WallCabinet" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(552, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style1Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
+style = 0
+
+[node name="Style2Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(632, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style2Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
+style = 1
+
+[node name="Style3Stand" parent="Exhibits/Furniture/Kitchen/WallCabinet" type="StaticBody2D"]
+position = Vector2(712, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style3" parent="Exhibits/Furniture/Kitchen/WallCabinet/Style3Stand/Visuals" instance=ExtResource("asset_25")]
+position = Vector2(0, -10)
+style = 2
+
+[node name="WallShelf" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/WallShelf" type="StaticBody2D"]
+position = Vector2(792, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/WallShelf/Style1Stand/Visuals" instance=ExtResource("asset_26")]
+position = Vector2(0, -10)
+style = 0
+
+[node name="Style2Stand" parent="Exhibits/Furniture/Kitchen/WallShelf" type="StaticBody2D"]
+position = Vector2(872, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style2" parent="Exhibits/Furniture/Kitchen/WallShelf/Style2Stand/Visuals" instance=ExtResource("asset_26")]
+position = Vector2(0, -10)
+style = 1
+
+[node name="CookerHood" parent="Exhibits/Furniture/Kitchen" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Kitchen/CookerHood" type="StaticBody2D"]
+position = Vector2(952, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Kitchen/CookerHood/Style1Stand/Visuals" instance=ExtResource("asset_27")]
+position = Vector2(0, -8)
+
+[node name="Study" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 880)
+y_sort_enabled = true
+
+[node name="Desk" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Study/Desk" instance=ExtResource("asset_28")]
+position = Vector2(72, 0)
+
+[node name="Bookcase" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Study/Bookcase" instance=ExtResource("asset_29")]
+position = Vector2(152, 0)
+style = 0
+
+[node name="Style2" parent="Exhibits/Furniture/Study/Bookcase" instance=ExtResource("asset_29")]
+position = Vector2(232, 0)
+style = 1
+
+[node name="TableLamp" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Display" parent="Exhibits/Furniture/Study/TableLamp" type="Node2D"]
+position = Vector2(312, 0)
+y_sort_enabled = true
+
+[node name="Support" parent="Exhibits/Furniture/Study/TableLamp/Style1Display" instance=ExtResource("asset_5")]
+style = 0
+
+[node name="Style1" parent="Exhibits/Furniture/Study/TableLamp/Style1Display" instance=ExtResource("asset_30")]
+position = Vector2(0, -14)
+blocks_movement = false
+
+[node name="PottedPlant" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Display" parent="Exhibits/Furniture/Study/PottedPlant" type="Node2D"]
+position = Vector2(392, 0)
+y_sort_enabled = true
+
+[node name="Support" parent="Exhibits/Furniture/Study/PottedPlant/Style1Display" instance=ExtResource("asset_5")]
+style = 0
+
+[node name="Style1" parent="Exhibits/Furniture/Study/PottedPlant/Style1Display" instance=ExtResource("asset_31")]
+position = Vector2(0, -14)
+blocks_movement = false
+
+[node name="FlowerVase" parent="Exhibits/Furniture/Study" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Display" parent="Exhibits/Furniture/Study/FlowerVase" type="Node2D"]
+position = Vector2(472, 0)
+y_sort_enabled = true
+
+[node name="Support" parent="Exhibits/Furniture/Study/FlowerVase/Style1Display" instance=ExtResource("asset_5")]
+style = 0
+
+[node name="Style1" parent="Exhibits/Furniture/Study/FlowerVase/Style1Display" instance=ExtResource("asset_32")]
+position = Vector2(0, -14)
+blocks_movement = false
+
+[node name="WallDecor" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 992)
+y_sort_enabled = true
+
+[node name="WallSconce" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallSconce" type="StaticBody2D"]
+position = Vector2(72, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallSconce/Style1Stand/Visuals" instance=ExtResource("asset_33")]
+position = Vector2(0, -14)
+
+[node name="WallMirror" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallMirror" type="StaticBody2D"]
+position = Vector2(152, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallMirror/Style1Stand/Visuals" instance=ExtResource("asset_34")]
+position = Vector2(0, -9)
+
+[node name="WallClock" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallClock" type="StaticBody2D"]
+position = Vector2(232, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallClock/Style1Stand/Visuals" instance=ExtResource("asset_35")]
+position = Vector2(0, -11.5)
+
+[node name="WallPainting" parent="Exhibits/Furniture/WallDecor" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(312, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/WallDecor/WallPainting/Style1Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 0
+
+[node name="Style2Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(392, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style2" parent="Exhibits/Furniture/WallDecor/WallPainting/Style2Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 1
+
+[node name="Style3Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(472, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style3" parent="Exhibits/Furniture/WallDecor/WallPainting/Style3Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 2
+
+[node name="Style4Stand" parent="Exhibits/Furniture/WallDecor/WallPainting" type="StaticBody2D"]
+position = Vector2(552, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style4" parent="Exhibits/Furniture/WallDecor/WallPainting/Style4Stand/Visuals" instance=ExtResource("asset_36")]
+position = Vector2(0, -10)
+style = 3
+
+[node name="Entrance" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 1104)
+y_sort_enabled = true
+
+[node name="CoatRack" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/CoatRack" type="StaticBody2D"]
+position = Vector2(72, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/CoatRack/Style1Stand/Visuals" instance=ExtResource("asset_37")]
+position = Vector2(0, -14)
+
+[node name="ShoeBench" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/ShoeBench" instance=ExtResource("asset_38")]
+position = Vector2(152, 0)
+
+[node name="Washstand" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Washstand" instance=ExtResource("asset_39")]
+position = Vector2(232, 0)
+
+[node name="EntranceStep" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/EntranceStep" instance=ExtResource("asset_40")]
+position = Vector2(312, 0)
+
+[node name="Chimney" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/Chimney" type="StaticBody2D"]
+position = Vector2(392, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -24)
+texture_repeat = 2
+texture = ExtResource("asset_41")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 24)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -12)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Chimney/Style1Stand/Visuals" instance=ExtResource("asset_42")]
+position = Vector2(0, -12)
+
+[node name="ExteriorLantern" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/ExteriorLantern" type="StaticBody2D"]
+position = Vector2(472, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/ExteriorLantern/Style1Stand/Visuals" instance=ExtResource("asset_43")]
+position = Vector2(0, -12)
+
+[node name="Mailbox" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/Mailbox" type="StaticBody2D"]
+position = Vector2(552, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/Mailbox/Style1Stand/Visuals" instance=ExtResource("asset_44")]
+position = Vector2(0, -13)
+
+[node name="WindowFlowerBox" parent="Exhibits/Furniture/Entrance" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Stand" parent="Exhibits/Furniture/Entrance/WindowFlowerBox" type="StaticBody2D"]
+position = Vector2(632, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand" instance=ExtResource("asset_24") node_paths=PackedStringArray("targets")]
+position = Vector2(0, -16)
+shape = SubResource("TransparencyArea_shape")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand/Visuals" instance=ExtResource("asset_45")]
+position = Vector2(0, -12)
+
+[node name="Materials" parent="Exhibits" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Floors" parent="Exhibits/Materials" type="Node2D"]
+y_sort_enabled = true
+
+[node name="FloorWood" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(24, 1216)
+z_index = -9
+material = SubResource("palette_31")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_55")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodNarrow" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(136, 1216)
+z_index = -9
+material = SubResource("palette_32")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_57")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodChevron" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(248, 1216)
+z_index = -9
+material = SubResource("palette_33")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_59")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorWoodBasket" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(360, 1216)
+z_index = -9
+material = SubResource("palette_34")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_61")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTerracotta" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(472, 1216)
+z_index = -9
+material = SubResource("palette_35")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_63")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorOrnament" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(584, 1216)
+z_index = -9
+material = SubResource("palette_36")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_65")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileChecker" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(696, 1216)
+z_index = -9
+material = SubResource("palette_37")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_67")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileOctagon" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(808, 1216)
+z_index = -9
+material = SubResource("palette_38")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_69")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)
+
+[node name="FloorTileMaiolica" parent="Exhibits/Materials/Floors" type="Sprite2D"]
+position = Vector2(920, 1216)
+z_index = -9
+material = SubResource("palette_39")
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("asset_71")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 64)

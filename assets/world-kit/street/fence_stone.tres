@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StreetFenceDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/fence_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/fence_stone.png" id="sprite"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/fence_stone_materials.png" id="mask"]
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+material_mask = ExtResource("mask")
+source_body_color = Color(0.737254902, 0.701960784, 0.584313725, 1)
+origin = Vector2(0, -15)
+footprint = Vector2(32, 4)
+occlusion_rect = Rect2(0, -14, 32, 12)
+section_step = 32

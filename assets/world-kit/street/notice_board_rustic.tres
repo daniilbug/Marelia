@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic.png" id="sprite"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic_materials.png" id="mask"]
+
+[sub_resource type="CapsuleShape2D" id="footprint"]
+radius = 3.0
+height = 18.0
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+material_mask = ExtResource("mask")
+source_body_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
+source_support_color = Color(0.682352941, 0.423529412, 0.321568627, 1)
+origin = Vector2(-12, -24)
+footprint = Vector2(18, 6)
+footprint_shape = SubResource("footprint")
+footprint_rotation = 1.570796327
+occlusion_rect = Rect2(-11, -23, 22, 21)

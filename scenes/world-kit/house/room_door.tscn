@@ -1,0 +1,47 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/world-kit/house/room_door.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="transparency"]
+[sub_resource type="CircleShape2D" id="reach"]
+radius = 12.0
+[sub_resource type="RectangleShape2D" id="blocker"]
+resource_local_to_scene = true
+size = Vector2(24, 4)
+[sub_resource type="RectangleShape2D" id="zone"]
+resource_local_to_scene = true
+size = Vector2(24, 28)
+[sub_resource type="RectangleShape2D" id="left_zone"]
+resource_local_to_scene = true
+size = Vector2(12, 28)
+[sub_resource type="RectangleShape2D" id="right_zone"]
+resource_local_to_scene = true
+size = Vector2(12, 28)
+[node name="RoomDoor" type="Node2D" node_paths=PackedStringArray("blockers")]
+script = ExtResource("script")
+blockers = Array[NodePath]([NodePath("Blocker/Collision")])
+[node name="Area" type="Area2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+shape = SubResource("reach")
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(-28, -32)
+centered = false
+[node name="Open" type="Sprite2D" parent="."]
+position = Vector2(-28, -32)
+centered = false
+visible = false
+[node name="Blocker" type="StaticBody2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="Blocker"]
+shape = SubResource("blocker")
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("transparency")]
+shape = SubResource("zone")
+targets = Array[NodePath]([NodePath("../Closed"), NodePath("../Open")])
+inside_alpha = 0.3
+[node name="Shape" parent="TransparencyArea" index="0"]
+position = Vector2(0, -14)
+[node name="LeftLeaf" type="CollisionShape2D" parent="TransparencyArea"]
+position = Vector2(-18, -14)
+shape = SubResource("left_zone")
+disabled = true
+[node name="RightLeaf" type="CollisionShape2D" parent="TransparencyArea"]
+position = Vector2(18, -14)
+shape = SubResource("right_zone")
+disabled = true

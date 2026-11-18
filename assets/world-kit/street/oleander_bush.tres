@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/vegetation/oleander_bush.png" id="sprite"]
+
+[sub_resource type="CapsuleShape2D" id="footprint"]
+radius = 4.0
+height = 20.0
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+origin = Vector2(-16, -23)
+footprint = Vector2(20, 8)
+footprint_shape = SubResource("footprint")
+footprint_rotation = 1.5707964
+occlusion_rect = Rect2(-14.5, -19, 28, 14)

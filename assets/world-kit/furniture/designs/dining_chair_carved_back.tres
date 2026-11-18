@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://bhub0uycg2uwv"]
+
+[ext_resource type="Texture2D" uid="uid://dqe0uvqr801ar" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_down.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://d3c2b6ql0kbbi" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_up.png" id="albedo_1"]
+[ext_resource type="Texture2D" uid="uid://babl25vfi43an" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_left.png" id="albedo_2"]
+[ext_resource type="Texture2D" uid="uid://detno3bcct84w" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_right.png" id="albedo_3"]
+[ext_resource type="Texture2D" uid="uid://bn241r2iqr68p" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_down_approved.png" id="approved_0"]
+[ext_resource type="Texture2D" uid="uid://rb282dw5hwwh" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_up_approved.png" id="approved_1"]
+[ext_resource type="Texture2D" uid="uid://cw3jjaawf5nng" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_left_approved.png" id="approved_2"]
+[ext_resource type="Texture2D" uid="uid://b8jnl34ikak1n" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_right_approved.png" id="approved_3"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://cwupwd2c02ebu" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_down_materials.png" id="mask_0"]
+[ext_resource type="Texture2D" uid="uid://bsoen5oqa1yxg" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_up_materials.png" id="mask_1"]
+[ext_resource type="Texture2D" uid="uid://dpurcgu4rn52v" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_left_materials.png" id="mask_2"]
+[ext_resource type="Texture2D" uid="uid://5i3v8a8xf3nt" path="res://assets/world-kit/furniture/sprites/dining_chair_carved_back_right_materials.png" id="mask_3"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-7, -18)
+footprint = Vector2(10, 8)
+
+[sub_resource type="Resource" id="view_1"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_1")
+material_mask = ExtResource("mask_1")
+approved_preview = ExtResource("approved_1")
+origin = Vector2(-7, -18)
+footprint = Vector2(10, 8)
+
+[sub_resource type="Resource" id="view_2"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_2")
+material_mask = ExtResource("mask_2")
+approved_preview = ExtResource("approved_2")
+origin = Vector2(-7, -18)
+footprint = Vector2(10, 8)
+
+[sub_resource type="Resource" id="view_3"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_3")
+material_mask = ExtResource("mask_3")
+approved_preview = ExtResource("approved_3")
+origin = Vector2(-7, -18)
+footprint = Vector2(10, 8)
+
+[resource]
+script = ExtResource("design_script")
+title = "Dining Chair Carved Back"
+views = Array[ExtResource("view_script")]([SubResource("view_0"), SubResource("view_1"), SubResource("view_2"), SubResource("view_3")])

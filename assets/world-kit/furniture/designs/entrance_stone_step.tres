@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://6suk75kwsq3j"]
+
+[ext_resource type="Texture2D" uid="uid://bwpxfchfcfgtf" path="res://assets/world-kit/furniture/sprites/entrance_stone_step.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://cx641kf83utsi" path="res://assets/world-kit/furniture/sprites/entrance_stone_step_approved.png" id="approved_0"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://bkb26ud7wxk2e" path="res://assets/world-kit/furniture/sprites/entrance_stone_step_materials.png" id="mask_0"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-15, -8)
+footprint = Vector2(30, 8)
+
+[resource]
+script = ExtResource("design_script")
+title = "Entrance Stone Step"
+views = Array[ExtResource("view_script")]([SubResource("view_0")])

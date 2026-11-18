@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/dresser_area.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dresser.tscn" id="dresser"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_clock.tscn" id="clock"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_painting.tscn" id="painting"]
+
+[node name="DresserArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+style = ExtResource("style")
+
+[node name="Dresser" parent="." instance=ExtResource("dresser")]
+
+[node name="Clock" parent="." instance=ExtResource("clock")]
+z_index = 1
+position = Vector2(0, -24)
+
+[node name="Painting" parent="." instance=ExtResource("painting")]
+visible = false
+process_mode = 4
+z_index = 1
+position = Vector2(0, -24)

@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/notice_board.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/notice_board_rustic.tres" id="design_0"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="transparency"]
+
+[node name="NoticeBoard" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+supports_transparency = true
+frame_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
+roof_color = Color(0.682352941, 0.423529412, 0.321568627, 1)
+footprint_offset = Vector2(-0.5, 0)
+
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("transparency")]
+targets = Array[NodePath]([NodePath("../Sprite")])

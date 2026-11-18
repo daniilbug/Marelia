@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HouseFurnitureStyle" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Decorative"
+script = ExtResource("style")
+design = 2
+wood_color = Color(0.69803922, 0.56862745, 0.40392157, 1)
+paint_color = Color(0.75686275, 0.71372549, 0.60392157, 1)
+fabric_color = Color(0.45490196, 0.55686275, 0.56862745, 1)

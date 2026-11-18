@@ -1,0 +1,611 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/surface.tscn" id="surface"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/tree.tscn" id="tree"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/bush.tscn" id="bush"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/flowers.tscn" id="flowers"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/grape_vine.tscn" id="vine"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/facade_plaster.png" id="wall"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/plinth_stone.png" id="plinth"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_panel_closed.png" id="door"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/awning.tscn" id="awning"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/shop_sign.tscn" id="shop_sign"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/post_box.tscn" id="post_box"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/litter_bin.tscn" id="litter_bin"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/bench.tscn" id="bench"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/street_lamp.tscn" id="street_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/drinking_fountain.tscn" id="drinking_fountain"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/fire_hydrant.tscn" id="fire_hydrant"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/bollard.tscn" id="bollard"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/notice_board.tscn" id="notice_board"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/utility_cover.tscn" id="utility_cover"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/fence.tscn" id="fence"]
+
+[sub_resource type="RectangleShape2D" id="wall_footprint"]
+size = Vector2(88, 6)
+
+[sub_resource type="RectangleShape2D" id="wall_occlusion"]
+size = Vector2(88, 44)
+
+[node name="StreetSample" instance=ExtResource("level")]
+scale = Vector2(4, 4)
+texture_filter = 1
+level_id = "world_kit_street"
+
+[node name="BottomLeft" parent="LevelBounds" index="0"]
+position = Vector2(0, 720)
+
+[node name="TopRight" parent="LevelBounds" index="1"]
+position = Vector2(704, 0)
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(352, 176)
+
+[node name="Surfaces" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Grass" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(0, 0)
+style = 0
+size = Vector2(704, 720)
+
+[node name="ShopfrontWalk" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(16, 136)
+style = 3
+size = Vector2(672, 56)
+
+[node name="GardenCrossing" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(312, 192)
+style = 3
+size = Vector2(24, 152)
+
+[node name="GardenWalk" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(16, 344)
+style = 3
+size = Vector2(672, 48)
+
+[node name="InfrastructurePlaza" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(16, 392)
+style = 3
+size = Vector2(672, 120)
+
+[node name="FenceCourt" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(16, 520)
+style = 4
+size = Vector2(672, 96)
+
+[node name="SurfaceWalk" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(16, 632)
+style = 3
+size = Vector2(672, 72)
+
+[node name="GrassSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(32, 640)
+style = 0
+size = Vector2(112, 64)
+
+[node name="DirtSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(164, 640)
+style = 1
+size = Vector2(112, 64)
+
+[node name="CobblestoneSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(296, 640)
+style = 2
+size = Vector2(112, 64)
+
+[node name="LimestoneSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(428, 640)
+style = 3
+size = Vector2(112, 64)
+
+[node name="GravelSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(560, 640)
+style = 4
+size = Vector2(112, 64)
+
+[node name="Shopfronts" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Striped" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(72, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Striped"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Striped"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Striped/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Striped/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Striped/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Striped/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 0
+
+[node name="ShopSign" parent="Shopfronts/Striped/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+
+[node name="TransparencyArea" parent="Shopfronts/Striped" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="Dome" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(184, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Dome"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Dome"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Dome/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Dome/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Dome/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Dome/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 1
+
+[node name="ShopSign" parent="Shopfronts/Dome/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+
+[node name="TransparencyArea" parent="Shopfronts/Dome" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="Straight" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(296, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Straight"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Straight"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Straight/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Straight/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Straight/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Straight/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 2
+
+[node name="ShopSign" parent="Shopfronts/Straight/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+
+[node name="TransparencyArea" parent="Shopfronts/Straight" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="StripedPainted" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(408, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/StripedPainted"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/StripedPainted"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/StripedPainted/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 0
+primary_color = Color(0.678431373, 0.380392157, 0.321568627, 1)
+secondary_color = Color(0.886274510, 0.788235294, 0.596078431, 1)
+
+[node name="ShopSign" parent="Shopfronts/StripedPainted/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+wood_color = Color(0.423529412, 0.505882353, 0.564705882, 1)
+metal_color = Color(0.329411765, 0.290196078, 0.243137255, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/StripedPainted" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="DomePainted" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(520, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/DomePainted"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/DomePainted"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/DomePainted/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 1
+primary_color = Color(0.678431373, 0.380392157, 0.321568627, 1)
+secondary_color = Color(0.886274510, 0.788235294, 0.596078431, 1)
+
+[node name="ShopSign" parent="Shopfronts/DomePainted/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+wood_color = Color(0.423529412, 0.505882353, 0.564705882, 1)
+metal_color = Color(0.329411765, 0.290196078, 0.243137255, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/DomePainted" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="StraightPainted" type="StaticBody2D" parent="Shopfronts"]
+position = Vector2(632, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/StraightPainted"]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/StraightPainted"]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals"]
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+texture_repeat = 2
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals"]
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+texture_repeat = 2
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals"]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/StraightPainted/Visuals" instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 2
+primary_color = Color(0.678431373, 0.380392157, 0.321568627, 1)
+secondary_color = Color(0.886274510, 0.788235294, 0.596078431, 1)
+
+[node name="ShopSign" parent="Shopfronts/StraightPainted/Visuals" instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+wood_color = Color(0.423529412, 0.505882353, 0.564705882, 1)
+metal_color = Color(0.329411765, 0.290196078, 0.243137255, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/StraightPainted" node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = Array[NodePath]([NodePath("../Visuals")])
+
+[node name="Vegetation" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="Vegetation"]
+y_sort_enabled = true
+
+[node name="Olive" parent="Vegetation/Trees" instance=ExtResource("tree")]
+position = Vector2(48, 304)
+style = 0
+
+[node name="Cypress" parent="Vegetation/Trees" instance=ExtResource("tree")]
+position = Vector2(104, 304)
+style = 1
+
+[node name="Lemon" parent="Vegetation/Trees" instance=ExtResource("tree")]
+position = Vector2(148, 304)
+style = 2
+
+[node name="Orange" parent="Vegetation/Trees" instance=ExtResource("tree")]
+position = Vector2(208, 304)
+style = 3
+
+[node name="Bushes" type="Node2D" parent="Vegetation"]
+y_sort_enabled = true
+
+[node name="Oleander" parent="Vegetation/Bushes" instance=ExtResource("bush")]
+position = Vector2(376, 256)
+style = 0
+
+[node name="Lavender" parent="Vegetation/Bushes" instance=ExtResource("bush")]
+position = Vector2(440, 256)
+style = 1
+
+[node name="Rosemary" parent="Vegetation/Bushes" instance=ExtResource("bush")]
+position = Vector2(504, 256)
+style = 2
+
+[node name="Hydrangea" parent="Vegetation/Bushes" instance=ExtResource("bush")]
+position = Vector2(568, 256)
+style = 3
+
+[node name="Flowers" type="Node2D" parent="Vegetation"]
+y_sort_enabled = true
+
+[node name="Daisies" parent="Vegetation/Flowers" instance=ExtResource("flowers")]
+position = Vector2(376, 312)
+style = 0
+
+[node name="Poppies" parent="Vegetation/Flowers" instance=ExtResource("flowers")]
+position = Vector2(424, 312)
+style = 1
+
+[node name="Sunflower" parent="Vegetation/Flowers" instance=ExtResource("flowers")]
+position = Vector2(472, 312)
+style = 2
+
+[node name="GrapeVines" type="Node2D" parent="Vegetation"]
+y_sort_enabled = true
+
+[node name="PurpleGrapes" parent="Vegetation/GrapeVines" instance=ExtResource("vine")]
+position = Vector2(552, 320)
+
+[node name="GreenGrapes" parent="Vegetation/GrapeVines" instance=ExtResource("vine")]
+position = Vector2(632, 320)
+wood_color = Color(0.439215686, 0.505882353, 0.415686275, 1)
+grape_color = Color(0.725490196, 0.733333333, 0.403921569, 1)
+
+[node name="Infrastructure" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PostBoxes" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Rectangular" parent="Infrastructure/PostBoxes" instance=ExtResource("post_box")]
+position = Vector2(48, 416)
+style = 0
+
+[node name="Arched" parent="Infrastructure/PostBoxes" instance=ExtResource("post_box")]
+position = Vector2(88, 416)
+style = 1
+
+[node name="RectangularPainted" parent="Infrastructure/PostBoxes" instance=ExtResource("post_box")]
+position = Vector2(128, 416)
+style = 0
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+support_color = Color(0.400000000, 0.325490196, 0.282352941, 1)
+
+[node name="ArchedPainted" parent="Infrastructure/PostBoxes" instance=ExtResource("post_box")]
+position = Vector2(168, 416)
+style = 1
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+support_color = Color(0.400000000, 0.325490196, 0.282352941, 1)
+
+[node name="LitterBins" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Open" parent="Infrastructure/LitterBins" instance=ExtResource("litter_bin")]
+position = Vector2(232, 416)
+style = 0
+
+[node name="Hooded" parent="Infrastructure/LitterBins" instance=ExtResource("litter_bin")]
+position = Vector2(272, 416)
+style = 1
+
+[node name="OpenPainted" parent="Infrastructure/LitterBins" instance=ExtResource("litter_bin")]
+position = Vector2(312, 416)
+style = 0
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+
+[node name="HoodedPainted" parent="Infrastructure/LitterBins" instance=ExtResource("litter_bin")]
+position = Vector2(352, 416)
+style = 1
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+
+[node name="Benches" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/Benches" instance=ExtResource("bench")]
+position = Vector2(432, 416)
+
+[node name="Painted" parent="Infrastructure/Benches" instance=ExtResource("bench")]
+position = Vector2(496, 416)
+body_color = Color(0.678431373, 0.380392157, 0.321568627, 1)
+support_color = Color(0.266666667, 0.360784314, 0.341176471, 1)
+
+[node name="StreetLamps" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Left" parent="Infrastructure/StreetLamps" instance=ExtResource("street_lamp")]
+position = Vector2(568, 416)
+
+[node name="Right" parent="Infrastructure/StreetLamps" instance=ExtResource("street_lamp")]
+position = Vector2(632, 416)
+
+[node name="DrinkingFountains" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/DrinkingFountains" instance=ExtResource("drinking_fountain")]
+position = Vector2(48, 488)
+
+[node name="Painted" parent="Infrastructure/DrinkingFountains" instance=ExtResource("drinking_fountain")]
+position = Vector2(96, 488)
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+tap_color = Color(0.690196078, 0.713725490, 0.650980392, 1)
+
+[node name="FireHydrants" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/FireHydrants" instance=ExtResource("fire_hydrant")]
+position = Vector2(168, 488)
+
+[node name="Painted" parent="Infrastructure/FireHydrants" instance=ExtResource("fire_hydrant")]
+position = Vector2(216, 488)
+body_color = Color(0.427450980, 0.505882353, 0.352941176, 1)
+caps_color = Color(0.764705882, 0.639215686, 0.376470588, 1)
+
+[node name="Bollards" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/Bollards" instance=ExtResource("bollard")]
+position = Vector2(288, 488)
+
+[node name="Painted" parent="Infrastructure/Bollards" instance=ExtResource("bollard")]
+position = Vector2(320, 488)
+body_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+
+[node name="NoticeBoards" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Rustic" parent="Infrastructure/NoticeBoards" instance=ExtResource("notice_board")]
+position = Vector2(400, 488)
+
+[node name="Painted" parent="Infrastructure/NoticeBoards" instance=ExtResource("notice_board")]
+position = Vector2(456, 488)
+frame_color = Color(0.388235294, 0.513725490, 0.588235294, 1)
+roof_color = Color(0.529411765, 0.368627451, 0.286274510, 1)
+
+[node name="UtilityCovers" type="Node2D" parent="Infrastructure"]
+y_sort_enabled = true
+
+[node name="Drain" parent="Infrastructure/UtilityCovers" instance=ExtResource("utility_cover")]
+position = Vector2(552, 472)
+
+[node name="PaintedDrain" parent="Infrastructure/UtilityCovers" instance=ExtResource("utility_cover")]
+position = Vector2(600, 472)
+body_color = Color(0.607843137, 0.533333333, 0.443137255, 1)
+
+[node name="Fences" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Wood" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(32, 552)
+style = 0
+sections = 3
+
+[node name="WoodPainted" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(32, 600)
+style = 0
+sections = 5
+body_color = Color(0.831372549, 0.749019608, 0.556862745, 1)
+
+[node name="Metal" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(256, 552)
+style = 1
+sections = 3
+body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+
+[node name="MetalPainted" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(256, 600)
+style = 1
+sections = 5
+body_color = Color(0.321568627, 0.411764706, 0.376470588, 1)
+
+[node name="Stone" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(480, 552)
+style = 2
+sections = 3
+body_color = Color(0.737254902, 0.701960784, 0.584313725, 1)
+
+[node name="StonePainted" parent="Fences" instance=ExtResource("fence")]
+position = Vector2(480, 600)
+style = 2
+sections = 5
+body_color = Color(0.549019608, 0.572549020, 0.564705882, 1)

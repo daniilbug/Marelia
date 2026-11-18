@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/wicker_laundry_basket.tres" id="design_0"]
+
+[node name="LaundryBasket" instance=ExtResource("base")]
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+paintable_materials = 2
+wood_color = Color(0.721568627, 0.584313725, 0.364705882, 1)

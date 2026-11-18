@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/awning.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/awning_striped.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/awning_dome.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/awning_straight.tres" id="design_2"]
+
+[node name="Awning" instance=ExtResource("base")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+primary_color = Color(0.415686275, 0.505882353, 0.294117647, 1)
+secondary_color = Color(0.870588235, 0.815686275, 0.666666667, 1)

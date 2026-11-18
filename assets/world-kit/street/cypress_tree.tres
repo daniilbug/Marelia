@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/vegetation/cypress_tree.png" id="sprite"]
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+origin = Vector2(-12, -94)
+footprint = Vector2(6, 4)
+occlusion_rect = Rect2(-10.5, -90, 20, 88)

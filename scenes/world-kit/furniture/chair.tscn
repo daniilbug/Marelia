@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cakjcaemq3583"]
+
+[ext_resource type="Shader" uid="uid://bt6168q5xf24d" path="res://assets/world-kit/furniture/shaders/furniture_palette.gdshader" id="7_crcx1"]
+[ext_resource type="Texture2D" uid="uid://rgag4rh50ibb" path="res://assets/world-kit/furniture/sprites/dining_chair_ladder_back_down_materials.png" id="8_lu2ex"]
+[ext_resource type="Texture2D" uid="uid://b5qv5wfhb4662" path="res://assets/world-kit/furniture/sprites/dining_chair_ladder_back_down.png" id="9_rso8k"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dining_chair_ladder_back.tres" id="design_0"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dining_chair_padded_slats.tres" id="design_1"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/dining_chair_carved_back.tres" id="design_2"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Script" uid="uid://ctpitvy6sddq0" path="res://scripts/world-kit/furniture/chair.gd" id="script"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ng2gs"]
+shader = ExtResource("7_crcx1")
+shader_parameter/material_mask = ExtResource("8_lu2ex")
+shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+shader_parameter/fabric_color = Color(0.6313726, 0.41568628, 0.45490196, 1)
+shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
+shader_parameter/stone_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byby2"]
+size = Vector2(10, 8)
+
+[node name="Chair" unique_id=1823147134 instance=ExtResource("base")]
+script = ExtResource("script")
+style = 0
+direction = 0
+designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+paintable_materials = 10
+roof_color = null
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_ng2gs")
+position = Vector2(-7, -18)
+texture = ExtResource("9_rso8k")
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_byby2")

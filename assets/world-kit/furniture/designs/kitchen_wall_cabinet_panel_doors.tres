@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://bsmu201c7kq8k"]
+
+[ext_resource type="Texture2D" uid="uid://de4j6vdhmkpde" path="res://assets/world-kit/furniture/sprites/kitchen_wall_cabinet_panel_doors.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://dvloq0rk6urpq" path="res://assets/world-kit/furniture/sprites/kitchen_wall_cabinet_panel_doors_approved.png" id="approved_0"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://cvlm7q2csdbfk" path="res://assets/world-kit/furniture/sprites/kitchen_wall_cabinet_panel_doors_materials.png" id="mask_0"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("approved_0")
+origin = Vector2(-10, -14)
+
+[resource]
+script = ExtResource("design_script")
+title = "Kitchen Wall Cabinet Panel Doors"
+views = Array[ExtResource("view_script")]([SubResource("view_0")])

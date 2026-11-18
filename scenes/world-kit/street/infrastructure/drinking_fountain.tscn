@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/infrastructure/drinking_fountain.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/drinking_fountain_classic.tres" id="design_0"]
+
+[node name="DrinkingFountain" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+tap_color = Color(0.733333333, 0.592156863, 0.356862745, 1)
+footprint_offset = Vector2(2, 0)
