@@ -76,6 +76,9 @@ msgstr "Подключение…"
 msgid "ui.menu.status.error"
 msgstr "Не удалось открыть игру"
 
+msgid "ui.menu.music.title"
+msgstr "Музыка"
+
 #. Named parameters are part of the message contract and must be preserved.
 msgid "ui.menu.card.accessibility"
 msgstr "{title}, {action}"

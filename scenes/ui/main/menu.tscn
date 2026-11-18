@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/arrow.svg" id="arrow"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/close.svg" id="close"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/lock.svg" id="lock"]
+[ext_resource type="AudioStreamMP3" path="res://assets/ui/main/music/bushwick_tarantella.mp3" id="music"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 1
@@ -23,6 +24,11 @@ grow_vertical = 2
 texture_filter = 1
 theme = ExtResource("theme")
 script = ExtResource("script")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("music")
+volume_db = -12.0
+autoplay = true
 
 [node name="Desktop" type="TextureRect" parent="."]
 layout_mode = 1
@@ -291,6 +297,14 @@ theme_type_variation = "FooterPanel"
 [node name="Row" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Footer"]
 layout_mode = 2
 theme_override_constants/separation = 22
+
+[node name="Music" type="LinkButton" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+layout_mode = 2
+focus_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "ui.menu.music.title"
+mouse_default_cursor_shape = 2
 
 [node name="Spacer" type="Control" parent="BrowserWindow/Browser/Layout/Footer/Row"]
 layout_mode = 2
@@ -610,6 +624,47 @@ text = "ui.action.stay"
 theme_type_variation = "Button"
 focus_mode = 2
 mouse_default_cursor_shape = 2
+
+[node name="Music" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 18
+visible = false
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+layout_mode = 2
+text = "ui.menu.music.title"
+mouse_filter = 2
+theme_type_variation = "DialogTitle"
+
+[node name="Credit" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+layout_mode = 2
+auto_translate_mode = 2
+text = "\"Bushwick Tarantella\"\nKevin MacLeod (incompetech.com)\nLicensed under Creative Commons:\nBy Attribution 4.0"
+mouse_filter = 2
+
+[node name="Source" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+layout_mode = 2
+focus_mode = 2
+text = "incompetech.com"
+uri = "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1300002"
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+
+[node name="License" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+layout_mode = 2
+focus_mode = 2
+text = "creativecommons.org/licenses/by/4.0/"
+uri = "https://creativecommons.org/licenses/by/4.0/"
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+layout_mode = 2
+text = "ui.action.back"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
 
 [node name="Status" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
 layout_mode = 2

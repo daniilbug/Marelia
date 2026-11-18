@@ -11,6 +11,7 @@ signal connection_cancelled
 @onready var _join: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/Join
 @onready var _close: Button = $BrowserWindow/Browser/Layout/TitleBar/Row/Close
 @onready var _language: OptionButton = $BrowserWindow/Browser/Layout/Website/Layout/Brand/Language
+@onready var _music_credits: LinkButton = $BrowserWindow/Browser/Layout/Footer/Row/Music
 @onready var _overlay: ColorRect = $ModalOverlay
 @onready var _pages: VBoxContainer = $ModalOverlay/Center/Frame/Layout/Body/Pages
 @onready var _modal_close: Button = $ModalOverlay/Center/Frame/Layout/TitleBar/Row/Close
@@ -18,7 +19,7 @@ signal connection_cancelled
 @onready var _address_error: Label = $ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Error
 @onready var _character_name: LineEdit = _pages.get_node("NewGame/Card/Layout/Details/Holder/NameInput")
 @onready var _buy: Button = _pages.get_node("NewGame/Checkout/Actions/Buy")
-@onready var _navigation: Array[Control] = [_new_game, _load, _join, _language, _close]
+@onready var _navigation: Array[Control] = [_new_game, _load, _join, _language, _music_credits, _close]
 
 var _locale_codes := PackedStringArray()
 var _previous_focus: Control
@@ -33,8 +34,9 @@ func _ready() -> void:
 	_load.pressed.connect(_show_saves)
 	_join.pressed.connect(_show_join)
 	_close.pressed.connect(_show_quit)
+	_music_credits.pressed.connect(_show_music_credits)
 	_modal_close.pressed.connect(_close_modal)
-	for path in ["NewGame/Checkout/Actions/Back", "Load/Back", "Join/Actions/Back", "Quit/Actions/Back", "Status/Back"]:
+	for path in ["NewGame/Checkout/Actions/Back", "Load/Back", "Join/Actions/Back", "Quit/Actions/Back", "Music/Back", "Status/Back"]:
 		_pages.get_node(path).pressed.connect(_close_modal)
 	_update_purchase_button(_character_name.text)
 	_buy.pressed.connect(_submit_purchase)
@@ -174,6 +176,9 @@ func _submit_address() -> void:
 
 func _show_quit() -> void:
 	_show_page("Quit", [_pages.get_node("Quit/Actions/Exit"), _pages.get_node("Quit/Actions/Back")])
+
+func _show_music_credits() -> void:
+	_show_page("Music", [_pages.get_node("Music/Source"), _pages.get_node("Music/License"), _pages.get_node("Music/Back")])
 
 func show_connecting() -> void:
 	_busy = true
