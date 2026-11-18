@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3 uid="uid://dhq4qe7o6tnme"]
 
+[ext_resource type="Texture2D" uid="uid://fot6g0485k03" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic_materials.png" id="mask"]
 [ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic.png" id="sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://37kyy4ly17rs" path="res://assets/world-kit/street/sprites/infrastructure/bollard_classic.png" id="sprite"]
 
 [sub_resource type="CapsuleShape2D" id="footprint"]
 radius = 1.5
@@ -12,7 +12,7 @@ height = 6.0
 script = ExtResource("script")
 texture = ExtResource("sprite")
 material_mask = ExtResource("mask")
-source_body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+source_body_color = Color(0.30588236, 0.35686275, 0.28627452, 1)
 origin = Vector2(-4, -11)
 footprint = Vector2(6, 3)
 footprint_shape = SubResource("footprint")

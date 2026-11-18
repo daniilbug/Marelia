@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3 uid="uid://bthlo7alm4363"]
 
 [ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/vegetation/oleander_bush.png" id="sprite"]
+[ext_resource type="Texture2D" uid="uid://b1d432a230ack" path="res://assets/world-kit/street/sprites/vegetation/oleander_bush.png" id="sprite"]
 
 [sub_resource type="CapsuleShape2D" id="footprint"]
 radius = 4.0

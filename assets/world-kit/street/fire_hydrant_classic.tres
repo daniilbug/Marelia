@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3 uid="uid://dasqdjbi40jqq"]
 
+[ext_resource type="Texture2D" uid="uid://byjy1bfryelfv" path="res://assets/world-kit/street/sprites/infrastructure/fire_hydrant_classic_materials.png" id="mask"]
 [ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/fire_hydrant_classic.png" id="sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/fire_hydrant_classic_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://df5464wob8mou" path="res://assets/world-kit/street/sprites/infrastructure/fire_hydrant_classic.png" id="sprite"]
 
 [sub_resource type="CapsuleShape2D" id="footprint"]
 radius = 2.0
@@ -12,8 +12,8 @@ height = 8.0
 script = ExtResource("script")
 texture = ExtResource("sprite")
 material_mask = ExtResource("mask")
-source_body_color = Color(0.713725490, 0.364705882, 0.294117647, 1)
-source_support_color = Color(0.658823529, 0.647058824, 0.549019608, 1)
+source_body_color = Color(0.7137255, 0.3647059, 0.29411766, 1)
+source_support_color = Color(0.65882355, 0.64705884, 0.54901963, 1)
 origin = Vector2(-6, -13)
 footprint = Vector2(8, 4)
 footprint_shape = SubResource("footprint")

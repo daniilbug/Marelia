@@ -71,6 +71,17 @@ roof_color = Color(0.62352943, 0.42352942, 0.3137255, 1)
 shutter_color = Color(0.38039216, 0.48235294, 0.3882353, 1)
 frame_color = Color(0.5764706, 0.41960785, 0.27843136, 1)
 
+[sub_resource type="Resource" id="style_8"]
+resource_name = "VinePlaster"
+script = ExtResource("style")
+facade_style = 3
+
+[sub_resource type="Resource" id="style_9"]
+resource_name = "VineFieldstone"
+script = ExtResource("style")
+facade_style = 4
+facade_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+
 [resource]
 script = ExtResource("variants")
-variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6"), SubResource("style_7")])
+variants = Array[ExtResource("style")]([SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6"), SubResource("style_7"), SubResource("style_8"), SubResource("style_9")])

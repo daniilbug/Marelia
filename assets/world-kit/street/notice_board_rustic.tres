@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3 uid="uid://chynaypsne3jg"]
 
+[ext_resource type="Texture2D" uid="uid://jfoq2g2hmi4g" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic_materials.png" id="mask"]
 [ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic.png" id="sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://d3274aamry010" path="res://assets/world-kit/street/sprites/infrastructure/notice_board_rustic.png" id="sprite"]
 
 [sub_resource type="CapsuleShape2D" id="footprint"]
 radius = 3.0
@@ -12,8 +12,8 @@ height = 18.0
 script = ExtResource("script")
 texture = ExtResource("sprite")
 material_mask = ExtResource("mask")
-source_body_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
-source_support_color = Color(0.682352941, 0.423529412, 0.321568627, 1)
+source_body_color = Color(0.68235296, 0.5058824, 0.32156864, 1)
+source_support_color = Color(0.68235296, 0.42352942, 0.32156864, 1)
 origin = Vector2(-12, -24)
 footprint = Vector2(18, 6)
 footprint_shape = SubResource("footprint")

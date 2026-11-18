@@ -2,7 +2,7 @@
 class_name HouseFacadeStyle
 extends Resource
 
-enum Facade { PLASTER, FIELDSTONE, LIMESTONE }
+enum Facade { PLASTER, FIELDSTONE, LIMESTONE, PLASTER_VINE, FIELDSTONE_VINE }
 enum Roof { TILES, COPPI, COPPI_AGED }
 enum WindowStyle { LOUVERED, PANELLED, ARCHED }
 

@@ -5,6 +5,7 @@ extends RefCounted
 const SHADER = preload("res://assets/world-kit/house/shaders/house_palette.gdshader")
 const ROOT := "res://assets/world-kit/house/sprites/"
 const DOORS := ["door_plank", "door_panel", "door_glazed"]
+const FACADES := ["facade_plaster", "facade_fieldstone", "facade_limestone", "facade_plaster_vine", "facade_fieldstone_vine"]
 const FLOORS := ["floor_wood", "floor_terracotta", "floor_ornament", "floor_wood_narrow", "floor_wood_chevron", "floor_wood_basket", "floor_tile_checker", "floor_tile_octagon", "floor_tile_maiolica", "plinth_stone"]
 const WALLS := ["facade_plaster", "wallpaper_striped", "wallpaper_botanical", "facade_fieldstone", "facade_limestone"]
 

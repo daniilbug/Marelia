@@ -1,0 +1,658 @@
+[gd_scene format=3 uid="uid://cly1pdclqejjw"]
+
+[ext_resource type="Texture2D" uid="uid://pr7bt51i40by" path="res://assets/world-kit/street/sprites/surfaces/ground_grass.png" id="3_v8k4h"]
+[ext_resource type="Texture2D" uid="uid://bihio8qoeoje7" path="res://assets/world-kit/street/sprites/surfaces/ground_limestone.png" id="4_e7g4w"]
+[ext_resource type="Texture2D" uid="uid://cxmfvovtpj8yh" path="res://assets/world-kit/street/sprites/surfaces/ground_gravel.png" id="5_3fuh7"]
+[ext_resource type="Texture2D" uid="uid://5up4d8trv8bd" path="res://assets/world-kit/street/sprites/surfaces/ground_dirt.png" id="6_6mpfd"]
+[ext_resource type="Texture2D" uid="uid://bqr2fdp870j7a" path="res://assets/world-kit/street/sprites/surfaces/ground_cobblestone.png" id="7_1pf23"]
+[ext_resource type="PackedScene" uid="uid://c273qkhmv702j" path="res://scenes/core/transparency_area.tscn" id="area"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/awning.tscn" id="awning"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/bench.tscn" id="bench"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/bollard.tscn" id="bollard"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/bush.tscn" id="bush"]
+[ext_resource type="Texture2D" uid="uid://cbwc3v8ssug1q" path="res://assets/world-kit/house/sprites/door_panel_closed.png" id="door"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/drinking_fountain.tscn" id="drinking_fountain"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/fence.tscn" id="fence"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/fire_hydrant.tscn" id="fire_hydrant"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/flowers.tscn" id="flowers"]
+[ext_resource type="PackedScene" uid="uid://bxiejuvupdj01" path="res://scenes/core/level.tscn" id="level"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/litter_bin.tscn" id="litter_bin"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/notice_board.tscn" id="notice_board"]
+[ext_resource type="Texture2D" uid="uid://dayt7p5o658d" path="res://assets/world-kit/house/sprites/plinth_stone.png" id="plinth"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/post_box.tscn" id="post_box"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/shop_sign.tscn" id="shop_sign"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/street_lamp.tscn" id="street_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/surface.tscn" id="surface"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/tree.tscn" id="tree"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/utility_cover.tscn" id="utility_cover"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/grape_vine.tscn" id="vine"]
+[ext_resource type="Texture2D" uid="uid://bbvvp6abp6rd0" path="res://assets/world-kit/house/sprites/facade_plaster.png" id="wall"]
+
+[sub_resource type="RectangleShape2D" id="wall_footprint"]
+size = Vector2(88, 6)
+
+[sub_resource type="RectangleShape2D" id="wall_occlusion"]
+size = Vector2(88, 44)
+
+[node name="StreetSample" unique_id=1208953415 instance=ExtResource("level")]
+texture_filter = 1
+scale = Vector2(4, 4)
+level_id = "world_kit_street"
+
+[node name="NPCSpawner" parent="." index="0" unique_id=946226487]
+_spawnable_scenes = PackedStringArray("uid://bdvk4vs15fb0q")
+
+[node name="BottomLeft" parent="LevelBounds" parent_id_path=PackedInt32Array(53559245) index="0" unique_id=326883410]
+position = Vector2(0, 720)
+
+[node name="TopRight" parent="LevelBounds" parent_id_path=PackedInt32Array(53559245) index="1" unique_id=1707001651]
+position = Vector2(704, 0)
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(352, 176)
+
+[node name="Surfaces" type="Node2D" parent="." index="3" unique_id=902405629]
+y_sort_enabled = true
+
+[node name="Grass" parent="Surfaces" index="0" unique_id=1319800477 instance=ExtResource("surface")]
+texture = ExtResource("3_v8k4h")
+region_rect = Rect2(0, 0, 704, 720)
+style = 0
+size = Vector2(704, 720)
+
+[node name="ShopfrontWalk" parent="Surfaces" index="1" unique_id=1366959776 instance=ExtResource("surface")]
+position = Vector2(16, 136)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 672, 56)
+size = Vector2(672, 56)
+
+[node name="GardenCrossing" parent="Surfaces" index="2" unique_id=1309870213 instance=ExtResource("surface")]
+position = Vector2(312, 192)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 24, 152)
+size = Vector2(24, 152)
+
+[node name="GardenWalk" parent="Surfaces" index="3" unique_id=1535044880 instance=ExtResource("surface")]
+position = Vector2(16, 344)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 672, 48)
+size = Vector2(672, 48)
+
+[node name="InfrastructurePlaza" parent="Surfaces" index="4" unique_id=1100753713 instance=ExtResource("surface")]
+position = Vector2(16, 392)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 672, 120)
+size = Vector2(672, 120)
+
+[node name="FenceCourt" parent="Surfaces" index="5" unique_id=1451404493 instance=ExtResource("surface")]
+position = Vector2(16, 520)
+texture = ExtResource("5_3fuh7")
+region_rect = Rect2(0, 0, 672, 96)
+style = 4
+size = Vector2(672, 96)
+
+[node name="SurfaceWalk" parent="Surfaces" index="6" unique_id=577360760 instance=ExtResource("surface")]
+position = Vector2(16, 632)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 672, 72)
+size = Vector2(672, 72)
+
+[node name="GrassSample" parent="Surfaces" index="7" unique_id=1876823189 instance=ExtResource("surface")]
+position = Vector2(32, 640)
+texture = ExtResource("3_v8k4h")
+region_rect = Rect2(0, 0, 112, 64)
+style = 0
+size = Vector2(112, 64)
+
+[node name="DirtSample" parent="Surfaces" index="8" unique_id=839174338 instance=ExtResource("surface")]
+position = Vector2(164, 640)
+texture = ExtResource("6_6mpfd")
+region_rect = Rect2(0, 0, 112, 64)
+style = 1
+size = Vector2(112, 64)
+
+[node name="CobblestoneSample" parent="Surfaces" index="9" unique_id=29442940 instance=ExtResource("surface")]
+position = Vector2(296, 640)
+texture = ExtResource("7_1pf23")
+region_rect = Rect2(0, 0, 112, 64)
+style = 2
+size = Vector2(112, 64)
+
+[node name="LimestoneSample" parent="Surfaces" index="10" unique_id=853285199 instance=ExtResource("surface")]
+position = Vector2(428, 640)
+texture = ExtResource("4_e7g4w")
+region_rect = Rect2(0, 0, 112, 64)
+size = Vector2(112, 64)
+
+[node name="GravelSample" parent="Surfaces" index="11" unique_id=282139928 instance=ExtResource("surface")]
+position = Vector2(560, 640)
+texture = ExtResource("5_3fuh7")
+region_rect = Rect2(0, 0, 112, 64)
+style = 4
+size = Vector2(112, 64)
+
+[node name="Shopfronts" type="Node2D" parent="." index="4" unique_id=1748422631]
+y_sort_enabled = true
+
+[node name="Striped" type="StaticBody2D" parent="Shopfronts" index="0" unique_id=996496257]
+position = Vector2(72, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Striped" index="0" unique_id=159125222]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Striped" index="1" unique_id=1732350229]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Striped/Visuals" index="0" unique_id=915179203]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Striped/Visuals" index="1" unique_id=1813946459]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Striped/Visuals" index="2" unique_id=270592971]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Striped/Visuals" index="3" unique_id=1588012822 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 0
+
+[node name="ShopSign" parent="Shopfronts/Striped/Visuals" index="4" unique_id=1642825350 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+
+[node name="TransparencyArea" parent="Shopfronts/Striped" index="2" unique_id=944283226 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="Dome" type="StaticBody2D" parent="Shopfronts" index="1" unique_id=154968754]
+position = Vector2(184, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Dome" index="0" unique_id=1848156916]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Dome" index="1" unique_id=83108937]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Dome/Visuals" index="0" unique_id=391877432]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Dome/Visuals" index="1" unique_id=1815716614]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Dome/Visuals" index="2" unique_id=636188188]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Dome/Visuals" index="3" unique_id=789512578 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 1
+
+[node name="ShopSign" parent="Shopfronts/Dome/Visuals" index="4" unique_id=1394592694 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+
+[node name="TransparencyArea" parent="Shopfronts/Dome" index="2" unique_id=752620713 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="Straight" type="StaticBody2D" parent="Shopfronts" index="2" unique_id=1145617411]
+position = Vector2(296, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/Straight" index="0" unique_id=1933836714]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/Straight" index="1" unique_id=734604627]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/Straight/Visuals" index="0" unique_id=1536563811]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/Straight/Visuals" index="1" unique_id=2059747907]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/Straight/Visuals" index="2" unique_id=938214783]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/Straight/Visuals" index="3" unique_id=1783541703 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 2
+
+[node name="ShopSign" parent="Shopfronts/Straight/Visuals" index="4" unique_id=947828768 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+
+[node name="TransparencyArea" parent="Shopfronts/Straight" index="2" unique_id=986686266 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="StripedPainted" type="StaticBody2D" parent="Shopfronts" index="3" unique_id=1364577132]
+position = Vector2(408, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/StripedPainted" index="0" unique_id=1897521623]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/StripedPainted" index="1" unique_id=1361675767]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals" index="0" unique_id=451083740]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals" index="1" unique_id=1282476142]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/StripedPainted/Visuals" index="2" unique_id=1655173985]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/StripedPainted/Visuals" index="3" unique_id=648763015 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 0
+primary_color = Color(0.6784314, 0.38039216, 0.32156864, 1)
+secondary_color = Color(0.8862745, 0.7882353, 0.59607846, 1)
+
+[node name="ShopSign" parent="Shopfronts/StripedPainted/Visuals" index="4" unique_id=1814262502 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+wood_color = Color(0.42352942, 0.5058824, 0.5647059, 1)
+metal_color = Color(0.32941177, 0.2901961, 0.24313726, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/StripedPainted" index="2" unique_id=1409125298 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="DomePainted" type="StaticBody2D" parent="Shopfronts" index="4" unique_id=1549963907]
+position = Vector2(520, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/DomePainted" index="0" unique_id=1528677671]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/DomePainted" index="1" unique_id=444451103]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals" index="0" unique_id=484290538]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals" index="1" unique_id=1979225532]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/DomePainted/Visuals" index="2" unique_id=1494403467]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/DomePainted/Visuals" index="3" unique_id=476025797 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 1
+primary_color = Color(0.6784314, 0.38039216, 0.32156864, 1)
+secondary_color = Color(0.8862745, 0.7882353, 0.59607846, 1)
+
+[node name="ShopSign" parent="Shopfronts/DomePainted/Visuals" index="4" unique_id=1434923194 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+wood_color = Color(0.42352942, 0.5058824, 0.5647059, 1)
+metal_color = Color(0.32941177, 0.2901961, 0.24313726, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/DomePainted" index="2" unique_id=1424409972 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="StraightPainted" type="StaticBody2D" parent="Shopfronts" index="5" unique_id=625491477]
+position = Vector2(632, 128)
+
+[node name="Collision" type="CollisionShape2D" parent="Shopfronts/StraightPainted" index="0" unique_id=156525452]
+position = Vector2(0, -3)
+shape = SubResource("wall_footprint")
+
+[node name="Visuals" type="Node2D" parent="Shopfronts/StraightPainted" index="1" unique_id=793293572]
+
+[node name="Wall" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals" index="0" unique_id=1906271531]
+texture_repeat = 2
+position = Vector2(-44, -48)
+texture = ExtResource("wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 48)
+
+[node name="Plinth" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals" index="1" unique_id=49704161]
+texture_repeat = 2
+position = Vector2(-44, -4)
+texture = ExtResource("plinth")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 4)
+
+[node name="Door" type="Sprite2D" parent="Shopfronts/StraightPainted/Visuals" index="2" unique_id=1059120685]
+position = Vector2(-12, -28)
+texture = ExtResource("door")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 4, 24, 28)
+
+[node name="Awning" parent="Shopfronts/StraightPainted/Visuals" index="3" unique_id=1902919900 instance=ExtResource("awning")]
+position = Vector2(0, -38)
+style = 2
+primary_color = Color(0.6784314, 0.38039216, 0.32156864, 1)
+secondary_color = Color(0.8862745, 0.7882353, 0.59607846, 1)
+
+[node name="ShopSign" parent="Shopfronts/StraightPainted/Visuals" index="4" unique_id=775672101 instance=ExtResource("shop_sign")]
+position = Vector2(23, -36)
+style = 0
+wood_color = Color(0.42352942, 0.5058824, 0.5647059, 1)
+metal_color = Color(0.32941177, 0.2901961, 0.24313726, 1)
+
+[node name="TransparencyArea" parent="Shopfronts/StraightPainted" index="2" unique_id=1012473534 node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+position = Vector2(0, -26)
+shape = SubResource("wall_occlusion")
+targets = [NodePath("../Visuals")]
+
+[node name="Vegetation" type="Node2D" parent="." index="5" unique_id=476384818]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="Vegetation" index="0" unique_id=1868382359]
+y_sort_enabled = true
+
+[node name="Olive" parent="Vegetation/Trees" index="0" unique_id=1342105545 instance=ExtResource("tree")]
+position = Vector2(48, 304)
+style = 0
+
+[node name="Cypress" parent="Vegetation/Trees" index="1" unique_id=1655221037 instance=ExtResource("tree")]
+position = Vector2(104, 304)
+style = 1
+
+[node name="Lemon" parent="Vegetation/Trees" index="2" unique_id=2056455747 instance=ExtResource("tree")]
+position = Vector2(148, 304)
+style = 2
+
+[node name="Orange" parent="Vegetation/Trees" index="3" unique_id=332933070 instance=ExtResource("tree")]
+position = Vector2(208, 304)
+style = 3
+
+[node name="Bushes" type="Node2D" parent="Vegetation" index="1" unique_id=1696501412]
+y_sort_enabled = true
+
+[node name="Oleander" parent="Vegetation/Bushes" index="0" unique_id=1966123618 instance=ExtResource("bush")]
+position = Vector2(376, 256)
+style = 0
+
+[node name="Lavender" parent="Vegetation/Bushes" index="1" unique_id=7848017 instance=ExtResource("bush")]
+position = Vector2(440, 256)
+style = 1
+
+[node name="Rosemary" parent="Vegetation/Bushes" index="2" unique_id=400744564 instance=ExtResource("bush")]
+position = Vector2(504, 256)
+style = 2
+
+[node name="Hydrangea" parent="Vegetation/Bushes" index="3" unique_id=2144321762 instance=ExtResource("bush")]
+position = Vector2(568, 256)
+style = 3
+
+[node name="Flowers" type="Node2D" parent="Vegetation" index="2" unique_id=1407516328]
+y_sort_enabled = true
+
+[node name="Daisies" parent="Vegetation/Flowers" index="0" unique_id=2088616293 instance=ExtResource("flowers")]
+position = Vector2(376, 312)
+style = 0
+
+[node name="Poppies" parent="Vegetation/Flowers" index="1" unique_id=196492646 instance=ExtResource("flowers")]
+position = Vector2(424, 312)
+style = 1
+
+[node name="Sunflower" parent="Vegetation/Flowers" index="2" unique_id=1236976436 instance=ExtResource("flowers")]
+position = Vector2(472, 312)
+style = 2
+
+[node name="GrapeVines" type="Node2D" parent="Vegetation" index="3" unique_id=1435549448]
+y_sort_enabled = true
+
+[node name="PurpleGrapes" parent="Vegetation/GrapeVines" index="0" unique_id=277008723 instance=ExtResource("vine")]
+position = Vector2(552, 320)
+style = 0
+
+[node name="GreenGrapes" parent="Vegetation/GrapeVines" index="1" unique_id=1656442805 instance=ExtResource("vine")]
+position = Vector2(632, 320)
+style = 0
+wood_color = Color(0.4392157, 0.5058824, 0.41568628, 1)
+grape_color = Color(0.7254902, 0.73333335, 0.40392157, 1)
+
+[node name="Infrastructure" type="Node2D" parent="." index="6" unique_id=980254372]
+y_sort_enabled = true
+
+[node name="PostBoxes" type="Node2D" parent="Infrastructure" index="0" unique_id=407847294]
+y_sort_enabled = true
+
+[node name="Rectangular" parent="Infrastructure/PostBoxes" index="0" unique_id=2123975621 instance=ExtResource("post_box")]
+position = Vector2(48, 416)
+style = 0
+
+[node name="Arched" parent="Infrastructure/PostBoxes" index="1" unique_id=608569003 instance=ExtResource("post_box")]
+position = Vector2(88, 416)
+style = 1
+
+[node name="RectangularPainted" parent="Infrastructure/PostBoxes" index="2" unique_id=2125920944 instance=ExtResource("post_box")]
+position = Vector2(128, 416)
+style = 0
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+support_color = Color(0.4, 0.3254902, 0.28235295, 1)
+
+[node name="ArchedPainted" parent="Infrastructure/PostBoxes" index="3" unique_id=887486464 instance=ExtResource("post_box")]
+position = Vector2(168, 416)
+style = 1
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+support_color = Color(0.4, 0.3254902, 0.28235295, 1)
+
+[node name="LitterBins" type="Node2D" parent="Infrastructure" index="1" unique_id=687618935]
+y_sort_enabled = true
+
+[node name="Open" parent="Infrastructure/LitterBins" index="0" unique_id=227653728 instance=ExtResource("litter_bin")]
+position = Vector2(232, 416)
+style = 0
+
+[node name="Hooded" parent="Infrastructure/LitterBins" index="1" unique_id=2101346010 instance=ExtResource("litter_bin")]
+position = Vector2(272, 416)
+style = 1
+
+[node name="OpenPainted" parent="Infrastructure/LitterBins" index="2" unique_id=1771369717 instance=ExtResource("litter_bin")]
+position = Vector2(312, 416)
+style = 0
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+
+[node name="HoodedPainted" parent="Infrastructure/LitterBins" index="3" unique_id=2054685522 instance=ExtResource("litter_bin")]
+position = Vector2(352, 416)
+style = 1
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+
+[node name="Benches" type="Node2D" parent="Infrastructure" index="2" unique_id=1207883457]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/Benches" index="0" unique_id=1128651343 instance=ExtResource("bench")]
+position = Vector2(432, 416)
+style = 0
+
+[node name="Painted" parent="Infrastructure/Benches" index="1" unique_id=1182229412 instance=ExtResource("bench")]
+position = Vector2(496, 416)
+style = 0
+body_color = Color(0.6784314, 0.38039216, 0.32156864, 1)
+support_color = Color(0.26666668, 0.36078432, 0.34117648, 1)
+
+[node name="StreetLamps" type="Node2D" parent="Infrastructure" index="3" unique_id=30772509]
+y_sort_enabled = true
+
+[node name="Left" parent="Infrastructure/StreetLamps" index="0" unique_id=1351188770 instance=ExtResource("street_lamp")]
+position = Vector2(568, 416)
+
+[node name="Right" parent="Infrastructure/StreetLamps" index="1" unique_id=339659695 instance=ExtResource("street_lamp")]
+position = Vector2(632, 416)
+
+[node name="DrinkingFountains" type="Node2D" parent="Infrastructure" index="4" unique_id=1832387835]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/DrinkingFountains" index="0" unique_id=1243420451 instance=ExtResource("drinking_fountain")]
+position = Vector2(48, 488)
+style = 0
+animation_speed = 1.0
+
+[node name="Painted" parent="Infrastructure/DrinkingFountains" index="1" unique_id=1578097265 instance=ExtResource("drinking_fountain")]
+position = Vector2(96, 488)
+style = 0
+tap_color = Color(0.6901961, 0.7137255, 0.6509804, 1)
+animation_speed = 1.0
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+
+[node name="FireHydrants" type="Node2D" parent="Infrastructure" index="5" unique_id=433175141]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/FireHydrants" index="0" unique_id=46007388 instance=ExtResource("fire_hydrant")]
+position = Vector2(168, 488)
+style = 0
+
+[node name="Painted" parent="Infrastructure/FireHydrants" index="1" unique_id=921631262 instance=ExtResource("fire_hydrant")]
+position = Vector2(216, 488)
+style = 0
+caps_color = Color(0.7647059, 0.6392157, 0.3764706, 1)
+body_color = Color(0.42745098, 0.5058824, 0.3529412, 1)
+
+[node name="Bollards" type="Node2D" parent="Infrastructure" index="6" unique_id=951547870]
+y_sort_enabled = true
+
+[node name="Classic" parent="Infrastructure/Bollards" index="0" unique_id=2124598238 instance=ExtResource("bollard")]
+position = Vector2(288, 488)
+style = 0
+
+[node name="Painted" parent="Infrastructure/Bollards" index="1" unique_id=1958343971 instance=ExtResource("bollard")]
+position = Vector2(320, 488)
+style = 0
+body_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+
+[node name="NoticeBoards" type="Node2D" parent="Infrastructure" index="7" unique_id=1202810740]
+y_sort_enabled = true
+
+[node name="Rustic" parent="Infrastructure/NoticeBoards" index="0" unique_id=302699512 instance=ExtResource("notice_board")]
+position = Vector2(400, 488)
+style = 0
+
+[node name="Painted" parent="Infrastructure/NoticeBoards" index="1" unique_id=1493666850 instance=ExtResource("notice_board")]
+position = Vector2(456, 488)
+style = 0
+frame_color = Color(0.3882353, 0.5137255, 0.5882353, 1)
+roof_color = Color(0.5294118, 0.36862746, 0.28627452, 1)
+
+[node name="UtilityCovers" type="Node2D" parent="Infrastructure" index="8" unique_id=1724745092]
+y_sort_enabled = true
+
+[node name="Drain" parent="Infrastructure/UtilityCovers" index="0" unique_id=1853683461 instance=ExtResource("utility_cover")]
+position = Vector2(552, 472)
+style = 0
+
+[node name="PaintedDrain" parent="Infrastructure/UtilityCovers" index="1" unique_id=1384304386 instance=ExtResource("utility_cover")]
+position = Vector2(600, 472)
+style = 0
+body_color = Color(0.60784316, 0.53333336, 0.44313726, 1)
+
+[node name="Fences" type="Node2D" parent="." index="7" unique_id=425511788]
+y_sort_enabled = true
+
+[node name="Wood" parent="Fences" index="0" unique_id=949287241 instance=ExtResource("fence")]
+position = Vector2(32, 552)
+style = 0
+sections = 3
+
+[node name="WoodPainted" parent="Fences" index="1" unique_id=222802887 instance=ExtResource("fence")]
+position = Vector2(32, 600)
+style = 0
+sections = 5
+body_color = Color(0.83137256, 0.7490196, 0.5568628, 1)
+
+[node name="Metal" parent="Fences" index="2" unique_id=297778986 instance=ExtResource("fence")]
+position = Vector2(256, 552)
+style = 1
+sections = 3
+body_color = Color(0.30588236, 0.35686275, 0.28627452, 1)
+
+[node name="MetalPainted" parent="Fences" index="3" unique_id=540060834 instance=ExtResource("fence")]
+position = Vector2(256, 600)
+style = 1
+sections = 5
+body_color = Color(0.32156864, 0.4117647, 0.3764706, 1)
+
+[node name="Stone" parent="Fences" index="4" unique_id=716859775 instance=ExtResource("fence")]
+position = Vector2(480, 552)
+style = 2
+sections = 3
+body_color = Color(0.7372549, 0.7019608, 0.58431375, 1)
+
+[node name="StonePainted" parent="Fences" index="5" unique_id=588371168 instance=ExtResource("fence")]
+position = Vector2(480, 600)
+style = 2
+sections = 5
+body_color = Color(0.54901963, 0.57254905, 0.5647059, 1)

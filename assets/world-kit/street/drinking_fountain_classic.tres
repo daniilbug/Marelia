@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="StreetFountainDesign" format=3]
+[gd_resource type="Resource" script_class="StreetFountainDesign" format=3 uid="uid://dlux2ngk3vlxh"]
 
+[ext_resource type="Texture2D" uid="uid://dqtsi8xexsuxi" path="res://assets/world-kit/street/sprites/infrastructure/drinking_fountain_classic_materials.png" id="mask"]
 [ext_resource type="Script" path="res://scripts/world-kit/street/fountain_design.gd" id="script"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/drinking_fountain_classic.png" id="sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/infrastructure/drinking_fountain_classic_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://b4ob7lkomv3f8" path="res://assets/world-kit/street/sprites/infrastructure/drinking_fountain_classic.png" id="sprite"]
 
 [sub_resource type="CapsuleShape2D" id="footprint"]
 radius = 2.0
@@ -12,11 +12,9 @@ height = 10.0
 script = ExtResource("script")
 texture = ExtResource("sprite")
 material_mask = ExtResource("mask")
-source_body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
-source_support_color = Color(0.733333333, 0.592156863, 0.356862745, 1)
+source_body_color = Color(0.30588236, 0.35686275, 0.28627452, 1)
+source_support_color = Color(0.73333335, 0.5921569, 0.35686275, 1)
 origin = Vector2(-4, -18)
 footprint = Vector2(10, 4)
 footprint_shape = SubResource("footprint")
 footprint_rotation = 1.570796327
-frames = 8
-fps = 10.0
