@@ -163,4 +163,4 @@ RGB-компоненты `modulate` сохраняются. Для одной ц
 
 Демонстрация для F6: `scenes/levels/world-kit-demo/houses.tscn`.
 Main через F5 остаётся пустым. Настройки и устройство — в
-[doc/code/house-builder.md](doc/code/house-builder.md).
+[doc/code/houses.md](doc/code/houses.md).

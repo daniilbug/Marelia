@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/core/save/world_save.tscn" id="save"]
 [ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="outside_level"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/facade.tscn" id="outside_facade"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/uninhabitable_house.tscn" id="uninhabitable_house"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/surfaces/ground_grass.png" id="outside_ground"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/surfaces/ground_cobblestone.png" id="outside_path"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/interior_settings.gd" id="outside_config_script"]
@@ -94,6 +95,25 @@ room_count = 2
 kind = 1
 layout = 2
 
+[sub_resource type="Resource" id="ruin_one_floor"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 2
+layout = 0
+
+[sub_resource type="Resource" id="ruin_two_ground"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 3
+layout = 2
+
+[sub_resource type="Resource" id="ruin_two_upper"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+kind = 1
+room_count = 2
+layout = 1
+
 [node name="HouseBuilderDemo" type="Node2D" node_paths=PackedStringArray("spawn_level")]
 script = ExtResource("main")
 scale = Vector2(4, 4)
@@ -109,7 +129,7 @@ spawn_path = NodePath("..")
 level_id = "house_builder_demo"
 camera_position_offset = Vector2(0, -72)
 [node name="BottomLeft" parent="Outside/LevelBounds" index="0"]
-position = Vector2(0, 640)
+position = Vector2(0, 840)
 [node name="TopRight" parent="Outside/LevelBounds" index="1"]
 position = Vector2(768, -240)
 [node name="PlayerSpawn" parent="Outside" index="2"]
@@ -121,13 +141,19 @@ texture_repeat = 2
 centered = false
 region_enabled = true
 position = Vector2(0, -240)
-region_rect = Rect2(0, 0, 768, 880)
+region_rect = Rect2(0, 0, 768, 1080)
 
 [node name="Paths" type="Polygon2D" parent="Outside"]
 z_index = -19
 texture_repeat = 2
 texture = ExtResource("outside_path")
 polygon = PackedVector2Array(124, 200, 164, 200, 164, 232, 364, 232, 364, 200, 404, 200, 404, 232, 604, 232, 604, 200, 644, 200, 644, 272, 404, 272, 404, 472, 484, 472, 484, 440, 524, 440, 524, 512, 244, 512, 244, 440, 284, 440, 284, 472, 364, 472, 364, 272, 124, 272)
+
+[node name="RestorationPaths" type="Polygon2D" parent="Outside"]
+z_index = -19
+texture_repeat = 2
+texture = ExtResource("outside_path")
+polygon = PackedVector2Array(364, 512, 404, 512, 404, 752, 484, 752, 484, 720, 524, 720, 524, 792, 244, 792, 244, 720, 284, 720, 284, 752, 364, 752)
 
 [node name="House2Rooms" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(144, 200)
@@ -161,3 +187,21 @@ floors = Array[ExtResource("outside_config_script")]([SubResource("outside_confi
 [node name="House3RoomsSecond" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(504, 440)
 floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_3_second")])
+
+[node name="UninhabitableHouseOneFloor" parent="Outside" instance=ExtResource("uninhabitable_house")]
+position = Vector2(264, 720)
+floors = Array[ExtResource("outside_config_script")]([SubResource("ruin_one_floor")])
+style = 1
+facade_style = 1
+roof_style = 1
+window_style = 1
+door_style = 1
+facade_color = Color(0.705882353, 0.666666667, 0.541176471, 1)
+
+[node name="UninhabitableHouseTwoFloors" parent="Outside" instance=ExtResource("uninhabitable_house")]
+position = Vector2(504, 720)
+floors = Array[ExtResource("outside_config_script")]([SubResource("ruin_two_ground"), SubResource("ruin_two_upper")])
+style = 2
+roof_style = 2
+window_style = 2
+door_style = 2

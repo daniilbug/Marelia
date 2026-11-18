@@ -131,10 +131,13 @@ func randomize() -> void:
 	if door_variants != null:
 		var selected := door_variants.choose_style()
 		if selected != null:
-			door_style = selected.style
-			door_color = selected.color
+			_apply_door_style(selected)
 	if is_inside_tree() and not Engine.is_editor_hint() and multiplayer.is_server():
 		_apply_appearance.rpc(get_appearance())
+
+func _apply_door_style(selected: HouseDoorStyle) -> void:
+	door_style = selected.style
+	door_color = selected.color
 
 func randomize_interior() -> void:
 	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
@@ -153,12 +156,15 @@ func randomize_furniture() -> void:
 		interior.randomize_furniture()
 	_sync_interior_configuration.call_deferred()
 
+func _get_appearance_fields() -> Array:
+	return _appearance_fields
+
 func get_appearance() -> Dictionary:
-	return SaveGraph.get_fields(self, _appearance_fields)
+	return SaveGraph.get_fields(self, _get_appearance_fields())
 
 @rpc("authority", "reliable")
 func _apply_appearance(data: Dictionary) -> void:
-	SaveGraph.apply_fields(self, _appearance_fields, data)
+	SaveGraph.apply_fields(self, _get_appearance_fields(), data)
 
 func _configuration_data() -> Dictionary:
 	var data := {"floors": [], "basement_enabled": basement_enabled, "basement": basement_settings.to_data()}

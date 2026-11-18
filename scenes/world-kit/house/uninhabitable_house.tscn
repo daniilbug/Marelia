@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/facade.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/uninhabitable_house.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/uninhabitable_house_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/uninhabitable-variants/weathered_plaster.tres" id="weathered_plaster"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/uninhabitable-variants/cracked_stone.tres" id="cracked_stone"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/uninhabitable-variants/overgrown.tres" id="overgrown"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/uninhabitable-variants/styles.tres" id="styles"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/uninhabitable-variants/doors.tres" id="doors"]
+
+[node name="UninhabitableHouse" instance=ExtResource("base")]
+texture_filter = 1
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("weathered_plaster"), ExtResource("cracked_stone"), ExtResource("overgrown")])
+style_variants = ExtResource("styles")
+door_variants = ExtResource("doors")
+facade_color = Color(0.776470588, 0.701960784, 0.560784314, 1)
+roof_color = Color(0.650980392, 0.494117647, 0.349019608, 1)
+shutter_color = Color(0.478431373, 0.501960784, 0.376470588, 1)
+frame_color = Color(0.584313725, 0.513725490, 0.396078431, 1)
+door_color = Color(0.580392157, 0.478431373, 0.329411765, 1)
+plinth_color = Color(0.603921569, 0.572549020, 0.474509804, 1)
+
+[node name="Entrance" parent="." index="3"]
+enabled = false

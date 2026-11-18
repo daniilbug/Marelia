@@ -1,0 +1,130 @@
+[gd_resource type="Resource" script_class="HouseFacadeVariants" format=3 uid="uid://c5v53rqe6sltx"]
+
+[ext_resource type="Script" uid="uid://d0o0ay50h30hv" path="res://scripts/world-kit/house/facade_style.gd" id="2_gt4yi"]
+[ext_resource type="Script" uid="uid://cyktror3hf43h" path="res://scripts/world-kit/house/uninhabitable_house_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://c3oe5ohrf6r4f" path="res://scripts/world-kit/house/facade_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="style_0"]
+resource_name = "WeatheredCream"
+script = ExtResource("style")
+facade_color = Color(0.7764706, 0.7019608, 0.56078434, 1)
+roof_color = Color(0.6509804, 0.49411765, 0.34901962, 1)
+shutter_color = Color(0.47843137, 0.50196075, 0.3764706, 1)
+frame_color = Color(0.58431375, 0.5137255, 0.39607844, 1)
+plinth_color = Color(0.6039216, 0.57254905, 0.4745098, 1)
+
+[sub_resource type="Resource" id="style_1"]
+resource_name = "WeatheredRose"
+script = ExtResource("style")
+wall_texture_offset = Vector2(16, 0)
+roof_texture_offset = Vector2(48, 0)
+mirror_left_window = true
+mirror_right_window = false
+facade_color = Color(0.7411765, 0.6313726, 0.54901963, 1)
+roof_color = Color(0.6, 0.5058824, 0.41568628, 1)
+shutter_color = Color(0.45490196, 0.5254902, 0.5411765, 1)
+frame_color = Color(0.54901963, 0.4862745, 0.40392157, 1)
+plinth_color = Color(0.6, 0.5686275, 0.48235294, 1)
+
+[sub_resource type="Resource" id="style_2"]
+resource_name = "WeatheredSage"
+script = ExtResource("style")
+wall_texture_offset = Vector2(32, 0)
+roof_texture_offset = Vector2(80, 0)
+facade_color = Color(0.7058824, 0.7058824, 0.6039216, 1)
+roof_color = Color(0.5764706, 0.47843137, 0.3529412, 1)
+shutter_color = Color(0.45490196, 0.4862745, 0.3882353, 1)
+frame_color = Color(0.5529412, 0.50196075, 0.41960785, 1)
+plinth_color = Color(0.5686275, 0.5686275, 0.47843137, 1)
+
+[sub_resource type="Resource" id="style_3"]
+resource_name = "CrackedStone"
+script = ExtResource("style")
+style = 1
+facade_style = 1
+roof_style = 1
+window_style = 1
+facade_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+roof_color = Color(0.6509804, 0.49411765, 0.34901962, 1)
+shutter_color = Color(0.47843137, 0.50196075, 0.3764706, 1)
+frame_color = Color(0.58431375, 0.5137255, 0.39607844, 1)
+plinth_color = Color(0.6039216, 0.57254905, 0.4745098, 1)
+
+[sub_resource type="Resource" id="style_4"]
+resource_name = "CrackedLightStone"
+script = ExtResource("style")
+style = 1
+wall_texture_offset = Vector2(16, 0)
+roof_texture_offset = Vector2(48, 0)
+mirror_left_window = true
+mirror_right_window = false
+facade_style = 1
+roof_style = 1
+window_style = 1
+facade_color = Color(0.76862746, 0.7411765, 0.6392157, 1)
+roof_color = Color(0.6, 0.4627451, 0.34901962, 1)
+shutter_color = Color(0.43529412, 0.5137255, 0.5254902, 1)
+frame_color = Color(0.53333336, 0.43529412, 0.32941177, 1)
+plinth_color = Color(0.5764706, 0.54509807, 0.45882353, 1)
+
+[sub_resource type="Resource" id="style_5"]
+resource_name = "OvergrownPlaster"
+script = ExtResource("style")
+style = 2
+roof_style = 2
+window_style = 2
+facade_color = Color(0.7764706, 0.7019608, 0.56078434, 1)
+roof_color = Color(0.6509804, 0.49411765, 0.34901962, 1)
+shutter_color = Color(0.47843137, 0.50196075, 0.3764706, 1)
+frame_color = Color(0.58431375, 0.5137255, 0.39607844, 1)
+plinth_color = Color(0.6039216, 0.57254905, 0.4745098, 1)
+
+[sub_resource type="Resource" id="style_6"]
+resource_name = "OvergrownSage"
+script = ExtResource("style")
+style = 2
+wall_texture_offset = Vector2(32, 0)
+roof_texture_offset = Vector2(64, 0)
+mirror_left_window = true
+mirror_right_window = false
+roof_style = 2
+window_style = 2
+facade_color = Color(0.7058824, 0.7176471, 0.6117647, 1)
+roof_color = Color(0.60784316, 0.50196075, 0.36862746, 1)
+shutter_color = Color(0.47843137, 0.50980395, 0.3764706, 1)
+frame_color = Color(0.5372549, 0.47843137, 0.35686275, 1)
+plinth_color = Color(0.5529412, 0.5686275, 0.46666667, 1)
+
+[sub_resource type="Resource" id="style_7"]
+resource_name = "StoneWithMossRoof"
+script = ExtResource("style")
+style = 1
+roof_variant = 2
+left_window_variant = 0
+right_window_variant = 1
+facade_style = 1
+roof_style = 2
+window_style = 1
+facade_color = Color(0.7058824, 0.6666667, 0.5411765, 1)
+roof_color = Color(0.6509804, 0.49411765, 0.34901962, 1)
+shutter_color = Color(0.47843137, 0.50196075, 0.3764706, 1)
+frame_color = Color(0.58431375, 0.5137255, 0.39607844, 1)
+plinth_color = Color(0.6039216, 0.57254905, 0.4745098, 1)
+
+[sub_resource type="Resource" id="style_8"]
+resource_name = "WeatheredWithCoppi"
+script = ExtResource("style")
+roof_variant = 1
+left_window_variant = 2
+right_window_variant = 0
+wall_texture_offset = Vector2(16, 0)
+roof_style = 1
+facade_color = Color(0.7764706, 0.7019608, 0.56078434, 1)
+roof_color = Color(0.6509804, 0.49411765, 0.34901962, 1)
+shutter_color = Color(0.47843137, 0.50196075, 0.3764706, 1)
+frame_color = Color(0.58431375, 0.5137255, 0.39607844, 1)
+plinth_color = Color(0.6039216, 0.57254905, 0.4745098, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("2_gt4yi")]([SubResource("style_0"), SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6"), SubResource("style_7"), SubResource("style_8")])

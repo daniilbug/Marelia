@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="UninhabitableHouseDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/house/uninhabitable_house_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_plaster_wall_albedo.png" id="wall_albedo"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_plaster_wall_materials.png" id="wall_materials"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_tiles_roof_albedo.png" id="roof_albedo"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_tiles_roof_materials.png" id="roof_materials"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_louvered_window_albedo.png" id="window_albedo"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_louvered_window_materials.png" id="window_materials"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_boarded_door_albedo.png" id="door_albedo"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/ruined_boarded_door_materials.png" id="door_materials"]
+
+[resource]
+resource_name = "Weathered Plaster"
+script = ExtResource("script")
+wall_albedo = ExtResource("wall_albedo")
+wall_materials = ExtResource("wall_materials")
+roof_albedo = ExtResource("roof_albedo")
+roof_materials = ExtResource("roof_materials")
+window_albedo = ExtResource("window_albedo")
+window_materials = ExtResource("window_materials")
+door_albedo = ExtResource("door_albedo")
+door_materials = ExtResource("door_materials")
