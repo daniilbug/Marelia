@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="HouseLayoutCatalog" format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/house/layout_catalog.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_a.tscn" id="2_a"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_b.tscn" id="2_b"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_c.tscn" id="2_c"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_a_no_kitchen.tscn" id="2_a_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_b_no_kitchen.tscn" id="2_b_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_c_no_kitchen.tscn" id="2_c_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_a.tscn" id="3_a"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_b.tscn" id="3_b"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_c.tscn" id="3_c"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_a_no_kitchen.tscn" id="3_a_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_b_no_kitchen.tscn" id="3_b_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/3_c_no_kitchen.tscn" id="3_c_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_a.tscn" id="4_a"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_b.tscn" id="4_b"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_c.tscn" id="4_c"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_a_no_kitchen.tscn" id="4_a_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_b_no_kitchen.tscn" id="4_b_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/4_c_no_kitchen.tscn" id="4_c_no_kitchen"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/cellar.tscn" id="cellar"]
+
+[resource]
+script = ExtResource("script")
+scenes = Dictionary[StringName, PackedScene]({
+&"2_a": ExtResource("2_a"),
+&"2_b": ExtResource("2_b"),
+&"2_c": ExtResource("2_c"),
+&"2_a_no_kitchen": ExtResource("2_a_no_kitchen"),
+&"2_b_no_kitchen": ExtResource("2_b_no_kitchen"),
+&"2_c_no_kitchen": ExtResource("2_c_no_kitchen"),
+&"3_a": ExtResource("3_a"),
+&"3_b": ExtResource("3_b"),
+&"3_c": ExtResource("3_c"),
+&"3_a_no_kitchen": ExtResource("3_a_no_kitchen"),
+&"3_b_no_kitchen": ExtResource("3_b_no_kitchen"),
+&"3_c_no_kitchen": ExtResource("3_c_no_kitchen"),
+&"4_a": ExtResource("4_a"),
+&"4_b": ExtResource("4_b"),
+&"4_c": ExtResource("4_c"),
+&"4_a_no_kitchen": ExtResource("4_a_no_kitchen"),
+&"4_b_no_kitchen": ExtResource("4_b_no_kitchen"),
+&"4_c_no_kitchen": ExtResource("4_c_no_kitchen"),
+&"cellar": ExtResource("cellar")
+})
+

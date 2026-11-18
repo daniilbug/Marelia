@@ -66,6 +66,7 @@ take={
 
 2d_physics/layer_4="PlayerBounds"
 2d_physics/layer_5="NPC"
+2d_physics/layer_6="RaisedPlatforms"
 
 [physics]
 

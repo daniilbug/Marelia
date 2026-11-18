@@ -2,10 +2,10 @@
 class_name HouseRoomStyle
 extends Resource
 
-enum Floor { WOOD, TERRACOTTA, ORNAMENT, WOOD_NARROW, WOOD_CHEVRON, WOOD_BASKET, TILE_CHECKER, TILE_OCTAGON, TILE_MAIOLICA }
-enum Wall { PLASTER, STRIPED, BOTANICAL }
+enum Floor { WOOD, TERRACOTTA, ORNAMENT, WOOD_NARROW, WOOD_CHEVRON, WOOD_BASKET, TILE_CHECKER, TILE_OCTAGON, TILE_MAIOLICA, STONE }
+enum Wall { PLASTER, STRIPED, BOTANICAL, FIELDSTONE, LIMESTONE }
 const FIELDS := ["floor_material", "floor_color", "wall_style", "wall_color", "accent_color"]
-const FLOOR_COLORS := [Color("ae7d46"), Color("b8764e"), Color("b4aa8a"), Color("af8657"), Color("af8657"), Color("af8657"), Color("d3c5a7"), Color("d3c5a7"), Color("d3c5a7")]
+const FLOOR_COLORS := [Color("ae7d46"), Color("b8764e"), Color("b4aa8a"), Color("af8657"), Color("af8657"), Color("af8657"), Color("d3c5a7"), Color("d3c5a7"), Color("d3c5a7"), Color("a69c87")]
 
 @export var floor_material: Floor = Floor.WOOD:
 	set(value):

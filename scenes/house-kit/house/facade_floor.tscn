@@ -1,0 +1,7 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/house-kit/house/facade_floor.gd" id="script"]
+[node name="FacadeFloor" type="Node2D"]
+script = ExtResource("script")
+[node name="Wall" type="Sprite2D" parent="."]
+[node name="LeftWindow" type="Sprite2D" parent="."]
+[node name="RightWindow" type="Sprite2D" parent="."]

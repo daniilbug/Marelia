@@ -1,39 +1,39 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://3b6ynmi1dl83"]
 
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/reading_corner.gd" id="group"]
-[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/reading_wingback.tres" id="style"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bookcase.tscn" id="bookcase"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/reading_chair.tscn" id="armchair"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bedside_table.tscn" id="table"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bookcase.tscn" id="bookcase"]
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/reading_corner.gd" id="group"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="lamp"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/rug.tscn" id="rug"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/reading_wingback.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/bedside_table.tscn" id="table"]
 
-[node name="ReadingCorner" type="Node2D"]
+[node name="ReadingCorner" type="Node2D" unique_id=1174099215]
 y_sort_enabled = true
 script = ExtResource("group")
-preserve_spacing = true
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("Rug"): true
+})
 style = ExtResource("style")
 
-[node name="Bookcase" parent="." instance=ExtResource("bookcase")]
-position = Vector2(-14, -18)
-style = 1
+[node name="Bookcase" parent="." unique_id=1555407768 instance=ExtResource("bookcase")]
+position = Vector2(-14, -10)
 wood_color = Color(0.592157, 0.407843, 0.247059, 1)
 
-[node name="Armchair" parent="." instance=ExtResource("armchair")]
+[node name="Armchair" parent="." unique_id=1882918308 instance=ExtResource("armchair")]
 position = Vector2(-14, 12)
 style = 0
-wood_color = Color(0.592157, 0.407843, 0.247059, 1)
-fabric_color = Color(0.490196, 0.588235, 0.403922, 1)
 
-[node name="SideTable" parent="." instance=ExtResource("table")]
+[node name="SideTable" parent="." unique_id=2072641878 instance=ExtResource("table")]
 position = Vector2(12, 4)
 style = 0
 wood_color = Color(0.592157, 0.407843, 0.247059, 1)
 
-[node name="Lamp" parent="SideTable" instance=ExtResource("lamp")]
+[node name="Lamp" parent="SideTable" unique_id=1384196901 instance=ExtResource("lamp")]
 position = Vector2(0, -14)
+paint_color = Color(0.721569, 0.462745, 0.333333, 1)
 blocks_movement = false
 
-[node name="Rug" parent="." instance=ExtResource("rug")]
+[node name="Rug" parent="." unique_id=820462878 instance=ExtResource("rug")]
 position = Vector2(-3, 14)
 fabric_color = Color(0.490196, 0.588235, 0.403922, 1)

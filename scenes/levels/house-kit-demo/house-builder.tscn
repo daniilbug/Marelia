@@ -48,6 +48,7 @@ wall_color = Color(0.76, 0.81, 0.72, 1)
 [sub_resource type="Resource" id="outside_config_4"]
 resource_local_to_scene = true
 script = ExtResource("outside_config_script")
+kind = 1
 room_count = 4
 layout = 2
 kitchen = SubResource("outside_kitchen_4")
@@ -62,6 +63,35 @@ layout = 1
 resource_local_to_scene = true
 script = ExtResource("outside_config_script")
 room_count = 3
+layout = 2
+
+[sub_resource type="Resource" id="upper_bedrooms"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 2
+kind = 1
+layout = 1
+
+[sub_resource type="Resource" id="upper_kitchen"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 3
+kind = 0
+layout = 2
+
+[sub_resource type="Resource" id="upper_balcony"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 2
+kind = 1
+balcony = true
+layout = 0
+
+[sub_resource type="Resource" id="top_bedrooms"]
+resource_local_to_scene = true
+script = ExtResource("outside_config_script")
+room_count = 2
+kind = 1
 layout = 2
 
 [node name="HouseBuilderDemo" type="Node2D" node_paths=PackedStringArray("spawn_level")]
@@ -81,7 +111,7 @@ camera_position_offset = Vector2(0, -72)
 [node name="BottomLeft" parent="Outside/LevelBounds" index="0"]
 position = Vector2(0, 640)
 [node name="TopRight" parent="Outside/LevelBounds" index="1"]
-position = Vector2(768, 0)
+position = Vector2(768, -240)
 [node name="PlayerSpawn" parent="Outside" index="2"]
 position = Vector2(384, 228)
 [node name="Ground" type="Sprite2D" parent="Outside"]
@@ -90,7 +120,8 @@ texture = ExtResource("outside_ground")
 texture_repeat = 2
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 768, 640)
+position = Vector2(0, -240)
+region_rect = Rect2(0, 0, 768, 880)
 
 [node name="Paths" type="Polygon2D" parent="Outside"]
 z_index = -19
@@ -100,11 +131,12 @@ polygon = PackedVector2Array(124, 200, 164, 200, 164, 232, 364, 232, 364, 200, 4
 
 [node name="House2Rooms" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(144, 200)
-interior_settings = SubResource("outside_config_2")
+floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_2")])
 
 [node name="House3Rooms" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(384, 200)
-interior_settings = SubResource("outside_config_3")
+floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_3"), SubResource("upper_bedrooms")])
+basement_enabled = true
 facade_style = 1
 roof_style = 1
 door_style = 1
@@ -115,7 +147,7 @@ shutter_color = Color(0.38, 0.49, 0.46, 1)
 
 [node name="House4Rooms" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(624, 200)
-interior_settings = SubResource("outside_config_4")
+floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_4"), SubResource("upper_kitchen"), SubResource("upper_balcony"), SubResource("top_bedrooms")])
 door_style = 2
 window_style = 1
 facade_color = Color(0.73, 0.79, 0.66, 1)
@@ -124,8 +156,8 @@ shutter_color = Color(0.75, 0.7, 0.5, 1)
 
 [node name="House2RoomsSecond" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(264, 440)
-interior_settings = SubResource("outside_config_2_second")
+floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_2_second")])
 
 [node name="House3RoomsSecond" parent="Outside" instance=ExtResource("outside_facade")]
 position = Vector2(504, 440)
-interior_settings = SubResource("outside_config_3_second")
+floors = Array[ExtResource("outside_config_script")]([SubResource("outside_config_3_second")])

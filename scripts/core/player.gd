@@ -30,7 +30,15 @@ signal level_changed
 			return
 		level_id = value
 		if is_node_ready():
+			_refresh_platform()
 			level_changed.emit()
+
+@export var platform_path: NodePath:
+	set(value):
+		platform_path = value
+		if is_node_ready():
+			_refresh_platform()
+var _platform: WalkablePlatform
 
 # A garment is its existing atlas style ID and fixed fabric color ID.
 # These inventories, like appearance, are owned by the server.
@@ -100,6 +108,26 @@ func _ready() -> void:
 	_refresh_appearance()
 	_start_idle_bob()
 	call_deferred("_setup_authority")
+	_refresh_platform()
+
+func get_platform() -> WalkablePlatform:
+	return _platform if is_instance_valid(_platform) else null
+
+func _exit_tree() -> void:
+	if is_instance_valid(_platform):
+		_platform.detach_player(self)
+
+func _refresh_platform() -> void:
+	var world := get_parent() as Main
+	var level := world.get_level(level_id) if world != null else Level.find_level_node(self)
+	var next: WalkablePlatform = level.get_node_or_null(platform_path) as WalkablePlatform if level != null and not platform_path.is_empty() else null
+	if next == get_platform():
+		return
+	if is_instance_valid(_platform):
+		_platform.detach_player(self)
+	_platform = next
+	if _platform != null:
+		_platform.attach_player(self)
 
 func randomize_appearance() -> void:
 	hair_id = randi_range(0, CharacterSprite.HAIR_TEXTURES.size() - 1)
@@ -148,6 +176,7 @@ func get_save_data() -> Dictionary:
 	return {
 		"player_name": player_name, "level_id": level_id,
 		"position": level.to_local(global_position), "direction": direction,
+		"platform_path": platform_path,
 		"appearance": SaveGraph.get_fields(self, SAVE_APPEARANCE),
 		"wardrobe": {"tops": owned_tops.duplicate(), "bottoms": owned_bottoms.duplicate()},
 	}
@@ -155,6 +184,7 @@ func get_save_data() -> Dictionary:
 func apply_save_data(data: Dictionary) -> void:
 	player_name = data.player_name
 	level_id = data.level_id
+	platform_path = data.get("platform_path", NodePath())
 	direction = data.get("direction", Vector2.DOWN)
 	SaveGraph.apply_fields(self, SAVE_APPEARANCE, data.get("appearance", {}))
 	if data.has("wardrobe"):

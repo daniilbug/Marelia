@@ -5,8 +5,9 @@ extends Resource
 enum Design { RUSTIC, CLASSIC, DECORATIVE }
 enum RugDesign { GEOMETRIC, MEDALLION, WOVEN_STRIPES, OVAL_FLORAL }
 enum PaintingDesign { COUNTRYSIDE, HARBOR, VINEYARD, LEMONS }
+enum WallDecoration { CLOCK, PAINTING }
 
-const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster_color", "stone_color", "roof_color", "rug_style", "painting_style", "pattern_color"]
+const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster_color", "stone_color", "roof_color", "rug_style", "painting_style", "wall_decoration", "pattern_color"]
 
 @export var design: Design = Design.RUSTIC:
 	set(value):
@@ -63,6 +64,12 @@ const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster
 		if painting_style == value:
 			return
 		painting_style = value
+		emit_changed()
+@export var wall_decoration: WallDecoration = WallDecoration.CLOCK:
+	set(value):
+		if wall_decoration == value:
+			return
+		wall_decoration = value
 		emit_changed()
 @export_color_no_alpha var pattern_color := Color("d2bd97"):
 	set(value):

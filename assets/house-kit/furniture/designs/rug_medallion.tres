@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://bij0embk506jw"]
 
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_medallion.png" id="albedo"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_medallion_approved.png" id="approved"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/rug_medallion_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://cbkt66oi1g4so" path="res://assets/house-kit/furniture/sprites/rug_medallion.png" id="albedo"]
+[ext_resource type="Texture2D" uid="uid://ceouijwash8nb" path="res://assets/house-kit/furniture/sprites/rug_medallion_approved.png" id="approved"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Texture2D" uid="uid://cv4cduql6hyrf" path="res://assets/house-kit/furniture/sprites/rug_medallion_materials.png" id="mask"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
 
 [sub_resource type="Resource" id="front"]
 script = ExtResource("view")

@@ -1,23 +1,35 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b3b3p5r7reel0"]
 
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
-[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
-[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" uid="uid://cakjcaemq3583" path="res://scenes/house-kit/furniture/chair.tscn" id="chair"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/desk.tscn" id="desk"]
+[ext_resource type="Script" uid="uid://d5xd3qj51nsx" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" uid="uid://scrf54ltn0or" path="res://assets/house-kit/furniture/groups/styles/rustic.tres" id="style"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/table_lamp.tscn" id="table_lamp"]
 
-[node name="Workplace" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4wfr"]
+resource_local_to_scene = true
+size = Vector2(10, 8)
+
+[node name="Workplace" type="Node2D" unique_id=1450866858]
 y_sort_enabled = true
 script = ExtResource("group")
 style = ExtResource("style")
 
-[node name="Desk" parent="." instance=ExtResource("desk")]
-position = Vector2(0, 0)
+[node name="Desk" parent="." unique_id=665788702 instance=ExtResource("desk")]
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
 
-[node name="Lamp" parent="Desk" instance=ExtResource("table_lamp")]
+[node name="Lamp" parent="Desk" unique_id=197426957 instance=ExtResource("table_lamp")]
 position = Vector2(9, -21)
+scale = Vector2(1, 1.0040823)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
 blocks_movement = false
 
-[node name="DeskChair" parent="." instance=ExtResource("chair")]
-position = Vector2(0, 20)
+[node name="DeskChair" parent="." unique_id=1001775984 instance=ExtResource("chair")]
+position = Vector2(0.14019012, 7.893532)
 direction = 1
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+fabric_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+footprint_shape = SubResource("RectangleShape2D_e4wfr")
+footprint_offset = Vector2(0, -4)

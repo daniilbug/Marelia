@@ -22,6 +22,9 @@ extends Area2D
 			if not Engine.is_editor_hint():
 				_refresh_state(true)
 
+## A player on the building's own balcony should continue to see its facade.
+@export var excluded_platforms: Array[WalkablePlatform] = []
+
 @export_range(0.0, 1.0, 0.05) var inside_alpha := 0.2:
 	set(value):
 		inside_alpha = clampf(value, 0.0, 1.0)
@@ -61,7 +64,8 @@ func _refresh_state(force := false) -> void:
 	var level := Level.find_level_node(self)
 	var player := level.local_player if level != null else null
 	var inside := enabled and monitoring and is_instance_valid(player) \
-		and player.level_id == level.level_id and overlaps_body(player)
+		and player.level_id == level.level_id and overlaps_body(player) \
+		and player.get_platform() not in excluded_platforms
 	if inside == _inside and not force:
 		return
 	_inside = inside

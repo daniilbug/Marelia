@@ -2,7 +2,10 @@
 class_name HouseFurnitureGroup
 extends Node2D
 
-@export var preserve_spacing := false
+@export var included_pieces: Dictionary[NodePath, bool] = {}:
+	set(value):
+		included_pieces = value
+		_apply_included_pieces()
 
 @export var style: HouseFurnitureStyle:
 	set(value):
@@ -19,6 +22,7 @@ func _ready() -> void:
 	for piece in get_pieces():
 		piece.visibility_changed.connect(_update_visibility.bind(piece))
 		_update_visibility(piece)
+	_apply_included_pieces()
 	refresh()
 
 func get_pieces() -> Array[FurniturePiece]:
@@ -30,6 +34,14 @@ func get_pieces() -> Array[FurniturePiece]:
 
 func _update_visibility(piece: FurniturePiece) -> void:
 	piece.process_mode = Node.PROCESS_MODE_INHERIT if piece.visible else Node.PROCESS_MODE_DISABLED
+
+func _apply_included_pieces() -> void:
+	if not is_node_ready():
+		return
+	for path in included_pieces:
+		var piece := get_node_or_null(path) as FurniturePiece
+		if piece != null:
+			piece.visible = included_pieces[path]
 
 func refresh() -> void:
 	if not is_node_ready() or style == null:

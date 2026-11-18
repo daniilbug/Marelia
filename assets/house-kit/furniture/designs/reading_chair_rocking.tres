@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://c5tam73o0wxeg"]
 
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
-[ext_resource type="Script" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking.png" id="albedo"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_approved.png" id="approved"]
-[ext_resource type="Texture2D" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_materials.png" id="mask"]
+[ext_resource type="Texture2D" uid="uid://csyjd7om3bnkh" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking.png" id="albedo"]
+[ext_resource type="Texture2D" uid="uid://ceu324ecmhdu6" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_approved.png" id="approved"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/house-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Texture2D" uid="uid://cqj6ogecauvap" path="res://assets/house-kit/furniture/sprites/reading_chair_rocking_materials.png" id="mask"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/house-kit/furniture/furniture_view.gd" id="view"]
 
 [sub_resource type="Resource" id="front"]
 script = ExtResource("view")

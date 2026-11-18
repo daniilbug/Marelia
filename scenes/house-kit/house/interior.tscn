@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cngwr1634ilbn" path="res://scripts/house-kit/house/interior_settings.gd" id="4_c6som"]
 [ext_resource type="PackedScene" path="res://scenes/house-kit/house/layouts/2_a.tscn" id="layout"]
 [ext_resource type="Script" uid="uid://dbn6y4m2sv6el" path="res://scripts/house-kit/house/interior.gd" id="script"]
+[ext_resource type="Resource" path="res://assets/house-kit/house/layouts.tres" id="layouts"]
 
 [sub_resource type="Resource" id="Resource_cwuvo"]
 resource_local_to_scene = true
@@ -48,7 +49,7 @@ y_sort_enabled = true
 player_spawn = NodePath("Layout/PlayerSpawn")
 bounds_path = NodePath("Layout/LevelBounds")
 configuration = SubResource("Resource_l8awh")
-floor_index = 0
+layouts = ExtResource("layouts")
 selected_placements = {
 "Bedroom/SleepingArea": "LeftWall",
 "LivingRoom/Workplace": "LeftWall"

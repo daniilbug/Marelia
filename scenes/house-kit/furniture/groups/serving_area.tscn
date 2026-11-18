@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/house-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="Resource" path="res://assets/house-kit/furniture/groups/styles/classic.tres" id="style"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/sideboard.tscn" id="sideboard"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/flower_vase.tscn" id="flowers"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_shelf.tscn" id="shelf"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/kitchen_cart.tscn" id="cart"]
+[ext_resource type="PackedScene" path="res://scenes/house-kit/furniture/wall_clock.tscn" id="clock"]
+
+[node name="ServingArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("Sideboard/Flowers"): true,
+NodePath("Shelf"): true,
+NodePath("Cart"): true,
+NodePath("Clock"): true
+})
+style = ExtResource("style")
+
+[node name="Sideboard" parent="." instance=ExtResource("sideboard")]
+
+[node name="Flowers" parent="Sideboard" instance=ExtResource("flowers")]
+position = Vector2(0, -18)
+blocks_movement = false
+
+[node name="Shelf" parent="." instance=ExtResource("shelf")]
+z_index = 1
+position = Vector2(0, -30)
+
+[node name="Cart" parent="." instance=ExtResource("cart")]
+position = Vector2(40, 0)
+
+[node name="Clock" parent="." instance=ExtResource("clock")]
+z_index = 1
+position = Vector2(40, -30)

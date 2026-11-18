@@ -48,6 +48,9 @@ func can_restore(snapshot: Dictionary) -> bool:
 		var level := _world.get_level(id)
 		if level == null or not level.can_restore_save_data(snapshot.levels[id]):
 			return false
+	var platform_path: NodePath = snapshot.player.get("platform_path", NodePath())
+	if not platform_path.is_empty() and _world.get_level(snapshot.player.level_id).get_node_or_null(platform_path) is not WalkablePlatform:
+		return false
 	return true
 
 static func is_valid_snapshot(snapshot: Dictionary) -> bool:
@@ -58,6 +61,9 @@ static func is_valid_snapshot(snapshot: Dictionary) -> bool:
 		return false
 	if snapshot.player.level_id not in snapshot.levels:
 		return false
+	if snapshot.player.has("platform_path"):
+		if snapshot.player.platform_path is not NodePath or (not snapshot.player.platform_path.is_empty() and not SaveGraph.safe_path(snapshot.player.platform_path)):
+			return false
 	# Optional in version 1: older saves receive a starter wardrobe once on load.
 	if snapshot.player.has("wardrobe"):
 		if not Player.is_valid_wardrobe(snapshot.player.wardrobe):

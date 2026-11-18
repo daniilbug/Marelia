@@ -60,6 +60,8 @@ func register_level(level: Level) -> bool:
 	_levels[level.level_id] = level
 	if level.get_parent() == null:
 		add_child(level)
+	for player in get_players():
+		player._refresh_platform()
 	level.visible = level == spawn_level if local_player == null else level.level_id == local_player.level_id
 	if local_player != null:
 		get_player_level(int(local_player.name)).activate_local_player(local_player)
@@ -109,6 +111,7 @@ func _spawn_player(peer_id: int, saved: Dictionary = {}) -> void:
 	var spawn_position := spawn_level.player_spawn.global_position if saved.is_empty() else level.to_global(saved.position)
 	if not saved.is_empty() and not level.get_world_bounds().has_point(spawn_position):
 		spawn_position = level.player_spawn.global_position
+		player.platform_path = NodePath()
 	player.position = to_local(spawn_position)
 	add_child(player)
 	_watch_player_level(player)
@@ -149,30 +152,46 @@ func _refresh_player_visibility() -> void:
 		player.visible = player.level_id == local_player.level_id
 
 ## Called by an entrance after the server validates the source level and reach.
-func transfer_player(player: Player, destination: Level, spawn: Marker2D, facing: Vector2) -> void:
+func transfer_player(player: Player, destination: Level, spawn: Marker2D, facing: Vector2, platform: WalkablePlatform = null) -> bool:
 	if not multiplayer.is_server() or player == null or destination == null or spawn == null:
-		return
+		return false
 	if get_level(destination.level_id) != destination or Level.find_level_node(spawn) != destination:
-		return
+		return false
 	if not destination.get_world_bounds().has_point(spawn.global_position):
-		return
-	var arrival := _find_transfer_position(player, destination, spawn)
+		return false
+	if platform != null and Level.find_level_node(platform) != destination:
+		return false
+	var arrival := _find_transfer_position(player, destination, spawn, platform)
 	if not arrival.is_finite():
-		return
-	_apply_level_transfer.rpc(int(str(player.name)), destination.level_id, to_local(arrival), facing)
+		return false
+	var platform_path := destination.get_path_to(platform) if platform != null else NodePath()
+	_apply_level_transfer.rpc(int(str(player.name)), destination.level_id, to_local(arrival), facing, platform_path)
+	return player.level_id == destination.level_id
 
-func _find_transfer_position(player: Player, destination: Level, spawn: Marker2D) -> Vector2:
+func _find_transfer_position(player: Player, destination: Level, spawn: Marker2D, platform: WalkablePlatform = null) -> Vector2:
 	var shape := player.get_node("Shape") as CollisionShape2D
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = shape.shape
-	query.collision_mask = player.collision_mask
-	query.exclude = [player.get_rid()]
+	var previous_platform := player.get_platform()
+	query.collision_mask = previous_platform.get_ground_collision_mask(player) if previous_platform != null else player.collision_mask
+	var excluded: Array[RID] = [player.get_rid()]
+	if platform != null:
+		query.collision_mask = (query.collision_mask & ~1) | WalkablePlatform.COLLISION_LAYER
+		for body in platform.ignored_bodies:
+			if is_instance_valid(body):
+				excluded.append(body.get_rid())
+	query.exclude = excluded
 	query.transform = shape.global_transform
 	var shape_offset := shape.global_position - player.global_position
 	var origin := destination.to_local(spawn.global_position)
-	for offset in [Vector2.ZERO, Vector2(-16, 0), Vector2(16, 0), Vector2(-32, 0), Vector2(32, 0), Vector2(0, -16), Vector2(0, 16)]:
+	var offsets := [Vector2.ZERO, Vector2(-16, 0), Vector2(16, 0), Vector2(-32, 0), Vector2(32, 0), Vector2(0, -16), Vector2(0, 16)]
+	if platform != null:
+		offsets = [Vector2.ZERO, Vector2(-8, 0), Vector2(8, 0), Vector2(0, 8), Vector2(-8, 8), Vector2(8, 8)]
+	for offset in offsets:
 		var arrival := destination.to_global(origin + offset)
 		if not destination.get_world_bounds().has_point(arrival):
+			continue
+		if platform != null and not platform.walkable_rect.grow(-6).has_point(platform.to_local(arrival)):
 			continue
 		query.transform.origin = arrival + shape_offset
 		if get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty():
@@ -180,14 +199,15 @@ func _find_transfer_position(player: Player, destination: Level, spawn: Marker2D
 	return Vector2.INF
 
 @rpc("authority", "call_local", "reliable")
-func _apply_level_transfer(peer_id: int, destination_id: String, spawn_position: Vector2, facing: Vector2) -> void:
+func _apply_level_transfer(peer_id: int, destination_id: String, spawn_position: Vector2, facing: Vector2, platform_path := NodePath()) -> void:
 	var player := get_player(peer_id)
 	if player == null or not _levels.has(destination_id):
 		return
+	player.platform_path = NodePath()
 	player.position = spawn_position
-	player.velocity = Vector2.ZERO
-	player.direction = facing
+	player.direction = player.velocity.normalized() if not player.velocity.is_zero_approx() else facing
 	player.level_id = destination_id
+	player.platform_path = platform_path
 	if player == local_player:
 		# Also reset after the RPC if level_id replication arrived before it.
 		_activate_local_level(destination_id)

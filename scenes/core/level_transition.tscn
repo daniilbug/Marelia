@@ -1,0 +1,11 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/core/level_transition.gd" id="script"]
+[sub_resource type="RectangleShape2D" id="reach"]
+size = Vector2(24, 24)
+[node name="LevelTransition" type="Node2D"]
+script = ExtResource("script")
+[node name="Area" type="Area2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+shape = SubResource("reach")
+[node name="Arrival" type="Marker2D" parent="."]
+position = Vector2(0, -24)

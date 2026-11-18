@@ -3,7 +3,7 @@ class_name HousePlacementGroup
 extends Node2D
 
 @export var style_variants: HouseFurnitureVariants
-@export var selected_variant: StringName = &"LeftWall":
+@export var selected_variant: StringName = &"":
 	set(value):
 		if selected_variant == value:
 			return

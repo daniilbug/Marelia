@@ -2,6 +2,16 @@
 class_name HouseInterior
 extends Level
 
+signal connections_changed
+
+@export var layouts: HouseLayoutCatalog:
+	set(value):
+		if layouts != null and layouts.changed.is_connected(_schedule_rebuild):
+			layouts.changed.disconnect(_schedule_rebuild)
+		layouts = value
+		if layouts != null:
+			layouts.changed.connect(_schedule_rebuild)
+		_schedule_rebuild()
 @export var configuration: HouseInteriorSettings = HouseInteriorSettings.new():
 	set(value):
 		if configuration != value:
@@ -13,8 +23,19 @@ extends Level
 		_schedule_rebuild()
 @export_tool_button("Randomize interior") var randomize_action: Callable = randomize
 @export_tool_button("Randomize furniture") var randomize_furniture_action: Callable = randomize_furniture
-@export_storage var floor_index := 0
 @export_storage var selected_placements: Dictionary = {}
+@export var has_entrance := true:
+	set(value):
+		has_entrance = value
+		_schedule_rebuild()
+@export var has_upstairs := false:
+	set(value):
+		has_upstairs = value
+		_schedule_rebuild()
+@export var has_downstairs := false:
+	set(value):
+		has_downstairs = value
+		_schedule_rebuild()
 
 var _pending := false
 var _layout_signature := ""
@@ -33,7 +54,7 @@ func _ready() -> void:
 func randomize() -> void:
 	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
 		return
-	configuration.randomize()
+	configuration.randomize(layouts)
 	randomize_furniture()
 
 func randomize_furniture() -> void:
@@ -52,19 +73,29 @@ func rebuild() -> void:
 	_pending = false
 	if not is_node_ready() or configuration == null:
 		return
-	var path := configuration.get_template_path()
+	var scene := configuration.get_template_scene(layouts)
+	if scene == null:
+		push_error("Assign the selected layout in the house scene's Layouts catalog or Configuration / Layout Scene")
+		return
+	var path := scene.resource_path
 	var replaced := _layout.scene_file_path != path
-	var previous_target := get_entry_portal().target_door
 	var states := initial_door_states if _layout_signature.is_empty() else get_door_states()
 	if replaced:
+		var instance := scene.instantiate()
+		if instance is not HouseLayout:
+			if instance != null:
+				instance.free()
+			push_error("House layout must inherit HouseLayout: %s" % path)
+			return
 		remove_child(_layout)
 		_layout.queue_free()
-		_layout = (load(path) as PackedScene).instantiate() as HouseLayout
+		_layout = instance as HouseLayout
 		_layout.name = "Layout"
 		add_child(_layout)
 		# Keep the chosen PackedScene when the editor saves this interior.
 		_layout.owner = self
 	_layout.apply_configuration(configuration)
+	_layout.configure_access(has_entrance, has_upstairs, has_downstairs)
 	_layout.select_placements(selected_placements)
 	if replaced or _layout_signature.is_empty():
 		_layout.apply_door_states(states)
@@ -73,8 +104,8 @@ func rebuild() -> void:
 	_bounds_body = _layout.get_node("LevelBounds")
 	_bottom_left_bound = _bounds_body.get_node("BottomLeft")
 	_top_right_bound = _bounds_body.get_node("TopRight")
-	if replaced and is_instance_valid(previous_target):
-		previous_target.pair_with(get_entry_portal())
+	if replaced:
+		connections_changed.emit()
 	var signature := "%s:%s" % [path, configuration.interior_size]
 	if not Engine.is_editor_hint() and is_instance_valid(local_player):
 		if signature != _layout_signature or selected_placements != _applied_placements:
@@ -86,9 +117,6 @@ func rebuild() -> void:
 func _create_bounds_walls() -> void:
 	# The selected layout already owns its complete set of bounds colliders.
 	pass
-
-func get_layout() -> HouseLayout:
-	return _layout
 
 func get_entry_portal() -> HousePortal:
 	return _layout.get_node("Exit") as HousePortal

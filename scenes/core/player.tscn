@@ -73,6 +73,9 @@ properties/8/replication_mode = 2
 properties/9/path = NodePath(".:player_name")
 properties/9/spawn = true
 properties/9/replication_mode = 2
+properties/10/path = NodePath(".:platform_path")
+properties/10/spawn = true
+properties/10/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=1474730025]
 collision_mask = 9

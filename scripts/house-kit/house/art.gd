@@ -5,8 +5,8 @@ extends RefCounted
 const SHADER = preload("res://assets/house-kit/house/shaders/house_palette.gdshader")
 const ROOT := "res://assets/house-kit/house/sprites/"
 const DOORS := ["door_plank", "door_panel", "door_glazed"]
-const FLOORS := ["floor_wood", "floor_terracotta", "floor_ornament", "floor_wood_narrow", "floor_wood_chevron", "floor_wood_basket", "floor_tile_checker", "floor_tile_octagon", "floor_tile_maiolica"]
-const WALLS := ["facade_plaster", "wallpaper_striped", "wallpaper_botanical"]
+const FLOORS := ["floor_wood", "floor_terracotta", "floor_ornament", "floor_wood_narrow", "floor_wood_chevron", "floor_wood_basket", "floor_tile_checker", "floor_tile_octagon", "floor_tile_maiolica", "plinth_stone"]
+const WALLS := ["facade_plaster", "wallpaper_striped", "wallpaper_botanical", "facade_fieldstone", "facade_limestone"]
 
 static func apply(target: CanvasItem, stem: String, colors: Dictionary = {}, tiled := false) -> ShaderMaterial:
 	var texture := load(ROOT + stem + "_albedo.png") as Texture2D
