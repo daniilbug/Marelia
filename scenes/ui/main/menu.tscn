@@ -1,16 +1,17 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="script"]
-[ext_resource type="PackedScene" path="res://scenes/ui/main_menu_card.tscn" id="card"]
-[ext_resource type="Theme" path="res://assets/ui/main-menu/theme.tres" id="theme"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/desktop.png" id="desktop"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/new-home.png" id="new"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/owned-home.png" id="owned"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/ferry-ticket.png" id="ticket"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/home.svg" id="home"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/arrow.svg" id="arrow"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/close.svg" id="close"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/lock.svg" id="lock"]
+[ext_resource type="Script" path="res://scripts/ui/main/menu.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/main/menu_card.tscn" id="card"]
+[ext_resource type="PackedScene" path="res://scenes/ui/main/payment_card.tscn" id="payment_card"]
+[ext_resource type="Theme" path="res://assets/ui/main/theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/desktop.png" id="desktop"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/new-home.png" id="new"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/owned-home.png" id="owned"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/ferry-ticket.png" id="ticket"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/icons/home.svg" id="home"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/icons/arrow.svg" id="arrow"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/icons/close.svg" id="close"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/icons/lock.svg" id="lock"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 1
@@ -432,39 +433,59 @@ theme_override_constants/margin_bottom = 26
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="NewGame" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+[node name="NewGame" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
 layout_mode = 2
+custom_minimum_size = Vector2(562, 188)
 theme_override_constants/separation = 24
 visible = false
 
-[node name="Price" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
+[node name="Card" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame" instance=ExtResource("payment_card")]
+layout_mode = 2
+
+[node name="Checkout" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout"]
+layout_mode = 2
+text = "ui.payment.title"
+theme_type_variation = "DialogTitle"
+mouse_filter = 2
+
+[node name="Price" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Caption" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Price"]
+[node name="Caption" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Price"]
 layout_mode = 2
 text = "ui.menu.new_game.cost"
-mouse_filter = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
-[node name="Value" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Price"]
+[node name="Value" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Price"]
 layout_mode = 2
 text = "ui.menu.new_game.price"
-mouse_filter = 2
 theme_type_variation = "PriceLabel"
+mouse_filter = 2
 
-[node name="Actions" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
+[node name="Spacer" type="Control" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Actions" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Actions"]
+[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
 layout_mode = 2
 text = "ui.action.buy"
 theme_type_variation = "PrimaryButton"
 focus_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Actions"]
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
 layout_mode = 2
 text = "ui.action.back"
 theme_type_variation = "Button"

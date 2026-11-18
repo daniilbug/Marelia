@@ -65,7 +65,7 @@ take={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/localization/ru.po", "res://assets/localization/en.po")
+locale/translations=PackedStringArray("res://assets/localization/ru.po", "res://assets/localization/en.po", "res://assets/ui/main/localization/ru.po", "res://assets/ui/main/localization/en.po")
 locale/fallback="ru"
 
 [layer_names]

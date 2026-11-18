@@ -1,7 +1,7 @@
 extends Node
 
 const WORLD := preload("res://scenes/levels/main.tscn")
-const MENU := preload("res://scenes/ui/main_menu.tscn")
+const MENU := preload("res://scenes/ui/main/menu.tscn")
 @onready var session: NetworkSession = $NetworkSession
 var _world: Main
 var _menu: MainMenu
@@ -44,7 +44,8 @@ func _show_menu() -> void:
 	_menu.connection_cancelled.connect(session.close)
 	add_child(_menu)
 
-func _start_new_game() -> void:
+func _start_new_game(character_name: String) -> void:
+	Player.local_setup["name"] = character_name
 	SaveManager.new_game()
 	_menu.show_connecting()
 	session.host(_port)

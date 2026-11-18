@@ -1,10 +1,10 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bjejtol0vs8lo"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu_card.gd" id="script"]
-[ext_resource type="Theme" path="res://assets/ui/main-menu/theme.tres" id="theme"]
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/arrow.svg" id="arrow"]
+[ext_resource type="Script" path="res://scripts/ui/main/menu_card.gd" id="script"]
+[ext_resource type="Theme" path="res://assets/ui/main/theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/icons/arrow.svg" id="arrow"]
 
-[node name="MainMenuCard" type="Button"]
+[node name="MainMenuCard" type="Button" unique_id=1131278453]
 custom_minimum_size = Vector2(0, 376)
 layout_mode = 3
 anchors_preset = 0
@@ -15,7 +15,7 @@ script = ExtResource("script")
 focus_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="Content" type="VBoxContainer" parent="." unique_id=1703249466]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,14 +29,14 @@ offset_bottom = -2.0
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Art" type="TextureRect" parent="Content"]
+[node name="Art" type="TextureRect" parent="Content" unique_id=562441306]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 232)
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Body" type="MarginContainer" parent="Content"]
+[node name="Body" type="MarginContainer" parent="Content" unique_id=932881162]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_top = 18
@@ -45,17 +45,17 @@ theme_override_constants/margin_bottom = 18
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Layout" type="VBoxContainer" parent="Content/Body"]
+[node name="Layout" type="VBoxContainer" parent="Content/Body" unique_id=1679366303]
 layout_mode = 2
 theme_override_constants/separation = 0
 mouse_filter = 2
 
-[node name="Header" type="HBoxContainer" parent="Content/Body/Layout"]
+[node name="Header" type="HBoxContainer" parent="Content/Body/Layout" unique_id=847645820]
 layout_mode = 2
 theme_override_constants/separation = 8
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="Content/Body/Layout/Header"]
+[node name="Title" type="Label" parent="Content/Body/Layout/Header" unique_id=1069891016]
 layout_mode = 2
 text = ""
 mouse_filter = 2
@@ -63,48 +63,48 @@ size_flags_horizontal = 3
 clip_text = true
 theme_type_variation = "CardTitle"
 
-[node name="Price" type="HBoxContainer" parent="Content/Body/Layout/Header"]
+[node name="Price" type="HBoxContainer" parent="Content/Body/Layout/Header" unique_id=1895954624]
 layout_mode = 2
 theme_override_constants/separation = 5
 mouse_filter = 2
 
-[node name="Amount" type="Label" parent="Content/Body/Layout/Header/Price"]
+[node name="Amount" type="Label" parent="Content/Body/Layout/Header/Price" unique_id=1470672378]
 layout_mode = 2
 text = "1"
 mouse_filter = 2
 theme_type_variation = "PriceLabel"
 
-[node name="Unit" type="Label" parent="Content/Body/Layout/Header/Price"]
+[node name="Unit" type="Label" parent="Content/Body/Layout/Header/Price" unique_id=1142098251]
 layout_mode = 2
 text = "common.currency.maren"
 mouse_filter = 2
 vertical_alignment = 2
 theme_type_variation = "CurrencyLabel"
 
-[node name="Spacer" type="Control" parent="Content/Body/Layout"]
+[node name="Spacer" type="Control" parent="Content/Body/Layout" unique_id=871688560]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 22)
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Action" type="PanelContainer" parent="Content/Body/Layout"]
+[node name="Action" type="PanelContainer" parent="Content/Body/Layout" unique_id=526606866]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 43)
 theme_type_variation = "CardSecondaryAction"
 mouse_filter = 2
 
-[node name="Row" type="HBoxContainer" parent="Content/Body/Layout/Action"]
+[node name="Row" type="HBoxContainer" parent="Content/Body/Layout/Action" unique_id=34879737]
 layout_mode = 2
 theme_override_constants/separation = 8
 mouse_filter = 2
 
-[node name="Caption" type="Label" parent="Content/Body/Layout/Action/Row"]
+[node name="Caption" type="Label" parent="Content/Body/Layout/Action/Row" unique_id=515357578]
 layout_mode = 2
 text = ""
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="Arrow" type="TextureRect" parent="Content/Body/Layout/Action/Row"]
+[node name="Arrow" type="TextureRect" parent="Content/Body/Layout/Action/Row" unique_id=766903209]
 layout_mode = 2
 custom_minimum_size = Vector2(16, 16)
 mouse_filter = 2

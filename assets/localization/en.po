@@ -17,75 +17,6 @@ msgstr "English"
 msgid "ui.language.label"
 msgstr "Language"
 
-msgid "ui.menu.site_name"
-msgstr "marelia.migration"
-
-msgid "ui.menu.url_scheme"
-msgstr "https://"
-
-msgid "ui.menu.new_game.title"
-msgstr "House in Uvacia"
-
-msgid "ui.menu.new_game.action"
-msgstr "New game"
-
-msgid "ui.menu.load.title"
-msgstr "My property"
-
-msgid "ui.menu.load.action"
-msgstr "Load"
-
-msgid "ui.menu.join.title"
-msgstr "Ticket to Marelia"
-
-msgid "ui.menu.join.action"
-msgstr "Join"
-
-msgid "ui.menu.join.ticket_title"
-msgstr "Ticket to Uvacia"
-
-msgid "ui.menu.join.ip_label"
-msgstr "IP address"
-
-msgid "ui.menu.join.ip_placeholder"
-msgstr "192.168.1.10"
-
-msgid "ui.menu.join.buy"
-msgstr "Buy ticket"
-
-msgid "ui.menu.join.invalid_ip"
-msgstr "Enter a valid IP address."
-
-msgid "ui.menu.new_game.cost"
-msgstr "Price"
-
-#. Named parameters are part of the message contract and must be preserved.
-msgid "ui.menu.new_game.price"
-msgstr "{amount} {currency}"
-
-msgid "ui.menu.load.empty"
-msgstr "You do not own a home yet."
-
-msgid "ui.menu.load.corrupt"
-msgstr "Damaged save"
-
-#. Named parameters are part of the message contract and must be preserved.
-msgid "ui.menu.load.entry"
-msgstr "House in Uvacia · {date}"
-
-msgid "ui.menu.quit.confirm"
-msgstr "Quit the game?"
-
-msgid "ui.menu.status.connecting"
-msgstr "Connecting…"
-
-msgid "ui.menu.status.error"
-msgstr "Could not open the game"
-
-#. Named parameters are part of the message contract and must be preserved.
-msgid "ui.menu.card.accessibility"
-msgstr "{title}, {action}"
-
 msgid "ui.action.buy"
 msgstr "Buy"
 
@@ -97,21 +28,6 @@ msgstr "Quit"
 
 msgid "ui.action.stay"
 msgstr "Stay"
-
-msgid "ui.footer.select"
-msgstr "select"
-
-msgid "ui.footer.open"
-msgstr "open"
-
-msgid "ui.footer.quit"
-msgstr "quit"
-
-msgid "ui.key.enter"
-msgstr "Enter"
-
-msgid "ui.key.escape"
-msgstr "Esc"
 
 #. Named parameters are part of the message contract and must be preserved.
 msgid "common.datetime"

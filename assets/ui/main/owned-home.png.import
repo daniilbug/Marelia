@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c668qvw7uucie"
-path="res://.godot/imported/ferry-ticket.png-b73e5b25d0546d48cf65c246f497a7c1.ctex"
+uid="uid://c8vb64f0thgsw"
+path="res://.godot/imported/owned-home.png-2b7e60942c86717750fd279981c1c3b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/main-menu/ferry-ticket.png"
-dest_files=["res://.godot/imported/ferry-ticket.png-b73e5b25d0546d48cf65c246f497a7c1.ctex"]
+source_file="res://assets/ui/main/owned-home.png"
+dest_files=["res://.godot/imported/owned-home.png-2b7e60942c86717750fd279981c1c3b7.ctex"]
 
 [params]
 

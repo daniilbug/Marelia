@@ -1,7 +1,7 @@
 class_name MainMenu
 extends Control
 
-signal new_game_requested
+signal new_game_requested(character_name: String)
 signal load_game_requested(file_name: String)
 signal join_game_requested(address: String)
 signal connection_cancelled
@@ -16,7 +16,9 @@ signal connection_cancelled
 @onready var _modal_close: Button = $ModalOverlay/Center/Frame/Layout/TitleBar/Row/Close
 @onready var _address: LineEdit = $ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Address
 @onready var _address_error: Label = $ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Error
-@onready var _navigation: Array[Control] = [_new_game, _load, _join, _close, _language]
+@onready var _character_name: LineEdit = _pages.get_node("NewGame/Card/Layout/Details/Holder/NameInput")
+@onready var _buy: Button = _pages.get_node("NewGame/Checkout/Actions/Buy")
+@onready var _navigation: Array[Control] = [_new_game, _load, _join, _language, _close]
 
 var _locale_codes := PackedStringArray()
 var _previous_focus: Control
@@ -32,9 +34,12 @@ func _ready() -> void:
 	_join.pressed.connect(_show_join)
 	_close.pressed.connect(_show_quit)
 	_modal_close.pressed.connect(_close_modal)
-	for path in ["NewGame/Actions/Back", "Load/Back", "Join/Actions/Back", "Quit/Actions/Back", "Status/Back"]:
+	for path in ["NewGame/Checkout/Actions/Back", "Load/Back", "Join/Actions/Back", "Quit/Actions/Back", "Status/Back"]:
 		_pages.get_node(path).pressed.connect(_close_modal)
-	_pages.get_node("NewGame/Actions/Buy").pressed.connect(new_game_requested.emit)
+	_update_purchase_button(_character_name.text)
+	_buy.pressed.connect(_submit_purchase)
+	_character_name.text_changed.connect(_update_purchase_button)
+	_character_name.text_submitted.connect(func(_value: String): _submit_purchase())
 	_pages.get_node("Join/Actions/Buy").pressed.connect(_submit_address)
 	_address.text_submitted.connect(func(_text: String): _submit_address())
 	_address.text_changed.connect(func(_text: String): _address_error.hide())
@@ -106,10 +111,19 @@ func _close_modal() -> void:
 
 func _show_new_game() -> void:
 	var amount := _new_game.price
-	L10n.bind(_pages.get_node("NewGame/Price/Value"), L10n.message(&"ui.menu.new_game.price", {
+	L10n.bind(_pages.get_node("NewGame/Checkout/Price/Value"), L10n.message(&"ui.menu.new_game.price", {
 		"amount": amount, "currency": L10n.message(&"common.currency.maren", {}, amount),
 	}))
-	_show_page("NewGame", [_pages.get_node("NewGame/Actions/Buy"), _pages.get_node("NewGame/Actions/Back")])
+	_show_page("NewGame", [_character_name, _buy, _pages.get_node("NewGame/Checkout/Actions/Back")])
+
+func _update_purchase_button(value: String) -> void:
+	_buy.disabled = value.strip_edges().is_empty()
+	_buy.focus_mode = Control.FOCUS_NONE if _buy.disabled else Control.FOCUS_ALL
+
+func _submit_purchase() -> void:
+	var character_name := _character_name.text.strip_edges()
+	if not character_name.is_empty():
+		new_game_requested.emit(character_name)
 
 func _show_saves() -> void:
 	var list: VBoxContainer = _pages.get_node("Load/Scroll/Saves")

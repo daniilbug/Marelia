@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8vb64f0thgsw"
-path="res://.godot/imported/owned-home.png-fee92829a4700a176f854db8c904bec4.ctex"
+uid="uid://d4hvf6fdhk3oa"
+path="res://.godot/imported/chevron.svg-2dd40131c621b1487482ca4344df72c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/main-menu/owned-home.png"
-dest_files=["res://.godot/imported/owned-home.png-fee92829a4700a176f854db8c904bec4.ctex"]
+source_file="res://assets/ui/main/icons/chevron.svg"
+dest_files=["res://.godot/imported/chevron.svg-2dd40131c621b1487482ca4344df72c3.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

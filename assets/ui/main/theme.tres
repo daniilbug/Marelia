@@ -1,8 +1,9 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://ca1d726obkpvu"]
 
-[ext_resource type="FontFile" path="res://assets/fonts/tiny5/Tiny5.ttf" id="font"]
-
-[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/chevron.svg" id="language_arrow"]
+[ext_resource type="FontFile" uid="uid://c0m0cwrehapc5" path="res://assets/ui/main/fonts/tiny5/Tiny5.ttf" id="font"]
+[ext_resource type="Texture2D" uid="uid://d4hvf6fdhk3oa" path="res://assets/ui/main/icons/chevron.svg" id="language_arrow"]
+[ext_resource type="Texture2D" uid="uid://b3lh40jhv38tu" path="res://assets/ui/main/icons/radio-checked.png" id="radio_checked"]
+[ext_resource type="Texture2D" uid="uid://cnmc5juusxibc" path="res://assets/ui/main/icons/radio-unchecked.png" id="radio_unchecked"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maace"]
 content_margin_left = 12.0
@@ -237,17 +238,35 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.52156866, 0.25490198, 0.1764706, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvpcb"]
-content_margin_left = 16.0
-content_margin_top = 10.0
-content_margin_right = 16.0
-content_margin_bottom = 10.0
-bg_color = Color(0.54509807, 0.2627451, 0.18039216, 1)
+[sub_resource type="StyleBoxFlat" id="PaymentCardStyle"]
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+bg_color = Color(0.4, 0.439216, 0.278431, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.27451, 0.313725, 0.203922, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="PaymentChipStyle"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.858824, 0.72549, 0.490196, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.49019608, 0.23921569, 0.16078432, 1)
+border_color = Color(0.6, 0.478431, 0.270588, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwhl7"]
 content_margin_left = 16.0
@@ -255,6 +274,18 @@ content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6509804, 0.3254902, 0.21568628, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.49019608, 0.23921569, 0.16078432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvpcb"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.54509807, 0.2627451, 0.18039216, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -363,6 +394,40 @@ MenuCard/styles/pressed = SubResource("StyleBoxFlat_rwqos")
 MutedLabel/base_type = &"Label"
 MutedLabel/colors/font_color = Color(0.5019608, 0.3764706, 0.26666668, 1)
 MutedLabel/font_sizes/font_size = 24
+OptionButton/colors/font_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
+OptionButton/colors/font_focus_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
+OptionButton/colors/font_hover_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
+OptionButton/constants/arrow_margin = 10
+OptionButton/icons/arrow = ExtResource("language_arrow")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_geibx")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_efflf")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_j2y85")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_2v572")
+PaymentCard/base_type = &"PanelContainer"
+PaymentCard/styles/panel = SubResource("PaymentCardStyle")
+PaymentCardHint/base_type = &"Label"
+PaymentCardHint/colors/font_color = Color(0.85098, 0.843137, 0.721569, 1)
+PaymentCardHint/font_sizes/font_size = 18
+PaymentCardLabel/base_type = &"Label"
+PaymentCardLabel/colors/font_color = Color(1, 0.945098, 0.823529, 1)
+PaymentCardLabel/font_sizes/font_size = 20
+PaymentCardNumber/base_type = &"PaymentCardLabel"
+PaymentCardNumber/font_sizes/font_size = 24
+PaymentChip/base_type = &"PanelContainer"
+PaymentChip/styles/panel = SubResource("PaymentChipStyle")
+PaymentName/base_type = &"LineEdit"
+PaymentName/font_sizes/font_size = 20
+PaymentName/styles/normal = SubResource("StyleBoxFlat_maace")
+PopupMenu/colors/font_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
+PopupMenu/colors/font_hover_color = Color(1, 0.94509804, 0.8235294, 1)
+PopupMenu/constants/h_separation = 10
+PopupMenu/constants/item_end_padding = 8
+PopupMenu/constants/item_start_padding = 4
+PopupMenu/constants/v_separation = 14
+PopupMenu/icons/radio_checked = ExtResource("radio_checked")
+PopupMenu/icons/radio_unchecked = ExtResource("radio_unchecked")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_fwhl7")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_j2y85")
 PriceLabel/base_type = &"Label"
 PriceLabel/colors/font_color = Color(0.6509804, 0.3254902, 0.21568628, 1)
 PriceLabel/font_sizes/font_size = 32
@@ -384,17 +449,3 @@ TitleBar/base_type = &"PanelContainer"
 TitleBar/styles/panel = SubResource("StyleBoxFlat_13nkc")
 Toolbar/base_type = &"PanelContainer"
 Toolbar/styles/panel = SubResource("StyleBoxFlat_6mx3x")
-
-OptionButton/styles/normal = SubResource("StyleBoxFlat_j2y85")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_efflf")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_2v572")
-OptionButton/styles/focus = SubResource("StyleBoxFlat_geibx")
-OptionButton/colors/font_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
-OptionButton/colors/font_hover_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
-OptionButton/colors/font_focus_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
-OptionButton/icons/arrow = ExtResource("language_arrow")
-OptionButton/constants/arrow_margin = 10
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_j2y85")
-PopupMenu/styles/hover = SubResource("StyleBoxFlat_fwhl7")
-PopupMenu/colors/font_color = Color(0.33333334, 0.23137255, 0.16470589, 1)
-PopupMenu/colors/font_hover_color = Color(1, 0.94509804, 0.8235294, 1)

@@ -1,0 +1,111 @@
+# Main menu translations.
+msgid ""
+msgstr ""
+"Project-Id-Version: WineMaker\n"
+"PO-Revision-Date: 2026-11-18 14:49+0000\n"
+"Last-Translator: WineMaker\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "ui.menu.site_name"
+msgstr "marelia.migration"
+
+msgid "ui.menu.url_scheme"
+msgstr "https://"
+
+msgid "ui.menu.new_game.title"
+msgstr "Дом в Увации"
+
+msgid "ui.menu.new_game.action"
+msgstr "Новая игра"
+
+msgid "ui.menu.load.title"
+msgstr "Моя недвижимость"
+
+msgid "ui.menu.load.action"
+msgstr "Загрузить"
+
+msgid "ui.menu.join.title"
+msgstr "Билет в Марелию"
+
+msgid "ui.menu.join.action"
+msgstr "Подключиться"
+
+msgid "ui.menu.join.ticket_title"
+msgstr "Билет в Увацию"
+
+msgid "ui.menu.join.ip_label"
+msgstr "IP-адрес"
+
+msgid "ui.menu.join.ip_placeholder"
+msgstr "192.168.1.10"
+
+msgid "ui.menu.join.buy"
+msgstr "Купить билет"
+
+msgid "ui.menu.join.invalid_ip"
+msgstr "Введите корректный IP-адрес."
+
+msgid "ui.menu.new_game.cost"
+msgstr "Стоимость"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.new_game.price"
+msgstr "{amount} {currency}"
+
+msgid "ui.menu.load.empty"
+msgstr "У вас пока нет дома."
+
+msgid "ui.menu.load.corrupt"
+msgstr "Повреждённое сохранение"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.load.entry"
+msgstr "Дом в Увации · {date}"
+
+msgid "ui.menu.quit.confirm"
+msgstr "Выйти из игры?"
+
+msgid "ui.menu.status.connecting"
+msgstr "Подключение…"
+
+msgid "ui.menu.status.error"
+msgstr "Не удалось открыть игру"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.card.accessibility"
+msgstr "{title}, {action}"
+
+msgid "ui.footer.select"
+msgstr "выбор"
+
+msgid "ui.footer.open"
+msgstr "выбрать"
+
+msgid "ui.footer.quit"
+msgstr "выйти"
+
+msgid "ui.key.enter"
+msgstr "Enter"
+
+msgid "ui.key.escape"
+msgstr "Esc"
+
+msgid "ui.payment.title"
+msgstr "Оплата"
+
+msgid "ui.payment.card.number"
+msgstr "••••  ••••  ••••  0481"
+
+msgid "ui.payment.card.holder_label"
+msgstr "Имя"
+
+msgid "ui.payment.card.expiry_label"
+msgstr "Действует до"
+
+msgid "ui.payment.card.expiry"
+msgstr "08/30"
