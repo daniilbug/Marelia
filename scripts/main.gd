@@ -7,7 +7,7 @@ const PLAYER_SCENE := preload("res://scenes/core/player.tscn")
 @export var auto_spawn_players := true
 
 @export var spawn_level: Level
-signal load_failed(message: String)
+signal load_failed(message: LocalizedText)
 @onready var world_time: WorldTime = $WorldTime
 @onready var player_spawner: MultiplayerSpawner = $PlayerSpawner
 @onready var world_save: WorldSave = $WorldSave
@@ -18,7 +18,7 @@ var local_player: Player
 func _ready() -> void:
 	_register_levels()
 	if spawn_level == null or not _levels.has(spawn_level.level_id):
-		load_failed.emit("Укажите начальный Level мира.")
+		load_failed.emit(L10n.message(&"error.world.missing_spawn"))
 		return
 	player_spawner.spawned.connect(_on_player_spawned)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
@@ -30,7 +30,7 @@ func _ready() -> void:
 				if is_ancestor_of(factory):
 					factory.prepare_levels_for_restore(saved.levels)
 			if not world_save.can_restore(saved):
-				load_failed.emit("Сохранение не соответствует текущему игровому миру.")
+				load_failed.emit(L10n.message(&"error.world.incompatible_save"))
 				return
 		_spawn_player(multiplayer.get_unique_id(), saved.get("player", {}))
 		_init_local_player(get_player(multiplayer.get_unique_id()))

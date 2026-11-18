@@ -6,13 +6,16 @@ const MAX_FILE_BYTES := 8 * 1024 * 1024
 
 var save_directory := "user://saves"
 var campaign_id := ""
-var last_error := ""
+var last_error_text: LocalizedText
+var last_error: String:
+	get:
+		return last_error_text.resolve() if last_error_text != null else ""
 var _pending_snapshot: Dictionary = {}
 
 func new_game() -> void:
 	campaign_id = "%d_%d" % [int(Time.get_unix_time_from_system()), randi()]
 	_pending_snapshot.clear()
-	last_error = ""
+	last_error_text = null
 
 func take_pending_snapshot() -> Dictionary:
 	var snapshot := _pending_snapshot
@@ -31,13 +34,13 @@ func write_snapshot(snapshot: Dictionary) -> bool:
 	if not multiplayer.is_server():
 		return false
 	if not WorldSave.is_valid_snapshot(snapshot):
-		return _fail("Не удалось собрать состояние игры", ERR_INVALID_DATA)
+		return _fail(&"error.save.invalid_snapshot", ERR_INVALID_DATA)
 	if campaign_id.is_empty():
 		new_game()
-	last_error = ""
+	last_error_text = null
 	var error := DirAccess.make_dir_recursive_absolute(save_directory)
 	if error != OK:
-		return _fail("Не удалось создать папку сохранений", error)
+		return _fail(&"error.save.create_directory", error)
 	var stamp := int(Time.get_unix_time_from_system() * 1000000)
 	# Persist ordering independently of wall-clock corrections, including restarts.
 	var revision := 1
@@ -48,7 +51,7 @@ func write_snapshot(snapshot: Dictionary) -> bool:
 	var temporary := path + ".tmp"
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
-		return _fail("Не удалось открыть файл сохранения", FileAccess.get_open_error())
+		return _fail(&"error.save.open_file", FileAccess.get_open_error())
 	var save := {
 		"version": FORMAT_VERSION, "campaign_id": campaign_id,
 		"saved_at": stamp, "revision": revision, "snapshot": snapshot,
@@ -59,15 +62,15 @@ func write_snapshot(snapshot: Dictionary) -> bool:
 	file.close()
 	if not stored or error != OK:
 		DirAccess.remove_absolute(temporary)
-		return _fail("Не удалось записать сохранение", error)
+		return _fail(&"error.save.write", error)
 	if _read(file_name + ".tmp") != save:
 		DirAccess.remove_absolute(temporary)
-		return _fail("Проверка записанного сохранения не пройдена", ERR_FILE_CORRUPT)
+		return _fail(&"error.save.verify", ERR_FILE_CORRUPT)
 	# Publish only a verified checkpoint; older files remain backups.
 	error = DirAccess.rename_absolute(temporary, path)
 	if error != OK:
-		return _fail("Не удалось завершить сохранение", error)
-	last_error = ""
+		return _fail(&"error.save.finalize", error)
+	last_error_text = null
 	return true
 
 func list_saves() -> Array[Dictionary]:
@@ -79,23 +82,23 @@ func list_saves() -> Array[Dictionary]:
 			continue
 		var save := _read(file_name)
 		if save.is_empty():
-			saves.append({"file_name": file_name, "saved_at": 0, "error": last_error})
+			saves.append({"file_name": file_name, "saved_at": 0, "error_text": last_error_text})
 			continue
 		var player: Dictionary = save.snapshot.player
 		saves.append({
 			"file_name": file_name, "saved_at": save.saved_at,
-			"campaign_id": save.campaign_id, "error": "",
+			"campaign_id": save.campaign_id,
 			"revision": save.get("revision", 0),
 			"name": player.player_name, "level": player.level_id,
 		})
 	saves.sort_custom(func(a: Dictionary, b: Dictionary):
 		return a.get("revision", 0) > b.get("revision", 0) if a.get("revision", 0) != b.get("revision", 0) else a.saved_at > b.saved_at
 	)
-	last_error = ""
+	last_error_text = null
 	return saves
 
 func _read(file_name: String) -> Dictionary:
-	last_error = "Файл сохранения повреждён или записан не полностью."
+	last_error_text = L10n.message(&"error.save.corrupt")
 	if file_name != file_name.get_file():
 		return {}
 	var file := FileAccess.open(save_directory.path_join(file_name), FileAccess.READ)
@@ -109,16 +112,16 @@ func _read(file_name: String) -> Dictionary:
 		or not value.get("campaign_id") is String or not value.get("saved_at") is int:
 		return {}
 	if value.get("version", 0) != FORMAT_VERSION:
-		last_error = "Версия сохранения не поддерживается."
+		last_error_text = L10n.message(&"error.save.unsupported_version")
 		return {}
 	if not value.get("revision", 0) is int or value.get("revision", 0) < 0:
 		return {}
 	if not value.campaign_id.is_valid_filename() or not WorldSave.is_valid_snapshot(value.snapshot):
-		last_error = "Сохранение содержит некорректные игровые данные."
+		last_error_text = L10n.message(&"error.save.invalid_data")
 		return {}
-	last_error = ""
+	last_error_text = null
 	return value
 
-func _fail(message: String, error: Error) -> bool:
-	last_error = "%s (ошибка %d)." % [message, error]
+func _fail(message_key: StringName, error: Error) -> bool:
+	last_error_text = L10n.message(&"error.with_code", {"message": L10n.message(message_key), "code": error})
 	return false

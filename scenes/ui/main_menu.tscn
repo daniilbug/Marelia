@@ -1,0 +1,617 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/main_menu_card.tscn" id="card"]
+[ext_resource type="Theme" path="res://assets/ui/main-menu/theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/desktop.png" id="desktop"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/new-home.png" id="new"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/owned-home.png" id="owned"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/ferry-ticket.png" id="ticket"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/home.svg" id="home"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/arrow.svg" id="arrow"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/close.svg" id="close"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/lock.svg" id="lock"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_filter = 1
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Desktop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("desktop")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BrowserWindow" type="Control" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -313.0
+offset_right = 590.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="ColorRect" parent="BrowserWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(0.396, 0.267, 0.173, 0.22)
+
+[node name="Browser" type="PanelContainer" parent="BrowserWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = "BrowserPanel"
+
+[node name="Layout" type="VBoxContainer" parent="BrowserWindow/Browser"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="PanelContainer" parent="BrowserWindow/Browser/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 34)
+theme_type_variation = "TitleBar"
+
+[node name="Row" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TabMargin" type="MarginContainer" parent="BrowserWindow/Browser/Layout/TitleBar/Row"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+
+[node name="Tab" type="PanelContainer" parent="BrowserWindow/Browser/Layout/TitleBar/Row/TabMargin"]
+layout_mode = 2
+custom_minimum_size = Vector2(245, 27)
+theme_type_variation = "TabPanel"
+
+[node name="Content" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/TitleBar/Row/TabMargin/Tab"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Icon" type="TextureRect" parent="BrowserWindow/Browser/Layout/TitleBar/Row/TabMargin/Tab/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(17, 17)
+mouse_filter = 2
+texture = ExtResource("home")
+expand_mode = 1
+stretch_mode = 5
+self_modulate = Color(0.33, 0.23, 0.16, 1)
+
+[node name="Title" type="Label" parent="BrowserWindow/Browser/Layout/TitleBar/Row/TabMargin/Tab/Content"]
+layout_mode = 2
+text = "ui.menu.site_name"
+mouse_filter = 2
+theme_type_variation = "AddressLabel"
+
+[node name="Spacer" type="Control" parent="BrowserWindow/Browser/Layout/TitleBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Close" type="Button" parent="BrowserWindow/Browser/Layout/TitleBar/Row"]
+layout_mode = 2
+text = ""
+theme_type_variation = "CloseButton"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+custom_minimum_size = Vector2(43, 32)
+icon = ExtResource("close")
+expand_icon = true
+icon_alignment = 1
+tooltip_text = "ui.action.quit"
+
+[node name="Toolbar" type="PanelContainer" parent="BrowserWindow/Browser/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+theme_type_variation = "Toolbar"
+
+[node name="Row" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Toolbar"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="History" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Toolbar/Row"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Back" type="TextureRect" parent="BrowserWindow/Browser/Layout/Toolbar/Row/History"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+mouse_filter = 2
+texture = ExtResource("arrow")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+self_modulate = Color(0.33, 0.23, 0.16, 1)
+
+[node name="Forward" type="TextureRect" parent="BrowserWindow/Browser/Layout/Toolbar/Row/History"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+mouse_filter = 2
+texture = ExtResource("arrow")
+expand_mode = 1
+stretch_mode = 5
+self_modulate = Color(0.33, 0.23, 0.16, 0.3)
+
+[node name="Refresh" type="Label" parent="BrowserWindow/Browser/Layout/Toolbar/Row/History"]
+layout_mode = 2
+text = "↻"
+mouse_filter = 2
+theme_override_font_sizes/font_size = 25
+
+[node name="Address" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Toolbar/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 29)
+size_flags_horizontal = 3
+theme_type_variation = "AddressPanel"
+
+[node name="Content" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Toolbar/Row/Address"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Lock" type="TextureRect" parent="BrowserWindow/Browser/Layout/Toolbar/Row/Address/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(13, 13)
+mouse_filter = 2
+texture = ExtResource("lock")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gap" type="Control" parent="BrowserWindow/Browser/Layout/Toolbar/Row/Address/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(10, 0)
+mouse_filter = 2
+
+[node name="Protocol" type="Label" parent="BrowserWindow/Browser/Layout/Toolbar/Row/Address/Content"]
+layout_mode = 2
+text = "ui.menu.url_scheme"
+mouse_filter = 2
+theme_type_variation = "AddressPrefix"
+
+[node name="Domain" type="Label" parent="BrowserWindow/Browser/Layout/Toolbar/Row/Address/Content"]
+layout_mode = 2
+text = "ui.menu.site_name"
+mouse_filter = 2
+theme_type_variation = "AddressLabel"
+
+[node name="Website" type="MarginContainer" parent="BrowserWindow/Browser/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Layout" type="VBoxContainer" parent="BrowserWindow/Browser/Layout/Website"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Brand" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Website/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="IconPanel" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand"]
+layout_mode = 2
+custom_minimum_size = Vector2(38, 38)
+theme_type_variation = "BrandPanel"
+
+[node name="Center" type="CenterContainer" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand/IconPanel"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand/IconPanel/Center"]
+layout_mode = 2
+custom_minimum_size = Vector2(28, 28)
+mouse_filter = 2
+texture = ExtResource("home")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand"]
+layout_mode = 2
+text = "ui.menu.site_name"
+mouse_filter = 2
+theme_type_variation = "BrandLabel"
+
+[node name="Spacer" type="Control" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Language" type="OptionButton" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand"]
+layout_mode = 2
+custom_minimum_size = Vector2(146, 42)
+mouse_default_cursor_shape = 2
+tooltip_text = "ui.language.label"
+
+[node name="Cards" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Website/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NewGame" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+layout_mode = 2
+size_flags_horizontal = 3
+title_key = "ui.menu.new_game.title"
+action_key = "ui.menu.new_game.action"
+illustration = ExtResource("new")
+primary = true
+show_price = true
+
+[node name="Load" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+layout_mode = 2
+size_flags_horizontal = 3
+title_key = "ui.menu.load.title"
+action_key = "ui.menu.load.action"
+illustration = ExtResource("owned")
+primary = false
+show_price = false
+
+[node name="Join" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+layout_mode = 2
+size_flags_horizontal = 3
+title_key = "ui.menu.join.title"
+action_key = "ui.menu.join.action"
+illustration = ExtResource("ticket")
+primary = false
+show_price = false
+
+[node name="Footer" type="PanelContainer" parent="BrowserWindow/Browser/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
+theme_type_variation = "FooterPanel"
+
+[node name="Row" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Footer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Spacer" type="Control" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Select" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Key0" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Footer/Row/Select"]
+layout_mode = 2
+theme_type_variation = "KeyPanel"
+
+[node name="Caption" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Select/Key0"]
+layout_mode = 2
+text = "←"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Key1" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Footer/Row/Select"]
+layout_mode = 2
+theme_type_variation = "KeyPanel"
+
+[node name="Caption" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Select/Key1"]
+layout_mode = 2
+text = "→"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Hint" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Select"]
+layout_mode = 2
+text = "ui.footer.select"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Open" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Key0" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Footer/Row/Open"]
+layout_mode = 2
+theme_type_variation = "KeyPanel"
+
+[node name="Caption" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Open/Key0"]
+layout_mode = 2
+text = "ui.key.enter"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Hint" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Open"]
+layout_mode = 2
+text = "ui.footer.open"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Quit" type="HBoxContainer" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Key0" type="PanelContainer" parent="BrowserWindow/Browser/Layout/Footer/Row/Quit"]
+layout_mode = 2
+theme_type_variation = "KeyPanel"
+
+[node name="Caption" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Quit/Key0"]
+layout_mode = 2
+text = "ui.key.escape"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="Hint" type="Label" parent="BrowserWindow/Browser/Layout/Footer/Row/Quit"]
+layout_mode = 2
+text = "ui.footer.quit"
+mouse_filter = 2
+theme_type_variation = "FooterLabel"
+
+[node name="ModalOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+visible = false
+color = Color(0.302, 0.212, 0.173, 0.52)
+z_index = 20
+
+[node name="Center" type="CenterContainer" parent="ModalOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Frame" type="PanelContainer" parent="ModalOverlay/Center"]
+layout_mode = 2
+custom_minimum_size = Vector2(460, 0)
+theme_type_variation = "DialogPanel"
+
+[node name="Layout" type="VBoxContainer" parent="ModalOverlay/Center/Frame"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="PanelContainer" parent="ModalOverlay/Center/Frame/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 34)
+theme_type_variation = "TitleBar"
+
+[node name="Row" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="ModalOverlay/Center/Frame/Layout/TitleBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Close" type="Button" parent="ModalOverlay/Center/Frame/Layout/TitleBar/Row"]
+layout_mode = 2
+text = ""
+theme_type_variation = "CloseButton"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+custom_minimum_size = Vector2(36, 32)
+icon = ExtResource("close")
+expand_icon = true
+icon_alignment = 1
+tooltip_text = "ui.action.back"
+
+[node name="Body" type="MarginContainer" parent="ModalOverlay/Center/Frame/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 26
+
+[node name="Pages" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NewGame" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 24
+visible = false
+
+[node name="Price" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Caption" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Price"]
+layout_mode = 2
+text = "ui.menu.new_game.cost"
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Price"]
+layout_mode = 2
+text = "ui.menu.new_game.price"
+mouse_filter = 2
+theme_type_variation = "PriceLabel"
+
+[node name="Actions" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Actions"]
+layout_mode = 2
+text = "ui.action.buy"
+theme_type_variation = "PrimaryButton"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Actions"]
+layout_mode = 2
+text = "ui.action.back"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Load" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 18
+visible = false
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+layout_mode = 2
+text = "ui.menu.load.title"
+mouse_filter = 2
+theme_type_variation = "DialogTitle"
+
+[node name="Empty" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+layout_mode = 2
+text = "ui.menu.load.empty"
+mouse_filter = 2
+theme_type_variation = "MutedLabel"
+
+[node name="Scroll" type="ScrollContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Saves" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load/Scroll"]
+layout_mode = 2
+theme_override_constants/separation = 8
+size_flags_horizontal = 3
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+layout_mode = 2
+text = "ui.action.back"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+
+[node name="Join" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 16
+visible = false
+
+[node name="Art" type="TextureRect" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 175)
+mouse_filter = 2
+texture = ExtResource("ticket")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+text = "ui.menu.join.ticket_title"
+mouse_filter = 2
+theme_type_variation = "DialogTitle"
+
+[node name="AddressLabel" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+text = "ui.menu.join.ip_label"
+mouse_filter = 2
+
+[node name="Address" type="LineEdit" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+placeholder_text = "ui.menu.join.ip_placeholder"
+max_length = 45
+select_all_on_focus = true
+
+[node name="Error" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+text = "ui.menu.join.invalid_ip"
+mouse_filter = 2
+visible = false
+autowrap_mode = 2
+theme_type_variation = "ErrorLabel"
+
+[node name="Actions" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+layout_mode = 2
+text = "ui.menu.join.buy"
+theme_type_variation = "PrimaryButton"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+layout_mode = 2
+text = "ui.action.back"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Quit" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 24
+visible = false
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit"]
+layout_mode = 2
+text = "ui.menu.quit.confirm"
+mouse_filter = 2
+theme_type_variation = "DialogTitle"
+
+[node name="Actions" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Exit" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+layout_mode = 2
+text = "ui.action.quit"
+theme_type_variation = "PrimaryButton"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+layout_mode = 2
+text = "ui.action.stay"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Status" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+layout_mode = 2
+theme_override_constants/separation = 18
+visible = false
+
+[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+layout_mode = 2
+text = "ui.menu.status.connecting"
+mouse_filter = 2
+theme_type_variation = "DialogTitle"
+
+[node name="Message" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+layout_mode = 2
+text = ""
+mouse_filter = 2
+autowrap_mode = 2
+theme_type_variation = "MutedLabel"
+
+[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+layout_mode = 2
+text = "ui.action.back"
+theme_type_variation = "Button"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0

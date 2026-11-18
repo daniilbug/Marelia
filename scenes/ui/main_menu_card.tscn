@@ -1,0 +1,114 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu_card.gd" id="script"]
+[ext_resource type="Theme" path="res://assets/ui/main-menu/theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/main-menu/icons/arrow.svg" id="arrow"]
+
+[node name="MainMenuCard" type="Button"]
+custom_minimum_size = Vector2(0, 376)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+theme = ExtResource("theme")
+theme_type_variation = "MenuCard"
+script = ExtResource("script")
+focus_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Art" type="TextureRect" parent="Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 232)
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Body" type="MarginContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Layout" type="VBoxContainer" parent="Content/Body"]
+layout_mode = 2
+theme_override_constants/separation = 0
+mouse_filter = 2
+
+[node name="Header" type="HBoxContainer" parent="Content/Body/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Content/Body/Layout/Header"]
+layout_mode = 2
+text = ""
+mouse_filter = 2
+size_flags_horizontal = 3
+clip_text = true
+theme_type_variation = "CardTitle"
+
+[node name="Price" type="HBoxContainer" parent="Content/Body/Layout/Header"]
+layout_mode = 2
+theme_override_constants/separation = 5
+mouse_filter = 2
+
+[node name="Amount" type="Label" parent="Content/Body/Layout/Header/Price"]
+layout_mode = 2
+text = "1"
+mouse_filter = 2
+theme_type_variation = "PriceLabel"
+
+[node name="Unit" type="Label" parent="Content/Body/Layout/Header/Price"]
+layout_mode = 2
+text = "common.currency.maren"
+mouse_filter = 2
+vertical_alignment = 2
+theme_type_variation = "CurrencyLabel"
+
+[node name="Spacer" type="Control" parent="Content/Body/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 22)
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Action" type="PanelContainer" parent="Content/Body/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 43)
+theme_type_variation = "CardSecondaryAction"
+mouse_filter = 2
+
+[node name="Row" type="HBoxContainer" parent="Content/Body/Layout/Action"]
+layout_mode = 2
+theme_override_constants/separation = 8
+mouse_filter = 2
+
+[node name="Caption" type="Label" parent="Content/Body/Layout/Action/Row"]
+layout_mode = 2
+text = ""
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Arrow" type="TextureRect" parent="Content/Body/Layout/Action/Row"]
+layout_mode = 2
+custom_minimum_size = Vector2(16, 16)
+mouse_filter = 2
+texture = ExtResource("arrow")
+expand_mode = 1
+stretch_mode = 5
+size_flags_vertical = 4

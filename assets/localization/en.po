@@ -1,0 +1,170 @@
+# Shared game strings. Keep message IDs stable; add a PO file for each new locale.
+msgid ""
+msgstr ""
+"Project-Id-Version: WineMaker\n"
+"PO-Revision-Date: 2026-11-18 14:49+0000\n"
+"Last-Translator: WineMaker\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "language.self_name"
+msgstr "English"
+
+msgid "ui.language.label"
+msgstr "Language"
+
+msgid "ui.menu.site_name"
+msgstr "marelia.migration"
+
+msgid "ui.menu.url_scheme"
+msgstr "https://"
+
+msgid "ui.menu.new_game.title"
+msgstr "House in Uvacia"
+
+msgid "ui.menu.new_game.action"
+msgstr "New game"
+
+msgid "ui.menu.load.title"
+msgstr "My property"
+
+msgid "ui.menu.load.action"
+msgstr "Load"
+
+msgid "ui.menu.join.title"
+msgstr "Ticket to Marelia"
+
+msgid "ui.menu.join.action"
+msgstr "Join"
+
+msgid "ui.menu.join.ticket_title"
+msgstr "Ticket to Uvacia"
+
+msgid "ui.menu.join.ip_label"
+msgstr "IP address"
+
+msgid "ui.menu.join.ip_placeholder"
+msgstr "192.168.1.10"
+
+msgid "ui.menu.join.buy"
+msgstr "Buy ticket"
+
+msgid "ui.menu.join.invalid_ip"
+msgstr "Enter a valid IP address."
+
+msgid "ui.menu.new_game.cost"
+msgstr "Price"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.new_game.price"
+msgstr "{amount} {currency}"
+
+msgid "ui.menu.load.empty"
+msgstr "You do not own a home yet."
+
+msgid "ui.menu.load.corrupt"
+msgstr "Damaged save"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.load.entry"
+msgstr "House in Uvacia · {date}"
+
+msgid "ui.menu.quit.confirm"
+msgstr "Quit the game?"
+
+msgid "ui.menu.status.connecting"
+msgstr "Connecting…"
+
+msgid "ui.menu.status.error"
+msgstr "Could not open the game"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "ui.menu.card.accessibility"
+msgstr "{title}, {action}"
+
+msgid "ui.action.buy"
+msgstr "Buy"
+
+msgid "ui.action.back"
+msgstr "Back"
+
+msgid "ui.action.quit"
+msgstr "Quit"
+
+msgid "ui.action.stay"
+msgstr "Stay"
+
+msgid "ui.footer.select"
+msgstr "select"
+
+msgid "ui.footer.open"
+msgstr "open"
+
+msgid "ui.footer.quit"
+msgstr "quit"
+
+msgid "ui.key.enter"
+msgstr "Enter"
+
+msgid "ui.key.escape"
+msgstr "Esc"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "common.datetime"
+msgstr "{year}-{month}-{day} {hour}:{minute}"
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "error.connection.failed"
+msgstr "Connection failed: {code}"
+
+msgid "error.connection.disconnected"
+msgstr "Connection lost."
+
+msgid "error.unknown"
+msgstr "Something went wrong."
+
+#. Named parameters are part of the message contract and must be preserved.
+msgid "error.with_code"
+msgstr "{message} (error {code})."
+
+msgid "error.save.invalid_snapshot"
+msgstr "Could not capture the game state"
+
+msgid "error.save.create_directory"
+msgstr "Could not create the save folder"
+
+msgid "error.save.open_file"
+msgstr "Could not open the save file"
+
+msgid "error.save.write"
+msgstr "Could not write the save file"
+
+msgid "error.save.verify"
+msgstr "The save could not be verified"
+
+msgid "error.save.finalize"
+msgstr "Could not finish saving the game"
+
+msgid "error.save.corrupt"
+msgstr "The save file is damaged or incomplete."
+
+msgid "error.save.unsupported_version"
+msgstr "This save version is not supported."
+
+msgid "error.save.invalid_data"
+msgstr "The save contains invalid game data."
+
+msgid "error.world.missing_spawn"
+msgstr "Could not open the starting location."
+
+msgid "error.world.incompatible_save"
+msgstr "The save is not compatible with the current game world."
+
+msgid "common.currency.maren"
+msgid_plural "common.currency.maren.plural"
+msgstr[0] "maren"
+msgstr[1] "marens"
