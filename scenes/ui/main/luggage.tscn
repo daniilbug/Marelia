@@ -1,0 +1,115 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main/luggage.gd" id="script"]
+[ext_resource type="Theme" path="res://assets/ui/main/character-creation-theme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/character-creation-table.png" id="table"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/luggage-sheet.png" id="sheet"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/luggage-suitcase.png" id="suitcase"]
+
+[node name="Luggage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Table" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("table")
+expand_mode = 1
+
+[node name="Layout" type="Control" parent="."]
+unique_name_in_owner = true
+offset_right = 1373.0
+offset_bottom = 900.0
+mouse_filter = 2
+
+[node name="Sheet" type="NinePatchRect" parent="Layout"]
+offset_left = 583.0
+offset_top = 15.0
+offset_right = 1336.0
+offset_bottom = 838.0
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("sheet")
+patch_margin_left = 14
+patch_margin_top = 12
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="SuitcaseArea" type="Control" parent="Layout"]
+offset_left = 59.0
+offset_top = 209.0
+offset_right = 509.0
+offset_bottom = 673.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(225, 232)
+mouse_filter = 2
+
+[node name="Suitcase" type="TextureRect" parent="Layout/SuitcaseArea"]
+offset_right = 450.0
+offset_bottom = 464.0
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("suitcase")
+
+[node name="Slots" type="GridContainer" parent="Layout/SuitcaseArea"]
+unique_name_in_owner = true
+offset_left = 42.0
+offset_top = 196.0
+offset_right = 408.0
+offset_bottom = 372.0
+mouse_filter = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+columns = 2
+
+[node name="ItemsTitle" type="Label" parent="Layout"]
+offset_left = 609.0
+offset_top = 28.0
+offset_right = 1299.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 40
+text = "ui.luggage.items"
+
+[node name="Items" type="GridContainer" parent="Layout"]
+unique_name_in_owner = true
+offset_left = 609.0
+offset_top = 90.0
+offset_right = 1299.0
+offset_bottom = 802.0
+mouse_filter = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 3
+
+[node name="Back" type="Button" parent="Layout"]
+unique_name_in_owner = true
+offset_left = 56.0
+offset_top = 838.0
+offset_right = 156.0
+offset_bottom = 881.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 27
+text = "ui.action.back"
+
+[node name="Board" type="Button" parent="Layout"]
+unique_name_in_owner = true
+offset_left = 1162.0
+offset_top = 838.0
+offset_right = 1321.0
+offset_bottom = 881.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"Primary"
+theme_override_font_sizes/font_size = 27
+text = "ui.luggage.board"

@@ -2,9 +2,8 @@ class_name CharacterCreation
 extends Control
 
 signal back_requested
-signal boarding_requested(character_name: String, appearance: Dictionary)
+signal luggage_requested
 
-const DESIGN_SIZE := Vector2(1280, 900)
 const SPRITE := preload("res://scenes/core/character_sprite.tscn")
 const HAIRSTYLES := [0, 3, 7, 11, 13, 19]
 const HAIR_SWATCHES := [0, 1, 2, 3, 7, 10]
@@ -50,28 +49,29 @@ func _ready() -> void:
 		_tabs[i].pressed.connect(_show_tab.bind(i))
 	%Male.pressed.connect(_set_gender.bind(Player.Gender.MALE))
 	%Female.pressed.connect(_set_gender.bind(Player.Gender.FEMALE))
-	_build_swatches(%SkinSwatches, CharacterSprite.SKIN_TONES, [0, 1, 2, 3, 4, 5], _skin_tone_id, _set_skin_tone, &"ui.character_creation.skin_swatch")
+	_build_swatches(%SkinSwatches, CharacterSprite.SKIN_TONES, [0, 1, 2, 3, 4, 5], _skin_tone_id, _set_skin_tone)
 	_build_hairstyles()
-	_build_swatches(%HairSwatches, CharacterSprite.HAIR_COLORS, HAIR_SWATCHES, _hair_color_id, _set_hair_color, &"ui.character_creation.hair_swatch")
+	_build_swatches(%HairSwatches, CharacterSprite.HAIR_COLORS, HAIR_SWATCHES, _hair_color_id, _set_hair_color)
 	%TopPrev.pressed.connect(_change_top.bind(-1))
 	%TopNext.pressed.connect(_change_top.bind(1))
 	%BottomPrev.pressed.connect(_change_bottom.bind(-1))
 	%BottomNext.pressed.connect(_change_bottom.bind(1))
 	%Back.pressed.connect(back_requested.emit)
-	%Board.pressed.connect(_board)
+	%Continue.pressed.connect(luggage_requested.emit)
 	_update_garments()
 	_update_appearance()
 	_tabs[0].grab_focus()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if is_visible_in_tree() and event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		back_requested.emit()
 
 func _fit_spread() -> void:
-	var factor := minf(size.x / DESIGN_SIZE.x, size.y / DESIGN_SIZE.y)
+	var design_size := _spread.size
+	var factor := minf(size.x / design_size.x, size.y / design_size.y)
 	_spread.scale = Vector2.ONE * factor
-	_spread.position = ((size - DESIGN_SIZE * factor) * 0.5).round()
+	_spread.position = ((size - design_size * factor) * 0.5).round()
 
 func _show_tab(index: int) -> void:
 	for i in _pages.size():
@@ -86,16 +86,15 @@ func _set_skin_tone(value: int) -> void:
 
 func _set_hairstyle(value: int) -> void:
 	_hair_id = value
-	_update_appearance()
+	_style_sprite(_portrait, value)
 
 func _set_hair_color(value: int) -> void:
 	_hair_color_id = value
 	_update_appearance()
 
-func _build_swatches(row: HBoxContainer, colors: Array[Color], ids: Array, selected: int, select: Callable, tooltip: StringName) -> void:
+func _build_swatches(row: HBoxContainer, colors: Array[Color], ids: Array, selected: int, select: Callable) -> void:
 	var group := ButtonGroup.new()
-	for i in ids.size():
-		var id: int = ids[i]
+	for id: int in ids:
 		var button := _add_choice(row, Vector2(32, 32), &"Swatch", group, id == selected)
 		var fill := StyleBoxFlat.new()
 		fill.bg_color = colors[id]
@@ -105,14 +104,12 @@ func _build_swatches(row: HBoxContainer, colors: Array[Color], ids: Array, selec
 		button.add_theme_stylebox_override(&"hover", fill)
 		button.add_theme_stylebox_override(&"pressed", selection)
 		button.add_theme_stylebox_override(&"hover_pressed", selection)
-		L10n.bind(button, L10n.message(tooltip, {"number": i + 1}), &"tooltip_text")
 		button.pressed.connect(select.bind(id))
 
 func _build_hairstyles() -> void:
 	var group := ButtonGroup.new()
-	for i in HAIRSTYLES.size():
-		var id: int = HAIRSTYLES[i]
-		var button := _add_choice(%HairStyles, Vector2(89, 79), &"HairTile", group, id == _hair_id)
+	for id: int in HAIRSTYLES:
+		var button := _add_choice(%HairStyles, Vector2(89, 79), &"SelectableTile", group, id == _hair_id)
 		# Clip the shared front-facing sprite to its head, like a passport photo.
 		var crop := Control.new()
 		crop.position = Vector2(14, 7)
@@ -125,7 +122,6 @@ func _build_hairstyles() -> void:
 		head.scale = Vector2(5, 5)
 		crop.add_child(head)
 		_hair_thumbnails.append(head)
-		L10n.bind(button, L10n.message(&"ui.character_creation.hairstyle", {"number": i + 1}), &"tooltip_text")
 		button.pressed.connect(_set_hairstyle.bind(id))
 
 func _add_choice(parent: Container, minimum_size: Vector2, variation: StringName, group: ButtonGroup, selected: bool) -> Button:
@@ -168,12 +164,15 @@ func _style_sprite(sprite: CharacterSprite, hairstyle: int) -> void:
 	sprite.set_appearance(hairstyle, top[0], bottom[0], _hair_color_id, top[1], bottom[1])
 	sprite.set_skin_tone(_skin_tone_id)
 
-func _board() -> void:
+func focus_continue() -> void:
+	%Continue.grab_focus()
+
+func get_appearance() -> Dictionary:
 	var top: Array = TOPS[_top_index]
 	var bottom: Array = BOTTOMS[_bottom_index]
-	boarding_requested.emit(character_name, {
+	return {
 		"gender": _gender, "skin_tone_id": _skin_tone_id,
 		"hair_id": _hair_id, "hair_color_id": _hair_color_id,
 		"top_id": top[0], "top_color_id": top[1],
 		"pants_id": bottom[0], "pants_color_id": bottom[1],
-	})
+	}

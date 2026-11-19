@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/main/menu_card.tscn" id="card"]
 [ext_resource type="PackedScene" path="res://scenes/ui/main/payment_card.tscn" id="payment_card"]
 [ext_resource type="Theme" path="res://assets/ui/main/theme.tres" id="theme"]
-[ext_resource type="Texture2D" path="res://assets/ui/main/desktop.png" id="desktop"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/new-home.png" id="new"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/owned-home.png" id="owned"]
-[ext_resource type="Texture2D" path="res://assets/ui/main/ferry-ticket.png" id="ticket"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/plane-ticket.png" id="ticket"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/home.svg" id="home"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/arrow.svg" id="arrow"]
 [ext_resource type="Texture2D" path="res://assets/ui/main/icons/close.svg" id="close"]
@@ -30,7 +29,7 @@ stream = ExtResource("music")
 volume_db = -12.0
 autoplay = true
 
-[node name="Desktop" type="TextureRect" parent="."]
+[node name="Desktop" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,9 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("desktop")
-expand_mode = 1
-stretch_mode = 6
+color = Color(0.9490196, 0.8745098, 0.7058824, 1)
 
 [node name="BrowserWindow" type="Control" parent="."]
 layout_mode = 0
@@ -54,20 +51,6 @@ offset_right = 590.0
 offset_bottom = 313.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Shadow" type="ColorRect" parent="BrowserWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 8.0
-mouse_filter = 2
-color = Color(0.396, 0.267, 0.173, 0.22)
 
 [node name="Browser" type="PanelContainer" parent="BrowserWindow"]
 layout_mode = 1
@@ -125,11 +108,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Close" type="Button" parent="BrowserWindow/Browser/Layout/TitleBar/Row"]
+[node name="QuitButton" type="Button" parent="BrowserWindow/Browser/Layout/TitleBar/Row"]
+unique_name_in_owner = true
 layout_mode = 2
-text = ""
 theme_type_variation = "CloseButton"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 custom_minimum_size = Vector2(43, 32)
 icon = ExtResource("close")
@@ -253,6 +235,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Language" type="OptionButton" parent="BrowserWindow/Browser/Layout/Website/Layout/Brand"]
+unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(146, 42)
 mouse_default_cursor_shape = 2
@@ -262,7 +245,8 @@ tooltip_text = "ui.language.label"
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="NewGame" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+[node name="NewGameCard" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 title_key = "ui.menu.new_game.title"
@@ -271,23 +255,21 @@ illustration = ExtResource("new")
 primary = true
 show_price = true
 
-[node name="Load" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+[node name="LoadCard" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 title_key = "ui.menu.load.title"
 action_key = "ui.menu.load.action"
 illustration = ExtResource("owned")
-primary = false
-show_price = false
 
-[node name="Join" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+[node name="JoinCard" parent="BrowserWindow/Browser/Layout/Website/Layout/Cards" instance=ExtResource("card")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 title_key = "ui.menu.join.title"
 action_key = "ui.menu.join.action"
 illustration = ExtResource("ticket")
-primary = false
-show_price = false
 
 [node name="Footer" type="PanelContainer" parent="BrowserWindow/Browser/Layout"]
 layout_mode = 2
@@ -298,7 +280,8 @@ theme_type_variation = "FooterPanel"
 layout_mode = 2
 theme_override_constants/separation = 22
 
-[node name="Music" type="LinkButton" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+[node name="MusicCredits" type="LinkButton" parent="BrowserWindow/Browser/Layout/Footer/Row"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 2
 size_flags_vertical = 4
@@ -382,6 +365,7 @@ mouse_filter = 2
 theme_type_variation = "FooterLabel"
 
 [node name="ModalOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -424,11 +408,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Close" type="Button" parent="ModalOverlay/Center/Frame/Layout/TitleBar/Row"]
+[node name="ModalClose" type="Button" parent="ModalOverlay/Center/Frame/Layout/TitleBar/Row"]
+unique_name_in_owner = true
 layout_mode = 2
-text = ""
 theme_type_variation = "CloseButton"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 custom_minimum_size = Vector2(36, 32)
 icon = ExtResource("close")
@@ -444,16 +427,19 @@ theme_override_constants/margin_right = 26
 theme_override_constants/margin_bottom = 26
 
 [node name="Pages" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="NewGame" type="HBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(562, 188)
 theme_override_constants/separation = 24
 visible = false
 
-[node name="Card" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame" instance=ExtResource("payment_card")]
+[node name="PaymentCard" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame" instance=ExtResource("payment_card")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Checkout" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame"]
@@ -477,7 +463,8 @@ text = "ui.menu.new_game.cost"
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Value" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Price"]
+[node name="PurchasePrice" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Price"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.menu.new_game.price"
 theme_type_variation = "PriceLabel"
@@ -492,21 +479,21 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
+[node name="BuyProperty" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.buy"
 theme_type_variation = "PrimaryButton"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
+[node name="PurchaseBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/NewGame/Checkout/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.back"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="Load" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 18
 visible = false
@@ -517,30 +504,33 @@ text = "ui.menu.load.title"
 mouse_filter = 2
 theme_type_variation = "DialogTitle"
 
-[node name="Empty" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+[node name="EmptySaves" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.menu.load.empty"
 mouse_filter = 2
 theme_type_variation = "MutedLabel"
 
-[node name="Scroll" type="ScrollContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+[node name="SaveScroll" type="ScrollContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+unique_name_in_owner = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="Saves" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load/Scroll"]
+[node name="SaveList" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load/SaveScroll"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 size_flags_horizontal = 3
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+[node name="LoadBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Load"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.back"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 
 [node name="Join" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 visible = false
@@ -555,7 +545,7 @@ stretch_mode = 6
 
 [node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
 layout_mode = 2
-text = "ui.menu.join.ticket_title"
+text = "ui.menu.join.title"
 mouse_filter = 2
 theme_type_variation = "DialogTitle"
 
@@ -565,12 +555,14 @@ text = "ui.menu.join.ip_label"
 mouse_filter = 2
 
 [node name="Address" type="LineEdit" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "ui.menu.join.ip_placeholder"
 max_length = 45
 select_all_on_focus = true
 
-[node name="Error" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+[node name="AddressError" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.menu.join.invalid_ip"
 mouse_filter = 2
@@ -582,21 +574,21 @@ theme_type_variation = "ErrorLabel"
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Buy" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+[node name="BuyTicket" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.menu.join.buy"
 theme_type_variation = "PrimaryButton"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+[node name="JoinBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.back"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="Quit" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 24
 visible = false
@@ -611,21 +603,21 @@ theme_type_variation = "DialogTitle"
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Exit" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+[node name="ConfirmQuit" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.quit"
 theme_type_variation = "PrimaryButton"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+[node name="QuitBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Quit/Actions"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.stay"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="Music" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 18
 visible = false
@@ -642,7 +634,8 @@ auto_translate_mode = 2
 text = "\"Bushwick Tarantella\"\nKevin MacLeod (incompetech.com)\nLicensed under Creative Commons:\nBy Attribution 4.0"
 mouse_filter = 2
 
-[node name="Source" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+[node name="MusicSource" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 2
 text = "incompetech.com"
@@ -650,7 +643,8 @@ uri = "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 
-[node name="License" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+[node name="MusicLicense" type="LinkButton" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 2
 text = "creativecommons.org/licenses/by/4.0/"
@@ -658,36 +652,36 @@ uri = "https://creativecommons.org/licenses/by/4.0/"
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+[node name="MusicBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Music"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.back"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 
 [node name="Status" type="VBoxContainer" parent="ModalOverlay/Center/Frame/Layout/Body/Pages"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 18
 visible = false
 
-[node name="Title" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+[node name="StatusTitle" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.menu.status.connecting"
 mouse_filter = 2
 theme_type_variation = "DialogTitle"
 
-[node name="Message" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+[node name="StatusMessage" type="Label" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+unique_name_in_owner = true
 layout_mode = 2
-text = ""
 mouse_filter = 2
 autowrap_mode = 2
 theme_type_variation = "MutedLabel"
 
-[node name="Back" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+[node name="StatusBack" type="Button" parent="ModalOverlay/Center/Frame/Layout/Body/Pages/Status"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ui.action.back"
-theme_type_variation = "Button"
-focus_mode = 2
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0

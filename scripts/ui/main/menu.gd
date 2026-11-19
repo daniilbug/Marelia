@@ -5,25 +5,27 @@ signal property_purchased(character_name: String)
 signal load_game_requested(file_name: String)
 signal join_game_requested(address: String)
 signal connection_cancelled
+signal status_closed
 
 const ARROW_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/arrow.png")
 const HAND_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/hand.png")
 const TEXT_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/text.png")
 
-@onready var _new_game: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/NewGame
-@onready var _load: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/Load
-@onready var _join: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/Join
-@onready var _close: Button = $BrowserWindow/Browser/Layout/TitleBar/Row/Close
-@onready var _language: OptionButton = $BrowserWindow/Browser/Layout/Website/Layout/Brand/Language
-@onready var _music_credits: LinkButton = $BrowserWindow/Browser/Layout/Footer/Row/Music
-@onready var _overlay: ColorRect = $ModalOverlay
-@onready var _pages: VBoxContainer = $ModalOverlay/Center/Frame/Layout/Body/Pages
-@onready var _modal_close: Button = $ModalOverlay/Center/Frame/Layout/TitleBar/Row/Close
-@onready var _address: LineEdit = $ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Address
-@onready var _address_error: Label = $ModalOverlay/Center/Frame/Layout/Body/Pages/Join/Error
-@onready var _character_name: LineEdit = _pages.get_node("NewGame/Card/Layout/Details/Holder/NameInput")
-@onready var _buy: Button = _pages.get_node("NewGame/Checkout/Actions/Buy")
-@onready var _navigation: Array[Control] = [_new_game, _load, _join, _language, _music_credits, _close]
+@onready var _new_game: MainMenuCard = %NewGameCard
+@onready var _load: MainMenuCard = %LoadCard
+@onready var _join: MainMenuCard = %JoinCard
+@onready var _close: Button = %QuitButton
+@onready var _language: OptionButton = %Language
+@onready var _music_credits: LinkButton = %MusicCredits
+@onready var _overlay: ColorRect = %ModalOverlay
+@onready var _pages: VBoxContainer = %Pages
+@onready var _modal_close: Button = %ModalClose
+@onready var _address: LineEdit = %Address
+@onready var _address_error: Label = %AddressError
+@onready var _payment_card: MainMenuPaymentCard = %PaymentCard
+@onready var _character_name: LineEdit = _payment_card.name_input
+@onready var _buy: Button = %BuyProperty
+@onready var _navigation: Array[Control] = [_new_game, _load, _join, _language, _close, _music_credits]
 
 var _locale_codes := PackedStringArray()
 var _previous_focus: Control
@@ -44,22 +46,22 @@ func _ready() -> void:
 	_focus_loop(_navigation)
 	_sync_language_selector()
 	_language.item_selected.connect(func(index: int): L10n.set_locale(_locale_codes[index]))
-	_new_game.pressed.connect(_show_new_game)
+	_new_game.pressed.connect(_show_purchase.bind(_character_name))
 	_load.pressed.connect(_show_saves)
 	_join.pressed.connect(_show_join)
 	_close.pressed.connect(_show_quit)
 	_music_credits.pressed.connect(_show_music_credits)
 	_modal_close.pressed.connect(_close_modal)
-	for path in ["NewGame/Checkout/Actions/Back", "Load/Back", "Join/Actions/Back", "Quit/Actions/Back", "Music/Back", "Status/Back"]:
-		_pages.get_node(path).pressed.connect(_close_modal)
+	for button: Button in [%PurchaseBack, %LoadBack, %JoinBack, %QuitBack, %MusicBack, %StatusBack]:
+		button.pressed.connect(_close_modal)
 	_update_purchase_button(_character_name.text)
 	_buy.pressed.connect(_submit_purchase)
 	_character_name.text_changed.connect(_update_purchase_button)
 	_character_name.text_submitted.connect(func(_value: String): _submit_purchase())
-	_pages.get_node("Join/Actions/Buy").pressed.connect(_submit_address)
+	%BuyTicket.pressed.connect(_submit_address)
 	_address.text_submitted.connect(func(_text: String): _submit_address())
 	_address.text_changed.connect(func(_text: String): _address_error.hide())
-	_pages.get_node("Quit/Actions/Exit").pressed.connect(get_tree().quit)
+	%ConfirmQuit.pressed.connect(get_tree().quit)
 	_new_game.grab_focus.call_deferred()
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -104,18 +106,20 @@ func _focus_loop(controls: Array[Control]) -> void:
 		current.focus_neighbor_right = following
 		current.focus_neighbor_bottom = following
 
-func _show_page(page_name: String, controls: Array[Control]) -> void:
+func _show_page(target: Control, controls: Array[Control], initial_focus: Control = null) -> void:
 	if not _overlay.visible:
 		_previous_focus = get_viewport().gui_get_focus_owner()
 	for page: Control in _pages.get_children():
-		page.visible = page.name == page_name
+		page.visible = page == target
 	_overlay.show()
 	var focus_targets: Array[Control] = [_modal_close]
 	focus_targets.append_array(controls)
 	_focus_loop(focus_targets)
-	controls[0].grab_focus.call_deferred()
+	var focus := controls[0] if initial_focus == null else initial_focus
+	focus.grab_focus.call_deferred()
 
 func _close_modal() -> void:
+	var closing_status: bool = %Status.is_visible_in_tree()
 	if _busy:
 		_busy = false
 		connection_cancelled.emit()
@@ -124,16 +128,18 @@ func _close_modal() -> void:
 		_previous_focus.grab_focus()
 	else:
 		_new_game.grab_focus()
+	if closing_status:
+		status_closed.emit()
 
-func _show_new_game() -> void:
+func _show_purchase(initial_focus: Control) -> void:
 	var amount := _new_game.price
-	L10n.bind(_pages.get_node("NewGame/Checkout/Price/Value"), L10n.message(&"ui.menu.new_game.price", {
+	L10n.bind(%PurchasePrice, L10n.message(&"ui.menu.new_game.price", {
 		"amount": amount, "currency": L10n.message(&"common.currency.maren", {}, amount),
 	}))
-	_show_page("NewGame", [_character_name, _buy, _pages.get_node("NewGame/Checkout/Actions/Back")])
+	_show_page(%NewGame, [_character_name, _buy, %PurchaseBack], initial_focus)
 
-func focus_purchase() -> void:
-	_buy.grab_focus()
+func resume_purchase() -> void:
+	_show_purchase(_buy)
 
 func _update_purchase_button(value: String) -> void:
 	_buy.disabled = value.strip_edges().is_empty()
@@ -145,7 +151,7 @@ func _submit_purchase() -> void:
 		property_purchased.emit(character_name)
 
 func _show_saves() -> void:
-	var list: VBoxContainer = _pages.get_node("Load/Scroll/Saves")
+	var list: VBoxContainer = %SaveList
 	for child in list.get_children():
 		list.remove_child(child)
 		child.queue_free()
@@ -173,16 +179,16 @@ func _show_saves() -> void:
 			controls.append(item)
 		list.add_child(item)
 	var count := list.get_child_count()
-	_pages.get_node("Load/Empty").visible = count == 0
-	var scroll: ScrollContainer = _pages.get_node("Load/Scroll")
+	%EmptySaves.visible = count == 0
+	var scroll: ScrollContainer = %SaveScroll
 	scroll.visible = count > 0
 	scroll.custom_minimum_size.y = mini(count * 53, 260)
-	controls.append(_pages.get_node("Load/Back"))
-	_show_page("Load", controls)
+	controls.append(%LoadBack)
+	_show_page(%Load, controls)
 
 func _show_join() -> void:
 	_address_error.hide()
-	_show_page("Join", [_address, _pages.get_node("Join/Actions/Buy"), _pages.get_node("Join/Actions/Back")])
+	_show_page(%Join, [_address, %BuyTicket, %JoinBack])
 
 func _submit_address() -> void:
 	var address := _address.text.strip_edges()
@@ -193,19 +199,19 @@ func _submit_address() -> void:
 	join_game_requested.emit(address)
 
 func _show_quit() -> void:
-	_show_page("Quit", [_pages.get_node("Quit/Actions/Exit"), _pages.get_node("Quit/Actions/Back")])
+	_show_page(%Quit, [%ConfirmQuit, %QuitBack])
 
 func _show_music_credits() -> void:
-	_show_page("Music", [_pages.get_node("Music/Source"), _pages.get_node("Music/License"), _pages.get_node("Music/Back")])
+	_show_page(%Music, [%MusicSource, %MusicLicense, %MusicBack])
 
 func show_connecting() -> void:
-	_busy = true
-	_pages.get_node("Status/Title").text = "ui.menu.status.connecting"
-	L10n.bind(_pages.get_node("Status/Message"), null)
-	_show_page("Status", [_pages.get_node("Status/Back")])
+	_show_status("ui.menu.status.connecting", null, true)
 
 func show_error(message: LocalizedText) -> void:
-	_busy = false
-	_pages.get_node("Status/Title").text = "ui.menu.status.error"
-	L10n.bind(_pages.get_node("Status/Message"), message if message != null else L10n.message(&"error.unknown"))
-	_show_page("Status", [_pages.get_node("Status/Back")])
+	_show_status("ui.menu.status.error", message if message != null else L10n.message(&"error.unknown"), false)
+
+func _show_status(title: String, message: LocalizedText, busy: bool) -> void:
+	_busy = busy
+	%StatusTitle.text = title
+	L10n.bind(%StatusMessage, message)
+	_show_page(%Status, [%StatusBack])

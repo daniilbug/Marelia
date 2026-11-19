@@ -66,7 +66,7 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.650980, 0.325490, 0.215686, 1)
 
-[sub_resource type="StyleBoxFlat" id="hair"]
+[sub_resource type="StyleBoxFlat" id="tile"]
 bg_color = Color(0.984314, 0.937255, 0.835294, 1)
 border_width_left = 2
 border_width_top = 2
@@ -74,7 +74,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.772549, 0.635294, 0.447059, 1)
 
-[sub_resource type="StyleBoxFlat" id="hair_hover"]
+[sub_resource type="StyleBoxFlat" id="tile_hover"]
 bg_color = Color(0.941176, 0.901961, 0.788235, 1)
 border_width_left = 2
 border_width_top = 2
@@ -82,13 +82,21 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.392157, 0.439216, 0.294118, 1)
 
-[sub_resource type="StyleBoxFlat" id="hair_active"]
+[sub_resource type="StyleBoxFlat" id="tile_active"]
 bg_color = Color(0.862745, 0.886275, 0.796078, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.392157, 0.439216, 0.294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="tile_disabled"]
+bg_color = Color(0.949020, 0.901961, 0.788235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.827451, 0.741176, 0.592157, 1)
 
 [sub_resource type="StyleBoxFlat" id="swatch_active"]
 border_width_left = 3
@@ -155,16 +163,17 @@ CharacterCreationTab/colors/font_hover_color = Color(0.321569, 0.219608, 0.15294
 CharacterCreationTab/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
 CharacterCreationTab/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
 CharacterCreationTab/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
-HairTile/base_type = &"Button"
-HairTile/styles/normal = SubResource("hair")
-HairTile/styles/hover = SubResource("hair_hover")
-HairTile/styles/pressed = SubResource("hair_active")
-HairTile/styles/hover_pressed = SubResource("hair_active")
-HairTile/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
-HairTile/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
-HairTile/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
-HairTile/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
-HairTile/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/base_type = &"Button"
+SelectableTile/styles/normal = SubResource("tile")
+SelectableTile/styles/hover = SubResource("tile_hover")
+SelectableTile/styles/pressed = SubResource("tile_active")
+SelectableTile/styles/hover_pressed = SubResource("tile_active")
+SelectableTile/styles/disabled = SubResource("tile_disabled")
+SelectableTile/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
 Swatch/base_type = &"Button"
 Swatch/styles/pressed = SubResource("swatch_active")
 Swatch/styles/focus = SubResource("swatch_focus")
