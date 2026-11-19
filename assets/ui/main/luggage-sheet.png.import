@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqtii7h1je8tl"
-path="res://.godot/imported/desktop.png-668ba0accad201d5439656910cd1ae51.ctex"
+uid="uid://cgnx8yevapoho"
+path="res://.godot/imported/luggage-sheet.png-2393d8e1cc56f993d03bdcbb0f080e85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/main/desktop.png"
-dest_files=["res://.godot/imported/desktop.png-668ba0accad201d5439656910cd1ae51.ctex"]
+source_file="res://assets/ui/main/luggage-sheet.png"
+dest_files=["res://.godot/imported/luggage-sheet.png-2393d8e1cc56f993d03bdcbb0f080e85.ctex"]
 
 [params]
 

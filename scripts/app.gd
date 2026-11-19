@@ -3,10 +3,12 @@ extends Node
 const WORLD := preload("res://scenes/levels/main.tscn")
 const MENU := preload("res://scenes/ui/main/menu.tscn")
 const CHARACTER_CREATION := preload("res://scenes/ui/main/character-creation.tscn")
+const LUGGAGE := preload("res://scenes/ui/main/luggage.tscn")
 @onready var session: NetworkSession = $NetworkSession
 var _world: Main
 var _menu: MainMenu
 var _character_creation: CharacterCreation
+var _luggage: Luggage
 var _port := 7777
 var _direct_launch := false
 
@@ -44,6 +46,7 @@ func _show_menu() -> void:
 	_menu.load_game_requested.connect(_load_game)
 	_menu.join_game_requested.connect(_join_game)
 	_menu.connection_cancelled.connect(session.close)
+	_menu.status_closed.connect(_resume_luggage)
 	add_child(_menu)
 
 func _open_character_creation(character_name: String) -> void:
@@ -52,23 +55,55 @@ func _open_character_creation(character_name: String) -> void:
 	_character_creation = CHARACTER_CREATION.instantiate() as CharacterCreation
 	_character_creation.character_name = character_name
 	_character_creation.back_requested.connect(_return_to_purchase)
-	_character_creation.boarding_requested.connect(_start_new_game)
+	_character_creation.luggage_requested.connect(_open_luggage)
 	_menu.hide()
 	add_child(_character_creation)
 
-func _close_character_creation() -> void:
+func _open_luggage() -> void:
 	_character_creation.hide()
-	_character_creation.queue_free()
-	_character_creation = null
-	_menu.show()
+	if _luggage == null:
+		_luggage = LUGGAGE.instantiate() as Luggage
+		_luggage.back_requested.connect(_return_to_character_creation)
+		_luggage.boarding_requested.connect(_start_new_game)
+		add_child(_luggage)
+	else:
+		_luggage.show()
+	_luggage.focus_items()
+
+func _return_to_character_creation() -> void:
+	_luggage.hide()
+	_character_creation.show()
+	_character_creation.focus_continue()
+
+func _resume_luggage() -> void:
+	if _luggage == null:
+		return
+	_menu.hide()
+	_luggage.show()
+	_luggage.focus_boarding()
+
+func _clear_new_game_setup() -> void:
+	if _luggage != null:
+		_luggage.hide()
+		_luggage.queue_free()
+		_luggage = null
+	if _character_creation != null:
+		_character_creation.hide()
+		_character_creation.queue_free()
+		_character_creation = null
 
 func _return_to_purchase() -> void:
-	_close_character_creation()
-	_menu.focus_purchase()
+	_clear_new_game_setup()
+	_menu.show()
+	_menu.resume_purchase()
 
-func _start_new_game(character_name: String, appearance: Dictionary) -> void:
-	_close_character_creation()
-	Player.local_setup = {"name": character_name, "appearance": appearance}
+func _start_new_game() -> void:
+	Player.local_setup = {
+		"name": _character_creation.character_name,
+		"appearance": _character_creation.get_appearance(),
+	}
+	_luggage.hide()
+	_menu.show()
 	SaveManager.new_game()
 	_menu.show_connecting()
 	session.host(_port)
@@ -87,12 +122,16 @@ func _join_game(address: String) -> void:
 	session.join(address, _port)
 
 func _open_world() -> void:
-	if is_instance_valid(_menu):
-		_menu.queue_free()
-		_menu = null
 	_world = WORLD.instantiate() as Main
 	_world.load_failed.connect(_fail)
 	add_child(_world)
+	# A failed world can clear this reference during _ready().
+	if _world == null:
+		return
+	_clear_new_game_setup()
+	if is_instance_valid(_menu):
+		_menu.queue_free()
+		_menu = null
 
 func _on_disconnected() -> void:
 	if _direct_launch:

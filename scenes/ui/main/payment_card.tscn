@@ -1,11 +1,13 @@
 [gd_scene format=3]
 
 [ext_resource type="Theme" path="res://assets/ui/main/theme.tres" id="theme"]
+[ext_resource type="Script" path="res://scripts/ui/main/payment_card.gd" id="script"]
 
 [node name="PaymentCard" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 188)
 theme = ExtResource("theme")
 theme_type_variation = "PaymentCard"
+script = ExtResource("script")
 mouse_filter = 2
 
 [node name="Layout" type="VBoxContainer" parent="."]
@@ -94,6 +96,7 @@ theme_type_variation = "PaymentCardHint"
 mouse_filter = 2
 
 [node name="NameInput" type="LineEdit" parent="Layout/Details/Holder"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_type_variation = "PaymentName"

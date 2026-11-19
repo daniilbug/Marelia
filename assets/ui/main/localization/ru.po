@@ -30,13 +30,10 @@ msgid "ui.menu.load.action"
 msgstr "Загрузить"
 
 msgid "ui.menu.join.title"
-msgstr "Билет в Марелию"
+msgstr "Рейс в Марелию"
 
 msgid "ui.menu.join.action"
 msgstr "Подключиться"
-
-msgid "ui.menu.join.ticket_title"
-msgstr "Билет в Увацию"
 
 msgid "ui.menu.join.ip_label"
 msgstr "IP-адрес"
@@ -141,17 +138,8 @@ msgstr "Женский"
 msgid "ui.character_creation.skin"
 msgstr "Цвет кожи"
 
-msgid "ui.character_creation.skin_swatch"
-msgstr "Оттенок кожи {number}"
-
 msgid "ui.character_creation.hair_color"
 msgstr "Цвет волос"
-
-msgid "ui.character_creation.hair_swatch"
-msgstr "Цвет волос {number}"
-
-msgid "ui.character_creation.hairstyle"
-msgstr "Причёска {number}"
 
 msgid "ui.character_creation.clothes.top"
 msgstr "Верх"
@@ -198,11 +186,48 @@ msgstr "Укороченные брюки"
 msgid "ui.character_creation.garment.skirt"
 msgstr "Юбка"
 
-msgid "ui.character_creation.previous"
-msgstr "Предыдущий вариант"
+msgid "ui.character_creation.continue"
+msgstr "Далее"
 
-msgid "ui.character_creation.next"
-msgstr "Следующий вариант"
+# Luggage selection.
+msgid "ui.luggage.items"
+msgstr "Багаж"
 
-msgid "ui.character_creation.board"
+msgid "ui.luggage.board"
 msgstr "На посадку"
+
+msgid "ui.luggage.item.language_textbook"
+msgstr "Учебник марелийского"
+
+msgid "ui.luggage.item.marelia_book"
+msgstr "Книга о Марелии"
+
+msgid "ui.luggage.item.repair_guide"
+msgstr "Руководство по ремонту"
+
+msgid "ui.luggage.item.cash"
+msgstr "Пачка денег"
+
+msgid "ui.luggage.item.family_photo"
+msgstr "Семейная фотография"
+
+msgid "ui.luggage.item.wine"
+msgstr "Бутылка вина"
+
+msgid "ui.luggage.item.phrasebook"
+msgstr "Карманный разговорник"
+
+msgid "ui.luggage.item.clothes"
+msgstr "Комплект одежды"
+
+msgid "ui.luggage.item.wrench"
+msgstr "Гаечный ключ"
+
+msgid "ui.luggage.item.wine_journal"
+msgstr "Винный журнал"
+
+msgid "ui.luggage.item.back_balm"
+msgstr "Мазь для спины"
+
+msgid "ui.luggage.item.farming_book"
+msgstr "От семени до урожая"

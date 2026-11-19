@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[node name="Item" type="Button"]
+custom_minimum_size = Vector2(214, 160)
+mouse_default_cursor_shape = 2
+toggle_mode = true
+theme_type_variation = &"SelectableTile"
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_right = 42.0
+offset_bottom = 84.0
+mouse_filter = 2
+texture_filter = 1
+expand_mode = 1
+
+[node name="Caption" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+mouse_filter = 2
+theme_override_constants/line_spacing = 1
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+max_lines_visible = 2

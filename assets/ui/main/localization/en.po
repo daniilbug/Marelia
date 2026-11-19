@@ -30,13 +30,10 @@ msgid "ui.menu.load.action"
 msgstr "Load"
 
 msgid "ui.menu.join.title"
-msgstr "Ticket to Marelia"
+msgstr "Flight to Marelia"
 
 msgid "ui.menu.join.action"
 msgstr "Join"
-
-msgid "ui.menu.join.ticket_title"
-msgstr "Ticket to Uvacia"
 
 msgid "ui.menu.join.ip_label"
 msgstr "IP address"
@@ -141,17 +138,8 @@ msgstr "Female"
 msgid "ui.character_creation.skin"
 msgstr "Skin tone"
 
-msgid "ui.character_creation.skin_swatch"
-msgstr "Skin tone {number}"
-
 msgid "ui.character_creation.hair_color"
 msgstr "Hair color"
-
-msgid "ui.character_creation.hair_swatch"
-msgstr "Hair color {number}"
-
-msgid "ui.character_creation.hairstyle"
-msgstr "Hairstyle {number}"
 
 msgid "ui.character_creation.clothes.top"
 msgstr "Top"
@@ -198,11 +186,48 @@ msgstr "Cropped trousers"
 msgid "ui.character_creation.garment.skirt"
 msgstr "Skirt"
 
-msgid "ui.character_creation.previous"
-msgstr "Previous option"
+msgid "ui.character_creation.continue"
+msgstr "Continue"
 
-msgid "ui.character_creation.next"
-msgstr "Next option"
+# Luggage selection.
+msgid "ui.luggage.items"
+msgstr "Luggage"
 
-msgid "ui.character_creation.board"
-msgstr "Board ferry"
+msgid "ui.luggage.board"
+msgstr "Board flight"
+
+msgid "ui.luggage.item.language_textbook"
+msgstr "Marelian textbook"
+
+msgid "ui.luggage.item.marelia_book"
+msgstr "Book about Marelia"
+
+msgid "ui.luggage.item.repair_guide"
+msgstr "Home repair guide"
+
+msgid "ui.luggage.item.cash"
+msgstr "Bundle of cash"
+
+msgid "ui.luggage.item.family_photo"
+msgstr "Family photo"
+
+msgid "ui.luggage.item.wine"
+msgstr "Bottle of wine"
+
+msgid "ui.luggage.item.phrasebook"
+msgstr "Pocket phrasebook"
+
+msgid "ui.luggage.item.clothes"
+msgstr "Spare outfit"
+
+msgid "ui.luggage.item.wrench"
+msgstr "Wrench"
+
+msgid "ui.luggage.item.wine_journal"
+msgstr "Wine journal"
+
+msgid "ui.luggage.item.back_balm"
+msgstr "Back balm"
+
+msgid "ui.luggage.item.farming_book"
+msgstr "From Seed to Harvest"
