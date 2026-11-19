@@ -7,6 +7,7 @@ signal boarding_requested
 const ITEM_CARD := preload("res://scenes/ui/main/luggage-item.tscn")
 const ITEM_ATLAS := preload("res://assets/ui/main/luggage-items.png")
 const ICON_SIZE := 42
+const SLOT_ICON_SIZE := 72.0
 const ATLAS_COLUMNS := 4
 const CAPACITY := 4
 # These stable IDs also define the order of the item sprites in the menu atlas.
@@ -22,6 +23,7 @@ var _packed: Array[Button] = []
 @onready var _layout: Control = %Layout
 @onready var _items: GridContainer = %Items
 @onready var _slots: GridContainer = %Slots
+@onready var _atlas_image := ITEM_ATLAS.get_image()
 @onready var _empty_slot := _atlas_texture(Rect2(0, 126, ICON_SIZE, ICON_SIZE))
 
 func _ready() -> void:
@@ -52,7 +54,6 @@ func _fit_layout() -> void:
 	_layout.position = ((size - design_size * factor) * 0.5).round()
 
 func _build_items() -> void:
-	var atlas_image := ITEM_ATLAS.get_image()
 	for index in ITEM_IDS.size():
 		var item := ITEM_IDS[index]
 		var caption := StringName("ui.luggage.item." + item)
@@ -62,8 +63,8 @@ func _build_items() -> void:
 		card.name = item
 		var card_icon := card.get_node("%Icon") as TextureRect
 		card_icon.texture = icon
-		# Align the visible pixels while keeping the original atlas cell for the suitcase.
-		var bounds := Rect2(atlas_image.get_region(Rect2i(icon.region)).get_used_rect())
+		# Align the visible pixels with the top of each item card.
+		var bounds := _icon_bounds(icon)
 		var padding := Vector2(ICON_SIZE * 0.5 - bounds.get_center().x, -bounds.position.y)
 		card_icon.position += padding * (card_icon.size / float(ICON_SIZE))
 		card.get_node("%Caption").text = caption
@@ -74,19 +75,18 @@ func _build_slots() -> void:
 	var plain := StyleBoxEmpty.new()
 	for index in CAPACITY:
 		var button := Button.new()
-		button.custom_minimum_size = Vector2(180, 86)
+		button.custom_minimum_size = Vector2(180, 82)
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		for state in [&"normal", &"hover", &"pressed", &"disabled"]:
 			button.add_theme_stylebox_override(state, plain)
 		button.pressed.connect(_unpack_slot.bind(index))
 		var icon := TextureRect.new()
 		icon.name = "Icon"
-		icon.position = Vector2(48, 1)
-		icon.size = Vector2(84, 84)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		button.add_child(icon)
+		icon.set_anchors_preset(Control.PRESET_CENTER)
 		_slots.add_child(button)
 
 func _atlas_texture(region: Rect2) -> AtlasTexture:
@@ -94,6 +94,9 @@ func _atlas_texture(region: Rect2) -> AtlasTexture:
 	texture.atlas = ITEM_ATLAS
 	texture.region = region
 	return texture
+
+func _icon_bounds(texture: AtlasTexture) -> Rect2:
+	return Rect2(_atlas_image.get_region(Rect2i(texture.region)).get_used_rect())
 
 func _toggle_item(card: Button) -> void:
 	if card in _packed:
@@ -121,4 +124,11 @@ func _refresh() -> void:
 		var slot := _slots.get_child(index) as Button
 		var filled := index < count
 		slot.disabled = not filled
-		slot.get_node("Icon").texture = _packed[index].get_node("%Icon").texture if filled else _empty_slot
+		var texture: AtlasTexture = _packed[index].get_node("%Icon").texture if filled else _empty_slot
+		var icon := slot.get_node("Icon") as TextureRect
+		icon.texture = texture
+		var offset := -_icon_bounds(texture).get_center() * (SLOT_ICON_SIZE / ICON_SIZE)
+		icon.offset_left = offset.x
+		icon.offset_top = offset.y
+		icon.offset_right = offset.x + SLOT_ICON_SIZE
+		icon.offset_bottom = offset.y + SLOT_ICON_SIZE
