@@ -6,6 +6,10 @@ signal load_game_requested(file_name: String)
 signal join_game_requested(address: String)
 signal connection_cancelled
 
+const ARROW_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/arrow.png")
+const HAND_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/hand.png")
+const TEXT_CURSOR_TEXTURE := preload("res://assets/ui/main/cursors/text.png")
+
 @onready var _new_game: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/NewGame
 @onready var _load: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/Load
 @onready var _join: MainMenuCard = $BrowserWindow/Browser/Layout/Website/Layout/Cards/Join
@@ -24,6 +28,16 @@ signal connection_cancelled
 var _locale_codes := PackedStringArray()
 var _previous_focus: Control
 var _busy := false
+
+func _enter_tree() -> void:
+	Input.set_custom_mouse_cursor(ARROW_CURSOR_TEXTURE, Input.CURSOR_ARROW, Vector2(2, 2))
+	Input.set_custom_mouse_cursor(HAND_CURSOR_TEXTURE, Input.CURSOR_POINTING_HAND, Vector2(12, 2))
+	Input.set_custom_mouse_cursor(TEXT_CURSOR_TEXTURE, Input.CURSOR_IBEAM, Vector2(16, 16))
+
+func _exit_tree() -> void:
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
+	Input.set_custom_mouse_cursor(null, Input.CURSOR_IBEAM)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -148,6 +162,7 @@ func _show_saves() -> void:
 			item.disabled = true
 		else:
 			seen_campaigns[campaign] = true
+			item.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			L10n.bind(item, L10n.message(&"ui.menu.load.entry", {
 				"date": L10n.date_time(int(save.saved_at / 1000000)),
 			}))
