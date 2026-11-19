@@ -2,27 +2,20 @@
 
 
 [ext_resource type="Script" uid="uid://qhf7evqheuvh" path="res://scripts/core/player.gd" id="1_q88xf"]
-[ext_resource type="Texture2D" uid="uid://km6dikhk85ac" path="res://assets/sprites/characters/player.png" id="2_665sb"]
-[ext_resource type="Script" uid="uid://md7jxbkt0tc8" path="res://scripts/core/character_sprite.gd" id="2_character_sprite"]
 [ext_resource type="Texture2D" uid="uid://dnamvitjkmj0a" path="res://assets/sprites/characters/hair_0.png" id="2_hair"]
-[ext_resource type="Texture2D" uid="uid://cfln1lss4hesi" path="res://assets/sprites/characters/pants_0.png" id="2_pants"]
-[ext_resource type="Texture2D" uid="uid://dvcl5v1pcd327" path="res://assets/sprites/characters/top_0.png" id="2_top"]
+[ext_resource type="PackedScene" path="res://scenes/core/character_sprite.tscn" id="character_sprite"]
 [ext_resource type="Script" path="res://scripts/core/moving_navigation_obstacle.gd" id="4_nav_obstacle"]
 [ext_resource type="Shader" path="res://assets/shaders/hair_color.gdshader" id="hair_color_shader"]
-[ext_resource type="Shader" path="res://assets/shaders/clothing_color.gdshader" id="clothing_color_shader"]
 [ext_resource type="Texture2D" path="res://assets/sprites/characters/swim_male.png" id="swim_male"]
 [ext_resource type="Texture2D" path="res://assets/sprites/characters/swim_female.png" id="swim_female"]
 
+[ext_resource type="Shader" path="res://assets/shaders/skin_color.gdshader" id="skin_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skin"]
+shader = ExtResource("skin_shader")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hair"]
 shader = ExtResource("hair_color_shader")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_top"]
-shader = ExtResource("clothing_color_shader")
-shader_parameter/clothing_color = Color(0.27451, 0.42353, 0.60392, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pants"]
-shader = ExtResource("clothing_color_shader")
-shader_parameter/clothing_color = Color(0.2, 0.26275, 0.37255, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(10, 8)
@@ -87,6 +80,9 @@ properties/10/replication_mode = 2
 properties/11/path = NodePath(".:gender")
 properties/11/spawn = true
 properties/11/replication_mode = 2
+properties/12/path = NodePath(".:skin_tone_id")
+properties/12/spawn = true
+properties/12/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=1474730025]
 collision_mask = 9
@@ -96,51 +92,14 @@ script = ExtResource("1_q88xf")
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_body")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2145306783 node_paths=PackedStringArray("swim_sprite", "swim_hair")]
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_665sb")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-script = ExtResource("2_character_sprite")
+[node name="Sprite" parent="." unique_id=2145306783 node_paths=PackedStringArray("swim_sprite", "swim_hair") instance=ExtResource("character_sprite")]
 swim_sprite = NodePath("../Swim")
 swim_hair = NodePath("../Swim/Hair")
 swimsuit_atlas = ExtResource("swim_female")
 
-[node name="Pants" type="Sprite2D" parent="Sprite" unique_id=1432285718]
-material = SubResource("ShaderMaterial_pants")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_pants")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-
-[node name="Top" type="Sprite2D" parent="Sprite" unique_id=1201707499]
-material = SubResource("ShaderMaterial_top")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_top")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-
-[node name="Hair" type="Sprite2D" parent="Sprite" unique_id=167662397]
-material = SubResource("ShaderMaterial_hair")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_hair")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-
 [node name="Swim" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_skin")
 light_mask = 3
 texture_filter = 1
 texture = ExtResource("swim_male")

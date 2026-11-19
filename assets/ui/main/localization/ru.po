@@ -112,3 +112,97 @@ msgstr "Действует до"
 
 msgid "ui.payment.card.expiry"
 msgstr "08/30"
+
+# Character creation.
+msgid "ui.character_creation.title"
+msgstr "Паспорт"
+
+msgid "ui.character_creation.name"
+msgstr "Имя"
+
+msgid "ui.character_creation.tab.details"
+msgstr "Данные"
+
+msgid "ui.character_creation.tab.hair"
+msgstr "Волосы"
+
+msgid "ui.character_creation.tab.clothing"
+msgstr "Одежда"
+
+msgid "ui.character_creation.gender"
+msgstr "Пол"
+
+msgid "ui.character_creation.gender.male"
+msgstr "Мужской"
+
+msgid "ui.character_creation.gender.female"
+msgstr "Женский"
+
+msgid "ui.character_creation.skin"
+msgstr "Цвет кожи"
+
+msgid "ui.character_creation.skin_swatch"
+msgstr "Оттенок кожи {number}"
+
+msgid "ui.character_creation.hair_color"
+msgstr "Цвет волос"
+
+msgid "ui.character_creation.hair_swatch"
+msgstr "Цвет волос {number}"
+
+msgid "ui.character_creation.hairstyle"
+msgstr "Причёска {number}"
+
+msgid "ui.character_creation.clothes.top"
+msgstr "Верх"
+
+msgid "ui.character_creation.clothes.bottom"
+msgstr "Низ"
+
+msgid "ui.character_creation.garment.shirt"
+msgstr "Рубашка"
+
+msgid "ui.character_creation.garment.tshirt"
+msgstr "Футболка"
+
+msgid "ui.character_creation.garment.jacket"
+msgstr "Куртка"
+
+msgid "ui.character_creation.garment.sweater"
+msgstr "Свитер"
+
+msgid "ui.character_creation.garment.vest"
+msgstr "Жилет"
+
+msgid "ui.character_creation.garment.tank"
+msgstr "Майка"
+
+msgid "ui.character_creation.garment.coat"
+msgstr "Пальто"
+
+msgid "ui.character_creation.garment.trousers"
+msgstr "Брюки"
+
+msgid "ui.character_creation.garment.slim_trousers"
+msgstr "Узкие брюки"
+
+msgid "ui.character_creation.garment.jeans"
+msgstr "Джинсы"
+
+msgid "ui.character_creation.garment.shorts"
+msgstr "Шорты"
+
+msgid "ui.character_creation.garment.cropped_trousers"
+msgstr "Укороченные брюки"
+
+msgid "ui.character_creation.garment.skirt"
+msgstr "Юбка"
+
+msgid "ui.character_creation.previous"
+msgstr "Предыдущий вариант"
+
+msgid "ui.character_creation.next"
+msgstr "Следующий вариант"
+
+msgid "ui.character_creation.board"
+msgstr "На посадку"

@@ -14,7 +14,7 @@ const SAVE_SCHEMA := {
 	"direction": Vector2.ZERO,
 	"appearance": {"hair_id": 0, "hair_color_id": 0, "top_id": 0, "top_color_id": 0, "pants_id": 0, "pants_color_id": 0},
 }
-const SAVE_APPEARANCE: Array[String] = ["hair_id", "hair_color_id", "top_id", "top_color_id", "pants_id", "pants_color_id", "gender"]
+const SAVE_APPEARANCE: Array[String] = ["hair_id", "hair_color_id", "top_id", "top_color_id", "pants_id", "pants_color_id", "gender", "skin_tone_id"]
 
 const ROW_WALK_S  := 0
 const ROW_WALK_N  := 1
@@ -52,6 +52,11 @@ var _platform: WalkablePlatform
 @export var gender := Gender.MALE:
 	set(value):
 		gender = value
+		_refresh_appearance()
+
+@export var skin_tone_id := CharacterSprite.DEFAULT_SKIN_TONE:
+	set(value):
+		skin_tone_id = value
 		_refresh_appearance()
 
 @export var hair_id: int = 0:
@@ -163,6 +168,7 @@ func randomize_appearance(randomize_gender := true) -> void:
 func _refresh_appearance() -> void:
 	if is_node_ready():
 		sprite.set_appearance(hair_id, top_id, pants_id, hair_color_id, top_color_id, pants_color_id, gender == Gender.FEMALE)
+		sprite.set_skin_tone(skin_tone_id)
 		appearance_changed.emit()
 
 func initialize_wardrobe() -> void:
@@ -208,10 +214,13 @@ func apply_save_data(data: Dictionary) -> void:
 	level_id = data.level_id
 	platform_path = data.get("platform_path", NodePath())
 	direction = data.get("direction", Vector2.DOWN)
-	SaveGraph.apply_fields(self, SAVE_APPEARANCE, data.get("appearance", {}))
+	apply_appearance(data.get("appearance", {}))
 	if data.has("wardrobe"):
 		owned_tops.assign(data.wardrobe.tops)
 		owned_bottoms.assign(data.wardrobe.bottoms)
+
+func apply_appearance(appearance: Dictionary) -> void:
+	SaveGraph.apply_fields(self, SAVE_APPEARANCE, appearance)
 
 func _start_idle_bob() -> void:
 	if _idle_tween != null:

@@ -102,7 +102,11 @@ func _spawn_player(peer_id: int, saved: Dictionary = {}) -> void:
 	player.name = str(peer_id)
 	if saved.is_empty():
 		player.level_id = spawn_level.level_id
-		player.randomize_appearance()
+		var appearance: Dictionary = Player.local_setup.get("appearance", {}) if peer_id == multiplayer.get_unique_id() else {}
+		if appearance.is_empty():
+			player.randomize_appearance()
+		else:
+			player.apply_appearance(appearance)
 		spawn_level._prepare_player_spawn(player)
 	else:
 		player.apply_save_data(saved)

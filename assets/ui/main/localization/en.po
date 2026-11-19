@@ -112,3 +112,97 @@ msgstr "Valid thru"
 
 msgid "ui.payment.card.expiry"
 msgstr "08/30"
+
+# Character creation.
+msgid "ui.character_creation.title"
+msgstr "Passport"
+
+msgid "ui.character_creation.name"
+msgstr "Name"
+
+msgid "ui.character_creation.tab.details"
+msgstr "Details"
+
+msgid "ui.character_creation.tab.hair"
+msgstr "Hair"
+
+msgid "ui.character_creation.tab.clothing"
+msgstr "Clothing"
+
+msgid "ui.character_creation.gender"
+msgstr "Gender"
+
+msgid "ui.character_creation.gender.male"
+msgstr "Male"
+
+msgid "ui.character_creation.gender.female"
+msgstr "Female"
+
+msgid "ui.character_creation.skin"
+msgstr "Skin tone"
+
+msgid "ui.character_creation.skin_swatch"
+msgstr "Skin tone {number}"
+
+msgid "ui.character_creation.hair_color"
+msgstr "Hair color"
+
+msgid "ui.character_creation.hair_swatch"
+msgstr "Hair color {number}"
+
+msgid "ui.character_creation.hairstyle"
+msgstr "Hairstyle {number}"
+
+msgid "ui.character_creation.clothes.top"
+msgstr "Top"
+
+msgid "ui.character_creation.clothes.bottom"
+msgstr "Bottom"
+
+msgid "ui.character_creation.garment.shirt"
+msgstr "Shirt"
+
+msgid "ui.character_creation.garment.tshirt"
+msgstr "T-shirt"
+
+msgid "ui.character_creation.garment.jacket"
+msgstr "Jacket"
+
+msgid "ui.character_creation.garment.sweater"
+msgstr "Sweater"
+
+msgid "ui.character_creation.garment.vest"
+msgstr "Vest"
+
+msgid "ui.character_creation.garment.tank"
+msgstr "Tank top"
+
+msgid "ui.character_creation.garment.coat"
+msgstr "Coat"
+
+msgid "ui.character_creation.garment.trousers"
+msgstr "Trousers"
+
+msgid "ui.character_creation.garment.slim_trousers"
+msgstr "Slim trousers"
+
+msgid "ui.character_creation.garment.jeans"
+msgstr "Jeans"
+
+msgid "ui.character_creation.garment.shorts"
+msgstr "Shorts"
+
+msgid "ui.character_creation.garment.cropped_trousers"
+msgstr "Cropped trousers"
+
+msgid "ui.character_creation.garment.skirt"
+msgstr "Skirt"
+
+msgid "ui.character_creation.previous"
+msgstr "Previous option"
+
+msgid "ui.character_creation.next"
+msgstr "Next option"
+
+msgid "ui.character_creation.board"
+msgstr "Board ferry"

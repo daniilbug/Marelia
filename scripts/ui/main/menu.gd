@@ -1,7 +1,7 @@
 class_name MainMenu
 extends Control
 
-signal new_game_requested(character_name: String)
+signal property_purchased(character_name: String)
 signal load_game_requested(file_name: String)
 signal join_game_requested(address: String)
 signal connection_cancelled
@@ -63,7 +63,7 @@ func _ready() -> void:
 	_new_game.grab_focus.call_deferred()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is not InputEventKey or not event.pressed or event.is_echo():
+	if not is_visible_in_tree() or event is not InputEventKey or not event.pressed or event.is_echo():
 		return
 	if event.keycode == KEY_ESCAPE:
 		if _overlay.visible:
@@ -132,6 +132,9 @@ func _show_new_game() -> void:
 	}))
 	_show_page("NewGame", [_character_name, _buy, _pages.get_node("NewGame/Checkout/Actions/Back")])
 
+func focus_purchase() -> void:
+	_buy.grab_focus()
+
 func _update_purchase_button(value: String) -> void:
 	_buy.disabled = value.strip_edges().is_empty()
 	_buy.focus_mode = Control.FOCUS_NONE if _buy.disabled else Control.FOCUS_ALL
@@ -139,7 +142,7 @@ func _update_purchase_button(value: String) -> void:
 func _submit_purchase() -> void:
 	var character_name := _character_name.text.strip_edges()
 	if not character_name.is_empty():
-		new_game_requested.emit(character_name)
+		property_purchased.emit(character_name)
 
 func _show_saves() -> void:
 	var list: VBoxContainer = _pages.get_node("Load/Scroll/Saves")

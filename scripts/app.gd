@@ -2,9 +2,11 @@ extends Node
 
 const WORLD := preload("res://scenes/levels/main.tscn")
 const MENU := preload("res://scenes/ui/main/menu.tscn")
+const CHARACTER_CREATION := preload("res://scenes/ui/main/character-creation.tscn")
 @onready var session: NetworkSession = $NetworkSession
 var _world: Main
 var _menu: MainMenu
+var _character_creation: CharacterCreation
 var _port := 7777
 var _direct_launch := false
 
@@ -38,14 +40,35 @@ func _ready() -> void:
 
 func _show_menu() -> void:
 	_menu = MENU.instantiate() as MainMenu
-	_menu.new_game_requested.connect(_start_new_game)
+	_menu.property_purchased.connect(_open_character_creation)
 	_menu.load_game_requested.connect(_load_game)
 	_menu.join_game_requested.connect(_join_game)
 	_menu.connection_cancelled.connect(session.close)
 	add_child(_menu)
 
-func _start_new_game(character_name: String) -> void:
-	Player.local_setup["name"] = character_name
+func _open_character_creation(character_name: String) -> void:
+	if is_instance_valid(_character_creation):
+		return
+	_character_creation = CHARACTER_CREATION.instantiate() as CharacterCreation
+	_character_creation.character_name = character_name
+	_character_creation.back_requested.connect(_return_to_purchase)
+	_character_creation.boarding_requested.connect(_start_new_game)
+	_menu.hide()
+	add_child(_character_creation)
+
+func _close_character_creation() -> void:
+	_character_creation.hide()
+	_character_creation.queue_free()
+	_character_creation = null
+	_menu.show()
+
+func _return_to_purchase() -> void:
+	_close_character_creation()
+	_menu.focus_purchase()
+
+func _start_new_game(character_name: String, appearance: Dictionary) -> void:
+	_close_character_creation()
+	Player.local_setup = {"name": character_name, "appearance": appearance}
 	SaveManager.new_game()
 	_menu.show_connecting()
 	session.host(_port)

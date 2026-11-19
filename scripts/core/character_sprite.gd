@@ -2,6 +2,11 @@ class_name CharacterSprite
 extends Sprite2D
 
 const SWIM_PHASE_COUNT := 4
+const DEFAULT_SKIN_TONE := 1
+const SKIN_TONES: Array[Color] = [
+	Color("f4d3af"), Color("ecc295"), Color("d79b6f"),
+	Color("b9754c"), Color("885233"), Color("633d2c"),
+]
 
 # Every texture uses the same 4 x 10 atlas and the same 12 x 20 frame origin.
 const HAIR_TEXTURES = [
@@ -120,8 +125,10 @@ const CLOTHING_COLORS: Array[Color] = [
 
 func _ready() -> void:
 	# Characters and slots must never share dye uniforms, including NPCs.
-	for layer in [_hair, _top, _pants]:
+	for layer in [self, _hair, _top, _pants]:
 		layer.material = layer.material.duplicate()
+	if swim_sprite != null:
+		swim_sprite.material = swim_sprite.material.duplicate()
 	if swim_sprite != null and swim_hair != null:
 		swim_hair.material = _hair.material
 		swim_sprite.frame_changed.connect(_sync_swim_hair)
@@ -168,6 +175,12 @@ func set_appearance(
 		swim_sprite.texture = swimsuit_atlas if wears_swimsuit else _bare_torso_atlas
 	if swim_hair != null:
 		swim_hair.texture = _hair.texture
+
+func set_skin_tone(tone_id: int) -> void:
+	var tone := SKIN_TONES[clampi(tone_id, 0, SKIN_TONES.size() - 1)]
+	for layer in [self, _top, _pants, swim_sprite]:
+		if layer != null:
+			(layer.material as ShaderMaterial).set_shader_parameter("skin_color", tone)
 
 func _sync_layer_frames() -> void:
 	_hair.frame = frame

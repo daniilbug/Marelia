@@ -1,0 +1,336 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main/character-creation.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/character-creation-spread.png" id="spread"]
+[ext_resource type="Texture2D" path="res://assets/ui/main/character-creation-table.png" id="table"]
+[ext_resource type="Theme" path="res://assets/ui/main/character-creation-theme.tres" id="theme"]
+[ext_resource type="PackedScene" path="res://scenes/core/character_sprite.tscn" id="sprite"]
+
+[sub_resource type="ButtonGroup" id="tabs"]
+
+[sub_resource type="ButtonGroup" id="gender"]
+
+[node name="CharacterCreation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Table" type="TextureRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("table")
+expand_mode = 1
+
+[node name="Spread" type="Control" parent="."]
+unique_name_in_owner = true
+offset_right = 1280.0
+offset_bottom = 900.0
+mouse_filter = 2
+
+[node name="Artwork" type="TextureRect" parent="Spread"]
+offset_left = 86.0
+offset_top = 26.0
+offset_right = 1197.0
+offset_bottom = 856.0
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("spread")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Spread"]
+offset_left = 670.0
+offset_top = 289.0
+offset_right = 1144.0
+offset_bottom = 338.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 38
+text = "ui.character_creation.title"
+
+[node name="NameLabel" type="Label" parent="Spread"]
+offset_left = 670.0
+offset_top = 344.0
+offset_right = 759.0
+offset_bottom = 374.0
+mouse_filter = 2
+text = "ui.character_creation.name"
+
+[node name="CharacterName" type="Label" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 763.0
+offset_top = 344.0
+offset_right = 1143.0
+offset_bottom = 374.0
+mouse_filter = 2
+auto_translate_mode = 2
+text_overrun_behavior = 3
+
+[node name="DetailsTab" type="Button" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 670.0
+offset_top = 381.0
+offset_right = 822.0
+offset_bottom = 420.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"CharacterCreationTab"
+toggle_mode = true
+button_group = SubResource("tabs")
+button_pressed = true
+text = "ui.character_creation.tab.details"
+
+[node name="HairTab" type="Button" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 822.0
+offset_top = 381.0
+offset_right = 978.0
+offset_bottom = 420.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"CharacterCreationTab"
+toggle_mode = true
+button_group = SubResource("tabs")
+text = "ui.character_creation.tab.hair"
+
+[node name="ClothingTab" type="Button" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 978.0
+offset_top = 381.0
+offset_right = 1145.0
+offset_bottom = 420.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"CharacterCreationTab"
+toggle_mode = true
+button_group = SubResource("tabs")
+text = "ui.character_creation.tab.clothing"
+
+[node name="PortraitFrame" type="Panel" parent="Spread"]
+offset_left = 670.0
+offset_top = 439.0
+offset_right = 817.0
+offset_bottom = 659.0
+mouse_filter = 2
+theme_type_variation = &"PortraitFrame"
+
+[node name="Portrait" parent="Spread" instance=ExtResource("sprite")]
+unique_name_in_owner = true
+position = Vector2(743, 618)
+scale = Vector2(7, 7)
+
+[node name="Details" type="Control" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 844.0
+offset_top = 439.0
+offset_right = 1145.0
+offset_bottom = 727.0
+mouse_filter = 2
+
+[node name="Hair" type="Control" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 844.0
+offset_top = 439.0
+offset_right = 1145.0
+offset_bottom = 727.0
+visible = false
+mouse_filter = 2
+
+[node name="Clothing" type="Control" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 844.0
+offset_top = 439.0
+offset_right = 1145.0
+offset_bottom = 727.0
+visible = false
+mouse_filter = 2
+
+[node name="Gender" type="Label" parent="Spread/Details"]
+offset_right = 300.0
+offset_bottom = 24.0
+mouse_filter = 2
+text = "ui.character_creation.gender"
+
+[node name="Male" type="Button" parent="Spread/Details"]
+unique_name_in_owner = true
+offset_top = 26.0
+offset_right = 137.0
+offset_bottom = 60.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("gender")
+button_pressed = true
+text = "ui.character_creation.gender.male"
+
+[node name="Female" type="Button" parent="Spread/Details"]
+unique_name_in_owner = true
+offset_left = 145.0
+offset_top = 26.0
+offset_right = 300.0
+offset_bottom = 60.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("gender")
+text = "ui.character_creation.gender.female"
+
+[node name="Skin" type="Label" parent="Spread/Details"]
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 104.0
+mouse_filter = 2
+text = "ui.character_creation.skin"
+
+[node name="SkinSwatches" type="HBoxContainer" parent="Spread/Details"]
+unique_name_in_owner = true
+offset_top = 108.0
+offset_right = 240.0
+offset_bottom = 144.0
+theme_override_constants/separation = 6
+
+[node name="HairStyles" type="GridContainer" parent="Spread/Hair"]
+unique_name_in_owner = true
+offset_right = 288.0
+offset_bottom = 169.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Color" type="Label" parent="Spread/Hair"]
+offset_top = 186.0
+offset_right = 300.0
+offset_bottom = 212.0
+mouse_filter = 2
+text = "ui.character_creation.hair_color"
+
+[node name="HairSwatches" type="HBoxContainer" parent="Spread/Hair"]
+unique_name_in_owner = true
+offset_top = 211.0
+offset_right = 240.0
+offset_bottom = 247.0
+theme_override_constants/separation = 6
+
+[node name="TopLabel" type="Label" parent="Spread/Clothing"]
+offset_right = 300.0
+offset_bottom = 24.0
+mouse_filter = 2
+text = "ui.character_creation.clothes.top"
+
+[node name="Top" type="Panel" parent="Spread/Clothing"]
+offset_top = 26.0
+offset_right = 301.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme_type_variation = &"Garment"
+
+[node name="TopName" type="Label" parent="Spread/Clothing/Top"]
+unique_name_in_owner = true
+offset_left = 32.0
+offset_right = 238.0
+offset_bottom = 34.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopColor" type="ColorRect" parent="Spread/Clothing/Top"]
+unique_name_in_owner = true
+offset_left = 244.0
+offset_top = 9.0
+offset_right = 260.0
+offset_bottom = 25.0
+mouse_filter = 2
+
+[node name="TopPrev" type="Button" parent="Spread/Clothing/Top"]
+unique_name_in_owner = true
+offset_right = 29.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+text = "<"
+auto_translate_mode = 2
+tooltip_text = "ui.character_creation.previous"
+
+[node name="TopNext" type="Button" parent="Spread/Clothing/Top"]
+unique_name_in_owner = true
+offset_left = 272.0
+offset_right = 301.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+text = ">"
+auto_translate_mode = 2
+tooltip_text = "ui.character_creation.next"
+
+[node name="BottomLabel" type="Label" parent="Spread/Clothing"]
+offset_top = 83.0
+offset_right = 300.0
+offset_bottom = 107.0
+mouse_filter = 2
+text = "ui.character_creation.clothes.bottom"
+
+[node name="Bottom" type="Panel" parent="Spread/Clothing"]
+offset_top = 109.0
+offset_right = 301.0
+offset_bottom = 143.0
+mouse_filter = 2
+theme_type_variation = &"Garment"
+
+[node name="BottomName" type="Label" parent="Spread/Clothing/Bottom"]
+unique_name_in_owner = true
+offset_left = 32.0
+offset_right = 238.0
+offset_bottom = 34.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomColor" type="ColorRect" parent="Spread/Clothing/Bottom"]
+unique_name_in_owner = true
+offset_left = 244.0
+offset_top = 9.0
+offset_right = 260.0
+offset_bottom = 25.0
+mouse_filter = 2
+
+[node name="BottomPrev" type="Button" parent="Spread/Clothing/Bottom"]
+unique_name_in_owner = true
+offset_right = 29.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+text = "<"
+auto_translate_mode = 2
+tooltip_text = "ui.character_creation.previous"
+
+[node name="BottomNext" type="Button" parent="Spread/Clothing/Bottom"]
+unique_name_in_owner = true
+offset_left = 272.0
+offset_right = 301.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+text = ">"
+auto_translate_mode = 2
+tooltip_text = "ui.character_creation.next"
+
+[node name="Back" type="Button" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 670.0
+offset_top = 752.0
+offset_right = 770.0
+offset_bottom = 795.0
+mouse_default_cursor_shape = 2
+text = "ui.action.back"
+
+[node name="Board" type="Button" parent="Spread"]
+unique_name_in_owner = true
+offset_left = 986.0
+offset_top = 752.0
+offset_right = 1145.0
+offset_bottom = 795.0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"Primary"
+text = "ui.character_creation.board"

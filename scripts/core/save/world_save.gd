@@ -64,6 +64,10 @@ static func is_valid_snapshot(snapshot: Dictionary) -> bool:
 	var appearance: Dictionary = snapshot.player.appearance
 	if not SaveGraph.matches(appearance.get("gender", Player.Gender.MALE), [Player.Gender.MALE, Player.Gender.FEMALE]):
 		return false
+	# Version 1 saves before character creation use the original skin tone.
+	var skin_tone: Variant = appearance.get("skin_tone_id", CharacterSprite.DEFAULT_SKIN_TONE)
+	if not SaveGraph.matches(skin_tone, Vector2i(0, CharacterSprite.SKIN_TONES.size() - 1)):
+		return false
 	if snapshot.player.has("platform_path"):
 		if snapshot.player.platform_path is not NodePath or (not snapshot.player.platform_path.is_empty() and not SaveGraph.safe_path(snapshot.player.platform_path)):
 			return false

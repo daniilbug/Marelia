@@ -2,26 +2,8 @@
 
 
 [ext_resource type="Script" uid="uid://bxauom013q3vc" path="res://scripts/core/npc/npc.gd" id="1_q88xf"]
-[ext_resource type="Texture2D" uid="uid://km6dikhk85ac" path="res://assets/sprites/characters/player.png" id="2_665sb"]
-[ext_resource type="Script" path="res://scripts/core/character_sprite.gd" id="2_character_sprite"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/hair_0.png" id="2_hair"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/top_0.png" id="2_top"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/pants_0.png" id="2_pants"]
-[ext_resource type="Shader" path="res://assets/shaders/hair_color.gdshader" id="hair_color_shader"]
-[ext_resource type="Shader" path="res://assets/shaders/clothing_color.gdshader" id="clothing_color_shader"]
-
+[ext_resource type="PackedScene" path="res://scenes/core/character_sprite.tscn" id="character_sprite"]
 [ext_resource type="PackedScene" path="res://scenes/core/npc/conversation.tscn" id="conversation"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hair"]
-shader = ExtResource("hair_color_shader")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_top"]
-shader = ExtResource("clothing_color_shader")
-shader_parameter/clothing_color = Color(0.27451, 0.42353, 0.60392, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pants"]
-shader = ExtResource("clothing_color_shader")
-shader_parameter/clothing_color = Color(0.2, 0.26275, 0.37255, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(10, 8)
@@ -78,45 +60,7 @@ script = ExtResource("1_q88xf")
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_body")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2145306783]
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_665sb")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-script = ExtResource("2_character_sprite")
-
-[node name="Pants" type="Sprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_pants")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_pants")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-
-[node name="Top" type="Sprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_top")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_top")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
-
-[node name="Hair" type="Sprite2D" parent="Sprite"]
-material = SubResource("ShaderMaterial_hair")
-light_mask = 3
-texture_filter = 1
-texture = ExtResource("2_hair")
-centered = false
-offset = Vector2(-6, -20)
-hframes = 4
-vframes = 10
+[node name="Sprite" parent="." unique_id=2145306783 instance=ExtResource("character_sprite")]
 
 [node name="Hands" type="Node2D" parent="." unique_id=1124817726]
 position = Vector2(0.03440857, -7.993946)

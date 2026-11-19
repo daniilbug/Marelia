@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+#include "res://assets/shaders/skin_ramp.gdshaderinc"
+
 // Only the neutral fabric ramp is dyed. Skin, lining and hardware stay intact.
 uniform vec4 clothing_color : source_color = vec4(0.27451, 0.42353, 0.60392, 1.0);
 varying vec4 item_color;
@@ -21,5 +23,5 @@ void fragment() {
 			pixel.rgb = mix(clothing_color.rgb, vec3(1.0), 0.18);
 		}
 	}
-	COLOR = pixel * item_color;
+	COLOR = vec4(dye_skin(pixel.rgb), pixel.a) * item_color;
 }
