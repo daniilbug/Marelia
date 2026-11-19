@@ -22,6 +22,11 @@ enum Style { COVERED, OPEN }
 	set(value):
 		support_color = value
 
+func set_appearance(design: Style, frame: Color, lifebuoy: Color) -> void:
+	style = design
+	frame_color = frame
+	lifebuoy_color = lifebuoy
+
 func _validate_property(property: Dictionary) -> void:
 	super._validate_property(property)
 	if property.name in ["body_color", "support_color"]:

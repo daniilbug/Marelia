@@ -10,5 +10,10 @@ enum Style { STRIPED, PLAIN }
 		style = value
 		_refresh_appearance()
 
+func set_appearance(design: Style, fabric: Color, frame: Color) -> void:
+	style = design
+	body_color = fabric
+	support_color = frame
+
 func _get_design_index() -> int:
 	return style

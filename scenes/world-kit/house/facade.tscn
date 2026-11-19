@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/entrance_step.tscn" id="step"]
 [ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/facade-variants/default.tres" id="facade_variants"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-variants/exterior.tres" id="door_variants"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/layouts.tres" id="layouts"]
 [sub_resource type="RectangleShape2D" id="footprint"]
 resource_local_to_scene = true
@@ -14,7 +13,6 @@ size = Vector2(176, 80)
 [node name="HouseFacade" type="StaticBody2D"]
 script = ExtResource("script")
 style_variants = ExtResource("facade_variants")
-door_variants = ExtResource("door_variants")
 interior_scene = ExtResource("interior")
 layouts = ExtResource("layouts")
 [node name="Visuals" type="Node2D" parent="."]

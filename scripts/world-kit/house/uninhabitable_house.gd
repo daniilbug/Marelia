@@ -88,6 +88,9 @@ func _validate_property(property: Dictionary) -> void:
 func _get_appearance_fields() -> Array:
 	return super._get_appearance_fields() + DAMAGE_FIELDS
 
+func _portal_variant_seed(index: int) -> int:
+	return super._portal_variant_seed(index) if restored else -1
+
 func _design(variant: int, default_style := -1) -> UninhabitableHouseDesign:
 	if designs.is_empty():
 		return null
@@ -101,9 +104,7 @@ func _refresh() -> void:
 	var portals: Array[HousePortal] = [$Entrance]
 	for balcony in $Balconies.get_children():
 		portals.append(balcony.get_node("Door") as HousePortal)
-	# Portal art setters skip unchanged values, so clear any previous damage explicitly.
 	for portal in portals:
-		portal._refresh_art()
 		portal.enabled = restored
 	for floor_node in $Visuals/Floors.get_children():
 		floor_node.get_node("LeftWindow").flip_h = false
@@ -141,8 +142,8 @@ func _build_connections() -> void:
 		$Connections.remove_child(link)
 		link.queue_free()
 
-func _apply_door_style(selected: HouseDoorStyle) -> void:
-	super._apply_door_style(selected)
+func _randomize_doors() -> void:
+	super._randomize_doors()
 	door_variant = -1
 
 func can_restore_save_data(data: Dictionary) -> bool:

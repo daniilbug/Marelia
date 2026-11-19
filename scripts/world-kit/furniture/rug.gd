@@ -10,7 +10,7 @@ extends FurniturePiece
 func _get_design_index() -> int:
 	return style
 
-func apply_group_style(group_style: HouseFurnitureStyle) -> void:
-	style = group_style.rug_style
-	fabric_color = group_style.fabric_color
-	paint_color = group_style.pattern_color
+func set_appearance(profile: HouseFurnitureStyle) -> void:
+	style = profile.rug_style
+	fabric_color = profile.fabric_color
+	paint_color = profile.pattern_color

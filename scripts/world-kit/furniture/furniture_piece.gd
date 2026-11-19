@@ -110,14 +110,14 @@ func _validate_property(property: Dictionary) -> void:
 func _get_design_index() -> int:
 	return 0
 
-func apply_group_style(group_style: HouseFurnitureStyle) -> void:
+func set_appearance(profile: HouseFurnitureStyle) -> void:
 	if designs.size() > 1 and get("style") is int:
-		var design := mini(group_style.design, designs.size() - 1)
+		var design := mini(profile.design, designs.size() - 1)
 		if get("style") != design:
 			set("style", design)
 	for field in MATERIAL_COLORS:
-		if (paintable_materials & (1 << MATERIAL_COLORS[field])) != 0 and get(field) != group_style.get(field):
-			set(field, group_style.get(field))
+		if (paintable_materials & (1 << MATERIAL_COLORS[field])) != 0 and get(field) != profile.get(field):
+			set(field, profile.get(field))
 
 func _get_direction_index() -> int:
 	return 0

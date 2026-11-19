@@ -19,7 +19,6 @@
 [ext_resource type="Script" path="res://scripts/world-kit/house/portal.gd" id="33_0qwkv"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/stairs.gd" id="37_glynx"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/room_door.tscn" id="door"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-variants/interior.tres" id="door_variants"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="furniture_styles"]
 [ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="group"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/layout.gd" id="layout"]
@@ -232,17 +231,17 @@ shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
 shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
-shader_parameter/opening_a = Vector4(29, 4, 24, 28)
+shader_parameter/opening_a = Vector4(33, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ih7"]
 resource_local_to_scene = true
-size = Vector2(29, 4)
+size = Vector2(33, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snoir"]
 resource_local_to_scene = true
-size = Vector2(30, 4)
+size = Vector2(34, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8mou"]
 resource_local_to_scene = true
@@ -262,17 +261,17 @@ shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
 shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
-shader_parameter/opening_a = Vector4(60, 4, 24, 28)
+shader_parameter/opening_a = Vector4(64, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ar07"]
 resource_local_to_scene = true
-size = Vector2(60, 4)
+size = Vector2(64, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab0im"]
 resource_local_to_scene = true
-size = Vector2(81, 4)
+size = Vector2(85, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egk4l"]
 resource_local_to_scene = true
@@ -292,17 +291,17 @@ shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
 shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
-shader_parameter/opening_a = Vector4(40, 4, 24, 28)
+shader_parameter/opening_a = Vector4(44, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdfje"]
 resource_local_to_scene = true
-size = Vector2(40, 4)
+size = Vector2(44, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3ean"]
 resource_local_to_scene = true
-size = Vector2(39, 4)
+size = Vector2(43, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ejtc"]
 resource_local_to_scene = true
@@ -615,7 +614,6 @@ size = Vector2(24, 4)
 [node name="Layout4BKitchen" type="Node2D" unique_id=707173551]
 y_sort_enabled = true
 script = ExtResource("layout")
-door_variants = ExtResource("door_variants")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1444586160]
 y_sort_enabled = true
@@ -888,6 +886,7 @@ position = Vector2(0, 84)
 script = ExtResource("26_yv3hl")
 length = 83.0
 openings = Array[float]([41.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_7g0yu")
 
 [node name="Sprite" parent="Walls/KitchenPartition" index="0"]
@@ -901,11 +900,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 83, 32)
 
 [node name="Collision" parent="Walls/KitchenPartition/Collisions" index="0"]
-position = Vector2(14.5, 0)
+position = Vector2(16.5, 0)
 shape = SubResource("RectangleShape2D_h1ih7")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/KitchenPartition/Collisions" index="1" unique_id=2050149262]
-position = Vector2(68, 0)
+position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_snoir")
 
 [node name="TransparencyArea" parent="Walls/KitchenPartition" index="2" node_paths=PackedStringArray("targets")]
@@ -922,6 +921,7 @@ position = Vector2(83, 112)
 script = ExtResource("26_yv3hl")
 length = 165.0
 openings = Array[float]([72.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_y20pa")
 
 [node name="Sprite" parent="Walls/BedroomPartition" index="0"]
@@ -935,11 +935,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 165, 32)
 
 [node name="Collision" parent="Walls/BedroomPartition/Collisions" index="0"]
-position = Vector2(30, 0)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_5ar07")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/BedroomPartition/Collisions" index="1" unique_id=1568011218]
-position = Vector2(124.5, 0)
+position = Vector2(122.5, 0)
 shape = SubResource("RectangleShape2D_ab0im")
 
 [node name="TransparencyArea" parent="Walls/BedroomPartition" index="2" node_paths=PackedStringArray("targets")]
@@ -957,6 +957,7 @@ script = ExtResource("26_yv3hl")
 room_id = &"SecondBedroom"
 length = 103.0
 openings = Array[float]([52.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_c0vcy")
 
 [node name="Sprite" parent="Walls/SecondBedroomPartition" index="0"]
@@ -970,11 +971,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 103, 32)
 
 [node name="Collision" parent="Walls/SecondBedroomPartition/Collisions" index="0"]
-position = Vector2(20, 0)
+position = Vector2(22, 0)
 shape = SubResource("RectangleShape2D_pdfje")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/SecondBedroomPartition/Collisions" index="1" unique_id=909207158]
-position = Vector2(83.5, 0)
+position = Vector2(81.5, 0)
 shape = SubResource("RectangleShape2D_m3ean")
 
 [node name="TransparencyArea" parent="Walls/SecondBedroomPartition" index="2" node_paths=PackedStringArray("targets")]

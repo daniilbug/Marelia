@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HouseDoorDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/house/door_design.gd" id="design"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_glazed_closed_albedo.png" id="closed_sprite"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_glazed_closed_materials.png" id="closed_materials"]
+
+[resource]
+resource_name = "Double Glazed"
+script = ExtResource("design")
+closed_sprite = ExtResource("closed_sprite")
+closed_materials = ExtResource("closed_materials")

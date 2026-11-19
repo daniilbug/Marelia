@@ -2,11 +2,10 @@
 class_name HouseFacade
 extends StaticBody2D
 
-static var _appearance_fields := HouseFacadeStyle.FIELDS + ["door_style", "door_color", "house_width", "house_depth", "wall_height"]
+static var _appearance_fields := HouseFacadeStyle.FIELDS + ["door_style", "door_color", "house_width", "house_depth", "wall_height", "door_seed"]
 
 @export_group("Exterior")
 @export var style_variants: HouseFacadeVariants
-@export var door_variants: HouseDoorVariants
 @export var facade_style: HouseFacadeStyle.Facade = HouseFacadeStyle.Facade.PLASTER:
 	set(value):
 		facade_style = value
@@ -15,6 +14,7 @@ static var _appearance_fields := HouseFacadeStyle.FIELDS + ["door_style", "door_
 	set(value):
 		roof_style = value
 		_schedule_refresh()
+## The common door style for the facade and every interior floor.
 @export var door_style: HouseDoorStyle.Style = HouseDoorStyle.Style.PLANK:
 	set(value):
 		door_style = value
@@ -48,6 +48,7 @@ static var _appearance_fields := HouseFacadeStyle.FIELDS + ["door_style", "door_
 	set(value):
 		roof_color = value
 		_schedule_refresh()
+## The common door color for the facade and every interior floor.
 @export_color_no_alpha var door_color := Color("ae7d46"):
 	set(value):
 		door_color = value
@@ -90,6 +91,10 @@ static var _appearance_fields := HouseFacadeStyle.FIELDS + ["door_style", "door_
 		basement_settings = value if value != null else HouseInteriorSettings.create_cellar()
 @export_tool_button("Randomize exterior") var randomize_exterior_action: Callable = randomize
 @export_tool_button("Randomize interior") var randomize_interior_action: Callable = randomize_interior
+@export_storage var door_seed := -1:
+	set(value):
+		door_seed = value
+		_schedule_refresh()
 
 const FLOOR_SCENE := preload("res://scenes/world-kit/house/facade_floor.tscn")
 const BALCONY_SCENE := preload("res://scenes/world-kit/house/balcony.tscn")
@@ -128,16 +133,22 @@ func randomize() -> void:
 		var selected := style_variants.choose_style()
 		if selected != null:
 			_apply_appearance(selected.to_data())
-	if door_variants != null:
-		var selected := door_variants.choose_style()
-		if selected != null:
-			_apply_door_style(selected)
+	_randomize_doors()
 	if is_inside_tree() and not Engine.is_editor_hint() and multiplayer.is_server():
 		_apply_appearance.rpc(get_appearance())
 
-func _apply_door_style(selected: HouseDoorStyle) -> void:
-	door_style = selected.style
-	door_color = selected.color
+func _randomize_doors() -> void:
+	door_seed = randi()
+	var selected := ($Entrance as HousePortal).choose_style(door_seed)
+	if selected != null:
+		door_style = selected.style
+		door_color = selected.color
+
+func _get_door_profile() -> HouseDoorStyle:
+	return HouseDoorStyle.create(door_style, door_color)
+
+func _portal_variant_seed(index: int) -> int:
+	return hash([door_seed, index]) if door_seed >= 0 else -1
 
 func randomize_interior() -> void:
 	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
@@ -165,6 +176,8 @@ func get_appearance() -> Dictionary:
 
 @rpc("authority", "reliable")
 func _apply_appearance(data: Dictionary) -> void:
+	if not data.has("door_seed"):
+		door_seed = -1
 	SaveGraph.apply_fields(self, _get_appearance_fields(), data)
 
 func _configuration_data() -> Dictionary:
@@ -240,20 +253,14 @@ func _refresh() -> void:
 	for settings in floors:
 		if not settings.changed.is_connected(_schedule_refresh):
 			settings.changed.connect(_schedule_refresh)
-	var sections := $Visuals/Floors
-	while sections.get_child_count() > floors.size():
-		var child := sections.get_child(sections.get_child_count() - 1)
-		sections.remove_child(child)
-		child.queue_free()
-	while sections.get_child_count() < floors.size():
-		var child := FLOOR_SCENE.instantiate()
-		child.name = "Floor%d" % sections.get_child_count()
-		sections.add_child(child)
-		if Engine.is_editor_hint():
-			child.owner = get_tree().edited_scene_root if get_tree().edited_scene_root != null else self
-	for index in floors.size():
-		(sections.get_child(index) as HouseFacadeFloor).apply_style(self, index)
-	_refresh_balconies()
+	var entrance := $Entrance as HousePortal
+	var portals := _refresh_balconies()
+	portals[0] = entrance
+	var door_profile := _get_door_profile()
+	for index in portals:
+		var variants := floors[index].balcony_door_variants if index > 0 else null
+		portals[index].set_appearance(door_profile, _portal_variant_seed(index), variants)
+	_refresh_facade_floors(portals)
 	var total_height := wall_height * floors.size()
 	var roof := $Visuals/Roof as Sprite2D
 	HouseArt.apply(roof, ["roof_tiles", "roof_coppi", "roof_coppi_aged"][roof_style], {"roof_color": roof_color}, true)
@@ -265,15 +272,43 @@ func _refresh() -> void:
 	plinth.position = Vector2(-house_width / 2.0, -8)
 	plinth.region_enabled = true
 	plinth.region_rect = Rect2(0, 0, house_width, 8)
-	HouseArt.set_parameter(material, &"opening_a", Vector4(house_width / 2.0 - 12, 0, 24, 8 + $Entrance.position.y))
-	$Entrance.style = door_style
-	$Entrance.color = door_color
+	HouseArt.set_parameter(material, &"opening_a", entrance.get_opening_rect(Vector2(house_width / 2.0, 8) + entrance.position))
 	$Entrance/Step.stone_color = plinth_color
 	$Collision.shape.size = Vector2(house_width, house_depth)
 	$Collision.position = Vector2(0, -house_depth / 2.0)
 	$TransparencyArea.shape.size = Vector2(house_width + 12, total_height)
 	$TransparencyArea.position = Vector2(0, -house_depth - total_height / 2.0)
+	for interior: HouseInterior in _interiors.values():
+		_apply_interior_door_style(interior, door_profile)
 	_build_connections()
+
+func _refresh_facade_floors(portals: Dictionary[int, HousePortal]) -> void:
+	var sections := $Visuals/Floors
+	while sections.get_child_count() > floors.size():
+		var child := sections.get_child(sections.get_child_count() - 1)
+		sections.remove_child(child)
+		child.queue_free()
+	while sections.get_child_count() < floors.size():
+		var child := FLOOR_SCENE.instantiate()
+		child.name = "Floor%d" % sections.get_child_count()
+		sections.add_child(child)
+		if Engine.is_editor_hint():
+			child.owner = get_tree().edited_scene_root if get_tree().edited_scene_root != null else self
+	var profile := HouseFacadeStyle.new()
+	profile.facade_style = facade_style
+	profile.facade_color = facade_color
+	profile.window_style = window_style
+	profile.shutters_closed = shutters_closed
+	profile.frame_color = frame_color
+	profile.shutter_color = shutter_color
+	var floor_size := Vector2(house_width, wall_height)
+	var opening_origin := Vector2(house_width / 2.0, wall_height)
+	for index in floors.size():
+		var floor_node := sections.get_child(index) as HouseFacadeFloor
+		var portal := portals.get(index) as HousePortal
+		var opening := portal.get_opening_rect(opening_origin + portal.position) if portal != null else Vector4.ZERO
+		floor_node.position = Vector2(0, -wall_height * index)
+		floor_node.set_appearance(profile, floor_size, opening)
 
 func get_interior(index := 0) -> HouseInterior:
 	return _interiors.get(index) as HouseInterior
@@ -303,8 +338,9 @@ func _build_connections() -> void:
 			_add_connection("Balcony%d" % index, source.level_id, source.get_path_to(door), get_interior_id(index), NodePath("Layout/Exit"))
 	_bind_connections()
 
-func _refresh_balconies() -> void:
+func _refresh_balconies() -> Dictionary[int, HousePortal]:
 	var platforms: Array[WalkablePlatform] = []
+	var portals: Dictionary[int, HousePortal] = {}
 	for child in $Balconies.get_children():
 		var index := int(str(child.name).trim_prefix("Floor"))
 		if index >= floors.size() or not floors[index].balcony:
@@ -322,7 +358,7 @@ func _refresh_balconies() -> void:
 				platform.owner = get_tree().edited_scene_root if get_tree().edited_scene_root != null else self
 		platform.position = Vector2(0, -wall_height * index)
 		platform.ignored_bodies.assign([self])
-		platform.configure(floors[index].door_style, floors[index].door_color, plinth_color)
+		portals[index] = platform.configure(plinth_color)
 		platforms.append(platform)
 	$TransparencyArea.excluded_platforms = platforms
 	if not Engine.is_editor_hint():
@@ -331,6 +367,7 @@ func _refresh_balconies() -> void:
 			for player in source.get_players():
 				if player.level_id == source.level_id:
 					player._refresh_platform()
+	return portals
 
 func _add_connection(link_name: String, first_id: String, first_path: NodePath, second_id: String, second_path: NodePath) -> void:
 	var link := LevelConnection.new()
@@ -349,13 +386,17 @@ func _bind_connections() -> void:
 		return
 	for link: LevelConnection in $Connections.get_children():
 		link.bind_levels(source.get_parent())
-	_refresh_interior_art()
+		if link.first is HousePortal and link.second is HousePortal:
+			link.second.set_appearance(link.first.style)
 
-func _refresh_interior_art() -> void:
-	var entry := get_interior()
-	if is_instance_valid(entry):
-		entry.get_entry_portal().style = door_style
-		entry.get_entry_portal().color = door_color
+func _apply_interior_door_style(interior: HouseInterior, profile: HouseDoorStyle) -> void:
+	var seed_value := maxi(door_seed, 0)
+	for door in interior.get_doors():
+		door.set_appearance(profile, seed_value)
+
+func _on_interior_layout_changed(interior: HouseInterior) -> void:
+	_apply_interior_door_style(interior, _get_door_profile())
+	_bind_connections()
 
 func _ensure_level(id: String) -> void:
 	if not multiplayer.is_server():
@@ -399,7 +440,6 @@ func _create_floor(index: int, configuration: Dictionary, placements: Dictionary
 	interior.initial_door_states = door_states.duplicate()
 	interior.level_id = get_interior_id(index)
 	interior.name = interior.level_id
-	interior.connections_changed.connect(_bind_connections, CONNECT_DEFERRED)
 	var right := 0.0
 	for existing in parent.get_children():
 		if existing is Level:
@@ -414,7 +454,8 @@ func _create_floor(index: int, configuration: Dictionary, placements: Dictionary
 		interior.visible = false
 		parent.add_child(interior)
 	_interiors[index] = interior
-	_bind_connections()
+	interior.layout_changed.connect(_on_interior_layout_changed.bind(interior), CONNECT_DEFERRED)
+	_on_interior_layout_changed(interior)
 
 func sync_to_peer(peer_id: int) -> void:
 	_apply_appearance.rpc_id(peer_id, get_appearance())
@@ -427,7 +468,13 @@ func get_save_data() -> Dictionary:
 	return {"appearance": get_appearance(), "configuration": _configuration_data(), "created_floors": _interiors.keys(), "floor_placements": _placements_data()}
 
 func can_restore_save_data(data: Dictionary) -> bool:
-	if not data.has("appearance") or not SaveGraph.matches(data.appearance, get_appearance()):
+	if data.get("appearance") is not Dictionary:
+		return false
+	var schema := get_appearance()
+	schema.door_style = Vector2i(HouseDoorStyle.Style.PLANK, HouseDoorStyle.Style.GLAZED)
+	if not data.appearance.has("door_seed"):
+		schema.erase("door_seed")
+	if not SaveGraph.matches(data.appearance, schema):
 		return false
 	if data.has("configuration"):
 		var settings: Variant = data.configuration

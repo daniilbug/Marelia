@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_plank_closed_albedo.png" id="37_jqexv"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/stairs.gd" id="39_piyl2"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/room_door.tscn" id="door"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-variants/interior.tres" id="door_variants"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/dresser_variants.tres" id="dresser_styles"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="furniture_styles"]
 [ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="group"]
@@ -217,17 +216,17 @@ shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = null
 shader_parameter/roof_color = null
-shader_parameter/opening_a = Vector4(52, 4, 24, 28)
+shader_parameter/opening_a = Vector4(56, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da4mm"]
 resource_local_to_scene = true
-size = Vector2(52, 4)
+size = Vector2(56, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ticj"]
 resource_local_to_scene = true
-size = Vector2(180, 4)
+size = Vector2(184, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swrfc"]
 resource_local_to_scene = true
@@ -247,17 +246,17 @@ shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = null
 shader_parameter/roof_color = null
-shader_parameter/opening_a = Vector4(34, 4, 24, 28)
+shader_parameter/opening_a = Vector4(38, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vibta"]
 resource_local_to_scene = true
-size = Vector2(34, 4)
+size = Vector2(38, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf3q"]
 resource_local_to_scene = true
-size = Vector2(34, 4)
+size = Vector2(38, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cavo6"]
 resource_local_to_scene = true
@@ -277,17 +276,17 @@ shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
 shader_parameter/stone_color = null
 shader_parameter/roof_color = null
-shader_parameter/opening_a = Vector4(30, 4, 24, 28)
+shader_parameter/opening_a = Vector4(34, 4, 16, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdaxg"]
 resource_local_to_scene = true
-size = Vector2(30, 4)
+size = Vector2(34, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btykv"]
 resource_local_to_scene = true
-size = Vector2(31, 4)
+size = Vector2(35, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftqag"]
 resource_local_to_scene = true
@@ -626,7 +625,6 @@ size = Vector2(24, 4)
 [node name="Layout4C" type="Node2D" unique_id=1490465878]
 y_sort_enabled = true
 script = ExtResource("layout")
-door_variants = ExtResource("door_variants")
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1209310773]
 y_sort_enabled = true
@@ -883,6 +881,7 @@ position = Vector2(0, 74)
 script = ExtResource("28_f5514")
 length = 256.0
 openings = Array[float]([64.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_f2t7r")
 
 [node name="Sprite" parent="Walls/StudyPartition" index="0"]
@@ -896,11 +895,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 256, 32)
 
 [node name="Collision" parent="Walls/StudyPartition/Collisions" index="0"]
-position = Vector2(26, 0)
+position = Vector2(28, 0)
 shape = SubResource("RectangleShape2D_da4mm")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/StudyPartition/Collisions" index="1" unique_id=1242847810]
-position = Vector2(166, 0)
+position = Vector2(164, 0)
 shape = SubResource("RectangleShape2D_2ticj")
 
 [node name="TransparencyArea" parent="Walls/StudyPartition" index="2" node_paths=PackedStringArray("targets")]
@@ -918,6 +917,7 @@ script = ExtResource("28_f5514")
 room_id = &"Bedroom"
 length = 92.0
 openings = Array[float]([46.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_jr2ck")
 
 [node name="Sprite" parent="Walls/BedroomPartition" index="0"]
@@ -931,11 +931,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 92, 32)
 
 [node name="Collision" parent="Walls/BedroomPartition/Collisions" index="0"]
-position = Vector2(17, 0)
+position = Vector2(19, 0)
 shape = SubResource("RectangleShape2D_vibta")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/BedroomPartition/Collisions" index="1" unique_id=934779882]
-position = Vector2(75, 0)
+position = Vector2(73, 0)
 shape = SubResource("RectangleShape2D_2lf3q")
 
 [node name="TransparencyArea" parent="Walls/BedroomPartition" index="2" node_paths=PackedStringArray("targets")]
@@ -953,6 +953,7 @@ script = ExtResource("28_f5514")
 room_id = &"SecondBedroom"
 length = 85.0
 openings = Array[float]([42.0])
+opening_size = Vector2(16, 28)
 style = SubResource("Resource_aosc3")
 
 [node name="Sprite" parent="Walls/SecondBedroomPartition" index="0"]
@@ -966,11 +967,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 85, 32)
 
 [node name="Collision" parent="Walls/SecondBedroomPartition/Collisions" index="0"]
-position = Vector2(15, 0)
+position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_wdaxg")
 
 [node name="Segment2" type="CollisionShape2D" parent="Walls/SecondBedroomPartition/Collisions" index="1" unique_id=1153249799]
-position = Vector2(69.5, 0)
+position = Vector2(67.5, 0)
 shape = SubResource("RectangleShape2D_btykv")
 
 [node name="TransparencyArea" parent="Walls/SecondBedroomPartition" index="2" node_paths=PackedStringArray("targets")]

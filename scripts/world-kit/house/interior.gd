@@ -2,7 +2,7 @@
 class_name HouseInterior
 extends Level
 
-signal connections_changed
+signal layout_changed
 
 @export var layouts: HouseLayoutCatalog:
 	set(value):
@@ -106,7 +106,7 @@ func rebuild() -> void:
 	_bottom_left_bound = _bounds_body.get_node("BottomLeft")
 	_top_right_bound = _bounds_body.get_node("TopRight")
 	if replaced:
-		connections_changed.emit()
+		layout_changed.emit()
 	if not Engine.is_editor_hint() and is_instance_valid(local_player):
 		if replaced or first_build or selected_placements != _applied_placements:
 			local_player.global_position = player_spawn.global_position
@@ -118,8 +118,8 @@ func _create_bounds_walls() -> void:
 	# The selected layout already owns its complete set of bounds colliders.
 	pass
 
-func get_entry_portal() -> HousePortal:
-	return _layout.get_node("Exit") as HousePortal
+func get_doors() -> Array[HouseRoomDoor]:
+	return _layout.get_doors()
 
 func get_door_states() -> Dictionary:
 	return _layout.get_door_states()

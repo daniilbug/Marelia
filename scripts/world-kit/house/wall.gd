@@ -15,6 +15,10 @@ extends Node2D
 	set(value):
 		openings = value
 		refresh()
+@export var opening_size := HouseDoorDesign.DOUBLE_OPENING:
+	set(value):
+		opening_size = value
+		refresh()
 @export var style: HouseRoomStyle = HouseRoomStyle.new():
 	set(value):
 		if style == value:
@@ -53,5 +57,5 @@ func refresh() -> void:
 	sprite.region_rect = Rect2(Vector2.ZERO, Vector2(4, length + 32) if vertical else Vector2(length, 32))
 	modulate.a = static_alpha
 	for index in 3:
-		var opening := Vector4(openings[index] - 12, 4, 24, 28) if show_openings and index < openings.size() else Vector4.ZERO
+		var opening := Vector4(openings[index] - opening_size.x / 2.0, 32.0 - opening_size.y, opening_size.x, opening_size.y) if show_openings and index < openings.size() else Vector4.ZERO
 		HouseArt.set_parameter(material, [&"opening_a", &"opening_b", &"opening_c"][index], opening)

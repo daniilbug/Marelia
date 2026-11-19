@@ -22,6 +22,11 @@ enum Style { STRIPED, SOLID }
 	set(value):
 		support_color = value
 
+func set_appearance(design: Style, primary: Color, secondary: Color) -> void:
+	style = design
+	primary_color = primary
+	secondary_color = secondary
+
 func _validate_property(property: Dictionary) -> void:
 	super._validate_property(property)
 	if property.name in ["body_color", "support_color"]:

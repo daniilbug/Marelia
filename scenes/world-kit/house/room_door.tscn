@@ -5,16 +5,9 @@
 radius = 12.0
 [sub_resource type="RectangleShape2D" id="blocker"]
 resource_local_to_scene = true
-size = Vector2(24, 4)
+size = Vector2(16, 4)
 [sub_resource type="RectangleShape2D" id="zone"]
-resource_local_to_scene = true
-size = Vector2(24, 28)
-[sub_resource type="RectangleShape2D" id="left_zone"]
-resource_local_to_scene = true
-size = Vector2(12, 28)
-[sub_resource type="RectangleShape2D" id="right_zone"]
-resource_local_to_scene = true
-size = Vector2(12, 28)
+size = Vector2(16, 28)
 [node name="RoomDoor" type="Node2D" node_paths=PackedStringArray("blockers")]
 script = ExtResource("script")
 blockers = Array[NodePath]([NodePath("Blocker/Collision")])
@@ -37,11 +30,7 @@ targets = Array[NodePath]([NodePath("../Closed"), NodePath("../Open")])
 inside_alpha = 0.3
 [node name="Shape" parent="TransparencyArea" index="0"]
 position = Vector2(0, -14)
-[node name="LeftLeaf" type="CollisionShape2D" parent="TransparencyArea"]
-position = Vector2(-18, -14)
-shape = SubResource("left_zone")
-disabled = true
-[node name="RightLeaf" type="CollisionShape2D" parent="TransparencyArea"]
-position = Vector2(18, -14)
-shape = SubResource("right_zone")
+[node name="OpenLeaf" type="CollisionShape2D" parent="TransparencyArea"]
+position = Vector2(16, -14)
+shape = SubResource("zone")
 disabled = true

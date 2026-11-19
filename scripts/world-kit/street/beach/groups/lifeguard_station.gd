@@ -27,9 +27,5 @@ func apply_placement_style(profile: Resource) -> void:
 func _refresh_appearance() -> void:
 	if not is_node_ready() or style == null:
 		return
-	_tower.style = style.tower_style
-	_tower.frame_color = style.tower_color
-	_tower.lifebuoy_color = style.lifebuoy_color
-	_stand.style = style.stand_style
-	_stand.stand_color = style.stand_color
-	_stand.lifebuoy_color = style.lifebuoy_color
+	_tower.set_appearance(style.tower_style, style.tower_color, style.lifebuoy_color)
+	_stand.set_appearance(style.stand_style, style.stand_color, style.lifebuoy_color)

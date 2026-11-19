@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://d1h4d8ufylmj2" path="res://scripts/world-kit/house/door_style.gd" id="style"]
 [ext_resource type="Script" uid="uid://cdduau8l763al" path="res://scripts/world-kit/house/door_variants.gd" id="variants"]
 
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_plank.tres" id="single_plank"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_panel.tres" id="single_panel"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_glazed.tres" id="single_glazed"]
+
 [sub_resource type="Resource" id="style_0"]
 resource_name = "BoardedOak"
 script = ExtResource("style")
@@ -54,6 +58,26 @@ script = ExtResource("style")
 style = 2
 color = Color(0.45490196, 0.3882353, 0.3019608, 1)
 
+[sub_resource type="Resource" id="single_style_0"]
+resource_name = "Single BoardedOak"
+script = ExtResource("style")
+color = Color(0.5803922, 0.47843137, 0.32941177, 1)
+design = ExtResource("single_plank")
+
+[sub_resource type="Resource" id="single_style_3"]
+resource_name = "Single BracedPanelOak"
+script = ExtResource("style")
+style = 1
+color = Color(0.5803922, 0.47843137, 0.32941177, 1)
+design = ExtResource("single_panel")
+
+[sub_resource type="Resource" id="single_style_6"]
+resource_name = "Single BrokenGlazedOak"
+script = ExtResource("style")
+style = 2
+color = Color(0.5803922, 0.47843137, 0.32941177, 1)
+design = ExtResource("single_glazed")
+
 [resource]
 script = ExtResource("variants")
-variants = Array[ExtResource("style")]([SubResource("style_0"), SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6"), SubResource("style_7"), SubResource("style_8")])
+variants = Array[ExtResource("style")]([SubResource("style_0"), SubResource("style_1"), SubResource("style_2"), SubResource("style_3"), SubResource("style_4"), SubResource("style_5"), SubResource("style_6"), SubResource("style_7"), SubResource("style_8"), SubResource("single_style_0"), SubResource("single_style_3"), SubResource("single_style_6")])

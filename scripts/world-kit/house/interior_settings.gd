@@ -11,7 +11,7 @@ const ROOM_PROPERTIES := {
 	&"LivingRoom": "living", &"Kitchen": "kitchen",
 	&"Bedroom": "bedroom", &"SecondBedroom": "second_bedroom",
 }
-const FIELDS := ["room_count", "layout", "kind", "balcony", "door_style", "door_color", "bathroom_enabled"]
+const FIELDS := ["room_count", "layout", "kind", "balcony", "bathroom_enabled"]
 
 ## Selects a layout family; the house assigns this floor's position and access.
 @export var kind: Kind = Kind.WITH_KITCHEN:
@@ -32,6 +32,7 @@ const FIELDS := ["room_count", "layout", "kind", "balcony", "door_style", "door_
 @export var balcony := false:
 	set(value):
 		balcony = value
+		notify_property_list_changed()
 		emit_changed()
 ## Optional authored layout. Empty uses the scene-assigned Layouts catalog.
 @export var layout_scene: PackedScene:
@@ -58,17 +59,10 @@ const FIELDS := ["room_count", "layout", "kind", "balcony", "door_style", "door_
 		layout = value
 		emit_changed()
 @export var layout_variants: Array[Layout] = [Layout.A, Layout.B, Layout.C]
-@export var door_style: HouseDoorStyle.Style = HouseDoorStyle.Style.PLANK:
+## An empty override uses the balcony door's own catalogue.
+@export var balcony_door_variants: HouseDoorVariants:
 	set(value):
-		if door_style == value:
-			return
-		door_style = value
-		emit_changed()
-@export_color_no_alpha var door_color := Color("ae7d46"):
-	set(value):
-		if door_color == value:
-			return
-		door_color = value
+		balcony_door_variants = value
 		emit_changed()
 @export var living: HouseRoomStyle = HouseRoomStyle.new():
 	set(value):
@@ -99,6 +93,8 @@ func _init() -> void:
 	resource_local_to_scene = true
 
 func _validate_property(property: Dictionary) -> void:
+	if not balcony and property.name == "balcony_door_variants":
+		property.usage &= ~PROPERTY_USAGE_EDITOR
 	if layout_scene != null:
 		if property.name in ["kind", "room_count", "layout", "layout_variants", "bathroom_enabled"]:
 			property.usage &= ~PROPERTY_USAGE_EDITOR
@@ -159,11 +155,6 @@ func randomize(catalog: HouseLayoutCatalog) -> void:
 		push_error("House layout must inherit HouseLayout: %s" % scene.resource_path)
 		return
 	var template := instance as HouseLayout
-	if template.door_variants != null:
-		var selected := template.door_variants.choose_style()
-		if selected != null:
-			door_style = selected.style
-			door_color = selected.color
 	for room in template.get_rooms():
 		_randomize_room_style(room.room_id, room.style_variants)
 	for zone in template.get_floor_zones():
@@ -222,10 +213,7 @@ static func create_cellar() -> HouseInteriorSettings:
 	return settings
 
 static func is_valid_data(data: Variant) -> bool:
-	if not SaveGraph.matches(data, {
-		"room_count": Vector2i(2, 4), "layout": Vector2i(0, 2),
-		"door_style": Vector2i(0, 2), "door_color": Color(),
-	}):
+	if not SaveGraph.matches(data, {"room_count": Vector2i(2, 4), "layout": Vector2i(0, 2)}):
 		return false
 	for key in ROOM_PROPERTIES.values():
 		if not data.has(key) or not _valid_style(data[key]):

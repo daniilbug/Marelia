@@ -22,6 +22,11 @@ enum Style { POST, FRAME }
 	set(value):
 		support_color = value
 
+func set_appearance(design: Style, stand: Color, lifebuoy: Color) -> void:
+	style = design
+	stand_color = stand
+	lifebuoy_color = lifebuoy
+
 func _validate_property(property: Dictionary) -> void:
 	super._validate_property(property)
 	if property.name in ["body_color", "support_color"]:

@@ -27,9 +27,5 @@ func apply_placement_style(profile: Resource) -> void:
 func _refresh_appearance() -> void:
 	if not is_node_ready() or style == null:
 		return
-	_lounger.style = style.lounger_style
-	_lounger.body_color = style.fabric_color
-	_lounger.support_color = style.lounger_frame_color
-	_umbrella.style = style.umbrella_style
-	_umbrella.primary_color = style.fabric_color
-	_umbrella.secondary_color = style.trim_color
+	_lounger.set_appearance(style.lounger_style, style.fabric_color, style.lounger_frame_color)
+	_umbrella.set_appearance(style.umbrella_style, style.fabric_color, style.trim_color)

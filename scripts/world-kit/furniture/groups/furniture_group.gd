@@ -51,4 +51,4 @@ func refresh() -> void:
 	if not is_node_ready() or style == null:
 		return
 	for piece in get_pieces():
-		piece.apply_group_style(style)
+		piece.set_appearance(style)

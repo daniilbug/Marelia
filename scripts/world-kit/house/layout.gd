@@ -2,7 +2,16 @@
 class_name HouseLayout
 extends Node2D
 
-@export var door_variants: HouseDoorVariants
+## Optional fallback catalogue for the room doors in this layout.
+@export var door_variants: HouseDoorVariants:
+	set(value):
+		door_variants = value
+		if is_node_ready():
+			_apply_door_variants()
+
+func _ready() -> void:
+	$Exit.set_opening_wall(get_node_or_null("Walls/FrontWall") as HouseWall)
+	_apply_door_variants()
 
 func get_rooms() -> Array[HouseRoom]:
 	var rooms: Array[HouseRoom] = []
@@ -33,12 +42,10 @@ func apply_configuration(settings: HouseInteriorSettings) -> void:
 		zone.style = settings.get_style(zone.room_id)
 	for wall: HouseWall in $Walls.get_children():
 		wall.style = settings.get_style(wall.room_id)
+
+func _apply_door_variants() -> void:
 	for door in get_doors():
-		door.style = settings.door_style
-		door.color = settings.door_color
-	var paired := $Exit.connection.get_destination($Exit) as HousePortal if is_instance_valid($Exit.connection) else null
-	$Exit.style = paired.style if paired != null else settings.door_style
-	$Exit.color = paired.color if paired != null else settings.door_color
+		door.set_fallback_variants(door_variants)
 
 func select_placements(choices: Dictionary) -> void:
 	for room in get_rooms():
