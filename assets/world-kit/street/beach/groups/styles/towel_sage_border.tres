@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BeachTowelStyle" format=3]
+
+[ext_resource type="Script" uid="uid://bkb44ui4gxips" path="res://scripts/world-kit/street/beach/styles/towel_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Sage with Border"
+script = ExtResource("profile")
+style = 1
+fabric_color = Color(0.44313726, 0.5254902, 0.41960785, 1)
+trim_color = Color(0.8666667, 0.8156863, 0.6745098, 1)

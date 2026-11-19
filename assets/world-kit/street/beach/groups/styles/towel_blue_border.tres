@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BeachTowelStyle" format=3]
+
+[ext_resource type="Script" uid="uid://bkb44ui4gxips" path="res://scripts/world-kit/street/beach/styles/towel_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Blue with Border"
+script = ExtResource("profile")
+style = 1
+fabric_color = Color(0.36862746, 0.4862745, 0.54901963, 1)
+trim_color = Color(0.88235295, 0.83137256, 0.69803923, 1)

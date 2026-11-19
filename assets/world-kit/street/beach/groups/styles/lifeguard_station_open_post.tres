@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BeachLifeguardStationStyle" format=3]
+
+[ext_resource type="Script" uid="uid://ux5hv2rawyb3" path="res://scripts/world-kit/street/beach/styles/lifeguard_station_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Open Tower and Metal Post"
+script = ExtResource("profile")
+tower_style = 1

@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/beach/groups/lounger_set.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/lounger.tscn" id="lounger"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/umbrella.tscn" id="umbrella"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/styles/lounger_set_blue_stripes.tres" id="style"]
+
+[node name="LoungerSet" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("Umbrella"): true
+})
+style = ExtResource("style")
+
+[node name="Lounger" parent="." instance=ExtResource("lounger")]
+
+[node name="Umbrella" parent="." instance=ExtResource("umbrella")]
+position = Vector2(-23, -6)

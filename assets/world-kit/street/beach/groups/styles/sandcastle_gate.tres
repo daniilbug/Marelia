@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BeachSandcastleStyle" format=3]
+
+[ext_resource type="Script" uid="uid://b53u8r3gm4wiq" path="res://scripts/world-kit/street/beach/styles/sandcastle_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Castle Gate"
+script = ExtResource("profile")
+style = 2

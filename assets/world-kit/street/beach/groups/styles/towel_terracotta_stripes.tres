@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BeachTowelStyle" format=3]
+
+[ext_resource type="Script" uid="uid://bkb44ui4gxips" path="res://scripts/world-kit/street/beach/styles/towel_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Terracotta Stripes"
+script = ExtResource("profile")

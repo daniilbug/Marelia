@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/beach/lounger.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lounger_striped.tres" id="striped"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lounger_plain.tres" id="plain"]
+
+[node name="Lounger" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("striped"), ExtResource("plain")])
+body_color = Color(0.3254902, 0.49019608, 0.46666667, 1)
+support_color = Color(0.654902, 0.48627451, 0.30980393, 1)

@@ -63,10 +63,22 @@ func select_placements(choices: Dictionary) -> void:
 				choices[key] = str(group.selected_variant)
 			var style_key := key + "/Style"
 			if choices.has(style_key):
-				group.apply_style_data(choices[style_key])
+				var data: Dictionary = choices[style_key]
+				if not data.is_empty() and data != _get_furniture_style_data(group):
+					var style := HouseFurnitureStyle.new()
+					style.apply_data(data)
+					group.apply_style(style)
 			else:
 				group.choose_style()
-				choices[style_key] = group.get_style_data()
+				choices[style_key] = _get_furniture_style_data(group)
+
+func _get_furniture_style_data(group: PlacementGroup) -> Dictionary:
+	var point := group.get_selected_point()
+	if point != null:
+		for instance in point.get_children():
+			if instance is HouseFurnitureGroup and instance.style != null:
+				return instance.style.to_data()
+	return {}
 
 func get_door_states() -> Dictionary:
 	var states := {}

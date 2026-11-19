@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/beach/lifeguard_tower.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lifeguard_tower_covered.tres" id="covered"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lifeguard_tower_open.tres" id="open"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="transparency"]
+
+[node name="LifeguardTower" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("covered"), ExtResource("open")])
+supports_transparency = true
+frame_color = Color(0.58823529, 0.68235294, 0.6745098, 1)
+lifebuoy_color = Color(0.74901961, 0.38823529, 0.33333333, 1)
+
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("transparency")]
+targets = Array[NodePath]([NodePath("../Sprite")])

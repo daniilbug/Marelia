@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BeachLifeguardStationStyle" format=3]
+
+[ext_resource type="Script" uid="uid://ux5hv2rawyb3" path="res://scripts/world-kit/street/beach/styles/lifeguard_station_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Covered Tower and Timber Frame"
+script = ExtResource("profile")
+stand_style = 1
+stand_color = Color(0.59607846, 0.45490196, 0.32156864, 1)

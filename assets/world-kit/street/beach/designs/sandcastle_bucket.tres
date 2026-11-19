@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/beach/sprites/sandcastle_bucket.png" id="sprite"]
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+origin = Vector2(-4, -8)
+footprint = Vector2(7, 3)

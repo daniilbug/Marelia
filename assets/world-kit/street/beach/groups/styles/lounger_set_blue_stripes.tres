@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BeachLoungerSetStyle" format=3]
+
+[ext_resource type="Script" uid="uid://bixl0ddcque50" path="res://scripts/world-kit/street/beach/styles/lounger_set_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Blue Stripes"
+script = ExtResource("profile")
