@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://c3nx7w0nmeahu"]
+
+[ext_resource type="Texture2D" uid="uid://b2qvpgbjhgh4c" path="res://assets/world-kit/furniture/sprites/bathtub_panel_down.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://ch4jp1nw3ovny" path="res://assets/world-kit/furniture/sprites/bathtub_panel_up.png" id="albedo_1"]
+[ext_resource type="Texture2D" uid="uid://daxikq846ct0r" path="res://assets/world-kit/furniture/sprites/bathtub_panel_left.png" id="albedo_2"]
+[ext_resource type="Texture2D" uid="uid://c540bcnj6ui7b" path="res://assets/world-kit/furniture/sprites/bathtub_panel_right.png" id="albedo_3"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://cr7d6ok4kihax" path="res://assets/world-kit/furniture/sprites/bathtub_panel_down_materials.png" id="mask_0"]
+[ext_resource type="Texture2D" uid="uid://5h8pu4tnjqtc" path="res://assets/world-kit/furniture/sprites/bathtub_panel_up_materials.png" id="mask_1"]
+[ext_resource type="Texture2D" uid="uid://cbk3trapdfg6o" path="res://assets/world-kit/furniture/sprites/bathtub_panel_left_materials.png" id="mask_2"]
+[ext_resource type="Texture2D" uid="uid://bwimk6dd4q8tq" path="res://assets/world-kit/furniture/sprites/bathtub_panel_right_materials.png" id="mask_3"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("albedo_0")
+origin = Vector2(-8, -22)
+footprint = Vector2(12, 16)
+
+[sub_resource type="Resource" id="view_1"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_1")
+material_mask = ExtResource("mask_1")
+approved_preview = ExtResource("albedo_1")
+origin = Vector2(-8, -22)
+footprint = Vector2(12, 16)
+
+[sub_resource type="Resource" id="view_2"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_2")
+material_mask = ExtResource("mask_2")
+approved_preview = ExtResource("albedo_2")
+origin = Vector2(-14, -14)
+footprint = Vector2(24, 8)
+
+[sub_resource type="Resource" id="view_3"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_3")
+material_mask = ExtResource("mask_3")
+approved_preview = ExtResource("albedo_3")
+origin = Vector2(-14, -14)
+footprint = Vector2(24, 8)
+
+[resource]
+script = ExtResource("design_script")
+title = "Bathtub Panel"
+views = Array[ExtResource("view_script")]([SubResource("view_0"), SubResource("view_1"), SubResource("view_2"), SubResource("view_3")])

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/washbasin.tscn" id="basin"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_mirror.tscn" id="mirror"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/towel_rail.tscn" id="towel"]
+
+[node name="WashingArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({NodePath("Mirror"): true, NodePath("Towel"): true})
+
+[node name="Washbasin" parent="." instance=ExtResource("basin")]
+
+[node name="Mirror" parent="." instance=ExtResource("mirror")]
+position = Vector2(0, -20)
+z_index = 1
+
+[node name="Towel" parent="." instance=ExtResource("towel")]
+position = Vector2(18, -17)
+z_index = 1

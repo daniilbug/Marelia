@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://d1tuuul3uv2r4"]
+
+[ext_resource type="Texture2D" uid="uid://dfsmqkose0rf5" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_down.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://tksbqpqqbe8f" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_up.png" id="albedo_1"]
+[ext_resource type="Texture2D" uid="uid://bp2m164qxlg56" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_left.png" id="albedo_2"]
+[ext_resource type="Texture2D" uid="uid://fpdlbcdilidp" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_right.png" id="albedo_3"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://den2a06mrcxh8" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_down_materials.png" id="mask_0"]
+[ext_resource type="Texture2D" uid="uid://c4k46tn7v08jm" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_up_materials.png" id="mask_1"]
+[ext_resource type="Texture2D" uid="uid://5y4xruesxnc5" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_left_materials.png" id="mask_2"]
+[ext_resource type="Texture2D" uid="uid://dv1gj4gy6eg41" path="res://assets/world-kit/furniture/sprites/bathtub_clawfoot_right_materials.png" id="mask_3"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("albedo_0")
+origin = Vector2(-8, -22)
+footprint = Vector2(12, 16)
+
+[sub_resource type="Resource" id="view_1"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_1")
+material_mask = ExtResource("mask_1")
+approved_preview = ExtResource("albedo_1")
+origin = Vector2(-8, -22)
+footprint = Vector2(12, 16)
+
+[sub_resource type="Resource" id="view_2"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_2")
+material_mask = ExtResource("mask_2")
+approved_preview = ExtResource("albedo_2")
+origin = Vector2(-14, -14)
+footprint = Vector2(24, 8)
+
+[sub_resource type="Resource" id="view_3"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_3")
+material_mask = ExtResource("mask_3")
+approved_preview = ExtResource("albedo_3")
+origin = Vector2(-14, -14)
+footprint = Vector2(24, 8)
+
+[resource]
+script = ExtResource("design_script")
+title = "Bathtub Clawfoot"
+views = Array[ExtResource("view_script")]([SubResource("view_0"), SubResource("view_1"), SubResource("view_2"), SubResource("view_3")])

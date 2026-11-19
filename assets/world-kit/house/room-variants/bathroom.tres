@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="HouseRoomVariants" format=3 uid="uid://calmx36ftngni"]
+
+[ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://cxjej6vln1dmh" path="res://scripts/world-kit/house/room_variants.gd" id="variants"]
+
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="checker"]
+
+[sub_resource type="Resource" id="octagon"]
+resource_local_to_scene = true
+resource_name = "OctagonTiles"
+script = ExtResource("style")
+floor_material = 7
+floor_color = Color(0.717647, 0.772549, 0.666667, 1)
+wall_style = 0
+wall_color = Color(0.835294, 0.772549, 0.690196, 1)
+accent_color = Color(0.666667, 0.458824, 0.368627, 1)
+
+[sub_resource type="Resource" id="maiolica"]
+resource_local_to_scene = true
+resource_name = "MaiolicaTiles"
+script = ExtResource("style")
+floor_material = 8
+floor_color = Color(0.827451, 0.772549, 0.654902, 1)
+wall_style = 0
+wall_color = Color(0.866667, 0.811765, 0.701961, 1)
+accent_color = Color(0.439216, 0.537255, 0.607843, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([ExtResource("checker"), SubResource("octagon"), SubResource("maiolica")])

@@ -64,6 +64,12 @@
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_octagon_materials.png" id="asset_70"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_maiolica_albedo.png" id="asset_71"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_tile_maiolica_materials.png" id="asset_72"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/toilet.tscn" id="toilet"]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bathtub.tscn" id="bathroom_bathtub"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/washbasin.tscn" id="bathroom_washbasin"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/towel_rail.tscn" id="bathroom_towel_rail"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/toilet_paper_holder.tscn" id="bathroom_toilet_paper_holder"]
 
 [sub_resource type="RectangleShape2D" id="stand_base"]
 size = Vector2(56, 4)
@@ -221,12 +227,16 @@ shader_parameter/stone_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
 shader_parameter/roof_color = Color(0.82745098, 0.77254902, 0.65490196, 1)
 shader_parameter/paint_color = Color(0.43921569, 0.53725490, 0.60784314, 1)
 
+[sub_resource type="RectangleShape2D" id="bathroom_wall_zone"]
+resource_local_to_scene = true
+size = Vector2(56, 32)
+
 [node name="HouseFurniture" instance=ExtResource("asset_1")]
 scale = Vector2(4, 4)
 level_id = "world_kit_furniture"
 
 [node name="BottomLeft" parent="LevelBounds" index="0"]
-position = Vector2(0, 1344)
+position = Vector2(0, 1760)
 
 [node name="TopRight" parent="LevelBounds" index="1"]
 position = Vector2(1104, 0)
@@ -241,7 +251,7 @@ texture_repeat = 2
 texture = ExtResource("asset_2")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 1104, 1344)
+region_rect = Rect2(0, 0, 1104, 1760)
 
 [node name="Exhibits" parent="." type="Node2D"]
 y_sort_enabled = true
@@ -1297,6 +1307,175 @@ inside_alpha = 0.3
 [node name="Style1" parent="Exhibits/Furniture/Entrance/WindowFlowerBox/Style1Stand/Visuals" instance=ExtResource("asset_45")]
 position = Vector2(0, -12)
 
+[node name="Bathroom" parent="Exhibits/Furniture" type="Node2D"]
+position = Vector2(0, 1184)
+y_sort_enabled = true
+
+[node name="Toilet" parent="Exhibits/Furniture/Bathroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Bathroom/Toilet" instance=ExtResource("toilet")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Bathtub" parent="Exhibits/Furniture/Bathroom" type="Node2D"]
+position = Vector2(0, 112)
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(72, 0)
+style = 0
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(152, 0)
+style = 0
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(232, 0)
+style = 0
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(312, 0)
+style = 0
+direction = 3
+
+[node name="Style2Down" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(392, 0)
+style = 1
+direction = 0
+
+[node name="Style2Up" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(472, 0)
+style = 1
+direction = 1
+
+[node name="Style2Left" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(552, 0)
+style = 1
+direction = 2
+
+[node name="Style2Right" parent="Exhibits/Furniture/Bathroom/Bathtub" instance=ExtResource("bathroom_bathtub")]
+position = Vector2(632, 0)
+style = 1
+direction = 3
+
+[node name="Washbasin" parent="Exhibits/Furniture/Bathroom" type="Node2D"]
+position = Vector2(0, 224)
+y_sort_enabled = true
+
+[node name="Style1Down" parent="Exhibits/Furniture/Bathroom/Washbasin" instance=ExtResource("bathroom_washbasin")]
+position = Vector2(72, 0)
+direction = 0
+
+[node name="Style1Up" parent="Exhibits/Furniture/Bathroom/Washbasin" instance=ExtResource("bathroom_washbasin")]
+position = Vector2(152, 0)
+direction = 1
+
+[node name="Style1Left" parent="Exhibits/Furniture/Bathroom/Washbasin" instance=ExtResource("bathroom_washbasin")]
+position = Vector2(232, 0)
+direction = 2
+
+[node name="Style1Right" parent="Exhibits/Furniture/Bathroom/Washbasin" instance=ExtResource("bathroom_washbasin")]
+position = Vector2(312, 0)
+direction = 3
+
+[node name="WallDecor" parent="Exhibits/Furniture/Bathroom" type="Node2D"]
+position = Vector2(0, 336)
+y_sort_enabled = true
+
+[node name="TowelRailStand" parent="Exhibits/Furniture/Bathroom/WallDecor" type="StaticBody2D"]
+position = Vector2(72, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Bathroom/WallDecor/TowelRailStand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Bathroom/WallDecor/TowelRailStand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Bathroom/WallDecor/TowelRailStand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Bathroom/WallDecor/TowelRailStand" node_paths=PackedStringArray("targets") instance=ExtResource("asset_24")]
+position = Vector2(0, -16)
+shape = SubResource("bathroom_wall_zone")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Bathroom/WallDecor/TowelRailStand/Visuals" instance=ExtResource("bathroom_towel_rail")]
+position = Vector2(0, -5)
+
+[node name="PaperHolderStand" parent="Exhibits/Furniture/Bathroom/WallDecor" type="StaticBody2D"]
+position = Vector2(152, 0)
+
+[node name="Visuals" parent="Exhibits/Furniture/Bathroom/WallDecor/PaperHolderStand" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wall" parent="Exhibits/Furniture/Bathroom/WallDecor/PaperHolderStand/Visuals" type="Sprite2D"]
+position = Vector2(-28, -32)
+texture_repeat = 2
+texture = ExtResource("asset_3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 56, 32)
+
+[node name="Collision" parent="Exhibits/Furniture/Bathroom/WallDecor/PaperHolderStand" type="CollisionShape2D"]
+position = Vector2(0, -2)
+shape = SubResource("stand_base")
+
+[node name="TransparencyArea" parent="Exhibits/Furniture/Bathroom/WallDecor/PaperHolderStand" node_paths=PackedStringArray("targets") instance=ExtResource("asset_24")]
+position = Vector2(0, -16)
+shape = SubResource("bathroom_wall_zone")
+targets = Array[NodePath]([NodePath("../Visuals")])
+inside_alpha = 0.3
+
+[node name="Style1" parent="Exhibits/Furniture/Bathroom/WallDecor/PaperHolderStand/Visuals" instance=ExtResource("bathroom_toilet_paper_holder")]
+position = Vector2(0, -5)
+
 [node name="Materials" parent="Exhibits" type="Node2D"]
 y_sort_enabled = true
 
@@ -1304,7 +1483,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="FloorWood" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(24, 1216)
+position = Vector2(24, 1632)
 z_index = -9
 material = SubResource("palette_31")
 texture_filter = 1
@@ -1315,7 +1494,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorWoodNarrow" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(136, 1216)
+position = Vector2(136, 1632)
 z_index = -9
 material = SubResource("palette_32")
 texture_filter = 1
@@ -1326,7 +1505,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorWoodChevron" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(248, 1216)
+position = Vector2(248, 1632)
 z_index = -9
 material = SubResource("palette_33")
 texture_filter = 1
@@ -1337,7 +1516,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorWoodBasket" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(360, 1216)
+position = Vector2(360, 1632)
 z_index = -9
 material = SubResource("palette_34")
 texture_filter = 1
@@ -1348,7 +1527,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorTerracotta" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(472, 1216)
+position = Vector2(472, 1632)
 z_index = -9
 material = SubResource("palette_35")
 texture_filter = 1
@@ -1359,7 +1538,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorOrnament" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(584, 1216)
+position = Vector2(584, 1632)
 z_index = -9
 material = SubResource("palette_36")
 texture_filter = 1
@@ -1370,7 +1549,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorTileChecker" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(696, 1216)
+position = Vector2(696, 1632)
 z_index = -9
 material = SubResource("palette_37")
 texture_filter = 1
@@ -1381,7 +1560,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorTileOctagon" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(808, 1216)
+position = Vector2(808, 1632)
 z_index = -9
 material = SubResource("palette_38")
 texture_filter = 1
@@ -1392,7 +1571,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 96, 64)
 
 [node name="FloorTileMaiolica" parent="Exhibits/Materials/Floors" type="Sprite2D"]
-position = Vector2(920, 1216)
+position = Vector2(920, 1632)
 z_index = -9
 material = SubResource("palette_39")
 texture_filter = 1

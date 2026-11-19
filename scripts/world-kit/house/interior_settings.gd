@@ -5,18 +5,29 @@ extends Resource
 enum RoomCount { TWO = 2, THREE = 3, FOUR = 4 }
 enum Layout { A, B, C }
 enum Kind { WITH_KITCHEN, WITHOUT_KITCHEN, CELLAR }
+const BATHROOM_STYLE := preload("res://assets/world-kit/house/room-variants/bathroom_checker.tres")
 
 const ROOM_PROPERTIES := {
 	&"LivingRoom": "living", &"Kitchen": "kitchen",
 	&"Bedroom": "bedroom", &"SecondBedroom": "second_bedroom",
 }
-const FIELDS := ["room_count", "layout", "kind", "balcony", "interior_size", "door_style", "door_color"]
+const FIELDS := ["room_count", "layout", "kind", "balcony", "door_style", "door_color", "bathroom_enabled"]
 
 ## Selects a layout family; the house assigns this floor's position and access.
 @export var kind: Kind = Kind.WITH_KITCHEN:
 	set(value):
 		kind = value
+		if kind == Kind.CELLAR:
+			bathroom_enabled = false
 		notify_property_list_changed()
+		emit_changed()
+## A service room in addition to the selected number of main rooms.
+@export var bathroom_enabled := false:
+	set(value):
+		value = value and kind != Kind.CELLAR
+		if bathroom_enabled == value:
+			return
+		bathroom_enabled = value
 		emit_changed()
 @export var balcony := false:
 	set(value):
@@ -47,15 +58,6 @@ const FIELDS := ["room_count", "layout", "kind", "balcony", "interior_size", "do
 		layout = value
 		emit_changed()
 @export var layout_variants: Array[Layout] = [Layout.A, Layout.B, Layout.C]
-## Zero uses the selected layout's Default Size.
-@export var interior_size := Vector2.ZERO:
-	set(value):
-		if value != Vector2.ZERO:
-			value = value.clamp(Vector2(208, 184), Vector2(1024, 1024)).snapped(Vector2(8, 8))
-		if interior_size == value:
-			return
-		interior_size = value
-		emit_changed()
 @export var door_style: HouseDoorStyle.Style = HouseDoorStyle.Style.PLANK:
 	set(value):
 		if door_style == value:
@@ -98,16 +100,19 @@ func _init() -> void:
 
 func _validate_property(property: Dictionary) -> void:
 	if layout_scene != null:
-		if property.name in ["kind", "room_count", "layout", "layout_variants"]:
+		if property.name in ["kind", "room_count", "layout", "layout_variants", "bathroom_enabled"]:
 			property.usage &= ~PROPERTY_USAGE_EDITOR
-	elif kind == Kind.CELLAR and property.name in ["room_count", "layout", "layout_variants", "kitchen", "bedroom", "second_bedroom"]:
+	elif kind == Kind.CELLAR and property.name in ["room_count", "layout", "layout_variants", "kitchen", "bedroom", "second_bedroom", "bathroom_enabled"]:
 		property.usage &= ~PROPERTY_USAGE_EDITOR
 	elif (property.name == "kitchen" and kind == Kind.WITHOUT_KITCHEN) or (property.name == "second_bedroom" and room_count < RoomCount.FOUR):
 		property.usage &= ~PROPERTY_USAGE_EDITOR
 
 func get_style(room_id: StringName) -> HouseRoomStyle:
-	if additional_rooms.get(room_id) != null:
-		return additional_rooms[room_id]
+	if room_id == &"Bathroom" and additional_rooms.get(room_id) == null:
+		additional_rooms[room_id] = BATHROOM_STYLE.duplicate()
+	var extra: HouseRoomStyle = additional_rooms.get(room_id)
+	if extra != null:
+		return extra
 	return get(ROOM_PROPERTIES.get(room_id, "living")) as HouseRoomStyle
 
 func get_template_scene(catalog: HouseLayoutCatalog) -> PackedScene:
@@ -117,8 +122,28 @@ func get_template_scene(catalog: HouseLayoutCatalog) -> PackedScene:
 		return null
 	if kind == Kind.CELLAR:
 		return catalog.scenes.get(&"cellar") as PackedScene
-	var key := "%d_%s%s" % [room_count, ["a", "b", "c"][layout], "_no_kitchen" if kind == Kind.WITHOUT_KITCHEN else ""]
-	return catalog.scenes.get(StringName(key)) as PackedScene
+	return catalog.scenes.get(_layout_key(bathroom_enabled)) as PackedScene
+
+func can_enable_bathroom(catalog: HouseLayoutCatalog) -> bool:
+	return layout_scene == null and kind != Kind.CELLAR and catalog != null \
+		and catalog.scenes.get(_layout_key(true)) != null
+
+func _layout_key(with_bathroom: bool) -> StringName:
+	var key := "%d_%s" % [room_count, ["a", "b", "c"][layout]]
+	if kind == Kind.WITH_KITCHEN:
+		key += "_kitchen"
+	if with_bathroom:
+		key += "_bathroom"
+	return StringName(key)
+
+func has_bathroom(catalog: HouseLayoutCatalog) -> bool:
+	if layout_scene == null:
+		return bathroom_enabled and get_template_scene(catalog) != null
+	# Explicit scenes define their rooms independently of the standard selectors.
+	var instance := layout_scene.instantiate()
+	var found := instance is HouseLayout and (instance as HouseLayout).get_rooms().any(func(room: HouseRoom): return room.room_id == &"Bathroom")
+	instance.free()
+	return found
 
 func randomize(catalog: HouseLayoutCatalog) -> void:
 	# Room count is an explicit authoring decision. Styles keep semantic IDs.
@@ -169,9 +194,13 @@ func to_data() -> Dictionary:
 	return data
 
 func apply_data(data: Dictionary) -> void:
+	# A previous scene configuration must not add a bathroom to an older save.
+	if not data.has("bathroom_enabled"):
+		bathroom_enabled = false
 	SaveGraph.apply_fields(self, FIELDS, data)
 	if data.has("layout_scene"):
-		layout_scene = load(data.layout_scene) as PackedScene if not data.layout_scene.is_empty() else null
+		var path: String = data.layout_scene
+		layout_scene = load(path) as PackedScene if not path.is_empty() else null
 	if data.has("additional_rooms"):
 		additional_rooms.clear()
 		for id: String in data.additional_rooms:
@@ -195,7 +224,7 @@ static func create_cellar() -> HouseInteriorSettings:
 static func is_valid_data(data: Variant) -> bool:
 	if not SaveGraph.matches(data, {
 		"room_count": Vector2i(2, 4), "layout": Vector2i(0, 2),
-		"interior_size": Vector2.ZERO, "door_style": Vector2i(0, 2), "door_color": Color(),
+		"door_style": Vector2i(0, 2), "door_color": Color(),
 	}):
 		return false
 	for key in ROOM_PROPERTIES.values():
@@ -205,10 +234,13 @@ static func is_valid_data(data: Variant) -> bool:
 		return false
 	if data.has("balcony") and data.balcony is not bool:
 		return false
+	if data.has("bathroom_enabled") and data.bathroom_enabled is not bool:
+		return false
 	if data.has("layout_scene"):
 		if data.layout_scene is not String:
 			return false
-		if not data.layout_scene.is_empty() and (not data.layout_scene.begins_with("res://scenes/") or not ResourceLoader.exists(data.layout_scene, "PackedScene")):
+		var path: String = data.layout_scene
+		if not path.is_empty() and (not path.begins_with("res://scenes/") or not ResourceLoader.exists(path, "PackedScene")):
 			return false
 	if data.has("additional_rooms"):
 		if data.additional_rooms is not Dictionary:

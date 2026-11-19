@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="3_5uhrw"]
 [ext_resource type="Script" uid="uid://cngwr1634ilbn" path="res://scripts/world-kit/house/interior_settings.gd" id="4_c6som"]
-[ext_resource type="PackedScene" path="res://scenes/world-kit/house/layouts/2_a.tscn" id="layout"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/layouts/2_a_kitchen.tscn" id="layout"]
 [ext_resource type="Script" uid="uid://dbn6y4m2sv6el" path="res://scripts/world-kit/house/interior.gd" id="script"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/layouts.tres" id="layouts"]
 

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/directional_furniture.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/basin_pedestal.tres" id="design_0"]
+
+[node name="Washbasin" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("design_0")])

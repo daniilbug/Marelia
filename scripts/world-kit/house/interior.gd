@@ -38,7 +38,7 @@ signal connections_changed
 		_schedule_rebuild()
 
 var _pending := false
-var _layout_signature := ""
+var _has_built_layout := false
 var _applied_placements: Dictionary = {}
 var _layout: HouseLayout
 var initial_door_states: Dictionary = {}
@@ -79,7 +79,8 @@ func rebuild() -> void:
 		return
 	var path := scene.resource_path
 	var replaced := _layout.scene_file_path != path
-	var states := initial_door_states if _layout_signature.is_empty() else get_door_states()
+	var first_build := not _has_built_layout
+	var states := initial_door_states if first_build else get_door_states()
 	if replaced:
 		var instance := scene.instantiate()
 		if instance is not HouseLayout:
@@ -97,7 +98,7 @@ func rebuild() -> void:
 	_layout.apply_configuration(configuration)
 	_layout.configure_access(has_entrance, has_upstairs, has_downstairs)
 	_layout.select_placements(selected_placements)
-	if replaced or _layout_signature.is_empty():
+	if replaced or first_build:
 		_layout.apply_door_states(states)
 	initial_door_states.clear()
 	player_spawn = _layout.get_node("PlayerSpawn")
@@ -106,12 +107,11 @@ func rebuild() -> void:
 	_top_right_bound = _bounds_body.get_node("TopRight")
 	if replaced:
 		connections_changed.emit()
-	var signature := "%s:%s" % [path, configuration.interior_size]
 	if not Engine.is_editor_hint() and is_instance_valid(local_player):
-		if signature != _layout_signature or selected_placements != _applied_placements:
+		if replaced or first_build or selected_placements != _applied_placements:
 			local_player.global_position = player_spawn.global_position
 		activate_local_player(local_player)
-	_layout_signature = signature
+	_has_built_layout = true
 	_applied_placements = selected_placements.duplicate(true)
 
 func _create_bounds_walls() -> void:

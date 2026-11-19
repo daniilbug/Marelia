@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/room.tscn" id="room"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="group"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="point"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/washing_area.tscn" id="washing"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/toilet_area.tscn" id="toilet"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/bathing_area.tscn" id="bathing"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/toilet_variants.tres" id="toilet_variants"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/bathtub_variants.tres" id="tub_variants"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom.tres" id="room_variants"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="room_style"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="furniture_style"]
+
+[sub_resource type="Resource" id="classic"]
+resource_local_to_scene = true
+resource_name = "Classic"
+script = ExtResource("furniture_style")
+
+[sub_resource type="Resource" id="clawfoot"]
+resource_local_to_scene = true
+resource_name = "Clawfoot"
+script = ExtResource("furniture_style")
+
+[node name="Bathroom" instance=ExtResource("room")]
+room_id = &"Bathroom"
+style_variants = ExtResource("room_variants")
+style = ExtResource("room_style")
+
+[node name="Floor" parent="." index="0"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 48, 0, 48)
+
+[node name="WashingArea" type="Node2D" parent="Placements"]
+y_sort_enabled = true
+script = ExtResource("group")
+selected_variant = &"NorthWall"
+
+[node name="NorthWall" type="Node2D" parent="Placements/WashingArea"]
+y_sort_enabled = true
+position = Vector2(12, 12)
+script = ExtResource("point")
+
+[node name="Furniture" parent="Placements/WashingArea/NorthWall" instance=ExtResource("washing")]
+
+[node name="ToiletArea" type="Node2D" parent="Placements"]
+y_sort_enabled = true
+script = ExtResource("group")
+style_variants = ExtResource("toilet_variants")
+selected_variant = &"NorthWall"
+
+[node name="NorthWall" type="Node2D" parent="Placements/ToiletArea"]
+y_sort_enabled = true
+position = Vector2(48, 16)
+script = ExtResource("point")
+
+[node name="Furniture" parent="Placements/ToiletArea/NorthWall" instance=ExtResource("toilet")]
+style = SubResource("classic")
+
+[node name="BathingArea" type="Node2D" parent="Placements"]
+y_sort_enabled = true
+script = ExtResource("group")
+style_variants = ExtResource("tub_variants")
+selected_variant = &"Corner"
+
+[node name="Corner" type="Node2D" parent="Placements/BathingArea"]
+y_sort_enabled = true
+position = Vector2(18, 30)
+script = ExtResource("point")
+
+[node name="Furniture" parent="Placements/BathingArea/Corner" instance=ExtResource("bathing")]
+style = SubResource("clawfoot")

@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://d4mplxdlfrpep"]
+
+[ext_resource type="Texture2D" uid="uid://b3btpqocj8606" path="res://assets/world-kit/furniture/sprites/toilet_compact_down.png" id="albedo_0"]
+[ext_resource type="Texture2D" uid="uid://c0ouql654n0rd" path="res://assets/world-kit/furniture/sprites/toilet_compact_up.png" id="albedo_1"]
+[ext_resource type="Texture2D" uid="uid://blg2rq8ueft25" path="res://assets/world-kit/furniture/sprites/toilet_compact_left.png" id="albedo_2"]
+[ext_resource type="Texture2D" uid="uid://be7r8mfferx2h" path="res://assets/world-kit/furniture/sprites/toilet_compact_right.png" id="albedo_3"]
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design_script"]
+[ext_resource type="Texture2D" uid="uid://8vmyoichjxvm" path="res://assets/world-kit/furniture/sprites/toilet_compact_down_materials.png" id="mask_0"]
+[ext_resource type="Texture2D" uid="uid://blcsmen1l5ht1" path="res://assets/world-kit/furniture/sprites/toilet_compact_up_materials.png" id="mask_1"]
+[ext_resource type="Texture2D" uid="uid://8j8hlxmqu8ab" path="res://assets/world-kit/furniture/sprites/toilet_compact_left_materials.png" id="mask_2"]
+[ext_resource type="Texture2D" uid="uid://3aidqn2soy1o" path="res://assets/world-kit/furniture/sprites/toilet_compact_right_materials.png" id="mask_3"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view_script"]
+
+[sub_resource type="Resource" id="view_0"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_0")
+material_mask = ExtResource("mask_0")
+approved_preview = ExtResource("albedo_0")
+origin = Vector2(-6, -12)
+footprint = Vector2(8, 6)
+
+[sub_resource type="Resource" id="view_1"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_1")
+material_mask = ExtResource("mask_1")
+approved_preview = ExtResource("albedo_1")
+origin = Vector2(-6, -12)
+footprint = Vector2(8, 6)
+
+[sub_resource type="Resource" id="view_2"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_2")
+material_mask = ExtResource("mask_2")
+approved_preview = ExtResource("albedo_2")
+origin = Vector2(-5, -12)
+footprint = Vector2(8, 6)
+
+[sub_resource type="Resource" id="view_3"]
+script = ExtResource("view_script")
+albedo = ExtResource("albedo_3")
+material_mask = ExtResource("mask_3")
+approved_preview = ExtResource("albedo_3")
+origin = Vector2(-5, -12)
+footprint = Vector2(8, 6)
+
+[resource]
+script = ExtResource("design_script")
+title = "Toilet Compact"
+views = Array[ExtResource("view_script")]([SubResource("view_0"), SubResource("view_1"), SubResource("view_2"), SubResource("view_3")])

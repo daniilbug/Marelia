@@ -1,1258 +1,1449 @@
-[gd_scene format=3 uid="uid://dd4hdlpi3pcxe"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="5_5ivws"]
-[ext_resource type="Shader" uid="uid://wjptelj7s1tx" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="6_5q8ms"]
-[ext_resource type="Texture2D" uid="uid://bmglb37v2rvfc" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="7_ysp84"]
-[ext_resource type="Texture2D" uid="uid://md1tj1xfkt7n" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="8_psr0h"]
-[ext_resource type="Script" uid="uid://w1yrdb2l0v7x" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="13_tvc5f"]
-[ext_resource type="Texture2D" uid="uid://cow1bcd701fuj" path="res://assets/world-kit/house/sprites/wallpaper_striped_materials.png" id="26_y66ep"]
-[ext_resource type="Texture2D" uid="uid://dlufbuxp4dxux" path="res://assets/world-kit/house/sprites/wallpaper_striped_albedo.png" id="27_hj1ld"]
-[ext_resource type="Texture2D" uid="uid://dotkgu11gnp2h" path="res://assets/world-kit/house/sprites/door_plank_closed_materials.png" id="30_k2wht"]
-[ext_resource type="Texture2D" uid="uid://cl6qj0x6rf6ec" path="res://assets/world-kit/house/sprites/door_plank_closed_albedo.png" id="31_ej44m"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/room.gd" id="4_k4ga2"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/room_style.gd" id="6_qahig"]
+[ext_resource type="Shader" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="7_5h365"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="8_xjl23"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="9_j2cg4"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_4p7fy"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="15_d34un"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/reading_corner.gd" id="18_ew3u6"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/dresser_area.gd" id="21_usdg6"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/wall.gd" id="28_f5514"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/wallpaper_striped_materials.png" id="29_i6g2x"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/wallpaper_striped_albedo.png" id="30_fo2j6"]
+[ext_resource type="Script" path="res://scripts/core/transparency_area.gd" id="31_pcm2v"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/room_door.gd" id="33_1g2n8"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/portal.gd" id="35_ppc3m"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_plank_closed_materials.png" id="36_5nswi"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_plank_closed_albedo.png" id="37_jqexv"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/stairs.gd" id="39_piyl2"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/room_door.tscn" id="door"]
-[ext_resource type="Resource" uid="uid://3p7pbq4pn573" path="res://assets/world-kit/house/door-variants/interior.tres" id="door_variants"]
-[ext_resource type="Resource" uid="uid://bev48xhbxxa44" path="res://assets/world-kit/furniture/groups/variants.tres" id="furniture_styles"]
-[ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/house/placement_group.gd" id="group"]
-[ext_resource type="Script" uid="uid://btpoobuqeq3pr" path="res://scripts/world-kit/house/layout.gd" id="layout"]
-[ext_resource type="Script" uid="uid://degvwhk8r3n0j" path="res://scripts/world-kit/house/placement_point.gd" id="point"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-variants/interior.tres" id="door_variants"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/dresser_variants.tres" id="dresser_styles"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="furniture_styles"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="group"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/layout.gd" id="layout"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="point"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/portal.tscn" id="portal"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/reading_variants.tres" id="reading_styles"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/room.tscn" id="room"]
-[ext_resource type="PackedScene" uid="uid://bl83237xwwyh8" path="res://scenes/world-kit/furniture/groups/dining_area.tscn" id="set_dining_area"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/dresser_area.tscn" id="set_dresser_area"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/reading_corner.tscn" id="set_reading_corner"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/serving_area.tscn" id="set_serving_area"]
-[ext_resource type="PackedScene" uid="uid://gidmhi0bv2og" path="res://scenes/world-kit/furniture/groups/kitchen_run.tscn" id="set_kitchen_run"]
-[ext_resource type="PackedScene" uid="uid://3b6ynmi1dl83" path="res://scenes/world-kit/furniture/groups/reading_corner.tscn" id="set_reading_corner"]
-[ext_resource type="PackedScene" uid="uid://0vnof06g5o6p" path="res://scenes/world-kit/furniture/groups/sitting_area.tscn" id="set_sitting_area"]
-[ext_resource type="PackedScene" uid="uid://cjicbxa1vg2fu" path="res://scenes/world-kit/furniture/groups/sleeping_area.tscn" id="set_sleeping_area"]
-[ext_resource type="PackedScene" uid="uid://b3b3p5r7reel0" path="res://scenes/world-kit/furniture/groups/workplace.tscn" id="set_workplace"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/sitting_area.tscn" id="set_sitting_area"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/sleeping_area.tscn" id="set_sleeping_area"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/workplace.tscn" id="set_workplace"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/stairs_down.tscn" id="stairs_down"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/stairs_up.tscn" id="stairs_up"]
-[ext_resource type="Resource" uid="uid://cekccp1w8bbpm" path="res://assets/world-kit/house/room-variants/bedroom.tres" id="variants_bedroom"]
-[ext_resource type="Resource" uid="uid://yqpwtgv1xdcr" path="res://assets/world-kit/house/room-variants/kitchen.tres" id="variants_kitchen"]
-[ext_resource type="Resource" uid="uid://dw6folr1ft5a5" path="res://assets/world-kit/house/room-variants/living.tres" id="variants_living"]
-[ext_resource type="Resource" uid="uid://dma7raj2eq730" path="res://assets/world-kit/house/room-variants/second_bedroom.tres" id="variants_second"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bedroom.tres" id="variants_bedroom"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/living.tres" id="variants_living"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/second_bedroom.tres" id="variants_second"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/wall.tscn" id="wall"]
 
-[sub_resource type="Resource" id="Resource_e5epw"]
+[sub_resource type="Resource" id="Resource_wy1tm"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_js3ku"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5lpj"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("7_ysp84")
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("8_xjl23")
 shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
 shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
-shader_parameter/plaster_color = Color(0.866667, 0.803922, 0.670588, 1)
+shader_parameter/fabric_color = null
+shader_parameter/plaster_color = null
 shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
 shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
-shader_parameter/opening_a = Vector4(0, 0, 0, 0)
-shader_parameter/opening_b = Vector4(0, 0, 0, 0)
-shader_parameter/opening_c = Vector4(0, 0, 0, 0)
+shader_parameter/opening_a = null
+shader_parameter/opening_b = null
+shader_parameter/opening_c = null
 
-[sub_resource type="Resource" id="Resource_k036p"]
+[sub_resource type="Resource" id="Resource_i7nri"]
 resource_local_to_scene = true
 resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
+script = ExtResource("15_d34un")
 wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
 paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
 rug_style = 1
 
-[sub_resource type="Resource" id="Resource_7itjt"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_dbma5"]
-resource_local_to_scene = true
-script = ExtResource("5_5ivws")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1aej"]
-resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("7_ysp84")
-shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
-shader_parameter/plaster_color = Color(0.866667, 0.803922, 0.670588, 1)
-shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
-shader_parameter/opening_a = Vector4(0, 0, 0, 0)
-shader_parameter/opening_b = Vector4(0, 0, 0, 0)
-shader_parameter/opening_c = Vector4(0, 0, 0, 0)
-
-[sub_resource type="Resource" id="Resource_exuau"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_2wqy4"]
-resource_local_to_scene = true
-script = ExtResource("5_5ivws")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtxyy"]
-resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("7_ysp84")
-shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
-shader_parameter/plaster_color = Color(0.866667, 0.803922, 0.670588, 1)
-shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
-shader_parameter/opening_a = Vector4(0, 0, 0, 0)
-shader_parameter/opening_b = Vector4(0, 0, 0, 0)
-shader_parameter/opening_c = Vector4(0, 0, 0, 0)
-
-[sub_resource type="Resource" id="Resource_cvayi"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_v08t3"]
-resource_local_to_scene = true
-script = ExtResource("5_5ivws")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mumow"]
-resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("7_ysp84")
-shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
-shader_parameter/plaster_color = Color(0.866667, 0.803922, 0.670588, 1)
-shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
-shader_parameter/opening_a = Vector4(0, 0, 0, 0)
-shader_parameter/opening_b = Vector4(0, 0, 0, 0)
-shader_parameter/opening_c = Vector4(0, 0, 0, 0)
-
-[sub_resource type="Resource" id="Resource_trqy6"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_8hdja"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_x3pem"]
-resource_local_to_scene = true
-resource_name = "Rustic"
-script = ExtResource("13_tvc5f")
-wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
-paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
-rug_style = 1
-
-[sub_resource type="Resource" id="Resource_6ktfi"]
+[sub_resource type="Resource" id="Resource_w0st2"]
 resource_local_to_scene = true
 resource_name = "Wingback"
-script = ExtResource("13_tvc5f")
+script = ExtResource("15_d34un")
 wood_color = Color(0.592157, 0.407843, 0.247059, 1)
 paint_color = Color(0.721569, 0.462745, 0.333333, 1)
 fabric_color = Color(0.490196, 0.588235, 0.403922, 1)
 
-[sub_resource type="Resource" id="Resource_2t8mi"]
+[sub_resource type="Resource" id="Resource_daacn"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+resource_name = "Wingback"
+script = ExtResource("15_d34un")
+wood_color = Color(0.592157, 0.407843, 0.247059, 1)
+paint_color = Color(0.721569, 0.462745, 0.333333, 1)
+fabric_color = Color(0.490196, 0.588235, 0.403922, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qk6q"]
+[sub_resource type="Resource" id="Resource_xnrpx"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+resource_name = "Rustic"
+script = ExtResource("15_d34un")
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+rug_style = 1
+
+[sub_resource type="Resource" id="Resource_rsg73"]
+resource_local_to_scene = true
+script = ExtResource("6_qahig")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h72a"]
+resource_local_to_scene = true
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("8_xjl23")
+shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+shader_parameter/fabric_color = null
+shader_parameter/plaster_color = null
+shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+shader_parameter/opening_a = null
+shader_parameter/opening_b = null
+shader_parameter/opening_c = null
+
+[sub_resource type="Resource" id="Resource_w3ku1"]
+resource_local_to_scene = true
+resource_name = "Rustic"
+script = ExtResource("15_d34un")
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+rug_style = 1
+
+[sub_resource type="Resource" id="Resource_t583p"]
+resource_local_to_scene = true
+script = ExtResource("6_qahig")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgy7c"]
+resource_local_to_scene = true
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("8_xjl23")
+shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+shader_parameter/fabric_color = null
+shader_parameter/plaster_color = null
+shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+shader_parameter/opening_a = null
+shader_parameter/opening_b = null
+shader_parameter/opening_c = null
+
+[sub_resource type="Resource" id="Resource_eokk3"]
+resource_local_to_scene = true
+resource_name = "Rustic"
+script = ExtResource("15_d34un")
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+rug_style = 1
+
+[sub_resource type="Resource" id="Resource_o34je"]
+resource_local_to_scene = true
+script = ExtResource("6_qahig")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx6rx"]
+resource_local_to_scene = true
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("8_xjl23")
+shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+shader_parameter/fabric_color = null
+shader_parameter/plaster_color = null
+shader_parameter/stone_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
+shader_parameter/roof_color = Color(0.72156864, 0.4627451, 0.30588236, 1)
+shader_parameter/opening_a = null
+shader_parameter/opening_b = null
+shader_parameter/opening_c = null
+
+[sub_resource type="Resource" id="Resource_3rd23"]
+resource_local_to_scene = true
+resource_name = "Rustic"
+script = ExtResource("15_d34un")
+wood_color = Color(0.68235296, 0.49019608, 0.2745098, 1)
+paint_color = Color(0.4745098, 0.5647059, 0.50196075, 1)
+rug_style = 1
+
+[sub_resource type="Resource" id="Resource_2p67c"]
+resource_local_to_scene = true
+resource_name = "Classic"
+script = ExtResource("15_d34un")
+design = 1
+wood_color = Color(0.5803922, 0.4392157, 0.28627452, 1)
+paint_color = Color(0.45490196, 0.5568628, 0.5686275, 1)
+fabric_color = Color(0.6313726, 0.41568628, 0.45490196, 1)
+
+[sub_resource type="Resource" id="Resource_n2j5k"]
+resource_local_to_scene = true
+script = ExtResource("6_qahig")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaknm"]
+resource_local_to_scene = true
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j3l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8s6r"]
 resource_local_to_scene = true
 size = Vector2(256, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j84qt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbf50"]
 resource_local_to_scene = true
 size = Vector2(256, 28)
 
-[sub_resource type="Resource" id="Resource_23il8"]
+[sub_resource type="Resource" id="Resource_f2t7r"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cj1ao"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhw3j"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
-shader_parameter/opening_a = Vector4(116, 4, 24, 28)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
+shader_parameter/opening_a = Vector4(52, 4, 24, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pggw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da4mm"]
 resource_local_to_scene = true
-size = Vector2(116, 4)
+size = Vector2(52, 4)
 
-[sub_resource type="RectangleShape2D" id="KitchenPartition_collision_2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ticj"]
 resource_local_to_scene = true
-size = Vector2(116, 4)
+size = Vector2(180, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sd0r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swrfc"]
 resource_local_to_scene = true
 size = Vector2(256, 28)
 
-[sub_resource type="Resource" id="Resource_acviu"]
+[sub_resource type="Resource" id="Resource_jr2ck"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_chxp8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnd0t"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(34, 4, 24, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pby2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vibta"]
 resource_local_to_scene = true
 size = Vector2(34, 4)
 
-[sub_resource type="RectangleShape2D" id="BedroomPartition_collision_2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lf3q"]
 resource_local_to_scene = true
 size = Vector2(34, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xekst"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cavo6"]
 resource_local_to_scene = true
 size = Vector2(92, 28)
 
-[sub_resource type="Resource" id="Resource_fqy6g"]
+[sub_resource type="Resource" id="Resource_aosc3"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iha77"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjina"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(30, 4, 24, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4usmc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdaxg"]
 resource_local_to_scene = true
 size = Vector2(30, 4)
 
-[sub_resource type="RectangleShape2D" id="SecondBedroomPartition_collision_2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btykv"]
 resource_local_to_scene = true
 size = Vector2(31, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwdnl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftqag"]
 resource_local_to_scene = true
 size = Vector2(85, 28)
 
-[sub_resource type="Resource" id="Resource_4wkjf"]
+[sub_resource type="Resource" id="Resource_sa7ij"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pjry"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48jp8"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_53xhe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j03ko"]
 resource_local_to_scene = true
 size = Vector2(92, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lh7t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cvam"]
 resource_local_to_scene = true
 size = Vector2(92, 28)
 
-[sub_resource type="Resource" id="Resource_o0o45"]
+[sub_resource type="Resource" id="Resource_ldhgn"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wa7b7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exhhp"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(28, 4, 24, 28)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja72j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvgie"]
 resource_local_to_scene = true
 size = Vector2(28, 4)
 
-[sub_resource type="RectangleShape2D" id="FrontWall_collision_2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fueuu"]
 resource_local_to_scene = true
 size = Vector2(27, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2mg7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du8u1"]
 resource_local_to_scene = true
 size = Vector2(79, 28)
 
-[sub_resource type="Resource" id="Resource_rdomc"]
+[sub_resource type="Resource" id="Resource_u5hr0"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vooi1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqsj3"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcdnx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwh4j"]
 resource_local_to_scene = true
 size = Vector2(85, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycmqw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st8t7"]
 resource_local_to_scene = true
 size = Vector2(85, 28)
 
-[sub_resource type="Resource" id="Resource_6aupy"]
+[sub_resource type="Resource" id="Resource_3x8wp"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ip4n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmpef"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w6ch"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq3k0"]
 resource_local_to_scene = true
 size = Vector2(4, 74)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b28ej"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etb8j"]
 resource_local_to_scene = true
 size = Vector2(4, 74)
 
-[sub_resource type="Resource" id="Resource_whqsj"]
+[sub_resource type="Resource" id="Resource_ttave"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1ytb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3s0bf"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vupci"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f45n3"]
 resource_local_to_scene = true
 size = Vector2(4, 54)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1x6n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owcii"]
 resource_local_to_scene = true
 size = Vector2(4, 54)
 
-[sub_resource type="Resource" id="Resource_g246s"]
+[sub_resource type="Resource" id="Resource_kta8k"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tejt2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oksho"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmm5o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnwwr"]
 resource_local_to_scene = true
 size = Vector2(4, 88)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xlhv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqhun"]
 resource_local_to_scene = true
 size = Vector2(4, 88)
 
-[sub_resource type="Resource" id="Resource_nmww7"]
+[sub_resource type="Resource" id="Resource_3qwvl"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_feh80"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65033"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8i4i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsq81"]
 resource_local_to_scene = true
 size = Vector2(4, 88)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvcam"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g0rb"]
 resource_local_to_scene = true
 size = Vector2(4, 88)
 
-[sub_resource type="Resource" id="Resource_xmxyi"]
+[sub_resource type="Resource" id="Resource_dk01f"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kk6u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgxwq"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpw0r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd27t"]
 resource_local_to_scene = true
 size = Vector2(4, 67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_br1l2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0wgm"]
 resource_local_to_scene = true
 size = Vector2(4, 67)
 
-[sub_resource type="Resource" id="Resource_djg8d"]
+[sub_resource type="Resource" id="Resource_v8lm0"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8uui"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5c21"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnwqr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nbn4"]
 resource_local_to_scene = true
 size = Vector2(4, 74)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrqx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdnaj"]
 resource_local_to_scene = true
 size = Vector2(4, 74)
 
-[sub_resource type="Resource" id="Resource_l3aa1"]
+[sub_resource type="Resource" id="Resource_emnbv"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rx6t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k20go"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw56u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovpe7"]
 resource_local_to_scene = true
 size = Vector2(4, 75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1v57"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42nyo"]
 resource_local_to_scene = true
 size = Vector2(4, 75)
 
-[sub_resource type="Resource" id="Resource_q4mm1"]
+[sub_resource type="Resource" id="Resource_a17j8"]
 resource_local_to_scene = true
-script = ExtResource("5_5ivws")
+script = ExtResource("6_qahig")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tggrd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2o7j"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("26_y66ep")
-shader_parameter/wood_color = Color(0.682353, 0.490196, 0.27451, 1)
-shader_parameter/paint_color = Color(0.490196, 0.588235, 0.403922, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("29_i6g2x")
+shader_parameter/wood_color = null
+shader_parameter/paint_color = null
+shader_parameter/fabric_color = null
 shader_parameter/plaster_color = Color(0.8666667, 0.8039216, 0.67058825, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
 shader_parameter/opening_a = Vector4(0, 0, 0, 0)
 shader_parameter/opening_b = Vector4(0, 0, 0, 0)
 shader_parameter/opening_c = Vector4(0, 0, 0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt81h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8ey4"]
 resource_local_to_scene = true
 size = Vector2(4, 67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytg30"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g2sg"]
 resource_local_to_scene = true
 size = Vector2(4, 67)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_evg0v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2xi7"]
 resource_local_to_scene = true
-shader = ExtResource("6_5q8ms")
-shader_parameter/material_mask = ExtResource("30_k2wht")
+shader = ExtResource("7_5h365")
+shader_parameter/material_mask = ExtResource("36_5nswi")
 shader_parameter/wood_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
 shader_parameter/paint_color = Color(0.68235296, 0.49019608, 0.27450982, 1)
-shader_parameter/fabric_color = Color(0.631373, 0.415686, 0.454902, 1)
-shader_parameter/plaster_color = Color(0.866667, 0.803922, 0.670588, 1)
-shader_parameter/stone_color = Color(0.705882, 0.666667, 0.541176, 1)
-shader_parameter/roof_color = Color(0.721569, 0.462745, 0.305882, 1)
-shader_parameter/opening_a = Vector4(0, 0, 0, 0)
-shader_parameter/opening_b = Vector4(0, 0, 0, 0)
-shader_parameter/opening_c = Vector4(0, 0, 0, 0)
+shader_parameter/fabric_color = null
+shader_parameter/plaster_color = null
+shader_parameter/stone_color = null
+shader_parameter/roof_color = null
+shader_parameter/opening_a = null
+shader_parameter/opening_b = null
+shader_parameter/opening_c = null
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1suwo"]
+[sub_resource type="RectangleShape2D" id="reach"]
+size = Vector2(28, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bkto"]
 resource_local_to_scene = true
 size = Vector2(24, 4)
 
-[sub_resource type="RectangleShape2D" id="bounds_Top"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeu45"]
 resource_local_to_scene = true
 size = Vector2(336, 16)
 
-[sub_resource type="RectangleShape2D" id="bounds_Bottom"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs4lr"]
 resource_local_to_scene = true
 size = Vector2(336, 16)
 
-[sub_resource type="RectangleShape2D" id="bounds_Left"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6qd1"]
 resource_local_to_scene = true
 size = Vector2(16, 296)
 
-[sub_resource type="RectangleShape2D" id="bounds_Right"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybhma"]
 resource_local_to_scene = true
 size = Vector2(16, 296)
 
 [sub_resource type="RectangleShape2D" id="exit_seal"]
 size = Vector2(24, 4)
 
-[node name="Layout4_C" type="Node2D" unique_id=101204506]
+[node name="Layout4C" type="Node2D" unique_id=1490465878]
 y_sort_enabled = true
 script = ExtResource("layout")
-default_size = Vector2(256, 216)
 door_variants = ExtResource("door_variants")
-minimum_size = Vector2(256, 216)
 
-[node name="Rooms" type="Node2D" parent="." unique_id=1318366623]
+[node name="Rooms" type="Node2D" parent="." unique_id=1209310773]
 y_sort_enabled = true
 
-[node name="Kitchen" parent="Rooms" unique_id=1579414344 instance=ExtResource("room")]
-room_id = &"Kitchen"
-style_variants = ExtResource("variants_kitchen")
-style = SubResource("Resource_e5epw")
+[node name="Study" parent="Rooms" unique_id=1620493532 instance=ExtResource("room")]
+y_sort_enabled = true
+script = ExtResource("4_k4ga2")
+room_id = &"Study"
+style_variants = ExtResource("variants_living")
+style = SubResource("Resource_wy1tm")
 
-[node name="Floor" parent="Rooms/Kitchen" index="0"]
+[node name="Floor" parent="Rooms/Study" index="0"]
+z_index = -10
 texture_filter = 1
-material = SubResource("ShaderMaterial_js3ku")
-texture = ExtResource("8_psr0h")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_j5lpj")
+texture = ExtResource("9_j2cg4")
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 74, 0, 74)
 
-[node name="KitchenRun" type="Node2D" parent="Rooms/Kitchen/Placements" index="0" unique_id=1565040152]
+[node name="Placements" parent="Rooms/Study" index="1"]
+y_sort_enabled = true
+
+[node name="Workplace" type="Node2D" parent="Rooms/Study/Placements" index="0" unique_id=840531098]
 y_sort_enabled = true
 script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
+selected_variant = &"TopLeftCorner"
+
+[node name="TopLeftCorner" type="Node2D" parent="Rooms/Study/Placements/Workplace" unique_id=1211639860]
+y_sort_enabled = true
+position = Vector2(44, 24)
+script = ExtResource("point")
+
+[node name="Furniture" type="Node2D" parent="Rooms/Study/Placements/Workplace/TopLeftCorner" unique_id=1185293884 instance=ExtResource("set_workplace")]
+y_sort_enabled = true
+script = ExtResource("14_4p7fy")
+style = SubResource("Resource_i7nri")
+
+[node name="Library" type="Node2D" parent="Rooms/Study/Placements" index="1" unique_id=1906190000]
+y_sort_enabled = true
+script = ExtResource("group")
+style_variants = ExtResource("reading_styles")
 selected_variant = &"TopRightCorner"
 
-[node name="TopRightCorner" type="Node2D" parent="Rooms/Kitchen/Placements/KitchenRun" unique_id=1089618737]
+[node name="TopRightCorner" type="Node2D" parent="Rooms/Study/Placements/Library" unique_id=1980890591]
 y_sort_enabled = true
-position = Vector2(184, 16)
+position = Vector2(204, 28)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/Kitchen/Placements/KitchenRun/TopRightCorner" unique_id=1921294659 instance=ExtResource("set_kitchen_run")]
-style = SubResource("Resource_k036p")
+[node name="Furniture" type="Node2D" parent="Rooms/Study/Placements/Library/TopRightCorner" unique_id=110681739 instance=ExtResource("set_reading_corner")]
+y_sort_enabled = true
+script = ExtResource("18_ew3u6")
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("Rug"): false
+})
+style = SubResource("Resource_w0st2")
 
-[node name="DiningArea" type="Node2D" parent="Rooms/Kitchen/Placements" index="1" unique_id=757678948]
+[node name="Center" type="Node2D" parent="Rooms/Study/Placements/Library" unique_id=292358530]
+process_mode = 4
+visible = false
+y_sort_enabled = true
+position = Vector2(110, 26)
+script = ExtResource("point")
+
+[node name="Furniture" type="Node2D" parent="Rooms/Study/Placements/Library/Center" unique_id=380651592 instance=ExtResource("set_reading_corner")]
+y_sort_enabled = true
+script = ExtResource("18_ew3u6")
+included_pieces = Dictionary[NodePath, bool]({
+NodePath("Rug"): false
+})
+style = SubResource("Resource_daacn")
+
+[node name="DresserArea" type="Node2D" parent="Rooms/Study/Placements" index="2" unique_id=1192222969]
 y_sort_enabled = true
 script = ExtResource("group")
-style_variants = ExtResource("furniture_styles")
-selected_variant = &"Center"
+style_variants = ExtResource("dresser_styles")
+selected_variant = &"TopCenter"
 
-[node name="Center" type="Node2D" parent="Rooms/Kitchen/Placements/DiningArea" unique_id=1048899503]
+[node name="TopCenter" type="Node2D" parent="Rooms/Study/Placements/DresserArea" unique_id=960695737]
 y_sort_enabled = true
-position = Vector2(104, 30)
+position = Vector2(156, 12)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/Kitchen/Placements/DiningArea/Center" unique_id=1215801649 instance=ExtResource("set_dining_area")]
-included_pieces = Dictionary[NodePath, bool]({
-NodePath("LeftChair"): true,
-NodePath("FrontChair"): false
-})
-style = SubResource("Resource_7itjt")
+[node name="Furniture" type="Node2D" parent="Rooms/Study/Placements/DresserArea/TopCenter" unique_id=1578293698 instance=ExtResource("set_dresser_area")]
+y_sort_enabled = true
+script = ExtResource("21_usdg6")
+style = SubResource("Resource_xnrpx")
 
-[node name="Bedroom" parent="Rooms" unique_id=1260448841 instance=ExtResource("room")]
+[node name="Bedroom" parent="Rooms" unique_id=1738478842 instance=ExtResource("room")]
+y_sort_enabled = true
 position = Vector2(0, 128)
+script = ExtResource("4_k4ga2")
 room_id = &"Bedroom"
 style_variants = ExtResource("variants_bedroom")
-style = SubResource("Resource_dbma5")
+style = SubResource("Resource_rsg73")
 
 [node name="Floor" parent="Rooms/Bedroom" index="0"]
+z_index = -10
 texture_filter = 1
-material = SubResource("ShaderMaterial_q1aej")
-texture = ExtResource("8_psr0h")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1h72a")
+texture = ExtResource("9_j2cg4")
 polygon = PackedVector2Array(0, 0, 92, 0, 92, 88, 0, 88)
 
-[node name="SleepingArea" type="Node2D" parent="Rooms/Bedroom/Placements" index="0" unique_id=161469340]
+[node name="Placements" parent="Rooms/Bedroom" index="1"]
+y_sort_enabled = true
+
+[node name="SleepingArea" type="Node2D" parent="Rooms/Bedroom/Placements" index="0" unique_id=1222654979]
 y_sort_enabled = true
 script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=113138425]
+[node name="Center" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=1305819513]
 y_sort_enabled = true
 position = Vector2(46, 70)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/Bedroom/Placements/SleepingArea/Center" unique_id=1613979810 instance=ExtResource("set_sleeping_area")]
+[node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/Center" unique_id=1891072644 instance=ExtResource("set_sleeping_area")]
+y_sort_enabled = true
+script = ExtResource("14_4p7fy")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Wardrobe"): false,
 NodePath("Landscape"): false,
 NodePath("StorageChest"): false
 })
-style = SubResource("Resource_exuau")
+style = SubResource("Resource_w3ku1")
 
-[node name="ServingArea" type="Node2D" parent="Rooms/Kitchen/Placements" unique_id=1222406036]
+[node name="SecondBedroom" parent="Rooms" unique_id=367267652 instance=ExtResource("room")]
 y_sort_enabled = true
-script = ExtResource("group")
-style_variants = ExtResource("furniture_styles")
-selected_variant = &"TopLeftCorner"
-
-[node name="TopLeftCorner" type="Node2D" parent="Rooms/Kitchen/Placements/ServingArea" unique_id=1788366166]
-y_sort_enabled = true
-position = Vector2(16, 14)
-script = ExtResource("point")
-
-[node name="Furniture" parent="Rooms/Kitchen/Placements/ServingArea/TopLeftCorner" unique_id=1746470411 instance=ExtResource("set_serving_area")]
-
-[node name="SecondBedroom" parent="Rooms" unique_id=1616221512 instance=ExtResource("room")]
 position = Vector2(171, 149)
+script = ExtResource("4_k4ga2")
 room_id = &"SecondBedroom"
 style_variants = ExtResource("variants_second")
-style = SubResource("Resource_2wqy4")
+style = SubResource("Resource_t583p")
 
 [node name="Floor" parent="Rooms/SecondBedroom" index="0"]
+z_index = -10
 texture_filter = 1
-material = SubResource("ShaderMaterial_qtxyy")
-texture = ExtResource("8_psr0h")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pgy7c")
+texture = ExtResource("9_j2cg4")
 polygon = PackedVector2Array(0, 0, 85, 0, 85, 67, 0, 67)
 
-[node name="SleepingArea" type="Node2D" parent="Rooms/SecondBedroom/Placements" index="0" unique_id=1909787129]
+[node name="Placements" parent="Rooms/SecondBedroom" index="1"]
+y_sort_enabled = true
+
+[node name="SleepingArea" type="Node2D" parent="Rooms/SecondBedroom/Placements" index="0" unique_id=1081633705]
 y_sort_enabled = true
 script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea" unique_id=1891972676]
+[node name="Center" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea" unique_id=1350975860]
 y_sort_enabled = true
 position = Vector2(42, 50)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/SecondBedroom/Placements/SleepingArea/Center" unique_id=1909564636 instance=ExtResource("set_sleeping_area")]
+[node name="Furniture" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea/Center" unique_id=227749212 instance=ExtResource("set_sleeping_area")]
+y_sort_enabled = true
+script = ExtResource("14_4p7fy")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Wardrobe"): false,
 NodePath("Landscape"): false,
 NodePath("StorageChest"): false
 })
-style = SubResource("Resource_cvayi")
+style = SubResource("Resource_eokk3")
 
-[node name="LivingRoom" parent="Rooms" unique_id=660720134 instance=ExtResource("room")]
+[node name="LivingRoom" parent="Rooms" unique_id=147890624 instance=ExtResource("room")]
+y_sort_enabled = true
 position = Vector2(0, 74)
+script = ExtResource("4_k4ga2")
 style_variants = ExtResource("variants_living")
-style = SubResource("Resource_v08t3")
+style = SubResource("Resource_o34je")
 
 [node name="Floor" parent="Rooms/LivingRoom" index="0"]
+z_index = -10
 texture_filter = 1
-material = SubResource("ShaderMaterial_mumow")
-texture = ExtResource("8_psr0h")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_fx6rx")
+texture = ExtResource("9_j2cg4")
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 75, 171, 75, 171, 142, 92, 142, 92, 54, 0, 54)
 
-[node name="Workplace" type="Node2D" parent="Rooms/LivingRoom/Placements" index="0" unique_id=787442126]
+[node name="Placements" parent="Rooms/LivingRoom" index="1"]
 y_sort_enabled = true
-script = ExtResource("group")
-style_variants = ExtResource("furniture_styles")
-selected_variant = &"TopLeftCorner"
 
-[node name="TopLeftCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace" unique_id=596729404]
-y_sort_enabled = true
-position = Vector2(20, 20)
-script = ExtResource("point")
-
-[node name="Furniture" parent="Rooms/LivingRoom/Placements/Workplace/TopLeftCorner" unique_id=1613728676 instance=ExtResource("set_workplace")]
-position = Vector2(0, -11)
-style = SubResource("Resource_trqy6")
-
-[node name="TopRightCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace" unique_id=956457038]
-process_mode = 4
-visible = false
-y_sort_enabled = true
-position = Vector2(228, 20)
-script = ExtResource("point")
-
-[node name="Furniture" parent="Rooms/LivingRoom/Placements/Workplace/TopRightCorner" unique_id=1302428108 instance=ExtResource("set_workplace")]
-style = SubResource("Resource_8hdja")
-
-[node name="SittingArea" type="Node2D" parent="Rooms/LivingRoom/Placements" index="1" unique_id=1723414640]
+[node name="SittingArea" type="Node2D" parent="Rooms/LivingRoom/Placements" index="0" unique_id=969664208]
 y_sort_enabled = true
 script = ExtResource("group")
 style_variants = ExtResource("furniture_styles")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=1304704876]
+[node name="Center" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=303214033]
 y_sort_enabled = true
-position = Vector2(118, 64)
+position = Vector2(140, 12)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/LivingRoom/Placements/SittingArea/Center" unique_id=568066707 instance=ExtResource("set_sitting_area")]
-position = Vector2(0, 12)
+[node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/Center" unique_id=93689373 instance=ExtResource("set_sitting_area")]
+y_sort_enabled = true
+script = ExtResource("14_4p7fy")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Rug"): false
 })
-style = SubResource("Resource_x3pem")
+style = SubResource("Resource_3rd23")
 
-[node name="ReadingCorner" type="Node2D" parent="Rooms/LivingRoom/Placements" index="2" unique_id=237082856]
+[node name="ServingArea" type="Node2D" parent="Rooms/LivingRoom/Placements" index="1" unique_id=2136778291]
 y_sort_enabled = true
 script = ExtResource("group")
-style_variants = ExtResource("reading_styles")
+style_variants = ExtResource("furniture_styles")
 selected_variant = &"TopLeftCorner"
 
-[node name="TopLeftCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/ReadingCorner" unique_id=1558794850]
+[node name="TopLeftCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/ServingArea" unique_id=287884705]
 y_sort_enabled = true
-position = Vector2(64, 28)
+position = Vector2(20, 16)
 script = ExtResource("point")
 
-[node name="Furniture" parent="Rooms/LivingRoom/Placements/ReadingCorner/TopLeftCorner" unique_id=1577742079 instance=ExtResource("set_reading_corner")]
-position = Vector2(0, -14)
+[node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/ServingArea/TopLeftCorner" unique_id=602443422 instance=ExtResource("set_serving_area")]
+y_sort_enabled = true
+script = ExtResource("14_4p7fy")
 included_pieces = Dictionary[NodePath, bool]({
-NodePath("Rug"): false
+NodePath("Sideboard/Flowers"): true,
+NodePath("Shelf"): true,
+NodePath("Cart"): false,
+NodePath("Clock"): false
 })
-style = SubResource("Resource_6ktfi")
+style = SubResource("Resource_2p67c")
 
-[node name="Walls" type="Node2D" parent="." unique_id=1332229307]
+[node name="Walls" type="Node2D" parent="." unique_id=1804444161]
 y_sort_enabled = true
 
-[node name="KitchenBackWall" parent="Walls" unique_id=1710550984 instance=ExtResource("wall")]
-room_id = &"Kitchen"
+[node name="StudyBackWall" parent="Walls" unique_id=1609721653 instance=ExtResource("wall")]
+script = ExtResource("28_f5514")
+room_id = &"Study"
 length = 256.0
-style = SubResource("Resource_2t8mi")
+style = SubResource("Resource_n2j5k")
 
-[node name="Sprite" parent="Walls/KitchenBackWall" index="0"]
+[node name="Sprite" parent="Walls/StudyBackWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_0qk6q")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jaknm")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 256, 32)
 
-[node name="Collision" parent="Walls/KitchenBackWall/Collisions" index="0"]
+[node name="Collision" parent="Walls/StudyBackWall/Collisions" index="0"]
 position = Vector2(128, 0)
-shape = SubResource("RectangleShape2D_71j3l")
+shape = SubResource("RectangleShape2D_j8s6r")
 
-[node name="TransparencyArea" parent="Walls/KitchenBackWall" index="2"]
+[node name="TransparencyArea" parent="Walls/StudyBackWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(128, -18)
-shape = SubResource("RectangleShape2D_j84qt")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_pbf50")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="KitchenPartition" parent="Walls" unique_id=17786331 instance=ExtResource("wall")]
+[node name="StudyPartition" parent="Walls" unique_id=876592858 instance=ExtResource("wall")]
 position = Vector2(0, 74)
+script = ExtResource("28_f5514")
 length = 256.0
-openings = Array[float]([128.0])
-style = SubResource("Resource_23il8")
+openings = Array[float]([64.0])
+style = SubResource("Resource_f2t7r")
 
-[node name="Sprite" parent="Walls/KitchenPartition" index="0"]
+[node name="Sprite" parent="Walls/StudyPartition" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_cj1ao")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yhw3j")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 256, 32)
 
-[node name="Collision" parent="Walls/KitchenPartition/Collisions" index="0"]
-position = Vector2(58, 0)
-shape = SubResource("RectangleShape2D_0pggw")
+[node name="Collision" parent="Walls/StudyPartition/Collisions" index="0"]
+position = Vector2(26, 0)
+shape = SubResource("RectangleShape2D_da4mm")
 
-[node name="Segment2" type="CollisionShape2D" parent="Walls/KitchenPartition/Collisions" index="1" unique_id=1485000091]
-position = Vector2(198, 0)
-shape = SubResource("KitchenPartition_collision_2")
+[node name="Segment2" type="CollisionShape2D" parent="Walls/StudyPartition/Collisions" index="1" unique_id=1242847810]
+position = Vector2(166, 0)
+shape = SubResource("RectangleShape2D_2ticj")
 
-[node name="TransparencyArea" parent="Walls/KitchenPartition" index="2"]
+[node name="TransparencyArea" parent="Walls/StudyPartition" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(128, -18)
-shape = SubResource("RectangleShape2D_6sd0r")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_swrfc")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="BedroomPartition" parent="Walls" unique_id=458466736 instance=ExtResource("wall")]
+[node name="BedroomPartition" parent="Walls" unique_id=1728126255 instance=ExtResource("wall")]
 position = Vector2(0, 128)
+script = ExtResource("28_f5514")
 room_id = &"Bedroom"
 length = 92.0
 openings = Array[float]([46.0])
-style = SubResource("Resource_acviu")
+style = SubResource("Resource_jr2ck")
 
 [node name="Sprite" parent="Walls/BedroomPartition" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_chxp8")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_tnd0t")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 92, 32)
 
 [node name="Collision" parent="Walls/BedroomPartition/Collisions" index="0"]
 position = Vector2(17, 0)
-shape = SubResource("RectangleShape2D_8pby2")
+shape = SubResource("RectangleShape2D_vibta")
 
-[node name="Segment2" type="CollisionShape2D" parent="Walls/BedroomPartition/Collisions" index="1" unique_id=1698493813]
+[node name="Segment2" type="CollisionShape2D" parent="Walls/BedroomPartition/Collisions" index="1" unique_id=934779882]
 position = Vector2(75, 0)
-shape = SubResource("BedroomPartition_collision_2")
+shape = SubResource("RectangleShape2D_2lf3q")
 
-[node name="TransparencyArea" parent="Walls/BedroomPartition" index="2"]
+[node name="TransparencyArea" parent="Walls/BedroomPartition" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(46, -18)
-shape = SubResource("RectangleShape2D_xekst")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_cavo6")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="SecondBedroomPartition" parent="Walls" unique_id=47917752 instance=ExtResource("wall")]
+[node name="SecondBedroomPartition" parent="Walls" unique_id=848003066 instance=ExtResource("wall")]
 position = Vector2(171, 149)
+script = ExtResource("28_f5514")
 room_id = &"SecondBedroom"
 length = 85.0
 openings = Array[float]([42.0])
-style = SubResource("Resource_fqy6g")
+style = SubResource("Resource_aosc3")
 
 [node name="Sprite" parent="Walls/SecondBedroomPartition" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_iha77")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gjina")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 85, 32)
 
 [node name="Collision" parent="Walls/SecondBedroomPartition/Collisions" index="0"]
 position = Vector2(15, 0)
-shape = SubResource("RectangleShape2D_4usmc")
+shape = SubResource("RectangleShape2D_wdaxg")
 
-[node name="Segment2" type="CollisionShape2D" parent="Walls/SecondBedroomPartition/Collisions" index="1" unique_id=1321400357]
+[node name="Segment2" type="CollisionShape2D" parent="Walls/SecondBedroomPartition/Collisions" index="1" unique_id=1153249799]
 position = Vector2(69.5, 0)
-shape = SubResource("SecondBedroomPartition_collision_2")
+shape = SubResource("RectangleShape2D_btykv")
 
-[node name="TransparencyArea" parent="Walls/SecondBedroomPartition" index="2"]
+[node name="TransparencyArea" parent="Walls/SecondBedroomPartition" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(42.5, -18)
-shape = SubResource("RectangleShape2D_qwdnl")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_ftqag")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="BedroomFrontWall" parent="Walls" unique_id=521463712 instance=ExtResource("wall")]
+[node name="BedroomFrontWall" parent="Walls" unique_id=1373536372 instance=ExtResource("wall")]
 modulate = Color(1, 1, 1, 0.1)
 position = Vector2(0, 216)
+script = ExtResource("28_f5514")
 room_id = &"Bedroom"
 length = 92.0
-style = SubResource("Resource_4wkjf")
+style = SubResource("Resource_sa7ij")
 static_alpha = 0.1
 
 [node name="Sprite" parent="Walls/BedroomFrontWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_7pjry")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_48jp8")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 92, 32)
 
 [node name="Collision" parent="Walls/BedroomFrontWall/Collisions" index="0"]
 position = Vector2(46, 0)
-shape = SubResource("RectangleShape2D_53xhe")
+shape = SubResource("RectangleShape2D_j03ko")
 
-[node name="TransparencyArea" parent="Walls/BedroomFrontWall" index="2"]
+[node name="TransparencyArea" parent="Walls/BedroomFrontWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(46, -18)
-shape = SubResource("RectangleShape2D_6lh7t")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_8cvam")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 enabled = false
 
-[node name="FrontWall" parent="Walls" unique_id=269475293 instance=ExtResource("wall")]
+[node name="FrontWall" parent="Walls" unique_id=627543540 instance=ExtResource("wall")]
 modulate = Color(1, 1, 1, 0.1)
 position = Vector2(92, 216)
+script = ExtResource("28_f5514")
 length = 79.0
 openings = Array[float]([40.0])
-style = SubResource("Resource_o0o45")
+style = SubResource("Resource_ldhgn")
 static_alpha = 0.1
 
 [node name="Sprite" parent="Walls/FrontWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_wa7b7")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_exhhp")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 79, 32)
 
 [node name="Collision" parent="Walls/FrontWall/Collisions" index="0"]
 position = Vector2(14, 0)
-shape = SubResource("RectangleShape2D_ja72j")
+shape = SubResource("RectangleShape2D_uvgie")
 
-[node name="Segment2" type="CollisionShape2D" parent="Walls/FrontWall/Collisions" index="1" unique_id=1950791164]
+[node name="Segment2" type="CollisionShape2D" parent="Walls/FrontWall/Collisions" index="1" unique_id=51184957]
 position = Vector2(65.5, 0)
-shape = SubResource("FrontWall_collision_2")
+shape = SubResource("RectangleShape2D_fueuu")
 
-[node name="TransparencyArea" parent="Walls/FrontWall" index="2"]
+[node name="TransparencyArea" parent="Walls/FrontWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(39.5, -18)
-shape = SubResource("RectangleShape2D_p2mg7")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_du8u1")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 enabled = false
 
-[node name="SecondBedroomFrontWall" parent="Walls" unique_id=1023088895 instance=ExtResource("wall")]
+[node name="SecondBedroomFrontWall" parent="Walls" unique_id=403961296 instance=ExtResource("wall")]
 modulate = Color(1, 1, 1, 0.1)
 position = Vector2(171, 216)
+script = ExtResource("28_f5514")
 room_id = &"SecondBedroom"
 length = 85.0
-style = SubResource("Resource_rdomc")
+style = SubResource("Resource_u5hr0")
 static_alpha = 0.1
 
 [node name="Sprite" parent="Walls/SecondBedroomFrontWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vooi1")
-texture = ExtResource("27_hj1ld")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gqsj3")
+position = Vector2(0, -32)
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 85, 32)
 
 [node name="Collision" parent="Walls/SecondBedroomFrontWall/Collisions" index="0"]
 position = Vector2(42.5, 0)
-shape = SubResource("RectangleShape2D_dcdnx")
+shape = SubResource("RectangleShape2D_xwh4j")
 
-[node name="TransparencyArea" parent="Walls/SecondBedroomFrontWall" index="2"]
+[node name="TransparencyArea" parent="Walls/SecondBedroomFrontWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(42.5, -18)
-shape = SubResource("RectangleShape2D_ycmqw")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_st8t7")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 enabled = false
 
-[node name="LeftKitchenWall" parent="Walls" unique_id=1532426116 instance=ExtResource("wall")]
-room_id = &"Kitchen"
+[node name="LeftStudyWall" parent="Walls" unique_id=1725415038 instance=ExtResource("wall")]
+script = ExtResource("28_f5514")
+room_id = &"Study"
 length = 74.0
 vertical = true
-style = SubResource("Resource_6aupy")
+style = SubResource("Resource_3x8wp")
 
-[node name="Sprite" parent="Walls/LeftKitchenWall" index="0"]
+[node name="Sprite" parent="Walls/LeftStudyWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4ip4n")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bmpef")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 106)
 
-[node name="Collision" parent="Walls/LeftKitchenWall/Collisions" index="0"]
+[node name="Collision" parent="Walls/LeftStudyWall/Collisions" index="0"]
 position = Vector2(0, 37)
-shape = SubResource("RectangleShape2D_1w6ch")
+shape = SubResource("RectangleShape2D_mq3k0")
 
-[node name="TransparencyArea" parent="Walls/LeftKitchenWall" index="2"]
+[node name="TransparencyArea" parent="Walls/LeftStudyWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 37)
-shape = SubResource("RectangleShape2D_b28ej")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_etb8j")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="LeftLivingRoomWall" parent="Walls" unique_id=1774599696 instance=ExtResource("wall")]
+[node name="LeftLivingRoomWall" parent="Walls" unique_id=535607850 instance=ExtResource("wall")]
 position = Vector2(0, 74)
+script = ExtResource("28_f5514")
 length = 54.0
 vertical = true
-style = SubResource("Resource_whqsj")
+style = SubResource("Resource_ttave")
 
 [node name="Sprite" parent="Walls/LeftLivingRoomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_j1ytb")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3s0bf")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 86)
 
 [node name="Collision" parent="Walls/LeftLivingRoomWall/Collisions" index="0"]
 position = Vector2(0, 27)
-shape = SubResource("RectangleShape2D_vupci")
+shape = SubResource("RectangleShape2D_f45n3")
 
-[node name="TransparencyArea" parent="Walls/LeftLivingRoomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/LeftLivingRoomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 27)
-shape = SubResource("RectangleShape2D_k1x6n")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_owcii")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="LeftBedroomWall" parent="Walls" unique_id=476255648 instance=ExtResource("wall")]
+[node name="LeftBedroomWall" parent="Walls" unique_id=1030493294 instance=ExtResource("wall")]
 position = Vector2(0, 128)
+script = ExtResource("28_f5514")
 room_id = &"Bedroom"
 length = 88.0
 vertical = true
-style = SubResource("Resource_g246s")
+style = SubResource("Resource_kta8k")
 
 [node name="Sprite" parent="Walls/LeftBedroomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_tejt2")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_oksho")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 120)
 
 [node name="Collision" parent="Walls/LeftBedroomWall/Collisions" index="0"]
 position = Vector2(0, 44)
-shape = SubResource("RectangleShape2D_dmm5o")
+shape = SubResource("RectangleShape2D_mnwwr")
 
-[node name="TransparencyArea" parent="Walls/LeftBedroomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/LeftBedroomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 44)
-shape = SubResource("RectangleShape2D_3xlhv")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_mqhun")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="BedroomLivingRoomWall" parent="Walls" unique_id=491174508 instance=ExtResource("wall")]
+[node name="BedroomLivingRoomWall" parent="Walls" unique_id=1066937479 instance=ExtResource("wall")]
 position = Vector2(92, 128)
+script = ExtResource("28_f5514")
 length = 88.0
 vertical = true
-style = SubResource("Resource_nmww7")
+style = SubResource("Resource_3qwvl")
 
 [node name="Sprite" parent="Walls/BedroomLivingRoomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_feh80")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_65033")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 120)
 
 [node name="Collision" parent="Walls/BedroomLivingRoomWall/Collisions" index="0"]
 position = Vector2(0, 44)
-shape = SubResource("RectangleShape2D_r8i4i")
+shape = SubResource("RectangleShape2D_jsq81")
 
-[node name="TransparencyArea" parent="Walls/BedroomLivingRoomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/BedroomLivingRoomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 44)
-shape = SubResource("RectangleShape2D_jvcam")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_5g0rb")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="LivingRoomSecondBedroomWall" parent="Walls" unique_id=1044022133 instance=ExtResource("wall")]
+[node name="LivingRoomSecondBedroomWall" parent="Walls" unique_id=1561579617 instance=ExtResource("wall")]
 position = Vector2(171, 149)
+script = ExtResource("28_f5514")
 room_id = &"SecondBedroom"
 length = 67.0
 vertical = true
-style = SubResource("Resource_xmxyi")
+style = SubResource("Resource_dk01f")
 
 [node name="Sprite" parent="Walls/LivingRoomSecondBedroomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_7kk6u")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_fgxwq")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 99)
 
 [node name="Collision" parent="Walls/LivingRoomSecondBedroomWall/Collisions" index="0"]
 position = Vector2(0, 33.5)
-shape = SubResource("RectangleShape2D_cpw0r")
+shape = SubResource("RectangleShape2D_bd27t")
 
-[node name="TransparencyArea" parent="Walls/LivingRoomSecondBedroomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/LivingRoomSecondBedroomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 33.5)
-shape = SubResource("RectangleShape2D_br1l2")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_u0wgm")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="RightKitchenWall" parent="Walls" unique_id=29120079 instance=ExtResource("wall")]
+[node name="RightStudyWall" parent="Walls" unique_id=2090948111 instance=ExtResource("wall")]
 position = Vector2(256, 0)
-room_id = &"Kitchen"
+script = ExtResource("28_f5514")
+room_id = &"Study"
 length = 74.0
 vertical = true
-style = SubResource("Resource_djg8d")
+style = SubResource("Resource_v8lm0")
 
-[node name="Sprite" parent="Walls/RightKitchenWall" index="0"]
+[node name="Sprite" parent="Walls/RightStudyWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_n8uui")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_h5c21")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 106)
 
-[node name="Collision" parent="Walls/RightKitchenWall/Collisions" index="0"]
+[node name="Collision" parent="Walls/RightStudyWall/Collisions" index="0"]
 position = Vector2(0, 37)
-shape = SubResource("RectangleShape2D_gnwqr")
+shape = SubResource("RectangleShape2D_4nbn4")
 
-[node name="TransparencyArea" parent="Walls/RightKitchenWall" index="2"]
+[node name="TransparencyArea" parent="Walls/RightStudyWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 37)
-shape = SubResource("RectangleShape2D_exrqx")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_cdnaj")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="RightLivingRoomWall" parent="Walls" unique_id=1443510338 instance=ExtResource("wall")]
+[node name="RightLivingRoomWall" parent="Walls" unique_id=519143932 instance=ExtResource("wall")]
 position = Vector2(256, 74)
+script = ExtResource("28_f5514")
 length = 75.0
 vertical = true
-style = SubResource("Resource_l3aa1")
+style = SubResource("Resource_emnbv")
 
 [node name="Sprite" parent="Walls/RightLivingRoomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_7rx6t")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_k20go")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 107)
 
 [node name="Collision" parent="Walls/RightLivingRoomWall/Collisions" index="0"]
 position = Vector2(0, 37.5)
-shape = SubResource("RectangleShape2D_hw56u")
+shape = SubResource("RectangleShape2D_ovpe7")
 
-[node name="TransparencyArea" parent="Walls/RightLivingRoomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/RightLivingRoomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 37.5)
-shape = SubResource("RectangleShape2D_p1v57")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_42nyo")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="RightSecondBedroomWall" parent="Walls" unique_id=574222560 instance=ExtResource("wall")]
+[node name="RightSecondBedroomWall" parent="Walls" unique_id=973673345 instance=ExtResource("wall")]
 position = Vector2(256, 149)
+script = ExtResource("28_f5514")
 room_id = &"SecondBedroom"
 length = 67.0
 vertical = true
-style = SubResource("Resource_q4mm1")
+style = SubResource("Resource_a17j8")
 
 [node name="Sprite" parent="Walls/RightSecondBedroomWall" index="0"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_tggrd")
+texture_repeat = 2
+material = SubResource("ShaderMaterial_v2o7j")
 position = Vector2(-2, -32)
-texture = ExtResource("27_hj1ld")
+texture = ExtResource("30_fo2j6")
+centered = false
+region_enabled = true
 region_rect = Rect2(0, 0, 4, 99)
 
 [node name="Collision" parent="Walls/RightSecondBedroomWall/Collisions" index="0"]
 position = Vector2(0, 33.5)
-shape = SubResource("RectangleShape2D_tt81h")
+shape = SubResource("RectangleShape2D_o8ey4")
 
-[node name="TransparencyArea" parent="Walls/RightSecondBedroomWall" index="2"]
+[node name="TransparencyArea" parent="Walls/RightSecondBedroomWall" index="2" node_paths=PackedStringArray("targets")]
 position = Vector2(0, 33.5)
-shape = SubResource("RectangleShape2D_ytg30")
+collision_layer = 0
+monitorable = false
+script = ExtResource("31_pcm2v")
+shape = SubResource("RectangleShape2D_0g2sg")
+targets = [NodePath("../Sprite")]
+inside_alpha = 0.3
 
-[node name="Doors" type="Node2D" parent="." unique_id=964934648]
+[node name="Doors" type="Node2D" parent="." unique_id=1363962005]
 y_sort_enabled = true
 
-[node name="KitchenDoor" parent="Doors" unique_id=1842514351 instance=ExtResource("door")]
-position = Vector2(128, 74)
+[node name="StudyDoor" type="Node2D" parent="Doors" unique_id=465747228 node_paths=PackedStringArray("blockers") instance=ExtResource("door")]
+position = Vector2(64, 74)
+script = ExtResource("33_1g2n8")
+blockers = [NodePath("Blocker/Collision")]
 
-[node name="BedroomDoor" parent="Doors" unique_id=2058370599 instance=ExtResource("door")]
+[node name="BedroomDoor" type="Node2D" parent="Doors" unique_id=2134636687 node_paths=PackedStringArray("blockers") instance=ExtResource("door")]
 position = Vector2(46, 128)
+script = ExtResource("33_1g2n8")
+blockers = [NodePath("Blocker/Collision")]
 
-[node name="SecondBedroomDoor" parent="Doors" unique_id=213211991 instance=ExtResource("door")]
+[node name="SecondBedroomDoor" type="Node2D" parent="Doors" unique_id=996276907 node_paths=PackedStringArray("blockers") instance=ExtResource("door")]
 position = Vector2(213, 149)
+script = ExtResource("33_1g2n8")
+blockers = [NodePath("Blocker/Collision")]
 
-[node name="Exit" parent="." unique_id=114174297 instance=ExtResource("portal")]
+[node name="Exit" parent="." unique_id=763585216 instance=ExtResource("portal")]
 position = Vector2(132, 216)
-metadata/resize_anchor = Vector2(0.513889, 1)
+script = ExtResource("35_ppc3m")
 
 [node name="Sprite" parent="Exit" index="0"]
 texture_filter = 1
 texture_repeat = 1
-material = SubResource("ShaderMaterial_evg0v")
-texture = ExtResource("31_ej44m")
+material = SubResource("ShaderMaterial_t2xi7")
+position = Vector2(-28, -32)
+texture = ExtResource("37_jqexv")
+centered = false
+
+[node name="Collision" parent="Exit/Area" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("reach")
+
+[node name="Arrival" parent="Exit" index="2"]
+position = Vector2(0, -24)
 
 [node name="Collision" parent="Exit/Blocker" index="0"]
-shape = SubResource("RectangleShape2D_1suwo")
+shape = SubResource("RectangleShape2D_6bkto")
 
-[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=630966316]
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1018142852]
 position = Vector2(132, 188)
-metadata/resize_anchor = Vector2(0.513889, 1)
 
-[node name="LevelBounds" type="StaticBody2D" parent="." unique_id=1033557073]
+[node name="LevelBounds" type="StaticBody2D" parent="." unique_id=800304634]
 collision_layer = 8
 collision_mask = 0
 
-[node name="BottomLeft" type="Marker2D" parent="LevelBounds" unique_id=1570520542]
+[node name="BottomLeft" type="Marker2D" parent="LevelBounds" unique_id=277860853]
 position = Vector2(-24, 240)
-metadata/resize_anchor = Vector2(0, 1)
 
-[node name="TopRight" type="Marker2D" parent="LevelBounds" unique_id=1447352216]
+[node name="TopRight" type="Marker2D" parent="LevelBounds" unique_id=1260594304]
 position = Vector2(280, -56)
-metadata/resize_anchor = Vector2(1, 0)
 
-[node name="Top" type="CollisionShape2D" parent="LevelBounds" unique_id=1106106964]
+[node name="Top" type="CollisionShape2D" parent="LevelBounds" unique_id=1103806558]
 position = Vector2(128, -64)
-shape = SubResource("bounds_Top")
-metadata/resize_anchor = Vector2(0.5, 0)
-metadata/resize_axis = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_yeu45")
 
-[node name="Bottom" type="CollisionShape2D" parent="LevelBounds" unique_id=442670138]
+[node name="Bottom" type="CollisionShape2D" parent="LevelBounds" unique_id=1677919523]
 position = Vector2(128, 248)
-shape = SubResource("bounds_Bottom")
-metadata/resize_anchor = Vector2(0.5, 1)
-metadata/resize_axis = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_gs4lr")
 
-[node name="Left" type="CollisionShape2D" parent="LevelBounds" unique_id=649955623]
+[node name="Left" type="CollisionShape2D" parent="LevelBounds" unique_id=361396196]
 position = Vector2(-32, 92)
-shape = SubResource("bounds_Left")
-metadata/resize_anchor = Vector2(0, 0.5)
-metadata/resize_axis = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_g6qd1")
 
-[node name="Right" type="CollisionShape2D" parent="LevelBounds" unique_id=2041182492]
+[node name="Right" type="CollisionShape2D" parent="LevelBounds" unique_id=1728846668]
 position = Vector2(288, 92)
-shape = SubResource("bounds_Right")
-metadata/resize_anchor = Vector2(1, 0.5)
-metadata/resize_axis = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ybhma")
 
-[node name="Transitions" type="Node2D" parent="." unique_id=1802597156]
+[node name="Transitions" type="Node2D" parent="." unique_id=693314212]
 y_sort_enabled = true
-position = Vector2(174, 132)
-metadata/resize_anchor = Vector2(0.6796875, 0.6111111)
+position = Vector2(136, 172)
 
-[node name="StairsUp" parent="Transitions" unique_id=113052569 instance=ExtResource("stairs_up")]
+[node name="StairsUp" type="Node2D" parent="Transitions" unique_id=2097559941 instance=ExtResource("stairs_up")]
 position = Vector2(-14, 0)
+script = ExtResource("39_piyl2")
+arrival_direction = Vector2(0, 1)
 
-[node name="StairsDown" parent="Transitions" unique_id=925276623 instance=ExtResource("stairs_down")]
+[node name="StairsDown" type="Node2D" parent="Transitions" unique_id=15695133 instance=ExtResource("stairs_down")]
 position = Vector2(14, 0)
+script = ExtResource("39_piyl2")
+descending = true
 
-[node name="ExitSeal" type="StaticBody2D" parent="." unique_id=277372675]
+[node name="ExitSeal" type="StaticBody2D" parent="." unique_id=834068217]
 position = Vector2(132, 216)
-metadata/resize_anchor = Vector2(0.5138889, 1)
 
-[node name="Collision" type="CollisionShape2D" parent="ExitSeal" unique_id=577622131]
+[node name="Collision" type="CollisionShape2D" parent="ExitSeal" unique_id=1200753065]
 shape = SubResource("exit_seal")
 
-[editable path="Rooms/Kitchen"]
+[editable path="Rooms/Study"]
 [editable path="Rooms/Bedroom"]
 [editable path="Rooms/SecondBedroom"]
 [editable path="Rooms/LivingRoom"]
-[editable path="Walls/KitchenBackWall"]
-[editable path="Walls/KitchenPartition"]
+[editable path="Walls/StudyBackWall"]
+[editable path="Walls/StudyPartition"]
 [editable path="Walls/BedroomPartition"]
 [editable path="Walls/SecondBedroomPartition"]
 [editable path="Walls/BedroomFrontWall"]
 [editable path="Walls/FrontWall"]
 [editable path="Walls/SecondBedroomFrontWall"]
-[editable path="Walls/LeftKitchenWall"]
+[editable path="Walls/LeftStudyWall"]
 [editable path="Walls/LeftLivingRoomWall"]
 [editable path="Walls/LeftBedroomWall"]
 [editable path="Walls/BedroomLivingRoomWall"]
 [editable path="Walls/LivingRoomSecondBedroomWall"]
-[editable path="Walls/RightKitchenWall"]
+[editable path="Walls/RightStudyWall"]
 [editable path="Walls/RightLivingRoomWall"]
 [editable path="Walls/RightSecondBedroomWall"]
 [editable path="Exit"]

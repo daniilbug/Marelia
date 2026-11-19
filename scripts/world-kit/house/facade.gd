@@ -142,6 +142,7 @@ func _apply_door_style(selected: HouseDoorStyle) -> void:
 func randomize_interior() -> void:
 	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
 		return
+	_ensure_bathroom()
 	for index in _all_indices():
 		if is_instance_valid(get_interior(index)):
 			get_interior(index).randomize()
@@ -199,7 +200,31 @@ func _apply_configuration(data: Dictionary) -> void:
 		floors[index].apply_data(data.floors[index])
 	basement_enabled = data.basement_enabled
 	basement_settings.apply_data(data.basement)
+	_ensure_bathroom()
 	_schedule_refresh()
+
+## A house needs a bathroom on an above-ground floor; the cellar has none.
+func _ensure_bathroom() -> void:
+	if is_inside_tree() and not Engine.is_editor_hint() and not multiplayer.is_server():
+		return
+	basement_settings.bathroom_enabled = false
+	if _has_bathroom():
+		return
+	for settings in floors:
+		if settings.can_enable_bathroom(layouts):
+			settings.bathroom_enabled = true
+			return
+
+func _has_bathroom() -> bool:
+	for settings in floors:
+		if settings.has_bathroom(layouts):
+			return true
+	return false
+
+func _get_configuration_warnings() -> PackedStringArray:
+	if _has_bathroom():
+		return PackedStringArray()
+	return PackedStringArray(["Each house needs a bathroom on an above-ground floor. Include a Bathroom room in an explicit Layout Scene or use a standard residential layout on at least one floor."])
 
 func _schedule_refresh() -> void:
 	if is_node_ready() and not _pending:
@@ -210,6 +235,8 @@ func _refresh() -> void:
 	_pending = false
 	if not is_node_ready():
 		return
+	_ensure_bathroom()
+	update_configuration_warnings()
 	for settings in floors:
 		if not settings.changed.is_connected(_schedule_refresh):
 			settings.changed.connect(_schedule_refresh)
@@ -430,6 +457,7 @@ func apply_save_data(data: Dictionary) -> void:
 		floors[0].kind = HouseInteriorSettings.Kind.WITH_KITCHEN
 		floors[0].apply_data(data.interior)
 		basement_enabled = false
+		_ensure_bathroom()
 
 func prepare_levels_for_restore(levels: Dictionary) -> void:
 	var source := Level.find_level_node(self)

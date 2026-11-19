@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bathtub.tscn" id="bath"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/laundry_basket.tscn" id="basket"]
+
+[node name="BathingArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({NodePath("LaundryBasket"): false})
+
+[node name="Bathtub" parent="." instance=ExtResource("bath")]
+direction = 2
+
+[node name="LaundryBasket" parent="." instance=ExtResource("basket")]
+position = Vector2(38, 0)

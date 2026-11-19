@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/toilet.tscn" id="toilet"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/toilet_paper_holder.tscn" id="paper"]
+
+[node name="ToiletArea" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("group")
+included_pieces = Dictionary[NodePath, bool]({NodePath("PaperHolder"): true})
+
+[node name="Toilet" parent="." instance=ExtResource("toilet")]
+position = Vector2(0, -6)
+
+[node name="PaperHolder" parent="." instance=ExtResource("paper")]
+position = Vector2(6, -20)
+z_index = 1

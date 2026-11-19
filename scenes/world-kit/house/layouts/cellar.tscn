@@ -29,7 +29,6 @@ size = Vector2(16, 288)
 [node name="Cellar" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("script")
-default_size = Vector2(208, 208)
 [node name="Rooms" type="Node2D" parent="."]
 y_sort_enabled = true
 [node name="Cellar" parent="Rooms" instance=ExtResource("room")]
@@ -88,49 +87,35 @@ shape = SubResource("vertical_zone")
 [node name="Doors" type="Node2D" parent="."]
 [node name="Exit" parent="." instance=ExtResource("portal")]
 position = Vector2(104, 208)
-metadata/resize_anchor = Vector2(0.5, 1)
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(104, 180)
-metadata/resize_anchor = Vector2(0.5, 1)
 [node name="LevelBounds" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 0
 [node name="BottomLeft" type="Marker2D" parent="LevelBounds"]
 position = Vector2(-24, 232)
-metadata/resize_anchor = Vector2(0, 1)
 [node name="TopRight" type="Marker2D" parent="LevelBounds"]
 position = Vector2(232, -56)
-metadata/resize_anchor = Vector2(1, 0)
 [node name="Top" type="CollisionShape2D" parent="LevelBounds"]
 position = Vector2(104, -64)
 shape = SubResource("bounds_horizontal")
-metadata/resize_anchor = Vector2(0.5, 0)
-metadata/resize_axis = Vector2(1, 0)
 [node name="Bottom" type="CollisionShape2D" parent="LevelBounds"]
 position = Vector2(104, 240)
 shape = SubResource("bounds_horizontal")
-metadata/resize_anchor = Vector2(0.5, 1)
-metadata/resize_axis = Vector2(1, 0)
 [node name="Left" type="CollisionShape2D" parent="LevelBounds"]
 position = Vector2(-32, 88)
 shape = SubResource("bounds_vertical")
-metadata/resize_anchor = Vector2(0, 0.5)
-metadata/resize_axis = Vector2(0, 1)
 [node name="Right" type="CollisionShape2D" parent="LevelBounds"]
 position = Vector2(240, 88)
 shape = SubResource("bounds_vertical")
-metadata/resize_anchor = Vector2(1, 0.5)
-metadata/resize_axis = Vector2(0, 1)
 [node name="Transitions" type="Node2D" parent="."]
 position = Vector2(160, 170)
 y_sort_enabled = true
-metadata/resize_anchor = Vector2(1, 1)
 [node name="StairsUp" parent="Transitions" instance=ExtResource("up")]
 [node name="StairsDown" parent="Transitions" instance=ExtResource("down")]
 position = Vector2(28, 0)
 [node name="ExitSeal" type="StaticBody2D" parent="."]
 position = Vector2(104, 208)
-metadata/resize_anchor = Vector2(0.5, 1)
 [node name="Collision" type="CollisionShape2D" parent="ExitSeal"]
 shape = SubResource("exit_seal")
 [editable path="Rooms/Cellar"]
