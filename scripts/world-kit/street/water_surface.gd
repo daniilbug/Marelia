@@ -1,0 +1,22 @@
+@tool
+class_name WaterSurface
+extends Area2D
+
+const SWIM_COLLISION_LAYER := 1 << 6
+
+@export var size := Vector2(128, 96):
+	set(value):
+		size = value.round().max(Vector2.ONE)
+		if is_node_ready():
+			_update_size()
+
+@onready var _surface: ColorRect = $Surface
+@onready var _collision: CollisionShape2D = $Collision
+
+func _ready() -> void:
+	_update_size()
+
+func _update_size() -> void:
+	_surface.size = size
+	_collision.position = size / 2.0
+	(_collision.shape as RectangleShape2D).size = size

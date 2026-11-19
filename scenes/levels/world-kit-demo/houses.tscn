@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/core/save/world_save.tscn" id="save"]
 [ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="outside_level"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/facade.tscn" id="outside_facade"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/surfaces/ground_grass.png" id="outside_ground"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/street/sprites/surfaces/ground_cobblestone.png" id="outside_path"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/surface.tscn" id="surface"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/interior_settings.gd" id="outside_config_script"]
 [ext_resource type="Script" path="res://scripts/world-kit/house/room_style.gd" id="outside_style_script"]
 
@@ -114,19 +113,17 @@ position = Vector2(0, 640)
 position = Vector2(768, -240)
 [node name="PlayerSpawn" parent="Outside" index="2"]
 position = Vector2(384, 228)
-[node name="Ground" type="Sprite2D" parent="Outside"]
-z_index = -20
-texture = ExtResource("outside_ground")
-texture_repeat = 2
-centered = false
-region_enabled = true
+[node name="Ground" parent="Outside" instance=ExtResource("surface")]
 position = Vector2(0, -240)
-region_rect = Rect2(0, 0, 768, 880)
+texture_filter = 0
+style = 0
+size = Vector2(768, 880)
 
-[node name="Paths" type="Polygon2D" parent="Outside"]
+[node name="Paths" parent="Outside" instance=ExtResource("surface")]
 z_index = -19
-texture_repeat = 2
-texture = ExtResource("outside_path")
+texture_filter = 0
+style = 2
+use_polygon = true
 polygon = PackedVector2Array(124, 200, 164, 200, 164, 232, 364, 232, 364, 200, 404, 200, 404, 232, 604, 232, 604, 200, 644, 200, 644, 272, 404, 272, 404, 472, 484, 472, 484, 440, 524, 440, 524, 512, 244, 512, 244, 440, 284, 440, 284, 472, 364, 472, 364, 272, 124, 272)
 
 [node name="House2Rooms" parent="Outside" instance=ExtResource("outside_facade")]

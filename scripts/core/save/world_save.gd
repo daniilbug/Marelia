@@ -61,6 +61,9 @@ static func is_valid_snapshot(snapshot: Dictionary) -> bool:
 		return false
 	if snapshot.player.level_id not in snapshot.levels:
 		return false
+	var appearance: Dictionary = snapshot.player.appearance
+	if not SaveGraph.matches(appearance.get("gender", Player.Gender.MALE), [Player.Gender.MALE, Player.Gender.FEMALE]):
+		return false
 	if snapshot.player.has("platform_path"):
 		if snapshot.player.platform_path is not NodePath or (not snapshot.player.platform_path.is_empty() and not SaveGraph.safe_path(snapshot.player.platform_path)):
 			return false
@@ -68,7 +71,6 @@ static func is_valid_snapshot(snapshot: Dictionary) -> bool:
 	if snapshot.player.has("wardrobe"):
 		if not Player.is_valid_wardrobe(snapshot.player.wardrobe):
 			return false
-		var appearance: Dictionary = snapshot.player.appearance
 		if Vector2i(appearance.top_id, appearance.top_color_id) not in snapshot.player.wardrobe.tops \
 			or Vector2i(appearance.pants_id, appearance.pants_color_id) not in snapshot.player.wardrobe.bottoms:
 			return false

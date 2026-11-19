@@ -1,6 +1,8 @@
 class_name CharacterSprite
 extends Sprite2D
 
+const SWIM_PHASE_COUNT := 4
+
 # Every texture uses the same 4 x 10 atlas and the same 12 x 20 frame origin.
 const HAIR_TEXTURES = [
 	preload("res://assets/sprites/characters/hair_0.png"),
@@ -105,21 +107,49 @@ const CLOTHING_COLORS: Array[Color] = [
 	Color("adb3ba"), # Silver gray.
 ]
 
+@export_group("Swimming")
+@export var swim_sprite: Sprite2D
+@export var swim_hair: Sprite2D
+@export var swimsuit_atlas: Texture2D
+
 @onready var _hair: Sprite2D = $Hair
 @onready var _top: Sprite2D = $Top
 @onready var _pants: Sprite2D = $Pants
+@onready var _bare_torso_atlas: Texture2D = swim_sprite.texture if swim_sprite != null else null
 
 
 func _ready() -> void:
 	# Characters and slots must never share dye uniforms, including NPCs.
 	for layer in [_hair, _top, _pants]:
 		layer.material = layer.material.duplicate()
+	if swim_sprite != null and swim_hair != null:
+		swim_hair.material = _hair.material
+		swim_sprite.frame_changed.connect(_sync_swim_hair)
+		_sync_swim_hair()
 	frame_changed.connect(_sync_layer_frames)
 	_sync_layer_frames()
 
+func set_swimming(swimming: bool) -> void:
+	if swim_sprite == null:
+		return
+	visible = not swimming
+	swim_sprite.visible = swimming
+
+func set_swim_frame(row: int, moving: bool, phase: int) -> void:
+	if swim_sprite != null:
+		var column := phase if moving else SWIM_PHASE_COUNT + phase
+		swim_sprite.frame_coords = Vector2i(column, row)
+
+func _sync_swim_hair() -> void:
+	# The baked swim frames lower the head by one pixel in phases 2 and 3.
+	var coords := swim_sprite.frame_coords
+	var hair_height := 12.0 if coords.x % SWIM_PHASE_COUNT >= 2 else 13.0
+	swim_hair.position.y = -hair_height
+	swim_hair.region_rect = Rect2(0, coords.y * 20, 12, hair_height)
+
 func set_appearance(
 	hair_id: int, top_id: int, pants_id: int, hair_color_id: int = 2,
-	top_color_id: int = 4, pants_color_id: int = 3
+	top_color_id: int = 4, pants_color_id: int = 3, wears_swimsuit := false
 ) -> void:
 	_hair.texture = HAIR_TEXTURES[clampi(hair_id, 0, HAIR_TEXTURES.size() - 1)]
 	(_hair.material as ShaderMaterial).set_shader_parameter(
@@ -134,6 +164,10 @@ func set_appearance(
 		"clothing_color", CLOTHING_COLORS[clampi(pants_color_id, 0, CLOTHING_COLORS.size() - 1)]
 	)
 	_sync_layer_frames()
+	if swim_sprite != null:
+		swim_sprite.texture = swimsuit_atlas if wears_swimsuit else _bare_torso_atlas
+	if swim_hair != null:
+		swim_hair.texture = _hair.texture
 
 func _sync_layer_frames() -> void:
 	_hair.frame = frame

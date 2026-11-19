@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://assets/world-kit/street/shaders/water_surface.gdshader" id="shader"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/water_surface.gd" id="script"]
+
+[sub_resource type="ShaderMaterial" id="material"]
+resource_local_to_scene = true
+shader = ExtResource("shader")
+
+[sub_resource type="RectangleShape2D" id="swim_rectangle"]
+resource_local_to_scene = true
+
+[node name="WaterSurface" type="Area2D"]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("script")
+
+[node name="Surface" type="ColorRect" parent="."]
+z_index = -25
+material = SubResource("material")
+mouse_filter = 2
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("swim_rectangle")
