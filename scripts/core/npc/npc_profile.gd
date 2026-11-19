@@ -12,12 +12,12 @@ var active := false
 
 static func create(npc: NPC) -> NPCProfile:
 	var profile := NPCProfile.new()
-	npc.randomize_appearance()
-	profile.appearance = SaveGraph.get_fields(npc, Player.SAVE_APPEARANCE)
+	npc.randomize_appearance(false)
+	profile.appearance = SaveGraph.get_fields(npc, APPEARANCE_CATALOGS.keys())
 	return profile
 
 func apply_appearance(npc: NPC) -> void:
-	SaveGraph.apply_fields(npc, Player.SAVE_APPEARANCE, appearance)
+	SaveGraph.apply_fields(npc, APPEARANCE_CATALOGS.keys(), appearance)
 
 func get_save_data() -> Dictionary:
 	return {"appearance": appearance.duplicate()}

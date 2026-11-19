@@ -1,16 +1,20 @@
 class_name Player
 extends CharacterBody2D
 
+enum Gender { MALE, FEMALE }
+
 static var local_setup: Dictionary = {"name": "Player"}
 
 const SPEED := 350.0
 const FPS_WALK := 8.0
+const FPS_SWIM := 8.0
+const FPS_TREAD_WATER := 4.0
 const SAVE_SCHEMA := {
 	"player_name": "", "level_id": "", "position": Vector2.ZERO,
 	"direction": Vector2.ZERO,
 	"appearance": {"hair_id": 0, "hair_color_id": 0, "top_id": 0, "top_color_id": 0, "pants_id": 0, "pants_color_id": 0},
 }
-const SAVE_APPEARANCE: Array[String] = ["hair_id", "hair_color_id", "top_id", "top_color_id", "pants_id", "pants_color_id"]
+const SAVE_APPEARANCE: Array[String] = ["hair_id", "hair_color_id", "top_id", "top_color_id", "pants_id", "pants_color_id", "gender"]
 
 const ROW_WALK_S  := 0
 const ROW_WALK_N  := 1
@@ -44,6 +48,11 @@ var _platform: WalkablePlatform
 # These inventories, like appearance, are owned by the server.
 @export var owned_tops: Array[Vector2i] = []
 @export var owned_bottoms: Array[Vector2i] = []
+
+@export var gender := Gender.MALE:
+	set(value):
+		gender = value
+		_refresh_appearance()
 
 @export var hair_id: int = 0:
 	set(value):
@@ -80,22 +89,26 @@ var player_name: String = ""
 
 @export var direction := Vector2.DOWN
 
+@export_storage var is_swimming := false:
+	set(value):
+		if is_swimming == value:
+			return
+		is_swimming = value
+		if is_node_ready():
+			sprite.set_swimming(is_swimming)
+
 @onready var sprite: CharacterSprite = $Sprite
 @onready var hands: Node2D = $Hands
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var camera: Camera2D = get_node_or_null("Camera")
 
 var _hands_item: Draggable = null
-var _is_modal_input_blocked := false
-var is_world_input_blocked: bool:
-	get:
-		return _is_modal_input_blocked
-	set(value):
-		_is_modal_input_blocked = value
+var is_world_input_blocked := false
 
 var _anim_t := 0.0
 var _anim_row := ROW_IDLE
-var _is_walking := false
+var _is_moving := false
+var _water_query := PhysicsPointQueryParameters2D.new()
 var _idle_tween: Tween
 
 signal appearance_changed
@@ -105,8 +118,13 @@ func _enter_tree() -> void:
 	$AppearanceSynchronizer.set_multiplayer_authority(1)
 
 func _ready() -> void:
+	_water_query.collision_mask = WaterSurface.SWIM_COLLISION_LAYER
+	_water_query.collide_with_areas = true
+	_water_query.collide_with_bodies = false
 	_refresh_appearance()
 	_start_idle_bob()
+	if is_swimming:
+		sprite.set_swimming(true)
 	call_deferred("_setup_authority")
 	_refresh_platform()
 
@@ -117,9 +135,12 @@ func _exit_tree() -> void:
 	if is_instance_valid(_platform):
 		_platform.detach_player(self)
 
-func _refresh_platform() -> void:
+func _get_level() -> Level:
 	var world := get_parent() as Main
-	var level := world.get_level(level_id) if world != null else Level.find_level_node(self)
+	return world.get_level(level_id) if world != null else Level.find_level_node(self)
+
+func _refresh_platform() -> void:
+	var level := _get_level()
 	var next: WalkablePlatform = level.get_node_or_null(platform_path) as WalkablePlatform if level != null and not platform_path.is_empty() else null
 	if next == get_platform():
 		return
@@ -129,7 +150,9 @@ func _refresh_platform() -> void:
 	if _platform != null:
 		_platform.attach_player(self)
 
-func randomize_appearance() -> void:
+func randomize_appearance(randomize_gender := true) -> void:
+	if randomize_gender:
+		gender = Gender.MALE if randi_range(0, 1) == 0 else Gender.FEMALE
 	hair_id = randi_range(0, CharacterSprite.HAIR_TEXTURES.size() - 1)
 	hair_color_id = randi_range(0, CharacterSprite.HAIR_COLORS.size() - 1)
 	top_id = randi_range(0, CharacterSprite.TOP_TEXTURES.size() - 1)
@@ -139,7 +162,7 @@ func randomize_appearance() -> void:
 
 func _refresh_appearance() -> void:
 	if is_node_ready():
-		sprite.set_appearance(hair_id, top_id, pants_id, hair_color_id, top_color_id, pants_color_id)
+		sprite.set_appearance(hair_id, top_id, pants_id, hair_color_id, top_color_id, pants_color_id, gender == Gender.FEMALE)
 		appearance_changed.emit()
 
 func initialize_wardrobe() -> void:
@@ -171,8 +194,7 @@ func _setup_authority() -> void:
 		camera.make_current()
 
 func get_save_data() -> Dictionary:
-	var world := get_parent() as Main
-	var level := world.get_player_level(int(name)) if world != null else Level.find_level_node(self)
+	var level := _get_level()
 	return {
 		"player_name": player_name, "level_id": level_id,
 		"position": level.to_local(global_position), "direction": direction,
@@ -203,32 +225,68 @@ func _start_idle_bob() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
-	var dir := Input.get_vector("left", "right", "up", "down")
-	if is_world_input_blocked:
-		velocity = Vector2.ZERO
-		_animate_movement(delta, Vector2.ZERO)
-		return
+	var input_blocked := is_world_input_blocked
+	var dir := Vector2.ZERO if input_blocked else Input.get_vector("left", "right", "up", "down")
 	if is_sitting:
+		velocity = Vector2.ZERO
 		if dir != Vector2.ZERO:
 			_stand_up()
-		else:
-			velocity = Vector2.ZERO
 		return
 
 	velocity = dir * SPEED
-	_animate_movement(delta, dir)
-	move_and_slide()
+	if not input_blocked:
+		move_and_slide()
+	_update_swimming_state()
+	if is_swimming:
+		_animate_swimming(delta, dir)
+	else:
+		_animate_movement(delta, dir)
+
+func _update_swimming_state() -> void:
+	var in_water := get_platform() == null and _is_in_water()
+	if is_swimming == in_water:
+		return
+
+	is_swimming = in_water
+	_is_moving = false
+	_anim_t = 0.0
+	if is_swimming:
+		_idle_tween.pause()
+	else:
+		_start_idle_bob()
+
+func _is_in_water() -> bool:
+	var level := _get_level()
+	if level == null:
+		return false
+	# The player origin is at the feet, so overlap with the body does not trigger swimming.
+	_water_query.position = global_position
+	for hit in get_world_2d().direct_space_state.intersect_point(_water_query):
+		var water := hit.collider as WaterSurface
+		if water != null and Level.find_level_node(water) == level:
+			return true
+	return false
+
+func _animate_swimming(delta: float, dir: Vector2) -> void:
+	var moving := dir != Vector2.ZERO
+	if moving != _is_moving:
+		_is_moving = moving
+		_anim_t = 0.0
+	if moving:
+		direction = dir
+	var fps := FPS_SWIM if moving else FPS_TREAD_WATER
+	_anim_t = fposmod(_anim_t + delta, CharacterSprite.SWIM_PHASE_COUNT / fps)
+	sprite.set_swim_frame(_dir_to_idle_row(direction), moving, int(_anim_t * fps))
 
 func _animate_movement(delta: float, dir: Vector2) -> void:
 	var walking := dir != Vector2.ZERO
-	if walking != _is_walking:
-		_is_walking = walking
+	if walking != _is_moving:
+		_is_moving = walking
 		if walking:
 			_idle_tween.pause()
 			sprite.scale.y = 1.0
 			_anim_t = 0.0
 		else:
-			sprite.position.y = 0.0
 			_idle_tween.play()
 			_anim_row = _dir_to_idle_row(direction)
 			sprite.frame = _anim_row * 4
@@ -251,8 +309,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if is_world_input_blocked:
 		if event.is_action_pressed("ui_cancel"):
-			var world := get_parent() as Main
-			var level := world.get_player_level(int(name)) if world != null else Level.find_level_node(self)
+			var level := _get_level()
+			if level == null:
+				return
 			for child in level.get_children():
 				if child is NPC and child.conversation.peer_id == int(name):
 					child.conversation.close()
@@ -327,6 +386,8 @@ func _sit_in(seat: Seat) -> void:
 		return
 	seated_seat = seat
 	is_sitting = true
+	is_swimming = false
+	_is_moving = false
 	global_position = seat.get_seat_position()
 	_idle_tween.pause()
 	sprite.frame = (ROW_WALK_N if seat.facing_north else ROW_SIT) * 4

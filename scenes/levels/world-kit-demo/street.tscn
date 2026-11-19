@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
-[ext_resource type="PackedScene" path="res://scenes/world-kit/street/surface.tscn" id="surface"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/surface.tscn" id="surface"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/tree.tscn" id="tree"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/bush.tscn" id="bush"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/vegetation/flowers.tscn" id="flowers"]
@@ -84,27 +84,32 @@ size = Vector2(672, 72)
 [node name="GrassSample" parent="Surfaces" instance=ExtResource("surface")]
 position = Vector2(32, 640)
 style = 0
-size = Vector2(112, 64)
+size = Vector2(96, 64)
 
 [node name="DirtSample" parent="Surfaces" instance=ExtResource("surface")]
-position = Vector2(164, 640)
+position = Vector2(141, 640)
 style = 1
-size = Vector2(112, 64)
+size = Vector2(96, 64)
 
 [node name="CobblestoneSample" parent="Surfaces" instance=ExtResource("surface")]
-position = Vector2(296, 640)
+position = Vector2(250, 640)
 style = 2
-size = Vector2(112, 64)
+size = Vector2(96, 64)
 
 [node name="LimestoneSample" parent="Surfaces" instance=ExtResource("surface")]
-position = Vector2(428, 640)
+position = Vector2(359, 640)
 style = 3
-size = Vector2(112, 64)
+size = Vector2(96, 64)
 
 [node name="GravelSample" parent="Surfaces" instance=ExtResource("surface")]
-position = Vector2(560, 640)
+position = Vector2(468, 640)
 style = 4
-size = Vector2(112, 64)
+size = Vector2(96, 64)
+
+[node name="SandSample" parent="Surfaces" instance=ExtResource("surface")]
+position = Vector2(577, 640)
+style = 5
+size = Vector2(96, 64)
 
 [node name="Shopfronts" type="Node2D" parent="."]
 y_sort_enabled = true

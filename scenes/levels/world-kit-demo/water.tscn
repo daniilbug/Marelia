@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/surface.tscn" id="surface"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/water_surface.tscn" id="water"]
+
+[node name="WaterDemo" instance=ExtResource("level")]
+scale = Vector2(4, 4)
+texture_filter = 1
+level_id = "world_kit_water"
+camera_position_offset = Vector2(0, 25)
+
+[node name="BottomLeft" parent="LevelBounds" index="0"]
+position = Vector2(0, 260)
+
+[node name="TopRight" parent="LevelBounds" index="1"]
+position = Vector2(408, 0)
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(204, 112)
+
+[node name="Grass" parent="." instance=ExtResource("surface")]
+style = 0
+size = Vector2(408, 96)
+
+[node name="Beach" parent="." instance=ExtResource("surface")]
+position = Vector2(0, 96)
+style = 5
+size = Vector2(408, 36)
+
+[node name="Sea" parent="." instance=ExtResource("water")]
+position = Vector2(0, 132)
+size = Vector2(408, 128)

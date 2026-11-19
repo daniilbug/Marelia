@@ -73,6 +73,7 @@ locale/fallback="ru"
 2d_physics/layer_4="PlayerBounds"
 2d_physics/layer_5="NPC"
 2d_physics/layer_6="RaisedPlatforms"
+2d_physics/layer_7="Water"
 
 [physics]
 
