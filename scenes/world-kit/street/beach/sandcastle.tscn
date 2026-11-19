@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/beach/sandcastle.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/sandcastle_turrets.tres" id="turrets"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/sandcastle_bucket.tres" id="bucket"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/sandcastle_gate.tres" id="gate"]
+
+[node name="Sandcastle" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("turrets"), ExtResource("bucket"), ExtResource("gate")])
+paintable_materials = 0

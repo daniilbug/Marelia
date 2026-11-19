@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BeachLoungerSetStyle" format=3]
+
+[ext_resource type="Script" uid="uid://bixl0ddcque50" path="res://scripts/world-kit/street/beach/styles/lounger_set_style.gd" id="profile"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Terracotta Shade"
+script = ExtResource("profile")
+umbrella_style = 1
+fabric_color = Color(0.6509804, 0.42745098, 0.34901962, 1)
+trim_color = Color(0.88235295, 0.83137256, 0.69803923, 1)

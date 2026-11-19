@@ -9,9 +9,8 @@
 [ext_resource type="Shader" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="7_q4j6v"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="8_pfnrs"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="9_y5tp3"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="10_hsuxe"]
+[ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="10_hsuxe"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="11_dp47u"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="12_8vrcw"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/sleeping_area.tscn" id="13_rb0mq"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_hwde8"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="15_bseq2"]
@@ -440,10 +439,9 @@ script = ExtResource("10_hsuxe")
 style_variants = ExtResource("11_dp47u")
 selected_variant = &"TopCenter"
 
-[node name="TopCenter" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=1424466518]
+[node name="TopCenter" type="Marker2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=1424466518]
 y_sort_enabled = true
 position = Vector2(40, 35)
-script = ExtResource("12_8vrcw")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/TopCenter" unique_id=93103164 instance=ExtResource("13_rb0mq")]
 y_sort_enabled = true
@@ -461,10 +459,9 @@ script = ExtResource("10_hsuxe")
 style_variants = ExtResource("11_dp47u")
 selected_variant = &"BottomLeftCorner"
 
-[node name="BottomLeftCorner" type="Node2D" parent="Rooms/Bedroom/Placements/Workplace" unique_id=1563764249]
+[node name="BottomLeftCorner" type="Marker2D" parent="Rooms/Bedroom/Placements/Workplace" unique_id=1563764249]
 y_sort_enabled = true
 position = Vector2(50, 90)
-script = ExtResource("12_8vrcw")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/Workplace/BottomLeftCorner" unique_id=261288291 instance=ExtResource("16_tk3ww")]
 y_sort_enabled = true
@@ -494,10 +491,9 @@ script = ExtResource("10_hsuxe")
 style_variants = ExtResource("11_dp47u")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/LivingRoom/Placements/ActivityTable" unique_id=1193783700]
+[node name="Center" type="Marker2D" parent="Rooms/LivingRoom/Placements/ActivityTable" unique_id=1193783700]
 y_sort_enabled = true
 position = Vector2(178, 60)
-script = ExtResource("12_8vrcw")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/ActivityTable/Center" unique_id=1692472968 instance=ExtResource("18_vo0c6")]
 y_sort_enabled = true
@@ -514,10 +510,9 @@ script = ExtResource("10_hsuxe")
 style_variants = ExtResource("11_dp47u")
 selected_variant = &"BottomCenter"
 
-[node name="BottomCenter" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=563750259]
+[node name="BottomCenter" type="Marker2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=563750259]
 y_sort_enabled = true
 position = Vector2(148, 75)
-script = ExtResource("12_8vrcw")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/BottomCenter" unique_id=994203564 instance=ExtResource("19_amfi7")]
 y_sort_enabled = true
@@ -533,10 +528,9 @@ script = ExtResource("10_hsuxe")
 style_variants = ExtResource("20_7wfjk")
 selected_variant = &"TopCenter"
 
-[node name="TopCenter" type="Node2D" parent="Rooms/LivingRoom/Placements/Library" unique_id=1811342325]
+[node name="TopCenter" type="Marker2D" parent="Rooms/LivingRoom/Placements/Library" unique_id=1811342325]
 y_sort_enabled = true
 position = Vector2(144, 23)
-script = ExtResource("12_8vrcw")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/Library/TopCenter" unique_id=879472839 instance=ExtResource("21_5t4fp")]
 y_sort_enabled = true

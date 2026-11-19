@@ -43,6 +43,10 @@ func _apply_included_pieces() -> void:
 		if piece != null:
 			piece.visible = included_pieces[path]
 
+func apply_placement_style(profile: Resource) -> void:
+	if profile is HouseFurnitureStyle:
+		style = profile
+
 func refresh() -> void:
 	if not is_node_ready() or style == null:
 		return

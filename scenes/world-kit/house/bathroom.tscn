@@ -1,8 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/room.tscn" id="room"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="group"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="point"]
+[ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="group"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/washing_area.tscn" id="washing"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/toilet_area.tscn" id="toilet"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/bathing_area.tscn" id="bathing"]
@@ -35,10 +34,9 @@ y_sort_enabled = true
 script = ExtResource("group")
 selected_variant = &"NorthWall"
 
-[node name="NorthWall" type="Node2D" parent="Placements/WashingArea"]
+[node name="NorthWall" type="Marker2D" parent="Placements/WashingArea"]
 y_sort_enabled = true
 position = Vector2(12, 12)
-script = ExtResource("point")
 
 [node name="Furniture" parent="Placements/WashingArea/NorthWall" instance=ExtResource("washing")]
 
@@ -48,10 +46,9 @@ script = ExtResource("group")
 style_variants = ExtResource("toilet_variants")
 selected_variant = &"NorthWall"
 
-[node name="NorthWall" type="Node2D" parent="Placements/ToiletArea"]
+[node name="NorthWall" type="Marker2D" parent="Placements/ToiletArea"]
 y_sort_enabled = true
 position = Vector2(48, 16)
-script = ExtResource("point")
 
 [node name="Furniture" parent="Placements/ToiletArea/NorthWall" instance=ExtResource("toilet")]
 style = SubResource("classic")
@@ -62,10 +59,9 @@ script = ExtResource("group")
 style_variants = ExtResource("tub_variants")
 selected_variant = &"Corner"
 
-[node name="Corner" type="Node2D" parent="Placements/BathingArea"]
+[node name="Corner" type="Marker2D" parent="Placements/BathingArea"]
 y_sort_enabled = true
 position = Vector2(18, 30)
-script = ExtResource("point")
 
 [node name="Furniture" parent="Placements/BathingArea/Corner" instance=ExtResource("bathing")]
 style = SubResource("clawfoot")

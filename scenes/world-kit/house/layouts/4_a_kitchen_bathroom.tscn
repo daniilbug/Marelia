@@ -9,9 +9,8 @@
 [ext_resource type="Shader" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="7_rmupe"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="8_545eg"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="9_p6fd0"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="10_pn67n"]
+[ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="10_pn67n"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="11_ik8ik"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="12_dhso2"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/kitchen_run.tscn" id="13_v6kob"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_2olx5"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="15_w8qed"]
@@ -658,10 +657,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"TopCenter"
 
-[node name="TopCenter" type="Node2D" parent="Rooms/Kitchen/Placements/KitchenRun" unique_id=447179932]
+[node name="TopCenter" type="Marker2D" parent="Rooms/Kitchen/Placements/KitchenRun" unique_id=447179932]
 y_sort_enabled = true
 position = Vector2(24, 15)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Kitchen/Placements/KitchenRun/TopCenter" unique_id=1263978346 instance=ExtResource("13_v6kob")]
 y_sort_enabled = true
@@ -678,10 +676,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/Kitchen/Placements/DiningArea" unique_id=643518342]
+[node name="Center" type="Marker2D" parent="Rooms/Kitchen/Placements/DiningArea" unique_id=643518342]
 y_sort_enabled = true
 position = Vector2(17, 57)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Kitchen/Placements/DiningArea/Center" unique_id=1151661710 instance=ExtResource("16_6bcf2")]
 y_sort_enabled = true
@@ -716,10 +713,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"TopCenter"
 
-[node name="TopCenter" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=119341469]
+[node name="TopCenter" type="Marker2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=119341469]
 y_sort_enabled = true
 position = Vector2(46, 34)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/TopCenter" unique_id=1510639476 instance=ExtResource("18_ddxo8")]
 y_sort_enabled = true
@@ -737,10 +733,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/Bedroom/Placements/Workplace" unique_id=235554393]
+[node name="Center" type="Marker2D" parent="Rooms/Bedroom/Placements/Workplace" unique_id=235554393]
 y_sort_enabled = true
 position = Vector2(71, 65)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/Workplace/Center" unique_id=1028847419 instance=ExtResource("19_a385t")]
 y_sort_enabled = true
@@ -772,10 +767,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"TopCenter"
 
-[node name="TopCenter" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea" unique_id=752982461]
+[node name="TopCenter" type="Marker2D" parent="Rooms/SecondBedroom/Placements/SleepingArea" unique_id=752982461]
 y_sort_enabled = true
 position = Vector2(40, 34)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/SecondBedroom/Placements/SleepingArea/TopCenter" unique_id=2066923252 instance=ExtResource("18_ddxo8")]
 y_sort_enabled = true
@@ -811,10 +805,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("11_ik8ik")
 selected_variant = &"BottomRightCorner"
 
-[node name="BottomRightCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=1828999086]
+[node name="BottomRightCorner" type="Marker2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=1828999086]
 y_sort_enabled = true
 position = Vector2(185, 82)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/BottomRightCorner" unique_id=1776046125 instance=ExtResource("22_wgxlg")]
 y_sort_enabled = true
@@ -830,10 +823,9 @@ script = ExtResource("10_pn67n")
 style_variants = ExtResource("23_b8nka")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/LivingRoom/Placements/ReadingCorner" unique_id=804892035]
+[node name="Center" type="Marker2D" parent="Rooms/LivingRoom/Placements/ReadingCorner" unique_id=804892035]
 y_sort_enabled = true
 position = Vector2(110, 75)
-script = ExtResource("12_dhso2")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/ReadingCorner/Center" unique_id=2124834399 instance=ExtResource("24_1s2bd")]
 y_sort_enabled = true

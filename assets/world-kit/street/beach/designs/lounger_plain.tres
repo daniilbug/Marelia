@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="script"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/beach/sprites/lounger_plain.png" id="sprite"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/street/beach/sprites/lounger_plain_materials.png" id="mask"]
+
+[resource]
+script = ExtResource("script")
+texture = ExtResource("sprite")
+material_mask = ExtResource("mask")
+source_body_color = Color(0.3254902, 0.49019608, 0.46666667, 1)
+source_support_color = Color(0.654902, 0.48627451, 0.30980393, 1)
+origin = Vector2(-7, -29)
+footprint = Vector2(12, 21)

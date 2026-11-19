@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/beach/lifebuoy_stand.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design_script"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lifebuoy_stand_post.tres" id="post"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/designs/lifebuoy_stand_frame.tres" id="frame"]
+
+[node name="LifebuoyStand" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design_script")]([ExtResource("post"), ExtResource("frame")])
+stand_color = Color(0.5372549, 0.63921569, 0.64313725, 1)
+lifebuoy_color = Color(0.79607843, 0.40392157, 0.30980392, 1)

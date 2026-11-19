@@ -9,9 +9,8 @@
 [ext_resource type="Shader" path="res://assets/world-kit/house/shaders/house_palette.gdshader" id="7_56fx5"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="8_oq576"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="9_j350h"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_group.gd" id="10_gvvkl"]
+[ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="10_gvvkl"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="11_mlamr"]
-[ext_resource type="Script" path="res://scripts/world-kit/house/placement_point.gd" id="12_sp1f0"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/sleeping_area.tscn" id="13_045wg"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_nfyee"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="15_6isxt"]
@@ -463,10 +462,9 @@ script = ExtResource("10_gvvkl")
 style_variants = ExtResource("11_mlamr")
 selected_variant = &"BottomCenter"
 
-[node name="BottomCenter" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=1072859452]
+[node name="BottomCenter" type="Marker2D" parent="Rooms/Bedroom/Placements/SleepingArea" unique_id=1072859452]
 y_sort_enabled = true
 position = Vector2(55, 86)
-script = ExtResource("12_sp1f0")
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/BottomCenter" unique_id=1445707648 instance=ExtResource("13_045wg")]
 y_sort_enabled = true
@@ -501,10 +499,9 @@ script = ExtResource("10_gvvkl")
 style_variants = ExtResource("11_mlamr")
 selected_variant = &"TopLeftCorner"
 
-[node name="TopLeftCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/KitchenRun" unique_id=13368308]
+[node name="TopLeftCorner" type="Marker2D" parent="Rooms/LivingRoom/Placements/KitchenRun" unique_id=13368308]
 y_sort_enabled = true
 position = Vector2(50, 16)
-script = ExtResource("12_sp1f0")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/KitchenRun/TopLeftCorner" unique_id=1353973282 instance=ExtResource("17_thwf2")]
 y_sort_enabled = true
@@ -521,10 +518,9 @@ script = ExtResource("10_gvvkl")
 style_variants = ExtResource("11_mlamr")
 selected_variant = &"TopLeftCorner"
 
-[node name="TopLeftCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/DiningArea" unique_id=1823356220]
+[node name="TopLeftCorner" type="Marker2D" parent="Rooms/LivingRoom/Placements/DiningArea" unique_id=1823356220]
 y_sort_enabled = true
 position = Vector2(48, 60)
-script = ExtResource("12_sp1f0")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/DiningArea/TopLeftCorner" unique_id=397020048 instance=ExtResource("18_drkgc")]
 y_sort_enabled = true
@@ -541,10 +537,9 @@ script = ExtResource("10_gvvkl")
 style_variants = ExtResource("11_mlamr")
 selected_variant = &"TopRightCorner"
 
-[node name="TopRightCorner" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace" unique_id=1345906496]
+[node name="TopRightCorner" type="Marker2D" parent="Rooms/LivingRoom/Placements/Workplace" unique_id=1345906496]
 y_sort_enabled = true
 position = Vector2(128, 20)
-script = ExtResource("12_sp1f0")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace/TopRightCorner" unique_id=2137543102 instance=ExtResource("19_ngyob")]
 y_sort_enabled = true
@@ -557,10 +552,9 @@ script = ExtResource("10_gvvkl")
 style_variants = ExtResource("11_mlamr")
 selected_variant = &"Center"
 
-[node name="Center" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=1476853802]
+[node name="Center" type="Marker2D" parent="Rooms/LivingRoom/Placements/SittingArea" unique_id=1476853802]
 y_sort_enabled = true
 position = Vector2(144, 68)
-script = ExtResource("12_sp1f0")
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/Center" unique_id=1324365403 instance=ExtResource("20_5pp52")]
 y_sort_enabled = true
