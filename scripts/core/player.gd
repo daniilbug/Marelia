@@ -9,6 +9,7 @@ const SPEED := 350.0
 const FPS_WALK := 8.0
 const FPS_SWIM := 8.0
 const FPS_TREAD_WATER := 4.0
+const MOVEMENT_SOUND_GAP := 0.2
 const SAVE_SCHEMA := {
 	"player_name": "", "level_id": "", "position": Vector2.ZERO,
 	"direction": Vector2.ZERO,
@@ -106,6 +107,7 @@ var player_name: String = ""
 @onready var hands: Node2D = $Hands
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var camera: Camera2D = get_node_or_null("Camera")
+@onready var _movement_audio: AudioStreamPlayer2D = get_node_or_null("MovementAudio")
 
 var _hands_item: Draggable = null
 var is_world_input_blocked := false
@@ -113,6 +115,7 @@ var is_world_input_blocked := false
 var _anim_t := 0.0
 var _anim_row := ROW_IDLE
 var _is_moving := false
+var _movement_sound_cooldown := 0.0
 var _water_query := PhysicsPointQueryParameters2D.new()
 var _idle_tween: Tween
 
@@ -232,6 +235,7 @@ func _start_idle_bob() -> void:
 	_idle_tween.tween_property(sprite, "scale:y", 1.0, 0.45).set_trans(Tween.TRANS_SINE)
 
 func _physics_process(delta: float) -> void:
+	_movement_sound_cooldown = maxf(0.0, _movement_sound_cooldown - delta)
 	if not is_multiplayer_authority():
 		return
 	var input_blocked := is_world_input_blocked
@@ -245,14 +249,50 @@ func _physics_process(delta: float) -> void:
 	velocity = dir * SPEED
 	if not input_blocked:
 		move_and_slide()
-	_update_swimming_state()
-	if is_swimming:
-		_animate_swimming(delta, dir)
+	var water := _get_water_surface()
+	_update_swimming_state(water != null)
+	var moved := not input_blocked and get_position_delta().dot(dir) > 0.01
+	var can_play_sound := moved and _movement_sound_cooldown == 0.0
+	if water != null:
+		var stroked := _animate_swimming(delta, dir)
+		if stroked and can_play_sound:
+			_play_movement_sound(water.swim_stroke_sound)
 	else:
-		_animate_movement(delta, dir)
+		var stepped := _animate_movement(delta, dir)
+		if stepped and can_play_sound:
+			_play_footstep()
 
-func _update_swimming_state() -> void:
-	var in_water := get_platform() == null and _is_in_water()
+func _play_footstep() -> void:
+	var level := _get_level()
+	if level == null or get_platform() != null:
+		return
+	var surface := Surface.find_at(level, global_position)
+	if _play_surface_footstep(surface) and not multiplayer.get_peers().is_empty():
+		_receive_footstep.rpc(level.level_id, level.get_path_to(surface))
+
+@rpc("authority", "call_remote", "reliable")
+func _receive_footstep(step_level_id: String, surface_path: NodePath) -> void:
+	if _movement_sound_cooldown > 0.0:
+		return
+	var level := _get_level()
+	if level == null or level.level_id != step_level_id or level.local_player == null:
+		return
+	var surface := level.get_node_or_null(surface_path) as Surface
+	if surface != null and surface.is_visible_in_tree() and Level.find_level_node(surface) == level:
+		_play_surface_footstep(surface)
+
+func _play_surface_footstep(surface: Surface) -> bool:
+	return surface != null and _play_movement_sound(surface.get_footstep_sound())
+
+func _play_movement_sound(sound: AudioStream) -> bool:
+	if _movement_audio == null or sound == null:
+		return false
+	_movement_audio.stream = sound
+	_movement_audio.play()
+	_movement_sound_cooldown = sound.get_length() + MOVEMENT_SOUND_GAP
+	return true
+
+func _update_swimming_state(in_water: bool) -> void:
 	if is_swimming == in_water:
 		return
 
@@ -264,19 +304,19 @@ func _update_swimming_state() -> void:
 	else:
 		_start_idle_bob()
 
-func _is_in_water() -> bool:
+func _get_water_surface() -> WaterSurface:
 	var level := _get_level()
-	if level == null:
-		return false
+	if level == null or get_platform() != null:
+		return null
 	# The player origin is at the feet, so overlap with the body does not trigger swimming.
 	_water_query.position = global_position
 	for hit in get_world_2d().direct_space_state.intersect_point(_water_query):
 		var water := hit.collider as WaterSurface
 		if water != null and Level.find_level_node(water) == level:
-			return true
-	return false
+			return water
+	return null
 
-func _animate_swimming(delta: float, dir: Vector2) -> void:
+func _animate_swimming(delta: float, dir: Vector2) -> bool:
 	var moving := dir != Vector2.ZERO
 	if moving != _is_moving:
 		_is_moving = moving
@@ -284,10 +324,14 @@ func _animate_swimming(delta: float, dir: Vector2) -> void:
 	if moving:
 		direction = dir
 	var fps := FPS_SWIM if moving else FPS_TREAD_WATER
+	var previous_phase := int(_anim_t * fps)
 	_anim_t = fposmod(_anim_t + delta, CharacterSprite.SWIM_PHASE_COUNT / fps)
-	sprite.set_swim_frame(_dir_to_idle_row(direction), moving, int(_anim_t * fps))
+	var phase := int(_anim_t * fps)
+	sprite.set_swim_frame(_dir_to_idle_row(direction), moving, phase)
+	# In phase 2 the arms sweep through the water.
+	return moving and phase == 2 and phase != previous_phase
 
-func _animate_movement(delta: float, dir: Vector2) -> void:
+func _animate_movement(delta: float, dir: Vector2) -> bool:
 	var walking := dir != Vector2.ZERO
 	if walking != _is_moving:
 		_is_moving = walking
@@ -299,14 +343,20 @@ func _animate_movement(delta: float, dir: Vector2) -> void:
 			_idle_tween.play()
 			_anim_row = _dir_to_idle_row(direction)
 			sprite.frame = _anim_row * 4
-	if walking:
-		direction = dir
-		_anim_t += delta
-		if not is_zero_approx(dir.x):
-			_anim_row = ROW_WALK_E if dir.x > 0 else ROW_WALK_W
-		elif not is_zero_approx(dir.y):
-			_anim_row = ROW_WALK_S if dir.y > 0 else ROW_WALK_N
-		sprite.frame = _anim_row * 4 + (int(_anim_t * FPS_WALK) % 4)
+	if not walking:
+		return false
+
+	var previous_frame := int(_anim_t * FPS_WALK)
+	direction = dir
+	_anim_t += delta
+	if not is_zero_approx(dir.x):
+		_anim_row = ROW_WALK_E if dir.x > 0 else ROW_WALK_W
+	elif not is_zero_approx(dir.y):
+		_anim_row = ROW_WALK_S if dir.y > 0 else ROW_WALK_N
+	var frame := int(_anim_t * FPS_WALK)
+	sprite.frame = _anim_row * 4 + (frame % 4)
+	# The alternating planted feet are in columns 1 and 3 of the walk cycle.
+	return frame != previous_frame and frame % 2 == 1
 
 func _dir_to_idle_row(d: Vector2) -> int:
 	if absf(d.x) >= absf(d.y):

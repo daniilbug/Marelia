@@ -10,6 +10,10 @@ const SWIM_COLLISION_LAYER := 1 << 6
 		if is_node_ready():
 			_update_size()
 
+@export_group("Audio")
+## Played by characters swimming through this water.
+@export var swim_stroke_sound: AudioStream
+
 @onready var _surface: ColorRect = $Surface
 @onready var _collision: CollisionShape2D = $Collision
 

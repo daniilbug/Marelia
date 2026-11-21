@@ -4,7 +4,10 @@ extends Polygon2D
 
 enum Style { GRASS, DIRT, COBBLESTONE, LIMESTONE, GRAVEL, SAND }
 
+const GROUP := &"walkable_surfaces"
+
 @export_storage var textures: Array[Texture2D] = []
+@export_storage var footstep_sounds: Array[AudioStream] = []
 @export_storage var _saved_polygon := PackedVector2Array()
 
 @export_group("Design")
@@ -12,6 +15,10 @@ enum Style { GRASS, DIRT, COBBLESTONE, LIMESTONE, GRAVEL, SAND }
 	set(value):
 		style = value
 		_refresh_texture()
+
+@export_group("Audio")
+## Overrides the default footstep sound for this surface's style.
+@export var footstep_sound: AudioStream
 
 @export_group("Geometry")
 ## Use the native Polygon2D contour instead of building a rectangle from Size.
@@ -31,6 +38,44 @@ enum Style { GRASS, DIRT, COBBLESTONE, LIMESTONE, GRAVEL, SAND }
 func _ready() -> void:
 	_refresh_texture()
 	_refresh_geometry()
+	add_to_group(GROUP)
+
+static func find_at(level: Level, world_position: Vector2) -> Surface:
+	var top: Surface
+	for surface: Surface in level.get_tree().get_nodes_in_group(GROUP):
+		if not surface.is_visible_in_tree() or Level.find_level_node(surface) != level:
+			continue
+		var point := surface.to_local(world_position) - surface.offset
+		if Geometry2D.is_point_in_polygon(point, surface.polygon) and (top == null or surface._draws_above(top)):
+			top = surface
+	return top
+
+func get_footstep_sound() -> AudioStream:
+	if footstep_sound != null:
+		return footstep_sound
+	return footstep_sounds[style] if style >= 0 and style < footstep_sounds.size() else null
+
+func _draws_above(other: Surface) -> bool:
+	var z := _effective_z_index()
+	var other_z := other._effective_z_index()
+	if z != other_z:
+		return z > other_z
+	var parent := get_parent() as CanvasItem
+	if parent != null and parent == other.get_parent() and parent.y_sort_enabled:
+		if position.y != other.position.y:
+			return position.y > other.position.y
+	# The group is enumerated in scene tree order, so this surface draws later.
+	return true
+
+func _effective_z_index() -> int:
+	var z := z_index
+	var item: CanvasItem = self
+	while item.z_as_relative:
+		item = item.get_parent() as CanvasItem
+		if item == null:
+			break
+		z += item.z_index
+	return z
 
 func _refresh_texture() -> void:
 	if not is_node_ready():
