@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="BuildingDefinition" format=3 uid="uid://016vgtoy7nqd"]
+
+[ext_resource type="Script" uid="uid://dy5j72yxc61cs" path="res://scripts/world-kit/building/definition.gd" id="definition"]
+[ext_resource type="Resource" uid="uid://clmyvrg0taxb7" path="res://assets/world-kit/furniture/groups/dining_for_two_variants.tres" id="dining_styles"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/facade_details_dome.tscn" id="dome"]
+[ext_resource type="Script" uid="uid://d1h4d8ufylmj2" path="res://scripts/world-kit/house/door_style.gd" id="door_style"]
+[ext_resource type="Script" uid="uid://cdduau8l763al" path="res://scripts/world-kit/house/door_variants.gd" id="door_variants"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/facade_details.tscn" id="front"]
+[ext_resource type="Script" uid="uid://b7t7suucowl17" path="res://scripts/world-kit/furniture/groups/furniture_variants.gd" id="furniture_variants"]
+[ext_resource type="Resource" uid="uid://c1djuwkqnkvlo" path="res://assets/world-kit/house/door-designs/double_glazed.tres" id="glazed"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_glazed.tres" id="single_glazed"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/double_panel.tres" id="panel"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/layouts.tres" id="layouts"]
+[ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="room_style"]
+[ext_resource type="Script" uid="uid://cngwr1634ilbn" path="res://scripts/world-kit/house/interior_settings.gd" id="settings"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/facade_details_straight.tscn" id="straight"]
+[ext_resource type="Resource" uid="uid://cv1lukarduxu0" path="res://assets/world-kit/cafe/facade_styles.tres" id="styles"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/terrace.tscn" id="terrace"]
+
+[sub_resource type="Resource" id="hall"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+floor_material = 1
+floor_color = Color(0.73, 0.48, 0.34, 1)
+wall_style = 0
+wall_color = Color(0.9, 0.81, 0.66, 1)
+
+[sub_resource type="Resource" id="Resource_kjqnv"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+
+[sub_resource type="Resource" id="Resource_5jib7"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+
+[sub_resource type="Resource" id="Resource_vk5fb"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+
+[sub_resource type="Resource" id="Resource_kfvpk"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+
+[sub_resource type="Resource" id="floor"]
+resource_local_to_scene = true
+script = ExtResource("settings")
+layout_choices = Array[String](["A", "B", "C"])
+layout_id = "A"
+additional_rooms = Dictionary[StringName, ExtResource("room_style")]({
+&"Hall": SubResource("hall")
+})
+living = SubResource("Resource_vk5fb")
+kitchen = SubResource("Resource_5jib7")
+bedroom = SubResource("Resource_kjqnv")
+second_bedroom = SubResource("Resource_kfvpk")
+
+[sub_resource type="Resource" id="glazed_wood"]
+script = ExtResource("door_style")
+style = 2
+color = Color(0.48, 0.33, 0.24, 1)
+design = ExtResource("glazed")
+
+[sub_resource type="Resource" id="glazed_green"]
+script = ExtResource("door_style")
+style = 2
+color = Color(0.31, 0.43, 0.35, 1)
+design = ExtResource("glazed")
+
+[sub_resource type="Resource" id="glazed_blue"]
+script = ExtResource("door_style")
+style = 2
+color = Color(0.35, 0.47, 0.54, 1)
+design = ExtResource("single_glazed")
+
+[sub_resource type="Resource" id="panel_walnut"]
+script = ExtResource("door_style")
+style = 1
+color = Color(0.42, 0.29, 0.25, 1)
+design = ExtResource("panel")
+
+[sub_resource type="Resource" id="panel_olive"]
+script = ExtResource("door_style")
+style = 1
+color = Color(0.39, 0.47, 0.32, 1)
+design = ExtResource("panel")
+
+[sub_resource type="Resource" id="doors"]
+script = ExtResource("door_variants")
+variants = Array[ExtResource("door_style")]([SubResource("glazed_wood"), SubResource("glazed_green"), SubResource("glazed_blue"), SubResource("panel_walnut"), SubResource("panel_olive")])
+
+[resource]
+script = ExtResource("definition")
+layouts = ExtResource("layouts")
+default_floor = SubResource("floor")
+entrance_variants = SubResource("doors")
+facade_styles = ExtResource("styles")
+facade_details = Dictionary[StringName, PackedScene]({
+&"dome": ExtResource("dome"),
+&"straight": ExtResource("straight"),
+&"striped": ExtResource("front")
+})
+facade_detail_colors = Array[Color]([Color(0.55, 0.26, 0.2, 1), Color(0.36, 0.47, 0.33, 1), Color(0.32, 0.45, 0.55, 1)])
+exterior_objects = ExtResource("terrace")
+shared_furniture_variants = Array[ExtResource("furniture_variants")]([ExtResource("dining_styles")])
+facade_windows = false
+minimum_wall_height = 64.0
+level_id_prefix = "cafe"

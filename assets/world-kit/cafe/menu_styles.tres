@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="HouseFurnitureVariants" format=3 uid="uid://bh5dhrkxlgqhb"]
+
+[ext_resource type="Script" uid="uid://w1yrdb2l0v7x" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://b7t7suucowl17" path="res://scripts/world-kit/furniture/groups/furniture_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="chalkboard_green"]
+resource_local_to_scene = true
+resource_name = "Chalkboard, green and walnut"
+script = ExtResource("style")
+wood_color = Color(0.4392157, 0.3019608, 0.22352941, 1)
+paint_color = Color(0.20392157, 0.25882354, 0.23137255, 1)
+
+[sub_resource type="Resource" id="chalkboard_burgundy"]
+resource_local_to_scene = true
+resource_name = "Chalkboard, burgundy and oak"
+script = ExtResource("style")
+wood_color = Color(0.58431375, 0.4, 0.28627452, 1)
+paint_color = Color(0.31764707, 0.24313726, 0.25490198, 1)
+
+[sub_resource type="Resource" id="chalkboard_slate"]
+resource_local_to_scene = true
+resource_name = "Chalkboard, blue slate and ash"
+script = ExtResource("style")
+wood_color = Color(0.43529412, 0.38431373, 0.32941177, 1)
+paint_color = Color(0.23137255, 0.29803923, 0.3529412, 1)
+
+[sub_resource type="Resource" id="paper_walnut"]
+resource_local_to_scene = true
+resource_name = "Paper menu, terracotta and walnut"
+script = ExtResource("style")
+design = 1
+wood_color = Color(0.5019608, 0.36862746, 0.2627451, 1)
+paint_color = Color(0.5764706, 0.3647059, 0.29803923, 1)
+
+[sub_resource type="Resource" id="paper_ash"]
+resource_local_to_scene = true
+resource_name = "Paper menu, slate blue and ash"
+script = ExtResource("style")
+design = 1
+wood_color = Color(0.45882353, 0.4117647, 0.3529412, 1)
+paint_color = Color(0.2901961, 0.38431373, 0.44705883, 1)
+
+[sub_resource type="Resource" id="paper_oak"]
+resource_local_to_scene = true
+resource_name = "Paper menu, olive and oak"
+script = ExtResource("style")
+design = 1
+wood_color = Color(0.65882355, 0.46666667, 0.25882354, 1)
+paint_color = Color(0.32941177, 0.41960785, 0.34117648, 1)
+
+[sub_resource type="Resource" id="enamel_mint"]
+resource_local_to_scene = true
+resource_name = "Enamel menu, mint"
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.81960785, 0.8745098, 0.8352941, 1)
+
+[sub_resource type="Resource" id="enamel_ivory"]
+resource_local_to_scene = true
+resource_name = "Enamel menu, warm ivory"
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.91764706, 0.8509804, 0.7019608, 1)
+
+[sub_resource type="Resource" id="enamel_blue"]
+resource_local_to_scene = true
+resource_name = "Enamel menu, powder blue"
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.74509805, 0.8156863, 0.8745098, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("chalkboard_green"), SubResource("chalkboard_burgundy"), SubResource("chalkboard_slate"), SubResource("paper_walnut"), SubResource("paper_ash"), SubResource("paper_oak"), SubResource("enamel_mint"), SubResource("enamel_ivory"), SubResource("enamel_blue")])

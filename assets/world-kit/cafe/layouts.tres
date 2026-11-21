@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildingLayoutCatalog" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/house/layout_catalog.gd" id="catalog"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/layouts/a.tscn" id="a"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/layouts/b.tscn" id="b"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/layouts/c.tscn" id="c"]
+
+[resource]
+script = ExtResource("catalog")
+scenes = Dictionary[StringName, PackedScene]({&"A": ExtResource("a"), &"B": ExtResource("b"), &"C": ExtResource("c")})

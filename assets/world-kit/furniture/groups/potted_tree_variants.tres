@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HouseFurnitureVariants" format=3 uid="uid://rxign7bm0px0"]
+
+[ext_resource type="Script" uid="uid://w1yrdb2l0v7x" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://b7t7suucowl17" path="res://scripts/world-kit/furniture/groups/furniture_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="olive"]
+resource_local_to_scene = true
+script = ExtResource("style")
+
+[sub_resource type="Resource" id="lemon"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 1
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("olive"), SubResource("lemon")])

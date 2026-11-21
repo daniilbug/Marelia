@@ -527,7 +527,6 @@ style = SubResource("Resource_xks51")
 
 [node name="Walls" type="Node2D" parent="." unique_id=1770829116]
 y_sort_enabled = true
-scale = Vector2(1, 0.9974695)
 
 [node name="BedroomBackWall" parent="Walls" unique_id=796208739 instance=ExtResource("wall")]
 script = ExtResource("26_h3s8o")

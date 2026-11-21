@@ -1,5 +1,5 @@
 @tool
-class_name HouseLayoutCatalog
+class_name BuildingLayoutCatalog
 extends Resource
 
 ## Layout references are authored in a resource assigned by the house scene.

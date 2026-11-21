@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dining_table.tscn" id="table"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/chair.tscn" id="chair"]
+[ext_resource type="PackedScene" path="res://scenes/core/seat.tscn" id="seat"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/dining_for_two_variants.tres" id="styles"]
+
+[node name="DiningForTwo" instance=ExtResource("group")]
+style_variants = ExtResource("styles")
+randomize_in_layout = true
+
+[node name="Table" parent="." instance=ExtResource("table")]
+style = 2
+wood_color = Color(0.53, 0.34, 0.23, 1)
+
+[node name="BackChair" parent="." instance=ExtResource("chair")]
+position = Vector2(0, -22)
+wood_color = Color(0.53, 0.34, 0.23, 1)
+
+[node name="Seat" parent="BackChair" instance=ExtResource("seat") node_paths=PackedStringArray("interaction_occlusion_exceptions")]
+position = Vector2(0, -5)
+seat_position_offset = Vector2(0, -1)
+stand_position_offset = Vector2(14, 0)
+stand_on_interact = true
+interaction_radius = 13.0
+interaction_occlusion_exceptions = Array[NodePath]([NodePath("..")])
+
+[node name="FrontChair" parent="." instance=ExtResource("chair")]
+position = Vector2(0, 14)
+direction = 1
+wood_color = Color(0.53, 0.34, 0.23, 1)
+
+[node name="Seat" parent="FrontChair" instance=ExtResource("seat") node_paths=PackedStringArray("interaction_occlusion_exceptions")]
+position = Vector2(0, -5)
+facing_north = true
+seat_position_offset = Vector2(0, -1)
+stand_position_offset = Vector2(14, 0)
+stand_on_interact = true
+interaction_radius = 13.0
+interaction_occlusion_exceptions = Array[NodePath]([NodePath("..")])

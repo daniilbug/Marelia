@@ -19,6 +19,8 @@ extends Node2D
 		refresh()
 
 @export var style_variants: DecorationVariants
+## Roll and save this group's appearance when it is placed directly in a room.
+@export var randomize_in_layout := false
 @export_tool_button("Randomize decorations") var randomize_action: Callable = randomize
 
 var _piece_visibility_defaults: Dictionary[NodePath, bool] = {}

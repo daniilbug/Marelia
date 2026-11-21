@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/countertop_prop.gd" id="prop"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/pastry_case_single.png" id="single"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/pastry_case_double.png" id="double"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/pastry_case_dome.png" id="dome"]
+
+[node name="PastryCase" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("single")
+centered = false
+offset = Vector2(-10, -9)
+script = ExtResource("prop")
+variants = Dictionary[int, Texture2D]({0: ExtResource("single"), 1: ExtResource("double"), 2: ExtResource("dome")})

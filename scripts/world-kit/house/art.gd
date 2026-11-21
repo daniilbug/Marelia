@@ -7,6 +7,11 @@ const ROOT := "res://assets/world-kit/house/sprites/"
 const FACADES := ["facade_plaster", "facade_fieldstone", "facade_limestone", "facade_plaster_vine", "facade_fieldstone_vine"]
 const FLOORS := ["floor_wood", "floor_terracotta", "floor_ornament", "floor_wood_narrow", "floor_wood_chevron", "floor_wood_basket", "floor_tile_checker", "floor_tile_octagon", "floor_tile_maiolica", "plinth_stone"]
 const WALLS := ["facade_plaster", "wallpaper_striped", "wallpaper_botanical", "facade_fieldstone", "facade_limestone"]
+const WINDOWS := ["window_louvered", "window_panelled", "window_arched"]
+
+static func apply_window(window: Sprite2D, profile: HouseFacadeStyle) -> void:
+	var stem: String = WINDOWS[profile.window_style] + ("_closed" if profile.shutters_closed else "_open")
+	apply(window, stem, {"wood_color": profile.frame_color, "paint_color": profile.shutter_color})
 
 static func apply(target: CanvasItem, stem: String, colors: Dictionary = {}, tiled := false) -> ShaderMaterial:
 	var texture := load(ROOT + stem + "_albedo.png") as Texture2D

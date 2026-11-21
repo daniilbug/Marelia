@@ -1,0 +1,334 @@
+[gd_scene format=3 uid="uid://ftbawam162w2"]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/pastry_case.tscn" id="case"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/counter.tscn" id="counter"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_sconce.tscn" id="light"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/espresso_machine.tscn" id="machine"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/potted_tree.tscn" id="plant"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/rug_placement.tscn" id="rug"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/equipment_placement.tscn" id="equipment"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/wall_menu.tscn" id="menu"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/portal.tscn" id="portal"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/cash_register.tscn" id="register"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/room.tscn" id="room"]
+[ext_resource type="Script" uid="uid://btpoobuqeq3pr" path="res://scripts/world-kit/house/layout.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_shelf.tscn" id="shelf"]
+[ext_resource type="Resource" uid="uid://e2lbd3jctk7e" path="res://assets/world-kit/cafe/interior_styles.tres" id="styles"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/dining_for_two.tscn" id="table"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/wall.tscn" id="wall"]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/bathroom.tscn" id="bathroom"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/room_door.tscn" id="room_door"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/bathroom_door_variants.tres" id="bathroom_doors"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="bathroom_style"]
+
+[sub_resource type="RectangleShape2D" id="back"]
+size = Vector2(28, 4)
+
+[sub_resource type="RectangleShape2D" id="back_left_zone"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="back_right"]
+size = Vector2(148, 4)
+
+[sub_resource type="RectangleShape2D" id="back_right_zone"]
+size = Vector2(148, 28)
+
+[sub_resource type="RectangleShape2D" id="bathroom_back"]
+size = Vector2(64, 4)
+
+[sub_resource type="RectangleShape2D" id="bathroom_back_zone"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="bathroom_side"]
+size = Vector2(4, 48)
+
+[sub_resource type="RectangleShape2D" id="bathroom_side_zone"]
+size = Vector2(4, 80)
+
+[sub_resource type="RectangleShape2D" id="bathroom_front_segment"]
+size = Vector2(24, 4)
+
+[sub_resource type="RectangleShape2D" id="horizontal_zone"]
+size = Vector2(240, 28)
+
+[sub_resource type="RectangleShape2D" id="front"]
+size = Vector2(108, 4)
+
+[sub_resource type="RectangleShape2D" id="side"]
+size = Vector2(4, 158)
+
+[sub_resource type="RectangleShape2D" id="vertical_zone"]
+size = Vector2(4, 186)
+
+[sub_resource type="RectangleShape2D" id="bounds_horizontal"]
+size = Vector2(304, 16)
+
+[sub_resource type="RectangleShape2D" id="bounds_vertical"]
+size = Vector2(16, 290)
+
+[node name="CafeB" type="Node2D" unique_id=1553687358]
+texture_filter = 1
+y_sort_enabled = true
+script = ExtResource("script")
+
+[node name="Rooms" type="Node2D" parent="." unique_id=227407894]
+y_sort_enabled = true
+
+[node name="Hall" parent="Rooms" unique_id=47395963 instance=ExtResource("room")]
+room_id = &"Hall"
+style_variants = ExtResource("styles")
+
+[node name="Floor" parent="Rooms/Hall" index="0"]
+polygon = PackedVector2Array(0, 0, 240, 0, 240, 158, 0, 158)
+
+[node name="Counter" parent="Rooms/Hall/Placements" index="0" unique_id=141819432 instance=ExtResource("counter")]
+position = Vector2(120, 28)
+
+[node name="CashRegister" parent="Rooms/Hall/Placements/Counter" unique_id=1961177880 instance=ExtResource("register")]
+position = Vector2(-5.5, -16)
+
+[node name="PastryCase" parent="Rooms/Hall/Placements/Counter" unique_id=528317123 instance=ExtResource("case")]
+position = Vector2(-19, -9)
+
+[node name="EspressoMachine" parent="Rooms/Hall/Placements/Counter" unique_id=296070724 instance=ExtResource("machine")]
+position = Vector2(19, -9)
+
+[node name="Table1" parent="Rooms/Hall/Placements" index="1" unique_id=581619189 instance=ExtResource("table")]
+position = Vector2(36, 104)
+
+[node name="Table2" parent="Rooms/Hall/Placements" index="2" unique_id=1229740570 instance=ExtResource("table")]
+position = Vector2(204, 104)
+
+[node name="Table3" parent="Rooms/Hall/Placements" index="3" unique_id=671323564 instance=ExtResource("table")]
+position = Vector2(78, 104)
+
+[node name="Table4" parent="Rooms/Hall/Placements" index="4" unique_id=1024322302 instance=ExtResource("table")]
+position = Vector2(162, 104)
+
+[node name="Shelf1" parent="Rooms/Hall/Placements" index="5" unique_id=1929229169 instance=ExtResource("shelf")]
+position = Vector2(102, 1)
+visual_offset = Vector2(0, -10)
+
+[node name="Shelf2" parent="Rooms/Hall/Placements" index="6" unique_id=1593475002 instance=ExtResource("shelf")]
+position = Vector2(138, 1)
+visual_offset = Vector2(0, -10)
+
+[node name="Sconce1" parent="Rooms/Hall/Placements" index="7" unique_id=1875672426 instance=ExtResource("light")]
+position = Vector2(24, 4)
+
+[node name="Sconce2" parent="Rooms/Hall/Placements" index="8" unique_id=1628469355 instance=ExtResource("light")]
+position = Vector2(216, 4)
+
+[node name="Plant1" parent="Rooms/Hall/Placements" index="9" unique_id=1612971329 instance=ExtResource("plant")]
+position = Vector2(80, 150)
+
+[node name="Plant2" parent="Rooms/Hall/Placements" index="10" unique_id=1228838482 instance=ExtResource("plant")]
+position = Vector2(160, 150)
+
+[node name="Table5" parent="Rooms/Hall/Placements" index="11" instance=ExtResource("table")]
+position = Vector2(36, 40)
+
+[node name="Table6" parent="Rooms/Hall/Placements" index="12" instance=ExtResource("table")]
+position = Vector2(204, 40)
+
+[node name="Rug" parent="Rooms/Hall/Placements" index="13" instance=ExtResource("rug")]
+position = Vector2(120, 79)
+
+[node name="WallMenu" parent="Rooms/Hall/Placements" index="14" instance=ExtResource("menu")]
+position = Vector2(177, -10)
+
+[node name="Equipment" parent="Rooms/Hall/Placements" index="15" instance=ExtResource("equipment")]
+position = Vector2(177, 23)
+
+[node name="Bathroom" parent="Rooms" instance=ExtResource("bathroom")]
+position = Vector2(28, -48)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1448345732]
+y_sort_enabled = true
+
+[node name="BackWall" parent="Walls" unique_id=1549151239 instance=ExtResource("wall")]
+room_id = &"Hall"
+length = 28.0
+
+[node name="Collision" parent="Walls/BackWall/Collisions" index="0"]
+position = Vector2(14, 0)
+shape = SubResource("back")
+
+[node name="TransparencyArea" parent="Walls/BackWall" index="2"]
+position = Vector2(14, -18)
+shape = SubResource("back_left_zone")
+
+[node name="BackWallRight" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(92, 0)
+room_id = &"Hall"
+length = 148.0
+
+[node name="Collision" parent="Walls/BackWallRight/Collisions" index="0"]
+position = Vector2(74, 0)
+shape = SubResource("back_right")
+
+[node name="TransparencyArea" parent="Walls/BackWallRight" index="2" node_paths=PackedStringArray("targets")]
+position = Vector2(74, -18)
+shape = SubResource("back_right_zone")
+targets = Array[NodePath]([NodePath("../Sprite"), NodePath("../../../Rooms/Hall/Placements/WallMenu")])
+
+[node name="FrontWall" parent="Walls" unique_id=2025762368 instance=ExtResource("wall")]
+position = Vector2(0, 158)
+room_id = &"Hall"
+length = 240.0
+openings = Array[float]([120.0])
+static_alpha = 0.1
+
+[node name="Collision" parent="Walls/FrontWall/Collisions" index="0"]
+position = Vector2(54, 0)
+shape = SubResource("front")
+
+[node name="RightSegment" type="CollisionShape2D" parent="Walls/FrontWall/Collisions" index="1" unique_id=1478349734]
+position = Vector2(186, 0)
+shape = SubResource("front")
+
+[node name="TransparencyArea" parent="Walls/FrontWall" index="2"]
+position = Vector2(120, -18)
+shape = SubResource("horizontal_zone")
+enabled = false
+
+[node name="LeftWall" parent="Walls" unique_id=1980139033 instance=ExtResource("wall")]
+room_id = &"Hall"
+length = 158.0
+vertical = true
+
+[node name="Collision" parent="Walls/LeftWall/Collisions" index="0"]
+position = Vector2(0, 79)
+shape = SubResource("side")
+
+[node name="TransparencyArea" parent="Walls/LeftWall" index="2"]
+position = Vector2(0, 63)
+shape = SubResource("vertical_zone")
+
+[node name="RightWall" parent="Walls" unique_id=2144210344 instance=ExtResource("wall")]
+position = Vector2(240, 0)
+room_id = &"Hall"
+length = 158.0
+vertical = true
+
+[node name="Collision" parent="Walls/RightWall/Collisions" index="0"]
+position = Vector2(0, 79)
+shape = SubResource("side")
+
+[node name="TransparencyArea" parent="Walls/RightWall" index="2"]
+position = Vector2(0, 63)
+shape = SubResource("vertical_zone")
+
+[node name="BathroomBackWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(28, -48)
+room_id = &"Bathroom"
+length = 64.0
+style = ExtResource("bathroom_style")
+
+[node name="Collision" parent="Walls/BathroomBackWall/Collisions" index="0"]
+position = Vector2(32, 0)
+shape = SubResource("bathroom_back")
+
+[node name="TransparencyArea" parent="Walls/BathroomBackWall" index="2" node_paths=PackedStringArray("targets")]
+position = Vector2(32, -16)
+shape = SubResource("bathroom_back_zone")
+targets = Array[NodePath]([NodePath("../Sprite"), NodePath("../../../Rooms/Bathroom/Placements/WashingArea/Mirror"), NodePath("../../../Rooms/Bathroom/Placements/WashingArea/Towel"), NodePath("../../../Rooms/Bathroom/Placements/ToiletArea/PaperHolder")])
+
+[node name="BathroomLeftWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(28, -48)
+room_id = &"Bathroom"
+length = 48.0
+vertical = true
+style = ExtResource("bathroom_style")
+
+[node name="Collision" parent="Walls/BathroomLeftWall/Collisions" index="0"]
+position = Vector2(0, 24)
+shape = SubResource("bathroom_side")
+
+[node name="TransparencyArea" parent="Walls/BathroomLeftWall" index="2"]
+position = Vector2(0, 8)
+shape = SubResource("bathroom_side_zone")
+
+[node name="BathroomRightWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(92, -48)
+room_id = &"Bathroom"
+length = 48.0
+vertical = true
+style = ExtResource("bathroom_style")
+
+[node name="Collision" parent="Walls/BathroomRightWall/Collisions" index="0"]
+position = Vector2(0, 24)
+shape = SubResource("bathroom_side")
+
+[node name="TransparencyArea" parent="Walls/BathroomRightWall" index="2"]
+position = Vector2(0, 8)
+shape = SubResource("bathroom_side_zone")
+
+[node name="BathroomFrontWall" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(28, 0)
+room_id = &"Hall"
+length = 64.0
+openings = Array[float]([32.0])
+opening_size = Vector2(16, 28)
+
+[node name="Collision" parent="Walls/BathroomFrontWall/Collisions" index="0"]
+position = Vector2(12, 0)
+shape = SubResource("bathroom_front_segment")
+
+[node name="RightSegment" type="CollisionShape2D" parent="Walls/BathroomFrontWall/Collisions" index="1"]
+position = Vector2(52, 0)
+shape = SubResource("bathroom_front_segment")
+
+[node name="TransparencyArea" parent="Walls/BathroomFrontWall" index="2"]
+position = Vector2(32, -16)
+shape = SubResource("bathroom_back_zone")
+
+[node name="Doors" type="Node2D" parent="." unique_id=2089052984]
+
+[node name="BathroomDoor" parent="Doors" instance=ExtResource("room_door")]
+position = Vector2(60, 0)
+door_variants = ExtResource("bathroom_doors")
+
+[node name="Exit" parent="." unique_id=696504944 instance=ExtResource("portal")]
+position = Vector2(120, 158)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1690156842]
+position = Vector2(120, 132)
+
+[node name="LevelBounds" type="StaticBody2D" parent="." unique_id=918798670]
+collision_layer = 8
+collision_mask = 0
+
+[node name="BottomLeft" type="Marker2D" parent="LevelBounds" unique_id=337310954]
+position = Vector2(-24, 182)
+
+[node name="TopRight" type="Marker2D" parent="LevelBounds" unique_id=2044464175]
+position = Vector2(264, -96)
+
+[node name="Top" type="CollisionShape2D" parent="LevelBounds" unique_id=1683137128]
+position = Vector2(120, -104)
+shape = SubResource("bounds_horizontal")
+
+[node name="Bottom" type="CollisionShape2D" parent="LevelBounds" unique_id=1863858069]
+position = Vector2(120, 190)
+shape = SubResource("bounds_horizontal")
+
+[node name="Left" type="CollisionShape2D" parent="LevelBounds" unique_id=465871535]
+position = Vector2(-32, 43)
+shape = SubResource("bounds_vertical")
+
+[node name="Right" type="CollisionShape2D" parent="LevelBounds" unique_id=2024066870]
+position = Vector2(272, 43)
+shape = SubResource("bounds_vertical")
+
+[editable path="Rooms/Hall"]
+[editable path="Walls/BackWall"]
+[editable path="Walls/FrontWall"]
+[editable path="Walls/LeftWall"]
+[editable path="Walls/RightWall"]
+[editable path="Walls/BackWallRight"]
+[editable path="Walls/BathroomBackWall"]
+[editable path="Walls/BathroomLeftWall"]
+[editable path="Walls/BathroomRightWall"]
+[editable path="Walls/BathroomFrontWall"]

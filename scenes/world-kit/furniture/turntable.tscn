@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/turntable.tres" id="turntable"]
+
+[node name="Turntable" instance=ExtResource("base")]
+designs = Array[ExtResource("design")]([ExtResource("turntable")])
+blocks_movement = false

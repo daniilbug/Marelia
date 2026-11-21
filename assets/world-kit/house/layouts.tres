@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HouseLayoutCatalog" format=3]
+[gd_resource type="Resource" script_class="BuildingLayoutCatalog" format=3]
 
 [ext_resource type="Script" path="res://scripts/world-kit/house/layout_catalog.gd" id="script"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/layouts/2_a.tscn" id="2_a"]

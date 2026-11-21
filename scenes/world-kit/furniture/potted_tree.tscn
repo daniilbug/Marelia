@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/occluding_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/potted_tree.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/potted_tree_olive.tres" id="olive"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/potted_tree_lemon.tres" id="lemon"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/potted_tree_variants.tres" id="styles"]
+
+[sub_resource type="RectangleShape2D" id="canopy"]
+size = Vector2(20, 22)
+
+[node name="PottedTree" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design")]([ExtResource("olive"), ExtResource("lemon")])
+style_variants = ExtResource("styles")
+randomize_in_layout = true
+transparency_shape = SubResource("canopy")
+transparency_offset = Vector2(0, -16)

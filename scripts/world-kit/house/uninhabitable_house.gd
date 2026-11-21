@@ -1,6 +1,6 @@
 @tool
 class_name UninhabitableHouse
-extends HouseFacade
+extends Building
 
 const COMPONENT_FIELDS := ["wall_variant", "roof_variant", "left_window_variant", "right_window_variant", "door_variant"]
 const STYLE_COMPONENT_FIELDS := ["wall_variant", "roof_variant", "left_window_variant", "right_window_variant"]

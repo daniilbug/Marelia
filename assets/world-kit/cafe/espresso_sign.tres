@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StreetPropDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="design"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/espresso_sign.png" id="texture"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/espresso_sign_materials.png" id="mask"]
+
+[resource]
+script = ExtResource("design")
+texture = ExtResource("texture")
+material_mask = ExtResource("mask")
+source_body_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
+source_support_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
+origin = Vector2(-1, -2)

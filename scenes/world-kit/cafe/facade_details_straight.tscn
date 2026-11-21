@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/cafe/facade_details.tscn" id="base"]
+
+[node name="CafeFacadeStraight" instance=ExtResource("base")]
+
+[node name="Awning" parent="." index="2"]
+position = Vector2(0, -46)
+style = 2
+primary_color = Color(0.32, 0.45, 0.55, 1)

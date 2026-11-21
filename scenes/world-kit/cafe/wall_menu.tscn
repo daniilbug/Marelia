@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/furniture_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/wall_menu.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/menu_styles.tres" id="styles"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_chalkboard.png" id="chalkboard"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_chalkboard_materials.png" id="chalkboard_materials"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_paper.png" id="paper"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_paper_materials.png" id="paper_materials"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_enamel.png" id="enamel"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/menu_enamel_materials.png" id="enamel_materials"]
+
+[sub_resource type="Resource" id="chalkboard_view"]
+script = ExtResource("view")
+albedo = ExtResource("chalkboard")
+material_mask = ExtResource("chalkboard_materials")
+source_material_colors = Dictionary[StringName, Color]({
+&"wood_color": Color(0.4392156863, 0.3019607843, 0.2235294118, 1),
+&"paint_color": Color(0.2039215686, 0.2588235294, 0.2313725490, 1)
+})
+approved_preview = ExtResource("chalkboard")
+origin = Vector2(-14, -12)
+
+[sub_resource type="Resource" id="chalkboard_design"]
+script = ExtResource("design")
+title = "Chalkboard Menu"
+views = Array[ExtResource("view")]([SubResource("chalkboard_view")])
+
+[sub_resource type="Resource" id="paper_view"]
+script = ExtResource("view")
+albedo = ExtResource("paper")
+material_mask = ExtResource("paper_materials")
+source_material_colors = Dictionary[StringName, Color]({
+&"wood_color": Color(0.5019607843, 0.3686274510, 0.2627450980, 1),
+&"paint_color": Color(0.5764705882, 0.3647058824, 0.2980392157, 1)
+})
+approved_preview = ExtResource("paper")
+origin = Vector2(-13, -13)
+
+[sub_resource type="Resource" id="paper_design"]
+script = ExtResource("design")
+title = "Paper Menu on a Rail"
+views = Array[ExtResource("view")]([SubResource("paper_view")])
+
+[sub_resource type="Resource" id="enamel_view"]
+script = ExtResource("view")
+albedo = ExtResource("enamel")
+material_mask = ExtResource("enamel_materials")
+source_material_colors = Dictionary[StringName, Color]({
+&"paint_color": Color(0.8196078431, 0.8745098039, 0.8352941176, 1)
+})
+approved_preview = ExtResource("enamel")
+origin = Vector2(-14, -13)
+
+[sub_resource type="Resource" id="enamel_design"]
+script = ExtResource("design")
+title = "Enamel Menu"
+views = Array[ExtResource("view")]([SubResource("enamel_view")])
+
+[node name="WallMenu" instance=ExtResource("base")]
+z_index = 1
+script = ExtResource("script")
+designs = Array[ExtResource("design")]([SubResource("chalkboard_design"), SubResource("paper_design"), SubResource("enamel_design")])
+style_variants = ExtResource("styles")
+randomize_in_layout = true
+paintable_materials = 6
+wood_color = Color(0.4392156863, 0.3019607843, 0.2235294118, 1)
+paint_color = Color(0.2039215686, 0.2588235294, 0.2313725490, 1)
+blocks_movement = false

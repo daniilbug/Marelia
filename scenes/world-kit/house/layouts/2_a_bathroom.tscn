@@ -808,7 +808,6 @@ position = Vector2(152, 81)
 length = 64.0
 openings = Array[float]([32.0])
 opening_size = Vector2(16, 28)
-static_alpha = 0.1
 
 [node name="Collision" parent="Walls/BathroomFrontWall/Collisions" index="0"]
 position = Vector2(12, 0)
@@ -821,7 +820,6 @@ shape = SubResource("bathroom_front_wall_right")
 [node name="TransparencyArea" parent="Walls/BathroomFrontWall" index="2"]
 position = Vector2(32, -16)
 shape = SubResource("bathroom_front_wall_zone")
-enabled = false
 
 [node name="Doors" type="Node2D" parent="." unique_id=768070852]
 y_sort_enabled = true

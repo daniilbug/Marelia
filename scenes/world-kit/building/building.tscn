@@ -1,0 +1,34 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://scripts/world-kit/building/building.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/facade_floor.tscn" id="floor"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/portal.tscn" id="portal"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/entrance_step.tscn" id="step"]
+[ext_resource type="PackedScene" path="res://scenes/core/transparency_area.tscn" id="area"]
+[sub_resource type="RectangleShape2D" id="footprint"]
+resource_local_to_scene = true
+size = Vector2(176, 80)
+[node name="Building" type="StaticBody2D"]
+script = ExtResource("script")
+y_sort_enabled = true
+[node name="Visuals" type="Node2D" parent="."]
+[node name="Roof" type="Sprite2D" parent="Visuals"]
+[node name="Floors" type="Node2D" parent="Visuals"]
+[node name="Floor0" parent="Visuals/Floors" instance=ExtResource("floor")]
+[node name="Plinth" type="Sprite2D" parent="Visuals"]
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("footprint")
+[node name="TransparencyArea" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("area")]
+targets = Array[NodePath]([NodePath("../Visuals")])
+[node name="Entrance" parent="." instance=ExtResource("portal")]
+position = Vector2(0, -2)
+arrival_direction = Vector2(0, 1)
+[node name="Arrival" parent="Entrance" index="2"]
+position = Vector2(0, 24)
+[node name="Step" parent="Entrance" instance=ExtResource("step")]
+position = Vector2(0, 8)
+
+[node name="Connections" type="Node" parent="."]
+[node name="Balconies" type="Node2D" parent="."]
+[node name="FacadeDetails" type="Node2D" parent="Visuals"]
+[node name="ExteriorObjects" type="Node2D" parent="."]
+y_sort_enabled = true

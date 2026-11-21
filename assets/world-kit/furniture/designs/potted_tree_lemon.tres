@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/furniture/sprites/potted_tree_lemon.png" id="lemon"]
+
+[sub_resource type="Resource" id="lemon_view"]
+script = ExtResource("view")
+albedo = ExtResource("lemon")
+approved_preview = ExtResource("lemon")
+origin = Vector2(-11, -28)
+footprint = Vector2(10, 5)
+
+[resource]
+script = ExtResource("design")
+title = "Potted Lemon Tree"
+views = Array[ExtResource("view")]([SubResource("lemon_view")])

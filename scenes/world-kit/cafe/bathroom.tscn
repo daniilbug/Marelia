@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/house/room.tscn" id="room"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/washing_area.tscn" id="washing"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/toilet_area.tscn" id="toilet"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom.tres" id="room_variants"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="room_style"]
+
+[node name="Bathroom" instance=ExtResource("room")]
+room_id = &"Bathroom"
+style_variants = ExtResource("room_variants")
+style = ExtResource("room_style")
+
+[node name="Floor" parent="." index="0"]
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 48, 0, 48)
+
+[node name="WashingArea" parent="Placements" instance=ExtResource("washing")]
+position = Vector2(16, 12)
+
+[node name="ToiletArea" parent="Placements" instance=ExtResource("toilet")]
+position = Vector2(48, 22)
+randomize_in_layout = true

@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/levels/world-kit-demo/houses.gd" id="main"]
+[ext_resource type="Script" path="res://scripts/levels/world-kit-demo/buildings.gd" id="main"]
 [ext_resource type="PackedScene" path="res://scenes/core/world_time.tscn" id="clock"]
 [ext_resource type="PackedScene" path="res://scenes/core/save/world_save.tscn" id="save"]
 [ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="outside_level"]

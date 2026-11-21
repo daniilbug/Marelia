@@ -27,9 +27,9 @@ static func find_level_node(node: Node2D) -> Level:
 ## Camera placement in the player's local pixels, reset on each level change.
 @export var camera_position_offset := Vector2.ZERO
 
-@onready var _bounds_body: StaticBody2D = get_node(bounds_path)
-@onready var _bottom_left_bound: Marker2D = _bounds_body.get_node("BottomLeft")
-@onready var _top_right_bound: Marker2D = _bounds_body.get_node("TopRight")
+@onready var _bounds_body: StaticBody2D = get_node_or_null(bounds_path)
+@onready var _bottom_left_bound: Marker2D = _bounds_body.get_node("BottomLeft") if _bounds_body != null else null
+@onready var _top_right_bound: Marker2D = _bounds_body.get_node("TopRight") if _bounds_body != null else null
 
 var local_player: Player = null
 var world_time: WorldTime

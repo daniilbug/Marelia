@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/occluding_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/cafe_counter.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/counter_styles.tres" id="styles"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_walnut.png" id="walnut"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_walnut_materials.png" id="walnut_mask"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_oak.png" id="oak"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_oak_materials.png" id="oak_mask"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_ceramic.png" id="ceramic"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/counter_ceramic_materials.png" id="ceramic_mask"]
+
+[sub_resource type="Resource" id="walnut_view"]
+script = ExtResource("view")
+albedo = ExtResource("walnut")
+material_mask = ExtResource("walnut_mask")
+source_material_colors = Dictionary[StringName, Color]({&"wood_color": Color(0.5294117647, 0.3411764706, 0.2313725490, 1)})
+approved_preview = ExtResource("walnut")
+origin = Vector2(-32, -12)
+footprint = Vector2(60, 8)
+
+[sub_resource type="Resource" id="walnut_design"]
+script = ExtResource("design")
+title = "Wood panels and light stone"
+views = Array[ExtResource("view")]([SubResource("walnut_view")])
+
+[sub_resource type="Resource" id="oak_view"]
+script = ExtResource("view")
+albedo = ExtResource("oak")
+material_mask = ExtResource("oak_mask")
+source_material_colors = Dictionary[StringName, Color]({&"wood_color": Color(0.6823529412, 0.4901960784, 0.2745098039, 1)})
+approved_preview = ExtResource("oak")
+origin = Vector2(-32, -12)
+footprint = Vector2(60, 8)
+
+[sub_resource type="Resource" id="oak_design"]
+script = ExtResource("design")
+title = "Light oak slats"
+views = Array[ExtResource("view")]([SubResource("oak_view")])
+
+[sub_resource type="Resource" id="ceramic_view"]
+script = ExtResource("view")
+albedo = ExtResource("ceramic")
+material_mask = ExtResource("ceramic_mask")
+source_material_colors = Dictionary[StringName, Color]({&"paint_color": Color(0.4392156863, 0.5372549020, 0.6078431373, 1)})
+approved_preview = ExtResource("ceramic")
+origin = Vector2(-32, -12)
+footprint = Vector2(60, 8)
+
+[sub_resource type="Resource" id="ceramic_design"]
+script = ExtResource("design")
+title = "Maiolica tile and timber"
+views = Array[ExtResource("view")]([SubResource("ceramic_view")])
+
+[node name="Counter" instance=ExtResource("base")]
+script = ExtResource("script")
+designs = Array[ExtResource("design")]([SubResource("walnut_design"), SubResource("oak_design"), SubResource("ceramic_design")])
+paintable_materials = 6
+wood_color = Color(0.5294117647, 0.3411764706, 0.2313725490, 1)
+style_variants = ExtResource("styles")
+randomize_in_layout = true

@@ -8,10 +8,21 @@ uniform vec4 fabric_color : source_color = vec4(0.631373, 0.415686, 0.454902, 1.
 uniform vec4 plaster_color : source_color = vec4(0.866667, 0.803922, 0.670588, 1.0);
 uniform vec4 stone_color : source_color = vec4(0.705882, 0.666667, 0.541176, 1.0);
 uniform vec4 roof_color : source_color = vec4(0.721569, 0.462745, 0.305882, 1.0);
+uniform vec4 source_material_colors[6] : source_color;
 varying vec4 item_color;
 
 void vertex() {
 	item_color = COLOR;
+}
+
+vec3 recolor(vec3 pixel, vec3 reference, vec3 color) {
+	if (distance(reference, color) < 0.000001) {
+		return pixel;
+	}
+	vec3 shadow = color * pixel / max(reference, vec3(0.000001));
+	vec3 amount = clamp((pixel - reference) / max(vec3(1.0) - reference, vec3(0.000001)), 0.0, 1.0);
+	vec3 highlight = mix(color, vec3(1.0), amount);
+	return clamp(mix(shadow, highlight, step(reference, pixel)), 0.0, 1.0);
 }
 
 void fragment() {
@@ -25,12 +36,17 @@ void fragment() {
 	else if (material_id == 5) { base = stone_color.rgb; }
 	else if (material_id == 6) { base = roof_color.rgb; }
 	if (material_id >= 1 && material_id <= 6) {
-		// The four neutral shades encode the approved shadows and highlights.
-		int shade = int(round((pixel.r * 255.0 - 45.0) / 60.0));
-		if (shade <= 0) { base = mix(base, vec3(48.0, 45.0, 43.0) / 255.0, 0.52); }
-		else if (shade == 1) { base = mix(base, vec3(68.0, 56.0, 46.0) / 255.0, 0.25); }
-		else if (shade >= 3) { base = mix(base, vec3(246.0, 230.0, 192.0) / 255.0, 0.30); }
-		pixel.rgb = floor(base * 255.0 + 0.5) / 255.0;
+		vec4 reference = source_material_colors[material_id - 1];
+		if (reference.a > 0.0) {
+			pixel.rgb = recolor(pixel.rgb, reference.rgb, base);
+		} else {
+			// The four neutral shades encode the approved shadows and highlights.
+			int shade = int(round((pixel.r * 255.0 - 45.0) / 60.0));
+			if (shade <= 0) { base = mix(base, vec3(48.0, 45.0, 43.0) / 255.0, 0.52); }
+			else if (shade == 1) { base = mix(base, vec3(68.0, 56.0, 46.0) / 255.0, 0.25); }
+			else if (shade >= 3) { base = mix(base, vec3(246.0, 230.0, 192.0) / 255.0, 0.30); }
+			pixel.rgb = floor(base * 255.0 + 0.5) / 255.0;
+		}
 	}
 	// Retain CanvasItem opacity, including TransparencyArea and parent modulation.
 	COLOR = pixel * item_color;

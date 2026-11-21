@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="3_5uhrw"]
 [ext_resource type="Script" uid="uid://cngwr1634ilbn" path="res://scripts/world-kit/house/interior_settings.gd" id="4_c6som"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/house/layouts/2_a_kitchen.tscn" id="layout"]
-[ext_resource type="Script" uid="uid://dbn6y4m2sv6el" path="res://scripts/world-kit/house/interior.gd" id="script"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/layouts.tres" id="layouts"]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/building/interior.tscn" id="base"]
 
 [sub_resource type="Resource" id="Resource_cwuvo"]
 resource_local_to_scene = true
@@ -41,13 +42,9 @@ kitchen = SubResource("Resource_j5eln")
 bedroom = SubResource("Resource_cwuvo")
 second_bedroom = SubResource("Resource_spma7")
 
-[node name="HouseInterior" unique_id=516640820 type="Node2D" node_paths=PackedStringArray("player_spawn")]
-script = ExtResource("script")
+[node name="HouseInterior" unique_id=516640820 instance=ExtResource("base") node_paths=PackedStringArray("player_spawn")]
 scale = Vector2(4, 4)
-z_as_relative = false
-y_sort_enabled = true
 player_spawn = NodePath("Layout/PlayerSpawn")
-bounds_path = NodePath("Layout/LevelBounds")
 configuration = SubResource("Resource_l8awh")
 layouts = ExtResource("layouts")
 selected_placements = {
@@ -55,9 +52,5 @@ selected_placements = {
 "LivingRoom/Workplace": "LeftWall"
 }
 level_id = "house_preview"
-
-[node name="NPCSpawner" type="MultiplayerSpawner" parent="." unique_id=946226487]
-_spawnable_scenes = PackedStringArray("res://scenes/core/npc/npc.tscn")
-spawn_path = NodePath("..")
 
 [node name="Layout" parent="." instance=ExtResource("layout")]

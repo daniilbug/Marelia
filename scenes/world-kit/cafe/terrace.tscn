@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/dining_for_two.tscn" id="table"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/potted_tree.tscn" id="plant"]
+[ext_resource type="Script" path="res://scripts/world-kit/building/cafe_terrace.gd" id="script"]
+
+[node name="CafeTerrace" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("script")
+
+[node name="LeftTable" parent="." instance=ExtResource("table")]
+position = Vector2(-62, 46)
+
+[node name="RightTable" parent="." instance=ExtResource("table")]
+position = Vector2(62, 46)
+
+[node name="LeftPlant" parent="." instance=ExtResource("plant")]
+position = Vector2(-96, 8)
+
+[node name="RightPlant" parent="." instance=ExtResource("plant")]
+position = Vector2(96, 8)

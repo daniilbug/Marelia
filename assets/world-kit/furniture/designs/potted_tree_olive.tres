@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3 uid="uid://8ia40cbfryts"]
+
+[ext_resource type="Script" uid="uid://d1nikbya71ixe" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Texture2D" uid="uid://b5oael0c0li1l" path="res://assets/world-kit/furniture/sprites/potted_tree_olive.png" id="olive"]
+[ext_resource type="Script" uid="uid://dmfkttqd1q28f" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+
+[sub_resource type="Resource" id="olive_view"]
+script = ExtResource("view")
+albedo = ExtResource("olive")
+approved_preview = ExtResource("olive")
+origin = Vector2(-12, -27)
+footprint = Vector2(10, 5)
+
+[resource]
+script = ExtResource("design")
+title = "Potted Olive Tree"
+views = Array[ExtResource("view")]([SubResource("olive_view")])

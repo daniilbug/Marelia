@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FurnitureDesign" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/world-kit/furniture/sprites/tape_recorder.png" id="art"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_view.gd" id="view"]
+
+[sub_resource type="Resource" id="front"]
+script = ExtResource("view")
+albedo = ExtResource("art")
+approved_preview = ExtResource("art")
+origin = Vector2(-9, -9)
+
+[resource]
+script = ExtResource("design")
+title = "Tape Recorder"
+views = Array[ExtResource("view")]([SubResource("front")])

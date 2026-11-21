@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/building/interior.gd" id="script"]
+
+[node name="BuildingInterior" type="Node2D"]
+script = ExtResource("script")
+z_as_relative = false
+y_sort_enabled = true
+bounds_path = NodePath("Layout/LevelBounds")
+
+[node name="NPCSpawner" type="MultiplayerSpawner" parent="." unique_id=946226487]
+_spawnable_scenes = PackedStringArray("res://scenes/core/npc/npc.tscn")
+spawn_path = NodePath("..")

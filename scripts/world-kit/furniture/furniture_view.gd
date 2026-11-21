@@ -5,6 +5,8 @@ extends Resource
 ## One approved view. Textures are shared; instance colors and shapes are not.
 @export var albedo: Texture2D
 @export var material_mask: Texture2D
+## Optional base colors for tinting full-color artwork without losing its shading.
+@export var source_material_colors: Dictionary[StringName, Color] = {}
 ## Approved full-color artwork for previews.
 @export var approved_preview: Texture2D
 @export var origin := Vector2.ZERO

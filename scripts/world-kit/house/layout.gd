@@ -1,5 +1,5 @@
 @tool
-class_name HouseLayout
+class_name BuildingLayout
 extends Node2D
 
 ## Optional fallback catalogue for the room doors in this layout.
@@ -35,7 +35,7 @@ func get_floor_zones() -> Array[HouseFloorZone]:
 				zones.append(child)
 	return zones
 
-func apply_configuration(settings: HouseInteriorSettings) -> void:
+func apply_configuration(settings: BuildingInteriorSettings) -> void:
 	for room in get_rooms():
 		room.style = settings.get_style(room.room_id)
 	for zone in get_floor_zones():
@@ -47,34 +47,68 @@ func _apply_door_variants() -> void:
 	for door in get_doors():
 		door.set_fallback_variants(door_variants)
 
-func select_placements(choices: Dictionary) -> void:
+func select_placements(choices: Dictionary, shared_styles: Dictionary[DecorationVariants, DecorationStyle] = {}) -> void:
 	for room in get_rooms():
-		for group in room.get_placement_groups():
-			if not group.visible:
+		for placement in room.get_placements():
+			if not (placement is PlacementGroup or placement is FurniturePiece or placement is DecorationGroup) or not placement.visible:
 				continue
-			var key := str(room.room_id) + "/" + str(group.name)
-			if choices.has(key) and group.has_node(NodePath(choices[key])):
-				group.selected_variant = StringName(choices[key])
-			else:
-				group.choose_variant()
-				choices[key] = str(group.selected_variant)
+			var key := str(room.room_id) + "/" + str(placement.name)
 			var style_key := key + "/Style"
-			if choices.has(style_key):
-				var data: Dictionary = choices[style_key]
-				if not data.is_empty() and data != _get_furniture_style_data(group):
-					var style := HouseFurnitureStyle.new()
-					style.apply_data(data)
-					group.apply_style(style)
+			if placement is PlacementGroup:
+				if choices.has(key) and placement.has_node(NodePath(choices[key])):
+					placement.selected_variant = StringName(choices[key])
+				else:
+					placement.choose_variant()
+					choices[key] = str(placement.selected_variant)
 			else:
-				group.choose_style()
-				choices[style_key] = _get_furniture_style_data(group)
+				# Existing saves can still carry a placement marker for fixed furniture.
+				choices.erase(key)
+				if not placement.randomize_in_layout:
+					choices.erase(style_key)
+					continue
+			_select_furniture_style(placement, placement.style_variants, style_key, choices, shared_styles)
 
-func _get_furniture_style_data(group: PlacementGroup) -> Dictionary:
-	var point := group.get_selected_point()
-	if point != null:
-		for instance in point.get_children():
-			if instance is DecorationGroup and instance.style is HouseFurnitureStyle:
-				return instance.style.to_data()
+func _select_furniture_style(placement: Node2D, variants: DecorationVariants, key: String, choices: Dictionary, shared_styles: Dictionary[DecorationVariants, DecorationStyle]) -> void:
+	if variants != null and shared_styles.has(variants):
+		_apply_furniture_style(placement, shared_styles[variants])
+		choices.erase(key)
+		return
+	if choices.has(key):
+		var data: Dictionary = choices[key]
+		if not data.is_empty():
+			if data != _get_furniture_style_data(placement):
+				var saved_style := HouseFurnitureStyle.new()
+				saved_style.apply_data(data)
+				_apply_furniture_style(placement, saved_style)
+			return
+		# Older saves could store an empty style for a group containing only furniture pieces.
+		if variants is not HouseFurnitureVariants:
+			return
+	var style := variants.choose_style() if variants != null else null
+	if style is HouseFurnitureStyle:
+		_apply_furniture_style(placement, style)
+		choices[key] = style.to_data()
+	elif placement is PlacementGroup:
+		_apply_furniture_style(placement, style)
+		choices[key] = _get_furniture_style_data(placement)
+
+func _apply_furniture_style(placement: Node2D, style: DecorationStyle) -> void:
+	if placement is PlacementGroup:
+		placement.apply_style(style)
+	elif placement is DecorationGroup:
+		placement.apply_placement_style(style)
+	elif placement is FurniturePiece:
+		style.apply_to(placement)
+
+func _get_furniture_style_data(placement: Node2D) -> Dictionary:
+	if placement is DecorationGroup and placement.style is HouseFurnitureStyle:
+		return placement.style.to_data()
+	if placement is PlacementGroup:
+		var point: Marker2D = placement.get_selected_point()
+		if point != null:
+			for instance in point.get_children():
+				if instance is DecorationGroup and instance.style is HouseFurnitureStyle:
+					return instance.style.to_data()
 	return {}
 
 func get_door_states() -> Dictionary:

@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/occluding_piece.tscn" id="base"]
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_design.gd" id="design"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/designs/marble_bust.tres" id="bust"]
+
+[node name="MarbleBust" instance=ExtResource("base")]
+designs = Array[ExtResource("design")]([ExtResource("bust")])

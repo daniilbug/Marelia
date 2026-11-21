@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="HouseDoorVariants" format=3 uid="uid://cktkcpwisi74p"]
 
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/double_glazed.tres" id="double_glazed"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/double_panel.tres" id="double_panel"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/double_plank.tres" id="double_plank"]
+[ext_resource type="Resource" uid="uid://c1djuwkqnkvlo" path="res://assets/world-kit/house/door-designs/double_glazed.tres" id="double_glazed"]
+[ext_resource type="Resource" uid="uid://c841lrvwrnd7e" path="res://assets/world-kit/house/door-designs/double_panel.tres" id="double_panel"]
+[ext_resource type="Resource" uid="uid://bv4hoeepk0qwd" path="res://assets/world-kit/house/door-designs/double_plank.tres" id="double_plank"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_glazed.tres" id="single_glazed"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_panel.tres" id="single_panel"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_plank.tres" id="single_plank"]

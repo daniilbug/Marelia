@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="HouseFurnitureVariants" format=3 uid="uid://d03s4ibnmnbqx"]
+
+[ext_resource type="Script" uid="uid://w1yrdb2l0v7x" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://b7t7suucowl17" path="res://scripts/world-kit/furniture/groups/furniture_variants.gd" id="variants"]
+
+[sub_resource type="Resource" id="walnut_1"]
+resource_local_to_scene = true
+script = ExtResource("style")
+wood_color = Color(0.5294118, 0.34117648, 0.23137255, 1)
+
+[sub_resource type="Resource" id="walnut_2"]
+resource_local_to_scene = true
+script = ExtResource("style")
+wood_color = Color(0.45882353, 0.3254902, 0.26666668, 1)
+
+[sub_resource type="Resource" id="walnut_3"]
+resource_local_to_scene = true
+script = ExtResource("style")
+wood_color = Color(0.6627451, 0.45490196, 0.3254902, 1)
+
+[sub_resource type="Resource" id="oak_1"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 1
+
+[sub_resource type="Resource" id="oak_2"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 1
+wood_color = Color(0.7254902, 0.57254905, 0.3882353, 1)
+
+[sub_resource type="Resource" id="oak_3"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 1
+wood_color = Color(0.5803922, 0.46666667, 0.3372549, 1)
+
+[sub_resource type="Resource" id="ceramic_1"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.4392157, 0.5372549, 0.60784316, 1)
+
+[sub_resource type="Resource" id="ceramic_2"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.49019608, 0.5882353, 0.40392157, 1)
+
+[sub_resource type="Resource" id="ceramic_3"]
+resource_local_to_scene = true
+script = ExtResource("style")
+design = 2
+paint_color = Color(0.6313726, 0.41568628, 0.45490196, 1)
+
+[resource]
+script = ExtResource("variants")
+variants = Array[ExtResource("style")]([SubResource("walnut_1"), SubResource("walnut_2"), SubResource("walnut_3"), SubResource("oak_1"), SubResource("oak_2"), SubResource("oak_3"), SubResource("ceramic_1"), SubResource("ceramic_2"), SubResource("ceramic_3")])

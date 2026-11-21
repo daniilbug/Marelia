@@ -25,9 +25,5 @@ func refresh_floor() -> void:
 		return
 	HouseArt.apply($Floor, HouseArt.FLOORS[style.floor_material], HouseArt.floor_colors(style), true)
 
-func get_placement_groups() -> Array[PlacementGroup]:
-	var groups: Array[PlacementGroup] = []
-	for node in $Placements.get_children():
-		if node is PlacementGroup:
-			groups.append(node)
-	return groups
+func get_placements() -> Array[Node]:
+	return $Placements.get_children()

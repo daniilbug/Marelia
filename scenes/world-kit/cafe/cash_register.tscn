@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/countertop_prop.gd" id="prop"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/cash_register_north.png" id="register"]
+
+[node name="CashRegister" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("register")
+centered = false
+script = ExtResource("prop")

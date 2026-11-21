@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/placement_group.gd" id="placement"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="styles"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/rug.tscn" id="rug"]
+
+[node name="RugPlacement" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("placement")
+style_variants = ExtResource("styles")
+selected_variant = &"WithRug"
+
+[node name="BareFloor" type="Marker2D" parent="."]
+
+[node name="WithRug" type="Marker2D" parent="."]
+y_sort_enabled = true
+
+[node name="Decorations" parent="WithRug" instance=ExtResource("group")]
+
+[node name="Rug" parent="WithRug/Decorations" instance=ExtResource("rug")]

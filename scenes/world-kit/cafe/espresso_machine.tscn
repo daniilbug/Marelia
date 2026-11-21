@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/furniture/countertop_prop.gd" id="prop"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/espresso_machine_north.png" id="steel"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/espresso_machine_sage_north.png" id="sage"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/cafe/sprites/espresso_machine_copper_north.png" id="copper"]
+
+[node name="EspressoMachine" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("steel")
+centered = false
+offset = Vector2(-9, -11)
+script = ExtResource("prop")
+variants = Dictionary[int, Texture2D]({0: ExtResource("steel"), 1: ExtResource("sage"), 2: ExtResource("copper")})

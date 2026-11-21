@@ -95,6 +95,8 @@ var _syncing_geometry := false
 
 @export_group("Randomization")
 @export var style_variants: HouseFurnitureVariants
+## Roll and save this piece's appearance when it is placed directly in a room.
+@export var randomize_in_layout := false
 @export_tool_button("Randomize appearance") var randomize_action: Callable = randomize
 
 func _ready() -> void:
@@ -121,7 +123,7 @@ func randomize() -> void:
 			set_appearance(profile)
 
 func set_appearance(profile: HouseFurnitureStyle) -> void:
-	if designs.size() > 1 and get("style") is int:
+	if profile.design != HouseFurnitureStyle.Design.KEEP_CURRENT and designs.size() > 1 and get("style") is int:
 		var design := mini(profile.design, designs.size() - 1)
 		if get("style") != design:
 			set("style", design)
@@ -148,6 +150,13 @@ func _refresh_appearance() -> void:
 	sprite.texture = _view.albedo if _view else null
 	sprite.hframes = _view.frames if _view else 1
 	sprite.position = (_view.origin if _view else Vector2.ZERO) + visual_offset
+	var source_colors := PackedColorArray()
+	source_colors.resize(MATERIAL_COLORS.size())
+	source_colors.fill(Color.TRANSPARENT)
+	if _view != null:
+		for field in MATERIAL_COLORS:
+			source_colors[MATERIAL_COLORS[field] - 1] = _view.source_material_colors.get(field, Color.TRANSPARENT)
+	_palette.set_shader_parameter("source_material_colors", source_colors)
 	_update_palette()
 	_update_geometry()
 

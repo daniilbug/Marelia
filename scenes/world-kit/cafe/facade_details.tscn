@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world-kit/building/facade_details.gd" id="script"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/infrastructure/awning.tscn" id="awning"]
+[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/window_panelled_open.png" id="window"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/street/street_prop.tscn" id="street_prop"]
+[ext_resource type="Script" path="res://scripts/world-kit/street/street_prop_design.gd" id="prop_design"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/espresso_sign.tres" id="espresso_sign"]
+
+[node name="CafeFacadeDetails" type="Node2D" node_paths=PackedStringArray("tint_targets", "window_targets")]
+script = ExtResource("script")
+tint_targets = [NodePath("Awning"), NodePath("Sign")]
+window_targets = Array[NodePath]([NodePath("LeftWindow"), NodePath("RightWindow")])
+
+[node name="LeftWindow" type="Sprite2D" parent="."]
+position = Vector2(-62, -22)
+texture = ExtResource("window")
+
+[node name="RightWindow" type="Sprite2D" parent="."]
+position = Vector2(62, -22)
+texture = ExtResource("window")
+
+[node name="Awning" parent="." instance=ExtResource("awning")]
+position = Vector2(0, -47)
+scale = Vector2(1.65, 1.0)
+primary_color = Color(0.55, 0.26, 0.20, 1)
+secondary_color = Color(0.92, 0.82, 0.64, 1)
+
+[node name="Sign" parent="." instance=ExtResource("street_prop")]
+position = Vector2(42, -56)
+collision_layer = 0
+collision_mask = 0
+designs = Array[ExtResource("prop_design")]([ExtResource("espresso_sign")])
+body_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
+support_color = Color(0.305882353, 0.356862745, 0.286274510, 1)

@@ -1,5 +1,5 @@
 @tool
-class_name HouseInteriorSettings
+class_name BuildingInteriorSettings
 extends Resource
 
 enum RoomCount { TWO = 2, THREE = 3, FOUR = 4 }
@@ -13,7 +13,7 @@ const ROOM_PROPERTIES := {
 }
 const FIELDS := ["room_count", "layout", "kind", "balcony", "bathroom_enabled"]
 
-## Selects a layout family; the house assigns this floor's position and access.
+## Residential layout settings apply when the floor has no named layout choices.
 @export var kind: Kind = Kind.WITH_KITCHEN:
 	set(value):
 		kind = value
@@ -39,6 +39,16 @@ const FIELDS := ["room_count", "layout", "kind", "balcony", "bathroom_enabled"]
 	set(value):
 		layout_scene = value
 		notify_property_list_changed()
+		emit_changed()
+## Stable keys from the building definition's layout catalog.
+@export var layout_choices: Array[String] = []:
+	set(value):
+		layout_choices = value
+		notify_property_list_changed()
+		emit_changed()
+@export var layout_id := "":
+	set(value):
+		layout_id = value
 		emit_changed()
 @export var additional_rooms: Dictionary[StringName, HouseRoomStyle] = {}:
 	set(value):
@@ -95,7 +105,13 @@ func _init() -> void:
 func _validate_property(property: Dictionary) -> void:
 	if not balcony and property.name == "balcony_door_variants":
 		property.usage &= ~PROPERTY_USAGE_EDITOR
-	if layout_scene != null:
+	if property.name == "layout_id":
+		if layout_choices.is_empty() or layout_scene != null:
+			property.usage &= ~PROPERTY_USAGE_EDITOR
+		else:
+			property.hint = PROPERTY_HINT_ENUM
+			property.hint_string = ",".join(layout_choices)
+	if layout_scene != null or not layout_choices.is_empty():
 		if property.name in ["kind", "room_count", "layout", "layout_variants", "bathroom_enabled"]:
 			property.usage &= ~PROPERTY_USAGE_EDITOR
 	elif kind == Kind.CELLAR and property.name in ["room_count", "layout", "layout_variants", "kitchen", "bedroom", "second_bedroom", "bathroom_enabled"]:
@@ -111,17 +127,20 @@ func get_style(room_id: StringName) -> HouseRoomStyle:
 		return extra
 	return get(ROOM_PROPERTIES.get(room_id, "living")) as HouseRoomStyle
 
-func get_template_scene(catalog: HouseLayoutCatalog) -> PackedScene:
+func get_template_scene(catalog: BuildingLayoutCatalog) -> PackedScene:
 	if layout_scene != null:
 		return layout_scene
 	if catalog == null:
 		return null
+	if not layout_choices.is_empty():
+		var selected := layout_id if not layout_id.is_empty() else layout_choices[0]
+		return catalog.scenes.get(StringName(selected)) as PackedScene
 	if kind == Kind.CELLAR:
 		return catalog.scenes.get(&"cellar") as PackedScene
 	return catalog.scenes.get(_layout_key(bathroom_enabled)) as PackedScene
 
-func can_enable_bathroom(catalog: HouseLayoutCatalog) -> bool:
-	return layout_scene == null and kind != Kind.CELLAR and catalog != null \
+func can_enable_bathroom(catalog: BuildingLayoutCatalog) -> bool:
+	return layout_scene == null and layout_choices.is_empty() and kind != Kind.CELLAR and catalog != null \
 		and catalog.scenes.get(_layout_key(true)) != null
 
 func _layout_key(with_bathroom: bool) -> StringName:
@@ -132,29 +151,35 @@ func _layout_key(with_bathroom: bool) -> StringName:
 		key += "_bathroom"
 	return StringName(key)
 
-func has_bathroom(catalog: HouseLayoutCatalog) -> bool:
-	if layout_scene == null:
-		return bathroom_enabled and get_template_scene(catalog) != null
-	# Explicit scenes define their rooms independently of the standard selectors.
-	var instance := layout_scene.instantiate()
-	var found := instance is HouseLayout and (instance as HouseLayout).get_rooms().any(func(room: HouseRoom): return room.room_id == &"Bathroom")
+func has_bathroom(catalog: BuildingLayoutCatalog) -> bool:
+	var scene := get_template_scene(catalog)
+	if scene == null:
+		return false
+	if layout_scene == null and layout_choices.is_empty():
+		return bathroom_enabled
+	# Authored layouts define their rooms independently of the residential selectors.
+	var instance := scene.instantiate()
+	var found := instance is BuildingLayout and (instance as BuildingLayout).get_rooms().any(func(room: HouseRoom): return room.room_id == &"Bathroom")
 	instance.free()
 	return found
 
-func randomize(catalog: HouseLayoutCatalog) -> void:
+func randomize(catalog: BuildingLayoutCatalog) -> void:
 	# Room count is an explicit authoring decision. Styles keep semantic IDs.
-	if layout_scene == null and kind != Kind.CELLAR and not layout_variants.is_empty():
-		layout = layout_variants.pick_random() as Layout
+	if layout_scene == null:
+		if not layout_choices.is_empty():
+			layout_id = layout_choices.pick_random()
+		elif kind != Kind.CELLAR and not layout_variants.is_empty():
+			layout = layout_variants.pick_random() as Layout
 	# Read the room presets without adding an interior level to the world.
 	var scene := get_template_scene(catalog)
 	if scene == null:
 		return
 	var instance := scene.instantiate()
-	if instance is not HouseLayout:
+	if instance is not BuildingLayout:
 		instance.free()
-		push_error("House layout must inherit HouseLayout: %s" % scene.resource_path)
+		push_error("Layout must use BuildingLayout: %s" % scene.resource_path)
 		return
-	var template := instance as HouseLayout
+	var template := instance as BuildingLayout
 	for room in template.get_rooms():
 		_randomize_room_style(room.room_id, room.style_variants)
 	for zone in template.get_floor_zones():
@@ -175,6 +200,8 @@ func _randomize_room_style(id: StringName, variants: HouseRoomVariants) -> void:
 
 func to_data() -> Dictionary:
 	var data := SaveGraph.get_fields(self, FIELDS)
+	if not layout_choices.is_empty():
+		data.layout_id = layout_id if not layout_id.is_empty() else layout_choices[0]
 	data.layout_scene = layout_scene.resource_path if layout_scene != null else ""
 	data.additional_rooms = {}
 	for id in additional_rooms:
@@ -189,6 +216,8 @@ func apply_data(data: Dictionary) -> void:
 	if not data.has("bathroom_enabled"):
 		bathroom_enabled = false
 	SaveGraph.apply_fields(self, FIELDS, data)
+	if data.has("layout_id"):
+		layout_id = data.layout_id
 	if data.has("layout_scene"):
 		var path: String = data.layout_scene
 		layout_scene = load(path) as PackedScene if not path.is_empty() else null
@@ -203,8 +232,8 @@ func apply_data(data: Dictionary) -> void:
 			(get(key) as HouseRoomStyle).apply_data(data[key])
 	emit_changed()
 
-static func create_cellar() -> HouseInteriorSettings:
-	var settings := HouseInteriorSettings.new()
+static func create_cellar() -> BuildingInteriorSettings:
+	var settings := BuildingInteriorSettings.new()
 	settings.kind = Kind.CELLAR
 	settings.living.wall_style = HouseRoomStyle.Wall.FIELDSTONE
 	settings.living.floor_material = HouseRoomStyle.Floor.STONE
@@ -223,6 +252,8 @@ static func is_valid_data(data: Variant) -> bool:
 	if data.has("balcony") and data.balcony is not bool:
 		return false
 	if data.has("bathroom_enabled") and data.bathroom_enabled is not bool:
+		return false
+	if data.has("layout_id") and (data.layout_id is not String or data.layout_id.is_empty()):
 		return false
 	if data.has("layout_scene"):
 		if data.layout_scene is not String:

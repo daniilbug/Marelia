@@ -2,7 +2,7 @@
 class_name HouseFurnitureStyle
 extends DecorationStyle
 
-enum Design { RUSTIC, CLASSIC, DECORATIVE }
+enum Design { RUSTIC, CLASSIC, DECORATIVE, KEEP_CURRENT = -1 }
 enum RugDesign { GEOMETRIC, MEDALLION, WOVEN_STRIPES, OVAL_FLORAL }
 enum PaintingDesign { COUNTRYSIDE, HARBOR, VINEYARD, LEMONS }
 enum WallDecoration { CLOCK, PAINTING }

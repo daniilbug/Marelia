@@ -1,0 +1,119 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/world-kit-demo/buildings.gd" id="main"]
+[ext_resource type="PackedScene" path="res://scenes/core/world_time.tscn" id="clock"]
+[ext_resource type="PackedScene" path="res://scenes/core/save/world_save.tscn" id="save"]
+[ext_resource type="PackedScene" path="res://scenes/core/level.tscn" id="level"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/surface.tscn" id="surface"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/building/building.tscn" id="building"]
+[ext_resource type="Resource" path="res://assets/world-kit/cafe/building.tres" id="cafe"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/interior_settings.gd" id="settings"]
+[ext_resource type="Script" path="res://scripts/world-kit/house/room_style.gd" id="room_style"]
+
+[sub_resource type="Resource" id="checker"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+floor_material = 6
+floor_color = Color(0.8, 0.76, 0.66, 1)
+wall_style = 0
+wall_color = Color(0.74, 0.81, 0.72, 1)
+
+[sub_resource type="Resource" id="parquet"]
+resource_local_to_scene = true
+script = ExtResource("room_style")
+floor_material = 4
+floor_color = Color(0.66, 0.49, 0.33, 1)
+wall_style = 1
+wall_color = Color(0.86, 0.74, 0.61, 1)
+accent_color = Color(0.52, 0.38, 0.29, 1)
+
+[sub_resource type="Resource" id="floor_b"]
+resource_local_to_scene = true
+script = ExtResource("settings")
+layout_choices = Array[String](["A", "B", "C"])
+layout_id = "B"
+additional_rooms = Dictionary[StringName, ExtResource("room_style")]({&"Hall": SubResource("checker")})
+
+[sub_resource type="Resource" id="floor_c"]
+resource_local_to_scene = true
+script = ExtResource("settings")
+layout_choices = Array[String](["A", "B", "C"])
+layout_id = "C"
+additional_rooms = Dictionary[StringName, ExtResource("room_style")]({&"Hall": SubResource("parquet")})
+
+[node name="CafeStreetDemo" type="Node2D" node_paths=PackedStringArray("spawn_level")]
+texture_filter = 1
+scale = Vector2(4, 4)
+y_sort_enabled = true
+script = ExtResource("main")
+spawn_level = NodePath("Outside")
+
+[node name="WorldTime" parent="." instance=ExtResource("clock")]
+initial_hour = 12.0
+
+[node name="WorldSave" parent="." instance=ExtResource("save")]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/core/player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Outside" parent="." instance=ExtResource("level")]
+level_id = "cafe_street_demo"
+camera_position_offset = Vector2(0, -42)
+
+[node name="BottomLeft" parent="Outside/LevelBounds" index="0"]
+position = Vector2(0, 340)
+
+[node name="TopRight" parent="Outside/LevelBounds" index="1"]
+position = Vector2(768, 0)
+
+[node name="PlayerSpawn" parent="Outside" index="2"]
+position = Vector2(384, 219)
+
+[node name="Square" parent="Outside" instance=ExtResource("surface")]
+style = 2
+size = Vector2(768, 340)
+
+[node name="Terraces" parent="Outside" instance=ExtResource("surface")]
+position = Vector2(0, 160)
+z_index = -19
+style = 3
+size = Vector2(768, 98)
+
+[node name="CafeA" parent="Outside" instance=ExtResource("building")]
+position = Vector2(136, 158)
+definition = ExtResource("cafe")
+house_width = 216.0
+wall_height = 64.0
+window_style = 1
+door_style = 2
+door_color = Color(0.48, 0.33, 0.24, 1)
+
+[node name="CafeB" parent="Outside" instance=ExtResource("building")]
+position = Vector2(384, 158)
+definition = ExtResource("cafe")
+house_width = 216.0
+wall_height = 64.0
+door_style = 2
+door_color = Color(0.31, 0.43, 0.35, 1)
+facade_detail_id = "dome"
+facade_color = Color(0.71, 0.76, 0.58, 1)
+roof_style = 1
+roof_color = Color(0.57, 0.39, 0.31, 1)
+floors = Array[ExtResource("settings")]([SubResource("floor_b")])
+
+[node name="CafeC" parent="Outside" instance=ExtResource("building")]
+position = Vector2(632, 158)
+definition = ExtResource("cafe")
+house_width = 216.0
+wall_height = 64.0
+window_style = 2
+door_style = 1
+door_color = Color(0.42, 0.29, 0.25, 1)
+facade_detail_id = "straight"
+facade_color = Color(0.87, 0.68, 0.46, 1)
+roof_style = 2
+roof_color = Color(0.65, 0.42, 0.33, 1)
+floors = Array[ExtResource("settings")]([SubResource("floor_c")])
+
+[editable path="Outside"]
