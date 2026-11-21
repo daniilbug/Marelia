@@ -2,19 +2,51 @@
 
 [ext_resource type="Texture2D" uid="uid://pr7bt51i40by" path="res://assets/world-kit/street/sprites/surfaces/ground_grass.png" id="4_xo8yd"]
 [ext_resource type="Texture2D" uid="uid://4j4ah3afqbk7" path="res://assets/world-kit/street/sprites/surfaces/ground_sand.png" id="5_xslri"]
+[ext_resource type="Script" uid="uid://bixl0ddcque50" path="res://scripts/world-kit/street/beach/styles/lounger_set_style.gd" id="10_5dxpd"]
+[ext_resource type="Script" uid="uid://ux5hv2rawyb3" path="res://scripts/world-kit/street/beach/styles/lifeguard_station_style.gd" id="13_j16u2"]
 [ext_resource type="Script" uid="uid://cj7qgf32dq2yj" path="res://scripts/levels/world-kit-demo/water.gd" id="demo"]
 [ext_resource type="PackedScene" uid="uid://bxiejuvupdj01" path="res://scenes/core/level.tscn" id="level"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/groups/lifeguard_station.tscn" id="lifeguard_station"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/groups/lounger_set.tscn" id="lounger_set"]
-[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/lounger_set_variants.tres" id="lounger_styles"]
+[ext_resource type="Resource" uid="uid://c1eo0fj54xkt4" path="res://assets/world-kit/street/beach/groups/lounger_set_variants.tres" id="lounger_styles"]
 [ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="placement_group"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/sandcastle.tscn" id="sandcastle"]
-[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/sandcastle_variants.tres" id="sandcastle_styles"]
-[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/lifeguard_station_variants.tres" id="station_styles"]
+[ext_resource type="Resource" uid="uid://fwbhfma3b3c6" path="res://assets/world-kit/street/beach/groups/sandcastle_variants.tres" id="sandcastle_styles"]
+[ext_resource type="Resource" uid="uid://62g04xgtx22k" path="res://assets/world-kit/street/beach/groups/lifeguard_station_variants.tres" id="station_styles"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/surface.tscn" id="surface"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/towel.tscn" id="towel"]
-[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/towel_variants.tres" id="towel_styles"]
+[ext_resource type="Resource" uid="uid://bsdrg7e8i3wm5" path="res://assets/world-kit/street/beach/groups/towel_variants.tres" id="towel_styles"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/water_surface.tscn" id="water"]
+
+[sub_resource type="Resource" id="Resource_a4cum"]
+resource_local_to_scene = true
+resource_name = "Blue Canvas"
+script = ExtResource("10_5dxpd")
+lounger_style = 1
+umbrella_style = 1
+fabric_color = Color(0.36862746, 0.4862745, 0.54901963, 1)
+
+[sub_resource type="Resource" id="Resource_j1ihw"]
+resource_local_to_scene = true
+resource_name = "Blue Canvas"
+script = ExtResource("10_5dxpd")
+lounger_style = 1
+umbrella_style = 1
+fabric_color = Color(0.36862746, 0.4862745, 0.54901963, 1)
+
+[sub_resource type="Resource" id="Resource_mx8n6"]
+resource_local_to_scene = true
+resource_name = "Covered Tower and Timber Frame"
+script = ExtResource("13_j16u2")
+stand_style = 1
+stand_color = Color(0.59607846, 0.45490196, 0.32156864, 1)
+
+[sub_resource type="Resource" id="Resource_f7k0x"]
+resource_local_to_scene = true
+resource_name = "Covered Tower and Timber Frame"
+script = ExtResource("13_j16u2")
+stand_style = 1
+stand_color = Color(0.59607846, 0.45490196, 0.32156864, 1)
 
 [node name="WaterDemo" unique_id=1192868430 instance=ExtResource("level")]
 texture_filter = 1
@@ -40,6 +72,7 @@ texture = ExtResource("4_xo8yd")
 polygon = PackedVector2Array(0, 0, 408, 0, 408, 96, 0, 96)
 _saved_polygon = PackedVector2Array()
 style = 0
+speed_multiplier_override = null
 size = Vector2(408, 96)
 
 [node name="Beach" parent="." index="4" unique_id=1578126773 instance=ExtResource("surface")]
@@ -48,6 +81,7 @@ texture = ExtResource("5_xslri")
 polygon = PackedVector2Array(0, 0, 408, 0, 408, 36, 0, 36)
 _saved_polygon = PackedVector2Array()
 style = 5
+speed_multiplier_override = null
 size = Vector2(408, 36)
 
 [node name="Sea" parent="." index="5" unique_id=279559881 instance=ExtResource("water")]
@@ -61,21 +95,23 @@ y_sort_enabled = true
 y_sort_enabled = true
 script = ExtResource("placement_group")
 style_variants = ExtResource("lounger_styles")
-selected_variant = &"West"
+selected_variant = &"East"
 
 [node name="West" type="Marker2D" parent="Placements/Relaxation" index="0" unique_id=2054543425]
+process_mode = 4
+visible = false
 y_sort_enabled = true
 position = Vector2(153, 127)
 
 [node name="LoungerSet" parent="Placements/Relaxation/West" index="0" unique_id=796180426 instance=ExtResource("lounger_set")]
+style = SubResource("Resource_a4cum")
 
 [node name="East" type="Marker2D" parent="Placements/Relaxation" index="1" unique_id=806432317]
-process_mode = 4
-visible = false
 y_sort_enabled = true
 position = Vector2(301, 127)
 
 [node name="LoungerSet" parent="Placements/Relaxation/East" index="0" unique_id=917258830 instance=ExtResource("lounger_set")]
+style = SubResource("Resource_j1ihw")
 
 [node name="SafetyStation" type="Node2D" parent="Placements" index="1" unique_id=1863318823]
 y_sort_enabled = true
@@ -90,12 +126,14 @@ y_sort_enabled = true
 position = Vector2(62, 121)
 
 [node name="LifeguardStation" parent="Placements/SafetyStation/West" index="0" unique_id=345065953 instance=ExtResource("lifeguard_station")]
+style = SubResource("Resource_mx8n6")
 
 [node name="East" type="Marker2D" parent="Placements/SafetyStation" index="1" unique_id=1861415502]
 y_sort_enabled = true
 position = Vector2(345, 121)
 
 [node name="LifeguardStation" parent="Placements/SafetyStation/East" index="0" unique_id=95736753 instance=ExtResource("lifeguard_station")]
+style = SubResource("Resource_f7k0x")
 
 [node name="Towel" type="Node2D" parent="Placements" index="2" unique_id=1635595399]
 y_sort_enabled = true
@@ -109,6 +147,8 @@ position = Vector2(107, 126)
 
 [node name="Towel" parent="Placements/Towel/West" index="0" unique_id=1467877701 instance=ExtResource("towel")]
 style = 0
+body_color_variants = null
+support_color_variants = null
 
 [node name="East" type="Marker2D" parent="Placements/Towel" index="1" unique_id=1516416518]
 process_mode = 4
@@ -118,6 +158,8 @@ position = Vector2(255, 126)
 
 [node name="Towel" parent="Placements/Towel/East" index="0" unique_id=623536299 instance=ExtResource("towel")]
 style = 0
+body_color_variants = null
+support_color_variants = null
 
 [node name="Sandcastle" type="Node2D" parent="Placements" index="3" unique_id=257698012]
 y_sort_enabled = true
@@ -132,11 +174,15 @@ y_sort_enabled = true
 position = Vector2(176, 126)
 
 [node name="Sandcastle" parent="Placements/Sandcastle/West" index="0" unique_id=1580348313 instance=ExtResource("sandcastle")]
-style = 0
+style = 2
+body_color_variants = null
+support_color_variants = null
 
 [node name="East" type="Marker2D" parent="Placements/Sandcastle" index="1" unique_id=703264837]
 y_sort_enabled = true
 position = Vector2(232, 121)
 
 [node name="Sandcastle" parent="Placements/Sandcastle/East" index="0" unique_id=674291664 instance=ExtResource("sandcastle")]
-style = 0
+style = 2
+body_color_variants = null
+support_color_variants = null

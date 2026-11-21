@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="HouseDoorVariants" format=3 uid="uid://dxhjcv5rb73jf"]
 
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_glazed.tres" id="single_glazed"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_panel.tres" id="single_panel"]
+[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_plank.tres" id="single_plank"]
 [ext_resource type="Script" uid="uid://d1h4d8ufylmj2" path="res://scripts/world-kit/house/door_style.gd" id="style"]
 [ext_resource type="Script" uid="uid://cdduau8l763al" path="res://scripts/world-kit/house/door_variants.gd" id="variants"]
-
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_plank.tres" id="single_plank"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_panel.tres" id="single_panel"]
-[ext_resource type="Resource" path="res://assets/world-kit/house/door-designs/single_glazed.tres" id="single_glazed"]
 
 [sub_resource type="Resource" id="style_0"]
 resource_name = "BoardedOak"

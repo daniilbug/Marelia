@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="HouseDoorDesign" format=3]
+[gd_resource type="Resource" script_class="HouseDoorDesign" format=3 uid="uid://bv4hoeepk0qwd"]
 
-[ext_resource type="Script" path="res://scripts/world-kit/house/door_design.gd" id="design"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_plank_closed_albedo.png" id="closed_sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_plank_closed_materials.png" id="closed_materials"]
+[ext_resource type="Texture2D" uid="uid://dotkgu11gnp2h" path="res://assets/world-kit/house/sprites/door_plank_closed_materials.png" id="closed_materials"]
+[ext_resource type="Texture2D" uid="uid://cl6qj0x6rf6ec" path="res://assets/world-kit/house/sprites/door_plank_closed_albedo.png" id="closed_sprite"]
+[ext_resource type="Script" uid="uid://dxmxc4jg4djg8" path="res://scripts/world-kit/house/door_design.gd" id="design"]
 
 [resource]
 resource_name = "Double Plank"

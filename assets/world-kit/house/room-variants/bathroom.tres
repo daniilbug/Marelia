@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="HouseRoomVariants" format=3 uid="uid://calmx36ftngni"]
 
+[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="checker"]
 [ext_resource type="Script" uid="uid://nabwu727qh3t" path="res://scripts/world-kit/house/room_style.gd" id="style"]
 [ext_resource type="Script" uid="uid://cxjej6vln1dmh" path="res://scripts/world-kit/house/room_variants.gd" id="variants"]
-
-[ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/bathroom_checker.tres" id="checker"]
 
 [sub_resource type="Resource" id="octagon"]
 resource_local_to_scene = true

@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="HouseDoorDesign" format=3]
+[gd_resource type="Resource" script_class="HouseDoorDesign" format=3 uid="uid://c1djuwkqnkvlo"]
 
-[ext_resource type="Script" path="res://scripts/world-kit/house/door_design.gd" id="design"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_glazed_closed_albedo.png" id="closed_sprite"]
-[ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/door_glazed_closed_materials.png" id="closed_materials"]
+[ext_resource type="Texture2D" uid="uid://crg26lm35egw5" path="res://assets/world-kit/house/sprites/door_glazed_closed_materials.png" id="closed_materials"]
+[ext_resource type="Texture2D" uid="uid://b4gc27dvp7owv" path="res://assets/world-kit/house/sprites/door_glazed_closed_albedo.png" id="closed_sprite"]
+[ext_resource type="Script" uid="uid://dxmxc4jg4djg8" path="res://scripts/world-kit/house/door_design.gd" id="design"]
 
 [resource]
 resource_name = "Double Glazed"

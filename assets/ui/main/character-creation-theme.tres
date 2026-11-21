@@ -1,38 +1,6 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://dteieiex8qnpw"]
 
-[ext_resource type="FontFile" path="res://assets/ui/main/fonts/tiny5/Tiny5.ttf" id="font"]
-
-[sub_resource type="StyleBoxFlat" id="button"]
-bg_color = Color(0.949020, 0.870588, 0.705882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.772549, 0.635294, 0.447059, 1)
-
-[sub_resource type="StyleBoxFlat" id="button_hover"]
-bg_color = Color(0.976471, 0.913725, 0.780392, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.674510, 0.458824, 0.305882, 1)
-
-[sub_resource type="StyleBoxFlat" id="primary"]
-bg_color = Color(0.650980, 0.325490, 0.215686, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.474510, 0.243137, 0.188235, 1)
-
-[sub_resource type="StyleBoxFlat" id="primary_hover"]
-bg_color = Color(0.576471, 0.274510, 0.180392, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.474510, 0.243137, 0.188235, 1)
+[ext_resource type="FontFile" uid="uid://c0m0cwrehapc5" path="res://assets/ui/main/fonts/tiny5/Tiny5.ttf" id="font"]
 
 [sub_resource type="StyleBoxFlat" id="focus"]
 draw_center = false
@@ -42,6 +10,54 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.321569, 0.219608, 0.152941, 1)
 
+[sub_resource type="StyleBoxFlat" id="button_hover"]
+bg_color = Color(0.976471, 0.913725, 0.780392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.458824, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="primary_hover"]
+bg_color = Color(0.576471, 0.27451, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47451, 0.243137, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="button"]
+bg_color = Color(0.94902, 0.870588, 0.705882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.772549, 0.635294, 0.447059, 1)
+
+[sub_resource type="StyleBoxFlat" id="primary"]
+bg_color = Color(0.65098, 0.32549, 0.215686, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47451, 0.243137, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="tab_hover"]
+bg_color = Color(0.94902, 0.870588, 0.705882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67451, 0.458824, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="tab_active"]
+bg_color = Color(0.968627, 0.913725, 0.784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.65098, 0.32549, 0.215686, 1)
+
 [sub_resource type="StyleBoxFlat" id="tab"]
 bg_color = Color(0.913725, 0.823529, 0.658824, 1)
 border_width_left = 2
@@ -50,29 +66,29 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.772549, 0.635294, 0.447059, 1)
 
-[sub_resource type="StyleBoxFlat" id="tab_hover"]
-bg_color = Color(0.949020, 0.870588, 0.705882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.674510, 0.458824, 0.305882, 1)
-
-[sub_resource type="StyleBoxFlat" id="tab_active"]
-bg_color = Color(0.968627, 0.913725, 0.784314, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.650980, 0.325490, 0.215686, 1)
-
-[sub_resource type="StyleBoxFlat" id="tile"]
-bg_color = Color(0.984314, 0.937255, 0.835294, 1)
+[sub_resource type="StyleBoxFlat" id="garment"]
+bg_color = Color(0.988235, 0.952941, 0.87451, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.772549, 0.635294, 0.447059, 1)
+
+[sub_resource type="StyleBoxFlat" id="portrait_frame"]
+bg_color = Color(0.85098, 0.87451, 0.788235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.623529, 0.658824, 0.513725, 1)
+
+[sub_resource type="StyleBoxFlat" id="tile_disabled"]
+bg_color = Color(0.94902, 0.901961, 0.788235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.827451, 0.741176, 0.592157, 1)
 
 [sub_resource type="StyleBoxFlat" id="tile_hover"]
 bg_color = Color(0.941176, 0.901961, 0.788235, 1)
@@ -90,20 +106,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.392157, 0.439216, 0.294118, 1)
 
-[sub_resource type="StyleBoxFlat" id="tile_disabled"]
-bg_color = Color(0.949020, 0.901961, 0.788235, 1)
+[sub_resource type="StyleBoxFlat" id="tile"]
+bg_color = Color(0.984314, 0.937255, 0.835294, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.827451, 0.741176, 0.592157, 1)
-
-[sub_resource type="StyleBoxFlat" id="swatch_active"]
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.650980, 0.325490, 0.215686, 1)
+border_color = Color(0.772549, 0.635294, 0.447059, 1)
 
 [sub_resource type="StyleBoxFlat" id="swatch_focus"]
 draw_center = false
@@ -113,71 +122,62 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.321569, 0.219608, 0.152941, 1)
 
-[sub_resource type="StyleBoxFlat" id="garment"]
-bg_color = Color(0.988235, 0.952941, 0.874510, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.772549, 0.635294, 0.447059, 1)
-
-[sub_resource type="StyleBoxFlat" id="portrait_frame"]
-bg_color = Color(0.850980, 0.874510, 0.788235, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.658824, 0.513725, 1)
+[sub_resource type="StyleBoxFlat" id="swatch_active"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.65098, 0.32549, 0.215686, 1)
 
 [resource]
 default_font = ExtResource("font")
 default_font_size = 24
 Button/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
-Button/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
 Button/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
-Button/colors/font_pressed_color = Color(1.000000, 0.941176, 0.815686, 1)
-Button/colors/font_hover_pressed_color = Color(1.000000, 0.941176, 0.815686, 1)
-Label/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
-Button/styles/normal = SubResource("button")
-Button/styles/hover = SubResource("button_hover")
-Button/styles/pressed = SubResource("primary")
-Button/styles/hover_pressed = SubResource("primary_hover")
+Button/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0.941176, 0.815686, 1)
+Button/colors/font_pressed_color = Color(1, 0.941176, 0.815686, 1)
 Button/styles/focus = SubResource("focus")
-Primary/base_type = &"Button"
-Primary/styles/normal = SubResource("primary")
-Primary/styles/hover = SubResource("primary_hover")
-Primary/styles/pressed = SubResource("primary_hover")
-Primary/styles/hover_pressed = SubResource("primary_hover")
-Primary/colors/font_color = Color(1.000000, 0.941176, 0.815686, 1)
-Primary/colors/font_hover_color = Color(1.000000, 0.941176, 0.815686, 1)
-Primary/colors/font_pressed_color = Color(1.000000, 0.941176, 0.815686, 1)
-Primary/colors/font_hover_pressed_color = Color(1.000000, 0.941176, 0.815686, 1)
-Primary/colors/font_focus_color = Color(1.000000, 0.941176, 0.815686, 1)
+Button/styles/hover = SubResource("button_hover")
+Button/styles/hover_pressed = SubResource("primary_hover")
+Button/styles/normal = SubResource("button")
+Button/styles/pressed = SubResource("primary")
 CharacterCreationTab/base_type = &"Button"
-CharacterCreationTab/styles/normal = SubResource("tab")
-CharacterCreationTab/styles/hover = SubResource("tab_hover")
-CharacterCreationTab/styles/pressed = SubResource("tab_active")
-CharacterCreationTab/styles/hover_pressed = SubResource("tab_active")
 CharacterCreationTab/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
-CharacterCreationTab/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
-CharacterCreationTab/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
-CharacterCreationTab/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
 CharacterCreationTab/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
-SelectableTile/base_type = &"Button"
-SelectableTile/styles/normal = SubResource("tile")
-SelectableTile/styles/hover = SubResource("tile_hover")
-SelectableTile/styles/pressed = SubResource("tile_active")
-SelectableTile/styles/hover_pressed = SubResource("tile_active")
-SelectableTile/styles/disabled = SubResource("tile_disabled")
-SelectableTile/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
-SelectableTile/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
-SelectableTile/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
-SelectableTile/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
-SelectableTile/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
-Swatch/base_type = &"Button"
-Swatch/styles/pressed = SubResource("swatch_active")
-Swatch/styles/focus = SubResource("swatch_focus")
+CharacterCreationTab/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
+CharacterCreationTab/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+CharacterCreationTab/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+CharacterCreationTab/styles/hover = SubResource("tab_hover")
+CharacterCreationTab/styles/hover_pressed = SubResource("tab_active")
+CharacterCreationTab/styles/normal = SubResource("tab")
+CharacterCreationTab/styles/pressed = SubResource("tab_active")
 Garment/base_type = &"Panel"
 Garment/styles/panel = SubResource("garment")
+Label/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
 PortraitFrame/base_type = &"Panel"
 PortraitFrame/styles/panel = SubResource("portrait_frame")
+Primary/base_type = &"Button"
+Primary/colors/font_color = Color(1, 0.941176, 0.815686, 1)
+Primary/colors/font_focus_color = Color(1, 0.941176, 0.815686, 1)
+Primary/colors/font_hover_color = Color(1, 0.941176, 0.815686, 1)
+Primary/colors/font_hover_pressed_color = Color(1, 0.941176, 0.815686, 1)
+Primary/colors/font_pressed_color = Color(1, 0.941176, 0.815686, 1)
+Primary/styles/hover = SubResource("primary_hover")
+Primary/styles/hover_pressed = SubResource("primary_hover")
+Primary/styles/normal = SubResource("primary")
+Primary/styles/pressed = SubResource("primary_hover")
+SelectableTile/base_type = &"Button"
+SelectableTile/colors/font_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_focus_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_hover_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_hover_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/colors/font_pressed_color = Color(0.321569, 0.219608, 0.152941, 1)
+SelectableTile/styles/disabled = SubResource("tile_disabled")
+SelectableTile/styles/hover = SubResource("tile_hover")
+SelectableTile/styles/hover_pressed = SubResource("tile_active")
+SelectableTile/styles/normal = SubResource("tile")
+SelectableTile/styles/pressed = SubResource("tile_active")
+Swatch/base_type = &"Button"
+Swatch/styles/focus = SubResource("swatch_focus")
+Swatch/styles/pressed = SubResource("swatch_active")
