@@ -1,5 +1,5 @@
 @tool
-extends HouseFurnitureGroup
+extends DecorationGroup
 
 const BOOKCASE = preload("res://scripts/world-kit/furniture/bookcase.gd")
 const SIDE_TABLE = preload("res://scripts/world-kit/furniture/bedside_table.gd")

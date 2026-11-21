@@ -9,6 +9,8 @@
 [node name="NoticeBoard" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color_variants = Array[Color]([Color(0.682352941, 0.505882353, 0.321568627, 1), Color(0.388235294, 0.513725490, 0.588235294, 1)])
+support_color_variants = Array[Color]([Color(0.682352941, 0.423529412, 0.321568627, 1), Color(0.529411765, 0.368627451, 0.286274510, 1)])
 supports_transparency = true
 frame_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
 roof_color = Color(0.682352941, 0.423529412, 0.321568627, 1)

@@ -1,8 +1,10 @@
 [gd_scene format=3]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/furniture_piece.gd" id="script"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="variants"]
 [node name="FurniturePiece" type="StaticBody2D"]
 texture_filter = 1
 script = ExtResource("script")
+style_variants = ExtResource("variants")
 [node name="Sprite" type="Sprite2D" parent="."]
 centered = false
 [node name="Collision" type="CollisionShape2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BeachStyleVariants" format=3 uid="uid://62g04xgtx22k"]
 
 [ext_resource type="Script" uid="uid://jpdimenvseay" path="res://scripts/world-kit/street/beach/styles/style_variants.gd" id="catalog"]
-[ext_resource type="Script" uid="uid://cuy3sggfcfddk" path="res://scripts/world-kit/street/beach/styles/decoration_style.gd" id="style"]
+[ext_resource type="Script" uid="uid://cuy3sggfcfddk" path="res://scripts/world-kit/decoration_style.gd" id="style"]
 [ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/styles/lifeguard_station_covered_post.tres" id="covered_post"]
 [ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/styles/lifeguard_station_covered_frame.tres" id="covered_frame"]
 [ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/styles/lifeguard_station_open_post.tres" id="open_post"]

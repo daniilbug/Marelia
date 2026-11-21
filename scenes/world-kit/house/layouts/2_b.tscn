@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_materials.png" id="7_cugvv"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/floor_wood_albedo.png" id="8_pr2ci"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="13_ak2ht"]
-[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_0il0p"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/wallpaper_striped_materials.png" id="21_o1dlg"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/reading_corner.gd" id="22_ba26p"]
 [ext_resource type="Texture2D" path="res://assets/world-kit/house/sprites/wallpaper_striped_albedo.png" id="22_obmx3"]
@@ -404,7 +403,6 @@ position = Vector2(40, 35)
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/TopCenter" unique_id=93103164 instance=ExtResource("set_sleeping_area")]
 y_sort_enabled = true
-script = ExtResource("14_0il0p")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Wardrobe"): true,
 NodePath("Landscape"): true,
@@ -424,7 +422,6 @@ position = Vector2(50, 90)
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/Workplace/BottomLeftCorner" unique_id=261288291 instance=ExtResource("set_workplace")]
 y_sort_enabled = true
-script = ExtResource("14_0il0p")
 style = SubResource("Resource_h4ag6")
 
 [node name="LivingRoom" parent="Rooms" unique_id=1230689716 instance=ExtResource("room")]
@@ -456,7 +453,6 @@ position = Vector2(174, 60)
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/ActivityTable/Center" unique_id=1692472968 instance=ExtResource("set_dining_area")]
 y_sort_enabled = true
-script = ExtResource("14_0il0p")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("LeftChair"): true,
 NodePath("FrontChair"): true
@@ -475,7 +471,6 @@ position = Vector2(131, 75)
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/BottomCenter" unique_id=994203564 instance=ExtResource("set_sitting_area")]
 y_sort_enabled = true
-script = ExtResource("14_0il0p")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Rug"): true
 })

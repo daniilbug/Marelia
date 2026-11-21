@@ -15,7 +15,3 @@ func _get_design_index() -> int:
 
 func set_appearance(design: Style) -> void:
 	style = design
-
-func apply_placement_style(profile: Resource) -> void:
-	if profile is BeachSandcastleStyle:
-		set_appearance(profile.style)

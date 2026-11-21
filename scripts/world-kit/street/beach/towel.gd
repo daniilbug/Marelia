@@ -34,7 +34,3 @@ func set_appearance(design: Style, fabric: Color, trim: Color) -> void:
 	style = design
 	fabric_color = fabric
 	trim_color = trim
-
-func apply_placement_style(profile: Resource) -> void:
-	if profile is BeachTowelStyle:
-		set_appearance(profile.style, profile.fabric_color, profile.trim_color)

@@ -9,6 +9,8 @@
 [node name="Umbrella" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("striped")])
+body_color_variants = Array[Color]([Color(0.29803922, 0.45490196, 0.51372549, 1), Color(0.36862746, 0.4862745, 0.54901963, 1), Color(0.44313726, 0.5254902, 0.41960785, 1), Color(0.6509804, 0.42745098, 0.34901962, 1)])
+support_color_variants = Array[Color]([Color(0.86666667, 0.81568627, 0.6745098, 1), Color(0.89411765, 0.8235294, 0.6745098, 1), Color(0.88235295, 0.83137256, 0.69803923, 1)])
 supports_transparency = true
 primary_color = Color(0.29803922, 0.45490196, 0.51372549, 1)
 secondary_color = Color(0.86666667, 0.81568627, 0.6745098, 1)

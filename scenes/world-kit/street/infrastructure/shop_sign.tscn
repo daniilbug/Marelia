@@ -10,5 +10,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color_variants = Array[Color]([Color(0.682352941, 0.505882353, 0.321568627, 1), Color(0.423529412, 0.505882353, 0.564705882, 1)])
+support_color_variants = Array[Color]([Color(0.305882353, 0.356862745, 0.286274510, 1), Color(0.329411765, 0.290196078, 0.243137255, 1)])
 wood_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
 metal_color = Color(0.305882353, 0.356862745, 0.286274510, 1)

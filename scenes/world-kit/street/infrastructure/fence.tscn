@@ -11,6 +11,7 @@
 [node name="Fence" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1"), ExtResource("design_2")])
+body_color_variants = Array[Color]([Color(0.682352941, 0.505882353, 0.321568627, 1), Color(0.305882353, 0.356862745, 0.286274510, 1), Color(0.737254902, 0.701960784, 0.584313725, 1), Color(0.831372549, 0.749019608, 0.556862745, 1), Color(0.321568627, 0.411764706, 0.376470588, 1), Color(0.549019608, 0.572549020, 0.564705882, 1)])
 paintable_materials = 2
 supports_transparency = true
 body_color = Color(0.682352941, 0.505882353, 0.321568627, 1)

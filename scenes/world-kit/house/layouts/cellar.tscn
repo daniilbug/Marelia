@@ -62,6 +62,7 @@ shape = SubResource("front_segment")
 [node name="TransparencyArea" parent="Walls/FrontWall" index="2"]
 position = Vector2(104, -18)
 shape = SubResource("horizontal_zone")
+enabled = false
 [node name="LeftWall" parent="Walls" instance=ExtResource("wall")]
 position = Vector2(0, 0)
 room_id = &"Cellar"

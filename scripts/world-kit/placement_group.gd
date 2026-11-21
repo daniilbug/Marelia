@@ -2,8 +2,7 @@
 class_name PlacementGroup
 extends Node2D
 
-## Catalog resource that provides choose_style().
-@export var style_variants: Resource
+@export var style_variants: DecorationVariants
 
 @export var selected_variant: StringName = &"":
 	set(value):
@@ -12,6 +11,8 @@ extends Node2D
 		selected_variant = value
 		if is_node_ready():
 			apply_selection()
+
+@export_tool_button("Randomize placement") var randomize_action: Callable = randomize
 
 func _ready() -> void:
 	apply_selection()
@@ -35,6 +36,10 @@ func get_instances() -> Array[Node]:
 		instances.append_array(point.get_children())
 	return instances
 
+func randomize() -> void:
+	choose_variant()
+	choose_style()
+
 func choose_variant() -> void:
 	var points := get_points()
 	if not points.is_empty():
@@ -44,12 +49,14 @@ func get_selected_point() -> Marker2D:
 	return get_node_or_null(NodePath(selected_variant)) as Marker2D if not selected_variant.is_empty() else null
 
 func choose_style() -> void:
-	if style_variants != null and style_variants.has_method(&"choose_style"):
-		apply_style(style_variants.choose_style() as Resource)
+	if style_variants != null:
+		apply_style(style_variants.choose_style())
 
-func apply_style(profile: Resource) -> void:
+func apply_style(profile: DecorationStyle) -> void:
 	if profile == null:
 		return
 	for instance in get_instances():
-		if instance.has_method(&"apply_placement_style"):
+		if instance is DecorationGroup:
 			instance.apply_placement_style(profile)
+		elif instance is StaticBody2D:
+			profile.apply_to(instance)

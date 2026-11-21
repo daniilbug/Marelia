@@ -5,11 +5,13 @@
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/dresser.tscn" id="dresser"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_clock.tscn" id="clock"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_painting.tscn" id="painting"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/dresser_variants.tres" id="variants"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 
-[node name="DresserArea" type="Node2D"]
-y_sort_enabled = true
+[node name="DresserArea" instance=ExtResource("group_base")]
 script = ExtResource("group")
 style = ExtResource("style")
+style_variants = ExtResource("variants")
 
 [node name="Dresser" parent="." instance=ExtResource("dresser")]
 

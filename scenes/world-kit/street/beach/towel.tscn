@@ -10,5 +10,7 @@
 z_index = -1
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("striped"), ExtResource("bordered")])
+body_color_variants = Array[Color]([Color(0.72156863, 0.45882353, 0.37647059, 1), Color(0.36862746, 0.4862745, 0.54901963, 1), Color(0.5411765, 0.45882353, 0.49803922, 1), Color(0.44313726, 0.5254902, 0.41960785, 1)])
+support_color_variants = Array[Color]([Color(0.89411765, 0.82352941, 0.6745098, 1), Color(0.88235295, 0.83137256, 0.69803923, 1), Color(0.8666667, 0.8156863, 0.6745098, 1)])
 fabric_color = Color(0.72156863, 0.45882353, 0.37647059, 1)
 trim_color = Color(0.89411765, 0.82352941, 0.6745098, 1)

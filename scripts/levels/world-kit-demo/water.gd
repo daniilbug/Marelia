@@ -13,5 +13,4 @@ func _ready() -> void:
 func randomize_decorations() -> void:
 	for placement in $Placements.get_children():
 		if placement is PlacementGroup:
-			placement.choose_variant()
-			placement.choose_style()
+			placement.randomize()

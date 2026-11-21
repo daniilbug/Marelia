@@ -7,14 +7,16 @@
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/rug.tscn" id="rug"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/reading_wingback.tres" id="style"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bedside_table.tscn" id="table"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/reading_variants.tres" id="variants"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 
-[node name="ReadingCorner" type="Node2D" unique_id=1174099215]
-y_sort_enabled = true
+[node name="ReadingCorner" unique_id=1174099215 instance=ExtResource("group_base")]
 script = ExtResource("group")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Rug"): true
 })
 style = ExtResource("style")
+style_variants = ExtResource("variants")
 
 [node name="Bookcase" parent="." unique_id=1555407768 instance=ExtResource("bookcase")]
 position = Vector2(-14, -10)

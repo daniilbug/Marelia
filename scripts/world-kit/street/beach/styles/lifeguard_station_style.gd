@@ -1,6 +1,6 @@
 @tool
 class_name BeachLifeguardStationStyle
-extends BeachDecorationStyle
+extends DecorationStyle
 
 @export_group("Design")
 @export var tower_style: BeachLifeguardTower.Style = BeachLifeguardTower.Style.COVERED:
@@ -35,3 +35,9 @@ extends BeachDecorationStyle
 			return
 		lifebuoy_color = value
 		emit_changed()
+
+func apply_to(piece: StaticBody2D) -> void:
+	if piece is BeachLifeguardTower:
+		piece.set_appearance(tower_style, tower_color, lifebuoy_color)
+	elif piece is BeachLifebuoyStand:
+		piece.set_appearance(stand_style, stand_color, lifebuoy_color)

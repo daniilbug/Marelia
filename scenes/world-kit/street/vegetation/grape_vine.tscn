@@ -10,6 +10,8 @@
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
 supports_transparency = true
+body_color_variants = Array[Color]([Color(0.682352941, 0.505882353, 0.321568627, 1), Color(0.439215686, 0.505882353, 0.415686275, 1)])
+support_color_variants = Array[Color]([Color(0.478431373, 0.392156863, 0.513725490, 1), Color(0.725490196, 0.733333333, 0.403921569, 1)])
 wood_color = Color(0.682352941, 0.505882353, 0.321568627, 1)
 grape_color = Color(0.478431373, 0.392156863, 0.513725490, 1)
 

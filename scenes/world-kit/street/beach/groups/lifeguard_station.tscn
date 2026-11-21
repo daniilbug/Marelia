@@ -1,17 +1,17 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world-kit/street/beach/groups/lifeguard_station.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/lifeguard_tower.tscn" id="tower"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/street/beach/lifebuoy_stand.tscn" id="stand"]
 [ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/styles/lifeguard_station_covered_post.tres" id="style"]
+[ext_resource type="Resource" path="res://assets/world-kit/street/beach/groups/lifeguard_station_variants.tres" id="variants"]
 
-[node name="LifeguardStation" type="Node2D"]
-y_sort_enabled = true
-script = ExtResource("group")
+[node name="LifeguardStation" instance=ExtResource("group_base")]
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("LifebuoyStand"): true
 })
 style = ExtResource("style")
+style_variants = ExtResource("variants")
 
 [node name="Tower" parent="." instance=ExtResource("tower")]
 

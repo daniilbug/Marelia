@@ -47,6 +47,12 @@ const MATERIAL_COLORS := {"body_color": 1, "support_color": 2}
 		transparency_offset = value
 		_update_geometry()
 
+@export_group("Randomization")
+## An empty list keeps the current color of that material.
+@export var body_color_variants: Array[Color] = []
+@export var support_color_variants: Array[Color] = []
+@export_tool_button("Randomize appearance") var randomize_action: Callable = randomize
+
 var _design: StreetPropDesign
 var _palette: ShaderMaterial
 
@@ -64,6 +70,24 @@ func _validate_property(property: Dictionary) -> void:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 	if property.name in ["transparency_enabled", "transparency_shape", "transparency_offset"] and not supports_transparency:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "body_color_variants" and not (paintable_materials & (1 << MATERIAL_COLORS.body_color)):
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+	if property.name == "support_color_variants" and not (paintable_materials & (1 << MATERIAL_COLORS.support_color)):
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+
+func randomize() -> void:
+	var choices: Array[int] = []
+	for index in designs.size():
+		if designs[index] != null and designs[index].texture != null:
+			choices.append(index)
+	if choices.is_empty():
+		return
+	if designs.size() > 1 and get("style") is int:
+		set("style", choices.pick_random())
+	if paintable_materials & (1 << MATERIAL_COLORS.body_color) and not body_color_variants.is_empty():
+		body_color = body_color_variants.pick_random()
+	if paintable_materials & (1 << MATERIAL_COLORS.support_color) and not support_color_variants.is_empty():
+		support_color = support_color_variants.pick_random()
 
 func _get_design_index() -> int:
 	return 0

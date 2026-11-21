@@ -1,6 +1,6 @@
 @tool
 class_name HouseFurnitureStyle
-extends Resource
+extends DecorationStyle
 
 enum Design { RUSTIC, CLASSIC, DECORATIVE }
 enum RugDesign { GEOMETRIC, MEDALLION, WOVEN_STRIPES, OVAL_FLORAL }
@@ -78,8 +78,9 @@ const FIELDS := ["design", "wood_color", "paint_color", "fabric_color", "plaster
 		pattern_color = value
 		emit_changed()
 
-func _init() -> void:
-	resource_local_to_scene = true
+func apply_to(piece: StaticBody2D) -> void:
+	if piece is FurniturePiece:
+		piece.set_appearance(self)
 
 func to_data() -> Dictionary:
 	return SaveGraph.get_fields(self, FIELDS)

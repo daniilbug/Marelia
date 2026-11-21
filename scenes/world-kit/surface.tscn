@@ -22,3 +22,11 @@ polygon = PackedVector2Array(0, 0, 128, 0, 128, 96, 0, 96)
 script = ExtResource("script")
 textures = Array[Texture2D]([ExtResource("grass"), ExtResource("dirt"), ExtResource("cobblestone"), ExtResource("limestone"), ExtResource("gravel"), ExtResource("sand")])
 footstep_sounds = Array[AudioStream]([ExtResource("step_grass"), ExtResource("step_dirt"), ExtResource("step_cobblestone"), ExtResource("step_limestone"), ExtResource("step_gravel"), ExtResource("step_sand")])
+speed_percent_by_style = Dictionary[int, int]({
+0: 75,
+1: 100,
+2: 100,
+3: 100,
+4: 50,
+5: 50
+})

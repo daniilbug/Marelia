@@ -9,5 +9,6 @@
 [node name="LitterBin" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0"), ExtResource("design_1")])
+body_color_variants = Array[Color]([Color(0.407843137, 0.490196078, 0.325490196, 1), Color(0.388235294, 0.513725490, 0.588235294, 1)])
 paintable_materials = 2
 footprint_offset = Vector2(-0.5, 0)

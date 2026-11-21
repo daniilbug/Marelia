@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/armchair.tscn" id="armchair"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/coffee_table.tscn" id="coffee_table"]
-[ext_resource type="Script" uid="uid://d5xd3qj51nsx" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/potted_plant.tscn" id="potted_plant"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/rug.tscn" id="rug"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/sofa.tscn" id="sofa"]
 [ext_resource type="Resource" uid="uid://scrf54ltn0or" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="style"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="group_variants"]
 
-[node name="SittingArea" type="Node2D" unique_id=229005257]
-y_sort_enabled = true
-script = ExtResource("group")
+[node name="SittingArea" unique_id=229005257 instance=ExtResource("group_base")]
+style_variants = ExtResource("group_variants")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Rug"): true
 })

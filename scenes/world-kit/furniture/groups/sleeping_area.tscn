@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://celjox6wgevcl" path="res://scenes/world-kit/furniture/bed.tscn" id="bed"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/bedside_table.tscn" id="bedside_table"]
-[ext_resource type="Script" uid="uid://d5xd3qj51nsx" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/rug.tscn" id="rug"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/storage_chest.tscn" id="storage_chest"]
 [ext_resource type="Resource" uid="uid://scrf54ltn0or" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="style"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/table_lamp.tscn" id="table_lamp"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_painting.tscn" id="wall_painting"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wardrobe.tscn" id="wardrobe"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="group_variants"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3j1sf"]
 resource_local_to_scene = true
@@ -18,9 +19,8 @@ size = Vector2(22, 24)
 resource_local_to_scene = true
 size = Vector2(22, 11)
 
-[node name="SleepingArea" type="Node2D" unique_id=1301892559]
-y_sort_enabled = true
-script = ExtResource("group")
+[node name="SleepingArea" unique_id=1301892559 instance=ExtResource("group_base")]
+style_variants = ExtResource("group_variants")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Wardrobe"): true,
 NodePath("Landscape"): true,

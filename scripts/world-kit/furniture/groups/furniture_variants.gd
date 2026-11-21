@@ -1,6 +1,6 @@
 @tool
 class_name HouseFurnitureVariants
-extends Resource
+extends DecorationVariants
 
 @export var variants: Array[HouseFurnitureStyle] = []
 @export var rug_variants: Array[HouseFurnitureStyle.RugDesign] = []

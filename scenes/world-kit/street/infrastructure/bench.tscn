@@ -8,6 +8,8 @@
 [node name="Bench" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color_variants = Array[Color]([Color(0.717647059, 0.537254902, 0.345098039, 1), Color(0.678431373, 0.380392157, 0.321568627, 1)])
+support_color_variants = Array[Color]([Color(0.305882353, 0.356862745, 0.286274510, 1), Color(0.266666667, 0.360784314, 0.341176471, 1)])
 body_color = Color(0.717647059, 0.537254902, 0.345098039, 1)
 support_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
 footprint_offset = Vector2(-0.5, 0)

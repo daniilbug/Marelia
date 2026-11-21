@@ -93,6 +93,10 @@ var _view: FurnitureView
 var _palette: ShaderMaterial
 var _syncing_geometry := false
 
+@export_group("Randomization")
+@export var style_variants: HouseFurnitureVariants
+@export_tool_button("Randomize appearance") var randomize_action: Callable = randomize
+
 func _ready() -> void:
 	# A fresh material per node prevents color changes leaking to other instances.
 	_palette = ShaderMaterial.new()
@@ -109,6 +113,12 @@ func _validate_property(property: Dictionary) -> void:
 
 func _get_design_index() -> int:
 	return 0
+
+func randomize() -> void:
+	if style_variants != null:
+		var profile := style_variants.choose_style()
+		if profile != null:
+			set_appearance(profile)
 
 func set_appearance(profile: HouseFurnitureStyle) -> void:
 	if designs.size() > 1 and get("style") is int:

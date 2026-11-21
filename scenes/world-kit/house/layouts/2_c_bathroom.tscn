@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://bcprk8gi0e2xm" path="res://scripts/world-kit/placement_group.gd" id="10_7tabh"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="11_rpwjr"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/sleeping_area.tscn" id="13_o2p3t"]
-[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="14_ds512"]
 [ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_style.gd" id="15_ihjvh"]
 [ext_resource type="Resource" path="res://assets/world-kit/house/room-variants/living.tres" id="16_c8m06"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/groups/dining_area.tscn" id="17_wyl4k"]
@@ -444,7 +443,6 @@ position = Vector2(55, 86)
 
 [node name="Furniture" type="Node2D" parent="Rooms/Bedroom/Placements/SleepingArea/BottomCenter" unique_id=993193093 instance=ExtResource("13_o2p3t")]
 y_sort_enabled = true
-script = ExtResource("14_ds512")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Wardrobe"): false,
 NodePath("Landscape"): false,
@@ -481,7 +479,6 @@ position = Vector2(138, 154)
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/ActivityTable/Center" unique_id=865481819 instance=ExtResource("17_wyl4k")]
 y_sort_enabled = true
-script = ExtResource("14_ds512")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("LeftChair"): false,
 NodePath("FrontChair"): true,
@@ -501,7 +498,6 @@ position = Vector2(128, 20)
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/Workplace/TopRightCorner" unique_id=1471463398 instance=ExtResource("18_yo2g2")]
 y_sort_enabled = true
-script = ExtResource("14_ds512")
 style = SubResource("Resource_ptcxe")
 
 [node name="SittingArea" type="Node2D" parent="Rooms/LivingRoom/Placements" index="2" unique_id=1524396555]
@@ -516,7 +512,6 @@ position = Vector2(144, 68)
 
 [node name="Furniture" type="Node2D" parent="Rooms/LivingRoom/Placements/SittingArea/Center" unique_id=258467965 instance=ExtResource("19_6vc58")]
 y_sort_enabled = true
-script = ExtResource("14_ds512")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Rug"): true
 })
@@ -850,6 +845,7 @@ position = Vector2(160, 48)
 length = 64.0
 openings = Array[float]([32.0])
 opening_size = Vector2(16, 28)
+static_alpha = 0.1
 
 [node name="Collision" parent="Walls/BathroomFrontWall/Collisions" index="0"]
 position = Vector2(12, 0)
@@ -862,6 +858,7 @@ shape = SubResource("bathroom_front_wall_right")
 [node name="TransparencyArea" parent="Walls/BathroomFrontWall" index="2"]
 position = Vector2(32, -16)
 shape = SubResource("bathroom_front_wall_zone")
+enabled = false
 
 [node name="Doors" type="Node2D" parent="." unique_id=397225618]
 y_sort_enabled = true

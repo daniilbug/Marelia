@@ -8,6 +8,8 @@
 [node name="DrinkingFountain" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("design_0")])
+body_color_variants = Array[Color]([Color(0.305882353, 0.356862745, 0.286274510, 1), Color(0.388235294, 0.513725490, 0.588235294, 1)])
+support_color_variants = Array[Color]([Color(0.733333333, 0.592156863, 0.356862745, 1), Color(0.690196078, 0.713725490, 0.650980392, 1)])
 body_color = Color(0.305882353, 0.356862745, 0.286274510, 1)
 tap_color = Color(0.733333333, 0.592156863, 0.356862745, 1)
 footprint_offset = Vector2(2, 0)

@@ -9,5 +9,6 @@
 [node name="Lounger" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("striped"), ExtResource("plain")])
+body_color_variants = Array[Color]([Color(0.3254902, 0.49019608, 0.46666667, 1), Color(0.36862746, 0.4862745, 0.54901963, 1), Color(0.44313726, 0.5254902, 0.41960785, 1), Color(0.6509804, 0.42745098, 0.34901962, 1)])
 body_color = Color(0.3254902, 0.49019608, 0.46666667, 1)
 support_color = Color(0.654902, 0.48627451, 0.30980393, 1)

@@ -9,5 +9,6 @@
 [node name="LifebuoyStand" instance=ExtResource("base")]
 script = ExtResource("script")
 designs = Array[ExtResource("design_script")]([ExtResource("post"), ExtResource("frame")])
+body_color_variants = Array[Color]([Color(0.5372549, 0.63921569, 0.64313725, 1), Color(0.59607846, 0.45490196, 0.32156864, 1)])
 stand_color = Color(0.5372549, 0.63921569, 0.64313725, 1)
 lifebuoy_color = Color(0.79607843, 0.40392157, 0.30980392, 1)

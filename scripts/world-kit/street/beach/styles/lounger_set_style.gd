@@ -1,6 +1,6 @@
 @tool
 class_name BeachLoungerSetStyle
-extends BeachDecorationStyle
+extends DecorationStyle
 
 @export_group("Design")
 @export var lounger_style: BeachLounger.Style = BeachLounger.Style.STRIPED:
@@ -35,3 +35,9 @@ extends BeachDecorationStyle
 			return
 		lounger_frame_color = value
 		emit_changed()
+
+func apply_to(piece: StaticBody2D) -> void:
+	if piece is BeachLounger:
+		piece.set_appearance(lounger_style, fabric_color, lounger_frame_color)
+	elif piece is BeachUmbrella:
+		piece.set_appearance(umbrella_style, fabric_color, trim_color)

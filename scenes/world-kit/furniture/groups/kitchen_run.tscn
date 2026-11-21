@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/cooker.tscn" id="cooker"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/cooker_hood.tscn" id="cooker_hood"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/fridge.tscn" id="fridge"]
-[ext_resource type="Script" uid="uid://d5xd3qj51nsx" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_base.tscn" id="kitchen_base"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_sink.tscn" id="kitchen_sink"]
 [ext_resource type="Resource" uid="uid://scrf54ltn0or" path="res://assets/world-kit/furniture/groups/styles/rustic.tres" id="style"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_cabinet.tscn" id="wall_cabinet"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="group_variants"]
 
-[node name="KitchenRun" type="Node2D" unique_id=751338988]
-y_sort_enabled = true
-script = ExtResource("group")
+[node name="KitchenRun" unique_id=751338988 instance=ExtResource("group_base")]
+style_variants = ExtResource("group_variants")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Counter"): true,
 NodePath("CounterCabinet"): true

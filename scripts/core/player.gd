@@ -246,24 +246,33 @@ func _physics_process(delta: float) -> void:
 			_stand_up()
 		return
 
-	velocity = dir * SPEED
+	var level := _get_level()
+	var water := _get_water_surface(level)
+	var walking_speed_multiplier := 1.0
+	if dir != Vector2.ZERO and water == null and level != null and get_platform() == null:
+		var surface := Surface.find_at(level, global_position)
+		if surface != null:
+			walking_speed_multiplier = surface.get_speed_multiplier()
+	var speed_multiplier := water.get_speed_multiplier() if water != null else walking_speed_multiplier
+	velocity = dir * SPEED * speed_multiplier
+	var movement := Vector2.ZERO
 	if not input_blocked:
 		move_and_slide()
-	var water := _get_water_surface()
+		movement = get_position_delta()
+		if not movement.is_zero_approx():
+			water = _get_water_surface(level)
 	_update_swimming_state(water != null)
-	var moved := not input_blocked and get_position_delta().dot(dir) > 0.01
-	var can_play_sound := moved and _movement_sound_cooldown == 0.0
+	var can_play_sound := movement.dot(dir) > 0.01 and _movement_sound_cooldown == 0.0
 	if water != null:
 		var stroked := _animate_swimming(delta, dir)
 		if stroked and can_play_sound:
 			_play_movement_sound(water.swim_stroke_sound)
 	else:
-		var stepped := _animate_movement(delta, dir)
+		var stepped := _animate_movement(delta * walking_speed_multiplier, dir)
 		if stepped and can_play_sound:
-			_play_footstep()
+			_play_footstep(level)
 
-func _play_footstep() -> void:
-	var level := _get_level()
+func _play_footstep(level: Level) -> void:
 	if level == null or get_platform() != null:
 		return
 	var surface := Surface.find_at(level, global_position)
@@ -304,8 +313,7 @@ func _update_swimming_state(in_water: bool) -> void:
 	else:
 		_start_idle_bob()
 
-func _get_water_surface() -> WaterSurface:
-	var level := _get_level()
+func _get_water_surface(level: Level) -> WaterSurface:
 	if level == null or get_platform() != null:
 		return null
 	# The player origin is at the feet, so overlap with the body does not trigger swimming.

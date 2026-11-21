@@ -1,10 +1,13 @@
 @tool
-extends HouseFurnitureGroup
+extends DecorationGroup
 
-func refresh() -> void:
-	super.refresh()
-	if not is_node_ready() or style == null:
-		return
-	var painting := style.wall_decoration == HouseFurnitureStyle.WallDecoration.PAINTING
-	$Clock.visible = not painting
-	$Painting.visible = painting
+func _get_piece_visibility(piece: StaticBody2D, fallback: bool) -> bool:
+	var profile := style as HouseFurnitureStyle
+	if profile == null:
+		return fallback
+	var painting := profile.wall_decoration == HouseFurnitureStyle.WallDecoration.PAINTING
+	if piece == $Clock:
+		return not painting
+	if piece == $Painting:
+		return painting
+	return fallback

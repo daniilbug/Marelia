@@ -16,6 +16,7 @@ collision_layer = 64
 collision_mask = 0
 monitoring = false
 script = ExtResource("script")
+speed_percent = 35
 swim_stroke_sound = ExtResource("swim_stroke")
 
 [node name="Surface" type="ColorRect" parent="."]

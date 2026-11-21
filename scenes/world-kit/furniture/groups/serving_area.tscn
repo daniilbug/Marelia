@@ -1,16 +1,16 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world-kit/furniture/groups/furniture_group.gd" id="group"]
+[ext_resource type="PackedScene" path="res://scenes/world-kit/decoration_group.tscn" id="group_base"]
 [ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/styles/classic.tres" id="style"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/sideboard.tscn" id="sideboard"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/flower_vase.tscn" id="flowers"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_shelf.tscn" id="shelf"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/kitchen_cart.tscn" id="cart"]
 [ext_resource type="PackedScene" path="res://scenes/world-kit/furniture/wall_clock.tscn" id="clock"]
+[ext_resource type="Resource" path="res://assets/world-kit/furniture/groups/variants.tres" id="group_variants"]
 
-[node name="ServingArea" type="Node2D"]
-y_sort_enabled = true
-script = ExtResource("group")
+[node name="ServingArea" instance=ExtResource("group_base")]
+style_variants = ExtResource("group_variants")
 included_pieces = Dictionary[NodePath, bool]({
 NodePath("Sideboard/Flowers"): true,
 NodePath("Shelf"): true,

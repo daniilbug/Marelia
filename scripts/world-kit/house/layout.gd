@@ -73,7 +73,7 @@ func _get_furniture_style_data(group: PlacementGroup) -> Dictionary:
 	var point := group.get_selected_point()
 	if point != null:
 		for instance in point.get_children():
-			if instance is HouseFurnitureGroup and instance.style != null:
+			if instance is DecorationGroup and instance.style is HouseFurnitureStyle:
 				return instance.style.to_data()
 	return {}
 

@@ -20,6 +20,12 @@ const GROUP := &"walkable_surfaces"
 ## Overrides the default footstep sound for this surface's style.
 @export var footstep_sound: AudioStream
 
+@export_group("Movement")
+## Movement speed as a percentage of the player's base speed for each style.
+@export var speed_percent_by_style: Dictionary[Style, int] = {}
+## Zero uses the default multiplier for the selected style.
+@export_range(0.0, 2.0, 0.01, "or_greater") var speed_multiplier_override := 0.0
+
 @export_group("Geometry")
 ## Use the native Polygon2D contour instead of building a rectangle from Size.
 @export var use_polygon := false:
@@ -35,10 +41,20 @@ const GROUP := &"walkable_surfaces"
 		size = value.round().max(Vector2.ONE)
 		_refresh_geometry()
 
+@export_tool_button("Randomize surface") var randomize_action: Callable = randomize
+
 func _ready() -> void:
 	_refresh_texture()
 	_refresh_geometry()
 	add_to_group(GROUP)
+
+func randomize() -> void:
+	var choices: Array[Style] = []
+	for candidate in Style.values():
+		if candidate < textures.size() and textures[candidate] != null:
+			choices.append(candidate as Style)
+	if not choices.is_empty():
+		style = choices.pick_random()
 
 static func find_at(level: Level, world_position: Vector2) -> Surface:
 	var top: Surface
@@ -54,6 +70,11 @@ func get_footstep_sound() -> AudioStream:
 	if footstep_sound != null:
 		return footstep_sound
 	return footstep_sounds[style] if style >= 0 and style < footstep_sounds.size() else null
+
+func get_speed_multiplier() -> float:
+	if speed_multiplier_override > 0.0:
+		return speed_multiplier_override
+	return maxi(speed_percent_by_style.get(style, 100), 0) / 100.0
 
 func _draws_above(other: Surface) -> bool:
 	var z := _effective_z_index()

@@ -27,6 +27,10 @@ func set_appearance(design: Style, primary: Color, secondary: Color) -> void:
 	primary_color = primary
 	secondary_color = secondary
 
+func randomize() -> void:
+	super.randomize()
+	style = Style.values().pick_random() as Style
+
 func _validate_property(property: Dictionary) -> void:
 	super._validate_property(property)
 	if property.name in ["body_color", "support_color"]:
